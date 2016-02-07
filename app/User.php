@@ -23,4 +23,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token','role',
     ];
+
+    public function aluminis()
+    {
+        return $this->hasMany('App\Alumini');
+    }
 }

@@ -20,7 +20,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        
                         <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
                             {{ Form::label('type', 'You Are:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">

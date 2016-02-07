@@ -13,12 +13,8 @@
 
     <!-- Styles -->
     <link href="/css/bootstrap.css" rel="stylesheet">
-    <style>
-        body
-        {
-            padding-top: 88px;
-        }
-    </style>
+    <link href="/css/app.css" rel="stylesheet">
+
     {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 

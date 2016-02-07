@@ -34,7 +34,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/home', 'HomeController@index');
 
-    Route::get('/{username}', ['as' => 'users.profile.show', 'uses' => 'UsersController@showProfile']);
-    Route::get('/{username}/edit',['as' => 'users.profile.edit', 'uses' => 'UsersController@editProfile']);
-    Route::post('/{username}/edit',['as' => 'users.profile.update', 'uses' => 'UsersController@updateProfile']);
+    Route::get('/@{username}', ['as' => 'users.profile.show', 'uses' => 'UsersController@showProfile']);
+    Route::get('/@{username}/edit',['as' => 'users.profile.edit', 'uses' => 'UsersController@editProfile']);
+    Route::post('/@{username}/edit',['as' => 'users.profile.update', 'uses' => 'UsersController@updateProfile']);
+
+
+    Route::get('/alumini', ['as' => 'alumini.index', 'uses' => 'AluminisController@index']);
+    Route::get('/alumini/create', ['as' => 'alumini.create', 'uses' => 'AluminisController@create']);
+    Route::post('/alumini/create', ['as' => 'alumini.store', 'uses' => 'AluminisController@store']);
 });
