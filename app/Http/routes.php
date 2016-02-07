@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +25,16 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/', function () {
+        return view('welcome');
+    });
 });
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-
     Route::get('/home', 'HomeController@index');
+
+    Route::get('/{username}', ['as' => 'users.profile.show', 'uses' => 'UsersController@showProfile']);
+    Route::get('/{username}/edit',['as' => 'users.profile.edit', 'uses' => 'UsersController@editProfile']);
+    Route::post('/{username}/edit',['as' => 'users.profile.update', 'uses' => 'UsersController@updateProfile']);
 });

@@ -12,7 +12,13 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body
+        {
+            padding-top: 88px;
+        }
+    </style>
     {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -27,7 +33,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -41,7 +47,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    ACERC CS
                 </a>
             </div>
 
@@ -49,6 +55,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/news') }}">News</a></li>
+                    <li><a href="{{ url('/events') }}">Events</a></li>
+                    <li><a href="{{ url('/gallery') }}">Gallery</a></li>
+                    <li><a href="{{ url('/alumini') }}">Alumini</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -64,6 +74,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ route('users.profile.show',[Auth::user()->username]) }}"><i class="fa fa-btn"></i>My Profile</a></li>
+                                <li><a href="{{ route('users.profile.edit',[Auth::user()->username]) }}"><i class="fa fa-btn"></i>Setting</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -72,12 +84,18 @@
             </div>
         </div>
     </nav>
+    @if(Session::has('notification'))
+    <div class="alert alert-info col-md-8 col-md-offset-2 text-center notification">
+            {{ Session::get('notification') }}
+    </div>
+    @endif
 
     @yield('content')
 
     <!-- JavaScripts -->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/app.js"></script>
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}

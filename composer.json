@@ -7,7 +7,15 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "guzzlehttp/guzzle": "^6.1"
+        "intervention/image": "^2.3",
+        "spatie/laravel-newsletter": "^2.2",
+        "doctrine/dbal": "^2.5",
+        "barryvdh/laravel-debugbar": "^2.1",
+        "laravelcollective/html": "5.2.*",
+        "mccool/laravel-auto-presenter": "^4.2",
+        "codeception/codeception": "^2.1",
+        "guzzlehttp/guzzle": "^6.1",
+        "vtalbot/markdown": "2.0.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -19,6 +27,9 @@
     "autoload": {
         "classmap": [
             "database"
+        ],
+        "files": [
+            "app/Acerc/helpers.php"
         ],
         "psr-4": {
             "App\\": "app/"

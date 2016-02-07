@@ -28,12 +28,11 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -52,6 +51,9 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'username' => 'required|min:4|max:255|Regex:/([a-zA-Z0-9_])+$/i|unique:users',
+            'gender' => 'required|in:Male,Female,Others',
+            'type' => 'required|in:0,1',
         ]);
     }
 
@@ -66,7 +68,10 @@ class AuthController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
+            'gender' => $data['gender'],
+            'type' => $data['type'],
         ]);
     }
 }
