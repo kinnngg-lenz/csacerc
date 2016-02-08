@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','gender','type','about',
+        'name', 'email', 'password','username','gender','type','about','dob',
     ];
 
     /**
@@ -27,5 +27,15 @@ class User extends Authenticatable
     public function aluminis()
     {
         return $this->hasMany('App\Alumini');
+    }
+
+    public function events()
+    {
+        return $this->hasMany('App\Event');
+    }
+
+    public function isAdmin()
+    {
+        return $this->role > 0;
     }
 }

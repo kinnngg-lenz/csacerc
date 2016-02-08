@@ -32,7 +32,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
     Route::get('/@{username}', ['as' => 'users.profile.show', 'uses' => 'UsersController@showProfile']);
     Route::get('/@{username}/edit',['as' => 'users.profile.edit', 'uses' => 'UsersController@editProfile']);
@@ -42,4 +42,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/alumini', ['as' => 'alumini.index', 'uses' => 'AluminisController@index']);
     Route::get('/alumini/create', ['as' => 'alumini.create', 'uses' => 'AluminisController@create']);
     Route::post('/alumini/create', ['as' => 'alumini.store', 'uses' => 'AluminisController@store']);
+
+    Route::get('/events', ['as' => 'event.index', 'uses' => 'EventsController@index']);
+    Route::get('/events/create', ['as' => 'event.create', 'uses' => 'EventsController@create']);
+    Route::post('/events/create', ['as' => 'event.store', 'uses' => 'EventsController@store']);
 });

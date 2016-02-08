@@ -2,9 +2,11 @@
 
 namespace App\Policies;
 
+use App\Alumini;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class AdminPolicy
+class AluminiPolicy
 {
     use HandlesAuthorization;
 
@@ -15,5 +17,10 @@ class AdminPolicy
     public function __construct()
     {
         //
+    }
+
+    public function edit(User $user, Alumini $alumini)
+    {
+        return $user->id === $alumini->user_id;
     }
 }

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12 text-right">
                 @if(Auth::user()->isAdmin())
-                {{ link_to_route('alumini.create', 'Add New Alumini', [], ['class' => 'btn btn-danger btn-sm']) }}
+                    {{ link_to_route('event.create', 'Add New Alumini', [], ['class' => 'btn btn-danger btn-sm']) }}
                 @endif
             </div>
             <div class="col-md-11 col-md-offset-1">
@@ -14,7 +14,7 @@
                     <div class="panel col-md-5 well marginright10">
                         <p class="panel padding10">{!! nl2br($alumini->speech) !!}</p>
                         <p class="blockquote-reverse"><strong>
-                        - {{ $alumini->speaker }}<br></strong>
+                                - {{ $alumini->speaker }}<br></strong>
                         <span class="text-small">{{ $alumini->batch }}<br>
                         ( {{ $alumini->profession }} )</span>
                         </p>
@@ -22,11 +22,11 @@
                 @empty
                     Empty
                 @endforelse
-                </div>
-                <div class="text-center">
-                    {{ $aluminis->render() }}
-                </div>
+            </div>
+            <div class="text-center">
+                {{ $aluminis->render() }}
             </div>
         </div>
+    </div>
     </div>
 @endsection

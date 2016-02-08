@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
 {
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'url'
+    ];
+
     /*
      * Doing this may cause problem becoz its not a polymorphic.
      * If you wanna levarage this feature then plz use a polymorphic table for Photo.

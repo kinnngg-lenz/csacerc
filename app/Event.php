@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    protected $fillable = [
+        'name', 'date', 'description', 'venue', 'photo_id'
+    ];
+
     /**
      * Return the Photo related to current Event.
      *
@@ -13,6 +17,11 @@ class Event extends Model
      */
     public function photo()
     {
-        return $this->hasOne('App\Photo');
+        return $this->belongsTo('App\Photo');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

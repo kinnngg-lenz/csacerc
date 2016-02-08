@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,6 +17,8 @@ class AluminisController extends Controller
     public function __construct(Alumini $alumini)
     {
         $this->alumini = $alumini;
+        $this->middleware('auth',['except' => ['index', 'show']]);
+        $this->middleware('admin', ['except' => ['index', 'show']]);
     }
 
     /**
