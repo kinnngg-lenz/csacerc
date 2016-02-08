@@ -34,7 +34,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('events.index')->withEvents($this->event->with('photo')->paginate(10));
+        return view('events.index')->withEvents($this->event->with('photo')->orderBy('date', 'DESC')->paginate(10));
     }
 
     /**

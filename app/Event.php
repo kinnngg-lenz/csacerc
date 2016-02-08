@@ -10,6 +10,10 @@ class Event extends Model
         'name', 'date', 'description', 'venue', 'photo_id'
     ];
 
+    protected $dates = [
+        'created_at', 'updated_at', 'date'
+    ];
+
     /**
      * Return the Photo related to current Event.
      *
