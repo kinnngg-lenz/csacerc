@@ -26,6 +26,7 @@ class CreateNewsTable extends Migration
             $table->smallInteger('type')->default(0);
             $table->integer('photo_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned();
+            $table->string('slug')->unique();
             $table->timestamps();
 
             $table->foreign('photo_id')->references('id')->on('photos');

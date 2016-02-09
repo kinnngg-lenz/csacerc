@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alumini extends Model
 {
     protected $fillable = [
-        'speech', 'speaker', 'batch', 'profession',
+        'speech', 'speaker', 'batch', 'profession', 'slug',
     ];
 
     protected $hidden = [

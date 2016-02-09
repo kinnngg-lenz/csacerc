@@ -61,12 +61,15 @@ class EventsController extends Controller
                     'url' => $photoName
                 ]);
 
+                $slug = slug_for_url($request->name.' '.Carbon::parse($request->date)->diffForHumans());
+
                 $request->user()->events()->create([
                     'name' => $request->name,
                     'date' => $request->date,
                     'description' => $request->description,
                     'venue' => $request->venue,
-                    'photo_id' => $photo->id
+                    'photo_id' => $photo->id,
+                    'slug' => $slug,
                 ]);
 
                 return back()->withNotification('Event has been created!');
@@ -75,11 +78,13 @@ class EventsController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $slug
      */
-    public function show($id)
+    public function show($slug)
     {
-
+        $event = Event::whereSlug($slug)->firstorFail();
+        dd($event);
+        return view('events.show')->withEvent($event);
     }
 
 }

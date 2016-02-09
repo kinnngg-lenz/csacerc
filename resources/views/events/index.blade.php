@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-right">
-                @if(Auth::user()->isAdmin())
+                @if(Auth::check() && Auth::user()->isAdmin())
                     {{ link_to_route('event.create', 'Add New Event', [], ['class' => 'btn btn-danger btn-sm']) }}
                 @endif
             </div>
@@ -12,7 +12,7 @@
                 <div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>College Events</h3></div>
                 @forelse($events as $event)
                     <div class="panel col-md-5 well marginright10">
-                        <h4 class="text-center text-success">{{ $event->name }}</h4>
+                        <h4 class="text-center">{{ link_to_route('event.show',$event->name,$event->slug) }}</h4>
                         <img class="col-md-12" src="images/{{ $event->photo->url }}" alt="Event Poster" width="">
                         {{-- @TODO: Fix this in production --}}
                         {{-- Html::image(public_path('images/').$event->photo->url) --}}

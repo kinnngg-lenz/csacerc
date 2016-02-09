@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-right">
-                @if(Auth::user()->isAdmin())
+                @if(Auth::check() && Auth::user()->isAdmin())
                 {{ link_to_route('alumini.create', 'Add New Alumini', [], ['class' => 'btn btn-danger btn-sm']) }}
                 @endif
             </div>
@@ -14,7 +14,7 @@
                     <div class="panel col-md-5 well marginright10">
                         <p class="panel padding10">{!! nl2br($alumini->speech) !!}</p>
                         <p class="blockquote-reverse"><strong>
-                        - {{ $alumini->speaker }}<br></strong>
+                        - {{ link_to_route('alumini.show', $alumini->speaker, $alumini->slug) }}<br></strong>
                         <span class="text-small">{{ $alumini->batch }}<br>
                         ( {{ $alumini->profession }} )</span>
                         </p>

@@ -34,8 +34,28 @@ class User extends Authenticatable
         return $this->hasMany('App\Event');
     }
 
+    public function news()
+    {
+        return $this->hasMany('App\News');
+    }
+
+    public function questions()
+    {
+        return $this->hasMany('App\Question');
+    }
+
     public function isAdmin()
     {
         return $this->role > 0;
+    }
+
+    public function askedQuestions()
+    {
+        return \App\Question::whereForUserId($this->id);
+    }
+
+    public function notAnsweredQuestions()
+    {
+        return $this->askedQuestions()->unanswered();
     }
 }

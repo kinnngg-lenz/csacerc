@@ -50,11 +50,14 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a href="{{ url('/news') }}">News</a></li>
-                    <li><a href="{{ url('/events') }}">Events</a></li>
-                    <li><a href="{{ url('/gallery') }}">Gallery</a></li>
-                    <li><a href="{{ url('/alumini') }}">Alumini</a></li>
+                    @if(Auth::check())
+                        <li>{{ link_to_route('home','Dashboard') }}</li>
+                    @endif
+                    <li>{{ link_to_route('news.index','News') }}</li>
+                    <li>{{ link_to_route('event.index','Events') }}</li>
+                    <li>{{ link_to_route('alumini.index','Alumini') }}</li>
+                    <li><a href="">Gallery</a></li>
+                    <li>{{ link_to_route('questions.index','Questions') }}</li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

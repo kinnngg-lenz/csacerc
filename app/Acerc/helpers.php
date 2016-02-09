@@ -44,3 +44,8 @@ function set_active_or_disabled($path, $active = 'active') {
     return call_user_func_array('Request::is', (array)$path) ? $active : 'disabled';
 
 }
+
+function slug_for_url($first, $second=null)
+{
+   return str_slug(str_limit($first, 50, $second), '-');
+}

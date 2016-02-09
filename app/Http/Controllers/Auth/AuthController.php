@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Acerc\Mailers\UserMailer;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -28,15 +29,21 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/dashboard';
+
+    /**
+     * @var UserMailer
+     */
+    protected $mailer;
 
     /**
      * Create a new authentication controller instance.
-     *
+     * @param UserMailer $mailer
      */
-    public function __construct()
+    public function __construct(UserMailer $mailer)
     {
         $this->middleware('guest', ['except' => 'logout']);
+        $this->mailer = $mailer;
     }
 
     /**
@@ -65,7 +72,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user  =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'username' => $data['username'],
@@ -73,5 +80,13 @@ class AuthController extends Controller
             'gender' => $data['gender'],
             'type' => $data['type'],
         ]);
+
+        /**
+         * EMAIL User a Welcome Email
+         * @TODO: Add this to a Queue and extract to a Event Listener
+         */
+        $this->mailer->welcome($user);
+
+        return $user;
     }
 }

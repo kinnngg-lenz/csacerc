@@ -49,9 +49,14 @@ class AluminisController extends Controller
      */
     public function store(AluminisRequest $request)
     {
-        $request->user()->aluminis()->create(
-            $request->only('speech', 'speaker', 'batch', 'profession')
-        );
+        $slug = slug_for_url($request->speech, ' by '.$request->speaker);
+        $request->user()->aluminis()->create([
+                'speech' => $request->speech,
+                'speaker' => $request->speaker,
+                'batch' => $request->batch,
+                'profession' => $request->profession,
+                'slug' => $slug,
+            ]);
         return back()->withNotification('A New Alumini has been created successfully!');
 
     }
@@ -59,12 +64,13 @@ class AluminisController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $alumini = Alumini::whereSlug($slug)->firstorFail();
+        return view('aluminis.show')->withAlumini($alumini);
     }
 
     /**

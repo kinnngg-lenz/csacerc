@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration
             $table->string('venue')->nullable();
             $table->integer('photo_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned();
+            $table->string('slug')->unique();
             $table->timestamps();
             $table->foreign('photo_id')->references('id')->on('photos');
             $table->foreign('user_id')->references('id')->on('users');
