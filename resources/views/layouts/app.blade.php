@@ -80,6 +80,14 @@
                         </li>
                     @endif
                 </ul>
+
+                <form class="navbar-form navbar-right" role="search" action='/search/'>
+                    <div class="form-group">
+                        <input type="text" id="navsearch" name='q' class="form-control" placeholder="Member's Search" autocomplete="off">
+                    </div>
+                    {{--<button type="submit" class="btn btn-default">Search</button>--}}
+                </form>
+
             </div>
         </div>
     </nav>

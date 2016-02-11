@@ -13,7 +13,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'showProfile']);
+        $this->middleware('auth', ['except' => ['showProfile', 'search']]);
     }
 
     /**
@@ -61,5 +61,19 @@ class UsersController extends Controller
 
         return back()->withNotification('Profile has been updated');
 
+    }
+
+
+    /**
+     * For searching User for Ajax and API calls
+     *
+     * Here Auth will not be considered as it is outside of web middleware group
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function search($query)
+    {
+        return (User::where('username','like','%'.$query.'%')->orWhere('name','like','%'.$query.'%')->orWhere('email','like','%'.$query.'%')->get(['id','name','username']));
     }
 }

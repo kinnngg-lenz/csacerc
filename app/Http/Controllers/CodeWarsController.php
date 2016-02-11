@@ -142,6 +142,13 @@ class CodeWarsController extends Controller
         //
     }
 
+    /**
+     * Post answer to the current War with id
+     *
+     * @param CodeWarAnswersRequest $request
+     * @param $slug
+     * @return mixed
+     */
     public function answer(CodeWarAnswersRequest $request, $slug)
     {
         $question = $this->question->findOrFail($request->code_war_question_id);
@@ -151,6 +158,26 @@ class CodeWarsController extends Controller
             'user_id' => $request->user()->id,
         ]);
 
-        return back()->withNotification("Success! Your answer now online :)");
+        return back()->withNotification("Success! Your answer now online.");
+    }
+
+    public function bestanswer(Request $request, $id)
+    {
+        $question = $this->question->findOrFail($id);
+
+        $answer = $this->answer->findOrFail($request->best_answer_id);
+
+        if($answer->code_war_question_id != $question->id)
+        {
+            return back()->withNotification("Error! Intrusion Detected and Blocked.");
+        }
+
+        if($request->user()->can('edit', $question))
+        {
+            $question->fill($request->only('best_answer_id'))->save();
+            return back()->withNotification("Success! Answer set as Best. Will be visible once this War Ends.");
+        }
+
+        return back()->withNotification("Error! Something is not right)");
     }
 }

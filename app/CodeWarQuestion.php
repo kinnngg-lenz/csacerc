@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CodeWarQuestion extends Model
 {
     protected $fillable = [
-        'title', 'description', 'slug', 'ends_at',
+        'title', 'description', 'slug', 'ends_at','best_answer_id'
     ];
 
     protected $dates = [

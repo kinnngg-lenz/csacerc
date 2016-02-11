@@ -33,9 +33,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/test', function(){
         $question = App\CodeWarQuestion::find(1);
-
     });
-
 });
 
 Route::group(['middleware' => 'web'], function () {
@@ -81,7 +79,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/codewar/create', ['as' => 'codewar.store', 'uses' => 'CodeWarsController@store']);
     Route::get('/codewar/{id}/edit', ['as' => 'codewar.edit', 'uses' => 'CodeWarsController@edit']);
     Route::patch('/codewar/{id}/edit', ['as' => 'codewar.update', 'uses' => 'CodeWarsController@update']);
+    Route::patch('/codewar/{id}/bestanswer', ['as' => 'codewar.bestanswer', 'uses' => 'CodeWarsController@bestanswer']);
     Route::get('/codewar/{slug}', ['as' => 'codewar.show', 'uses' => 'CodeWarsController@show']);
     Route::post('/codewar/{slug}', ['as' => 'codewar.answer', 'uses' => 'CodeWarsController@answer']);
 
 });
+
+
+Route::get('/users/{query}', ['as' => 'users.search', 'uses' => 'UsersController@search']);

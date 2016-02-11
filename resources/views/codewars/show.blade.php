@@ -21,15 +21,29 @@
                         <span class="text-small">{{ link_to_route('codewar.show', $question->created_at->diffForHumans(), $question->slug) }}
                             <br></span>
                     </p>
+                    <p class="blockquote-reverse"><b>War End Time:</b>{{ $question->ends_at->diffForHumans() }}</p>
                 </div>
 
                 @forelse($question->answers as $answer)
-                    <div class="well col-md-11" {!! $question->best_answer_id == $answer->id ? "style='background: #D2F2D2'" : "" !!}>
+                    <div class="well col-md-11" {!! $question->best_answer_id == $answer->id && $question->ends_at <= \Carbon\Carbon::now() ? "style='background: #D2F2D2'" : "" !!}>
                         <div class="panel padding10">{!! render_markdown_for_view($answer->answer) !!}</div>
                         <p class="blockquote-reverse">
                             <span class="text-small">{{ link_to_route('users.profile.show',$answer->user->name,[$answer->user->username]) }}</span>
                             <br>
                             <span class="text-small">{{ $answer->created_at->diffForHumans() }}</span>
+
+                            @can('edit', $question)
+                                @unless($question->best_answer_id == $answer->id)
+                                {{ Form::open(['route' => ['codewar.bestanswer', $question->id],'method' => 'patch']) }}
+                                {{ Form::hidden('best_answer_id', $answer->id) }}
+                                {{ Form::submit('Set as Best Answer', ['class' => 'btn btn-success btn-sm']) }}
+                                {{ Form::close() }}
+                                @else
+                                    {{ Form::open() }}
+                                    {{ Form::submit('Selected as Best Answer', ['class' => 'btn btn-warning btn-sm', 'disabled' => 'true']) }}
+                                    {{ Form::close() }}
+                                @endunless
+                            @endcan
                         </p>
                     </div>
                 @empty
