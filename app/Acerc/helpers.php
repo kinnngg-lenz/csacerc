@@ -49,3 +49,16 @@ function slug_for_url($first, $second=null)
 {
    return str_slug(str_limit($first, 50, $second), '-');
 }
+
+function pre_content_filter( $content ) {
+    return preg_replace_callback( '|<pre.*>(.*)</pre|isU' , 'convert_pre_entities', $content );
+}
+
+function convert_pre_entities( $matches ) {
+    return str_replace( $matches[1], html_entity_decode( $matches[1] ), $matches[0] );
+}
+
+function render_markdown_for_view($string)
+{
+    return pre_content_filter(Markdown::string(htmlentities($string)));
+}

@@ -32,8 +32,8 @@ Route::group(['middleware' => ['web']], function () {
     // FOR TESTING THINGS
 
     Route::get('/test', function(){
-        $q = App\Question::find(6);
-        dd(Gate::allows('answer',Auth::user(), $q ));
+        $question = App\CodeWarQuestion::find(1);
+
     });
 
 });
@@ -65,7 +65,23 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/questions/create', ['as' => 'questions.create', 'uses' => 'QuestionsController@create']);
     Route::post('/questions/create', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
     Route::get('/questions/{slug}', ['as' => 'questions.show', 'uses' => 'QuestionsController@show']);
+    Route::patch('/questions/{slug}', ['as' => 'questions.answer', 'uses' => 'QuestionsController@answer']);
 
-    Route::get('/my/questions/', ['as' => 'questions.user', 'uses' => 'QuestionsController@forUser']);
-    Route::get('/my/questions/unanswered', ['as' => 'questions.user.unanswered', 'uses' => 'QuestionsController@forUserToAnswer']);
+    Route::post('pending/questions/{question}/approve', ['as' => 'questions.pending.approve', 'uses' => 'QuestionsController@approve']);
+    Route::get('pending/questions/', ['as' => 'questions.pending', 'uses' => 'QuestionsController@pending']);
+    Route::get('/questions-asked-to-me/', ['as' => 'questions.user', 'uses' => 'QuestionsController@forUser']);
+    Route::get('/questions-i-asked/', ['as' => 'questions.iasked', 'uses' => 'QuestionsController@iAsked']);
+    Route::get('/questions-asked-to-me/unanswered', ['as' => 'questions.user.unanswered', 'uses' => 'QuestionsController@forUserToAnswer']);
+
+    /**
+     * CODE WAR
+     */
+    Route::get('/codewar', ['as' => 'codewar.index', 'uses' => 'CodeWarsController@index']);
+    Route::get('/codewar/create', ['as' => 'codewar.create', 'uses' => 'CodeWarsController@create']);
+    Route::post('/codewar/create', ['as' => 'codewar.store', 'uses' => 'CodeWarsController@store']);
+    Route::get('/codewar/{id}/edit', ['as' => 'codewar.edit', 'uses' => 'CodeWarsController@edit']);
+    Route::patch('/codewar/{id}/edit', ['as' => 'codewar.update', 'uses' => 'CodeWarsController@update']);
+    Route::get('/codewar/{slug}', ['as' => 'codewar.show', 'uses' => 'CodeWarsController@show']);
+    Route::post('/codewar/{slug}', ['as' => 'codewar.answer', 'uses' => 'CodeWarsController@answer']);
+
 });

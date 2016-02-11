@@ -18,6 +18,19 @@ class Question extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function askedTo()
+    {
+        if(is_null($this->for_user_id))
+        {
+            $user = new \stdClass();
+            $user->name = null;
+        }
+        else
+        $user = \App\User::find($this->for_user_id);
+
+        return $user;
+    }
+
     public function scopePublic($query)
     {
         $query->wherePublic(1);
@@ -26,6 +39,11 @@ class Question extends Model
     public function scopeApproved($query)
     {
         $query->whereApproved(1);
+    }
+
+    public function scopePending($query)
+    {
+        $query->whereApproved(0);
     }
 
     public function scopeUnanswered($query)

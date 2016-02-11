@@ -16,7 +16,7 @@
                         <img class="col-md-12" src="images/{{ $news->photo->url }}" alt="News Poster" width="">
                         {{-- @TODO: Fix this in production --}}
                         {{-- Html::image(public_path('images/').$news->photo->url) --}}
-                        <div class="panel padding10">{!! nl2br(Markdown::string(htmlentities($news->description))) !!}</div>
+                        <div class="panel padding10">{!! nl2br(render_markdown_for_view($news->description)) !!}</div>
                         {{--<p class="blockquote-reverse"><strong>
                                Venue - {{ $news->venue }}<br></strong>
                         <span class="text-small">{{ $news->batch }}<br>

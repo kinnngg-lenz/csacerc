@@ -12,9 +12,21 @@
                     <div class="panel col-md-11 well">
                         Question:
                         {{-- @TODO: Unsecured. Secure this code, and filter thru Markdown --}}
-                        <div class="panel padding10">{!! (Markdown::string(htmlentities($question->question))) !!}</div>
+                        <div class="panel padding10">{!! (render_markdown_for_view($question->question)) !!}</div>
                         Answer:
-                        <div class="panel padding10">{!! is_null($question->answer) ? "<i class='text-danger'>No answered yet!</i>" : (Markdown::string(htmlentities($question->answer))) !!}</div>
+                        <div class="panel padding10">
+                            @if(is_null($question->answer))
+                                @can('answer', $question)
+                                <i class='text-danger'>No answered yet!</i>
+                                <div class="text-right">{{ link_to_route('questions.show', 'Answer this Question', [$question->slug], ['class' => 'btn btn-danger btn-sm float-right']) }}</div>
+                                @else
+                                <i class='text-danger'>No answered yet!</i>
+                                @endcan
+                            @else
+                                {!! (render_markdown_for_view($question->answer)) !!}
+                            @endif
+                        </div>
+
                         <p class="blockquote-reverse">
                         <span class="text-small">{{ link_to_route('questions.show', $question->created_at->diffForHumans(), $question->slug) }}<br></span>
                         </p>

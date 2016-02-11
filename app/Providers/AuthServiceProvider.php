@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Alumini;
 use App\Policies\AluminiPolicy;
+use App\Question;
+use App\Policies\QuestionPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        App\Question::class => App\Policies\QuestionPolicy::class,
+        'App\Question' => 'App\Policies\QuestionPolicy',
+        'App\CodeWarQuestion' => 'App\Policies\CodeWarQuestionPolicy',
     ];
 
     /**

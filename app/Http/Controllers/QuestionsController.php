@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnswerRequest;
 use App\Http\Requests\QuestionsRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -23,8 +24,8 @@ class QuestionsController extends Controller
      */
     public function __construct(Question $question)
     {
-        $this->middleware('auth');
-        $this->middleware('admin', ['only' => 'approve']);
+        $this->middleware('auth',['except' => ['show', 'index']]);
+        $this->middleware('admin', ['only' => ['approve', 'pending']]);
         $this->question = $question;
     }
 
@@ -129,12 +130,18 @@ class QuestionsController extends Controller
         //
     }
 
-    public function approve($id)
+    public function approve(Question $question)
     {
-        $question = $this->question->findOrFail($id);
         $question->approved = 1;
         $question->save();
 
+        return back()->withNotification("Success! Question has been approved.");
+    }
+
+    public function pending()
+    {
+        $questions = $this->question->pending()->latest()->paginate();
+        return view('questions.pending')->withQuestions($questions);
     }
 
     /**
@@ -155,13 +162,35 @@ class QuestionsController extends Controller
      */
     public function forUserToAnswer()
     {
-        $questions = Auth::user()->notAnsweredQuestions()->approved()->latest()->paginate(10);
+        /**
+         * If Admin then return Questions asked globally too else return only those
+         * questions asked to him.
+         */
+        if(Auth::user()->isAdmin())
+            $questions = Auth::user()->notAnsweredQuestions(true)->approved()->latest()->paginate(10);
+        else
+            $questions = Auth::user()->notAnsweredQuestions(false)->approved()->latest()->paginate(10);
+
         return view('questions.user')->withQuestions($questions);
     }
 
-    public function answer($slug)
+    /**
+     * @param $slug
+     */
+    public function answer(AnswerRequest $request, $slug)
     {
-        $alumini = Alumini::whereSlug($slug)->firstorFail();
+        $question = $this->question->findOrFail($request->question_id);
 
+        $question->answer = $request->answer;
+        $question->save();
+
+        return back()->withNotification("Success! Question has been answered.");
+    }
+
+    public function iAsked()
+    {
+        $questions = Auth::user()->questions()->latest()->paginate(10);
+
+        return view('questions.iasked')->withQuestions($questions);
     }
 }

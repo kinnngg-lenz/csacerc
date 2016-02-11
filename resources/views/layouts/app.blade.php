@@ -12,11 +12,10 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/app.css" rel="stylesheet">
-
+    {{--<link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">--}}
     {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+     <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
 
     <style>
         body {
@@ -58,6 +57,7 @@
                     <li>{{ link_to_route('alumini.index','Alumini') }}</li>
                     <li><a href="">Gallery</a></li>
                     <li>{{ link_to_route('questions.index','Questions') }}</li>
+                        <li>{{ link_to_route('codewar.index','Code War') }}</li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -92,12 +92,15 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="/js/jquery.min.js"></script>
+    {{--<script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="/js/app.js"></script>--}}
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="{{ elixir('js/all.js') }}"></script>
+    <script type="text/javascript">
+    @yield('scripts')
+    </script>
 </body>
 </html>

@@ -14,7 +14,20 @@
                         {{-- @TODO: Unsecured. Secure this code, and filter thru Markdown --}}
                         <div class="panel padding10">{!! (Markdown::string(htmlentities($question->question))) !!}</div>
                         Answer:
-                        <div class="panel padding10">{!! is_null($question->answer) ? link_to_route('questions.show', 'Answer this Question', [$question->slug], ['class' => 'btn btn-info btn-sm']) : (Markdown::string(htmlentities($question->answer))) !!}</div>
+                        <div class="panel padding10">
+                            @if(is_null($question->answer))
+                                @can('answer', $question)
+                                <i class='text-danger'>No answered yet!</i>
+                                <div class="text-right">{{ link_to_route('questions.show', 'Answer this Question', [$question->slug], ['class' => 'btn btn-danger btn-sm float-right']) }}</div>
+                            @else
+                                <i class='text-danger'>No answered yet!</i>
+                                @endcan
+                                @else
+                                    {!! (Markdown::string(htmlentities($question->answer))) !!}
+                                @endif
+                        </div>
+
+                        {{--<div class="panel padding10">{!! is_null($question->answer) ? link_to_route('questions.show', 'Answer this Question', [$question->slug], ['class' => 'btn btn-info btn-sm']) : (Markdown::string(htmlentities($question->answer))) !!}</div>--}}
                         <p class="blockquote-reverse">
                             <span class="text-small">{{ link_to_route('questions.show', $question->created_at->diffForHumans(), $question->slug) }}<br></span>
                             <span class="text-small"><b>Visible to public: </b>{{ $question->public==1 ? 'Yes' : 'No' }}</span>

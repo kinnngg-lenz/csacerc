@@ -16,5 +16,8 @@ body {
 .nomargin * {
   margin: 0 !important;
 }
+.panel pre {
+  padding: 0px;
+}
 
 /*# sourceMappingURL=app.css.map */
