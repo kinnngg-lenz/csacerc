@@ -37,6 +37,16 @@ $(document).ready(function(){
     );
     // TypeAhead Ends
 
+    $('.spin').hover(function(){
+            $(this).children().children().addClass('fa-spin')
+    },
+        function () {
+            $(this).children().children().removeClass('fa-spin')
+        });
+/*
+    $(this).hover(
 
+
+    );*/
 
 });

@@ -25,7 +25,15 @@
                         <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                             {{ Form::label('date', 'Event Date', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                            {{ Form::date('date',null,['class' => 'form-control']) }}
+                                <div id="datetimepicker1" class="input-group">
+                                    {{ Form::text('date', null, ['class' => 'form-control', 'data-format' => 'yyyy-MM-dd']) }}
+                                    <span class="add-on input-group-btn">
+                                            <button class="btn btn-info">
+                                                <i data-time-icon="fa fa-clock-o" data-date-icon="fa fa-calendar">
+                                                </i>
+                                            </button>
+                                        </span>
+                                </div>
                             @if ($errors->has('date'))
                             <span class="help-block">
                             <strong>{{ $errors->first('date') }}</strong>
@@ -83,4 +91,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('scripts')
+    <script type="text/javascript">
+        $(function() {
+            $('#datetimepicker1').datetimepicker({
+                language: 'en',
+                pick12HourFormat: true
+            });
+        });
+    </script>
 @endsection

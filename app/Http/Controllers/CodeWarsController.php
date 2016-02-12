@@ -6,6 +6,7 @@ use App\CodeWarAnswer;
 use App\CodeWarQuestion;
 use App\Http\Requests\CodeWarAnswersRequest;
 use App\Http\Requests\CodeWarQuestionsRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -62,7 +63,7 @@ class CodeWarsController extends Controller
         $slug = slug_for_url($request->title);
         $title = $request->title;
         $description = empty($request->description) ? null : $request->description;
-        $ends_at = empty($request->ends_at) ? null : $request->ends_at;
+        $ends_at = empty($request->ends_at) ? null : Carbon::parse($request->ends_at);
 
         $request->user()->codeWarQuestions()->create([
             'title' => $title,
@@ -125,7 +126,14 @@ class CodeWarsController extends Controller
             'description' => '',
         ]);
 
-        $question->fill($request->only('title', 'description'))->save();
+        $description = empty($request->description) ? null : $request->description;
+        $ends_at = empty($request->ends_at) ? null : Carbon::parse($request->ends_at);
+
+
+        $question->title = $request->title;
+        $question->description = $description;
+        $question->ends_at = $ends_at;
+        $question->save();
 
         return back()->withNotification("Success! Code War Updated.");
 

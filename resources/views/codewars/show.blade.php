@@ -21,7 +21,7 @@
                         <span class="text-small">{{ link_to_route('codewar.show', $question->created_at->diffForHumans(), $question->slug) }}
                             <br></span>
                     </p>
-                    <p class="blockquote-reverse"><b>War End Time:</b>{{ $question->ends_at->diffForHumans() }}</p>
+                    <p class="blockquote-reverse"><b>War End Time:</b>{{ $question->ends_at != null ? $question->ends_at->diffForHumans() : "None" }}</p>
                 </div>
 
                 @forelse($question->answers as $answer)

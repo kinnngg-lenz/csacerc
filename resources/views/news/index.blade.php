@@ -9,24 +9,30 @@
                 @endif
             </div>
             <div class="col-md-11 col-md-offset-1">
-                <div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>News &amp Happening</h3></div>
+
+                <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 500 }'>
                 @forelse($allnews as $news)
-                    <div class="panel col-md-5 well marginright10">
-                        <h4 class="text-center">{{ link_to_route('news.show',$news->title,$news->slug) }}</h4>
-                        <img class="col-md-12" src="images/{{ $news->photo->url }}" alt="News Poster" width="">
-                        {{-- @TODO: Fix this in production --}}
-                        {{-- Html::image(public_path('images/').$news->photo->url) --}}
-                        <div class="panel padding10">{!! nl2br(render_markdown_for_view($news->description)) !!}</div>
-                        {{--<p class="blockquote-reverse"><strong>
-                               Venue - {{ $news->venue }}<br></strong>
-                        <span class="text-small">{{ $news->batch }}<br>
-                        {{ $news->date->toFormattedDateString() }} <br> ({{ $news->date->diffForHumans() }})</span>
-                        </p>--}}
-                    </div>
+
+                        <div class="col-sm-6 grid-item col-md-4">
+                            <div class="thumbnail">
+                                <img data-src="holder.js/100%x200" alt="100%x200" src="images/{{ $news->photo->url }}" data-holder-rendered="true" style="height: 100%; width: 500px; display: block;">
+                                <div class="caption">
+                                    <p class="blockquote-reverse">
+                                        <span class="text-small">
+                                            {{ $news->created_at->toFormattedDateString() }} <br> ({{ $news->created_at->diffForHumans() }})</span>
+                                    </p>
+                                    <h4>{{ $news->title }}</h4>
+                                    <p class="well">
+                                        {!! nl2br($news->description) !!}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                 @empty
                     Empty
                 @endforelse
             </div>
+                </div>
             <div class="text-center">
                 {{ $allnews->render() }}
             </div>

@@ -12,7 +12,7 @@
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             {{ Form::label('name', 'Full Name:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                            {{ Form::text('name',null,['class' => 'form-control']) }}
+                                {{ Form::text('name',null,['class' => 'form-control']) }}
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -20,7 +20,19 @@
                                 @endif
                             </div>
                         </div>
-                        
+
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            {{ Form::label('username', 'Username', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                {{ Form::text('username',null,['class' => 'form-control', 'disabled' => 'true']) }}
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                            <strong>{{ $errors->first('username') }}</strong>
+                            </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
                             {{ Form::label('type', 'You Are:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
@@ -36,7 +48,17 @@
                         <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
                             {{ Form::label('dob', 'Date of Birth:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                                {{ Form::date('dob', null, ['class' => 'form-control']) }}
+
+                                    <div id="datetimepicker1" class="input-group">
+                                        {{ Form::text('dob', null, ['class' => 'form-control', 'data-format' => 'yyyy-MM-dd']) }}
+                                        <span class="add-on input-group-btn">
+                                            <button class="btn btn-info">
+                                        <i data-time-icon="fa fa-clock-o" data-date-icon="fa fa-calendar">
+                                        </i>
+                                            </button>
+                                        </span>
+                                    </div>
+
                                 @if ($errors->has('dob'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('dob') }}</strong>
@@ -69,4 +91,19 @@
             </div>
         </div>
     </div>
+
+
+@endsection
+
+
+
+@section('scripts')
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                language: 'en',
+                pickTime: false
+            });
+        });
+    </script>
 @endsection

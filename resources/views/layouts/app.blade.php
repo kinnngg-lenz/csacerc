@@ -8,23 +8,76 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+    {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>--}}
 
     <!-- Styles -->
     {{--<link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">--}}
     {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
      <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
-
+    {{ Html::style('/css/fa/css/font-awesome.min.css') }}
     <style>
         body {
             font-family: 'Lato';
         }
-
         .fa-btn {
             margin-right: 6px;
         }
+        .input-append .add-on, .input-prepend .add-on
+        {
+            display: inline-block;
+            width: auto;
+            height: 20px;
+            min-width: 16px;
+            padding: 4px 5px;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            text-align: center;
+            text-shadow: 0 1px 0 #ffffff;
+            background-color: #eeeeee;
+            border: 1px solid #ccc;
+        }
+        .bootstrap-datetimepicker-widget ul
+        {
+            padding: 0px !important;
+            padding: 5px;
+        }
+        .bootstrap-datetimepicker-widget.dropdown-menu li > a {
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            font-weight: normal;
+            line-height: 20px;
+            color: #0081c2;
+            white-space: nowrap;
+        }
+        .bootstrap-datetimepicker-widget.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #0081c2;
+            background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+            background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+            background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+            background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+            background-repeat: repeat-x;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+            cursor: pointer;
+        }
+
+        body
+        {
+            background: #FAFAFF;
+        }
+        .thumbnail
+        {
+            padding: 0px;
+        }
+
+        .grid-item { width: 500px }
+
     </style>
 </head>
 <body id="app-layout">
@@ -73,9 +126,9 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route('users.profile.show',[Auth::user()->username]) }}"><i class="fa fa-btn"></i>My Profile</a></li>
-                                <li><a href="{{ route('users.profile.edit',[Auth::user()->username]) }}"><i class="fa fa-btn"></i>Setting</a></li>
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li class="spin"><a href="{{ route('users.profile.show',[Auth::user()->username]) }}"><i class="fa fa-btn fa-user"></i>My Profile</a></li>
+                                <li class="spin"><a href="{{ route('users.profile.edit',[Auth::user()->username]) }}"><i class="fa fa-btn fa-cog"></i>Setting</a></li>
+                                <li class="spin"><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
                     @endif
@@ -83,7 +136,7 @@
 
                 <form class="navbar-form navbar-right" role="search" action='/search/'>
                     <div class="form-group">
-                        <input type="text" id="navsearch" name='q' class="form-control" placeholder="Member's Search" autocomplete="off">
+                        <input type="text" id="navsearch" name='q' class="form-control" placeholder="Members Search" autocomplete="off">
                     </div>
                     {{--<button type="submit" class="btn btn-default">Search</button>--}}
                 </form>
@@ -107,8 +160,6 @@
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
     <script src="{{ elixir('js/all.js') }}"></script>
-    <script type="text/javascript">
     @yield('scripts')
-    </script>
 </body>
 </html>

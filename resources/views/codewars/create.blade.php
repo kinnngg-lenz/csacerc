@@ -23,6 +23,31 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('ends_at') ? ' has-error' : '' }}">
+                            {{ Form::label('ends_at', 'War End Time', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                {{-- @TODO: Replace this with Datetime selector plugin--}}
+
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input name="ends_at" class="form-control" value="" data-format="yyyy-MM-dd hh:mm:ss" type="text">
+                                    <span class="add-on input-group-btn">
+                                        <button class="btn btn-info">
+                                            <i class="fa fa-calendar" data-date-icon="fa fa-calendar" data-time-icon="fa fa-clock-o">
+                                            </i>
+                                        </button>
+                                    </span>
+                                </div>
+
+                                {{-- Form::date('ends_at',null,['class' => 'form-control']) --}}
+                                <div class="text-info small">Leave blank for no end time</div>
+                                @if ($errors->has('ends_at'))
+                                    <span class="help-block">
+                            <strong>{{ $errors->first('ends_at') }}</strong>
+                            </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                             {{ Form::label('description', 'Full Description', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
@@ -36,22 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('ends_at') ? ' has-error' : '' }}">
-                            {{ Form::label('ends_at', 'War End Time', ['class' => 'col-md-4 control-label']) }}
-                            <div class="col-md-6">
-                                {{-- @TODO: Replace this with Datetime selector plugin--}}
-
-                            {{ Form::date('ends_at',null,['class' => 'form-control']) }}
-                            <div class="text-info small">Leave blank for no end time</div>
-                            @if ($errors->has('ends_at'))
-                                <span class="help-block">
-                            <strong>{{ $errors->first('ends_at') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group">
+                        <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             {{ Form::submit('Start War', ['class' => 'btn btn-info']) }}
                             {{ Form::reset('Reset Form', ['class' => 'btn btn-warning']) }}
@@ -67,5 +77,12 @@
 @endsection
 
 @section('scripts')
-
+    <script type="text/javascript">
+        $(function() {
+            $('#datetimepicker1').datetimepicker({
+                language: 'en',
+                pick12HourFormat: true
+            });
+        });
+    </script>
 @endsection

@@ -9,23 +9,31 @@
                 @endif
             </div>
             <div class="col-md-11 col-md-offset-1">
-                <div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>College Events</h3></div>
+
+                <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 500 }'>
                 @forelse($events as $event)
-                    <div class="panel col-md-5 well marginright10">
-                        <h4 class="text-center">{{ link_to_route('event.show',$event->name,$event->slug) }}</h4>
-                        <img class="col-md-12" src="images/{{ $event->photo->url }}" alt="Event Poster" width="">
-                        {{-- @TODO: Fix this in production --}}
-                        {{-- Html::image(public_path('images/').$event->photo->url) --}}
-                        <p class="panel padding10">{!! nl2br($event->description) !!}</p>
-                        <p class="blockquote-reverse"><strong>
-                               Venue - {{ $event->venue }}<br></strong>
-                        <span class="text-small">{{ $event->batch }}<br>
-                        {{ $event->date->toFormattedDateString() }} <br> ({{ $event->date->diffForHumans() }})</span>
-                        </p>
-                    </div>
+
+                        <div class="col-sm-6 grid-item col-md-4">
+                            <div class="thumbnail">
+                                <img data-src="holder.js/100%x200" alt="100%x200" src="images/{{ $event->photo->url }}" data-holder-rendered="true" style="height: 100%; width: 500px; display: block;">
+                                <div class="caption">
+                                    <h4>{{ $event->name }}</h4>
+                                    <p class="well">
+                                        {!! nl2br($event->description) !!}
+                                    </p>
+                                    <p class="blockquote-reverse">
+                                        <b>Venue:</b> {{ $event->venue }}<br>
+                                        <span class="text-small">
+                                            {{ $event->date->toFormattedDateString() }} <br> ({{ $event->date->diffForHumans() }})</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                 @empty
                     Empty
                 @endforelse
+                </div>
             </div>
             <div class="text-center">
                 {{ $events->render() }}
