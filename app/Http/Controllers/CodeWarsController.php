@@ -8,6 +8,7 @@ use App\Http\Requests\CodeWarAnswersRequest;
 use App\Http\Requests\CodeWarQuestionsRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use JavaScript;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -84,6 +85,11 @@ class CodeWarsController extends Controller
     public function show($slug)
     {
         $question = $this->question->whereSlug($slug)->with('answers')->firstOrFail();
+
+        JavaScript::put([
+            'count_down' => $question->ends_at
+        ]);
+
         return view('codewars.show')->withQuestion($question);
     }
 

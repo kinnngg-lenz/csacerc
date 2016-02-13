@@ -32,4 +32,9 @@ class CodeWarQuestion extends Model
 
         return $this->ends_at > Carbon::now();
     }
+
+    public function likes()
+    {
+        return $this->morphMany('App\Like', 'likeable');
+    }
 }

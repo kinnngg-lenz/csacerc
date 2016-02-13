@@ -38,4 +38,9 @@ class Photo extends Model
         return $this->gallery();
     }
 
+    public function likes()
+    {
+        return $this->morphMany('App\Like', 'likeable');
+    }
+
 }

@@ -17,6 +17,7 @@
     {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
      <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
     {{ Html::style('/css/fa/css/font-awesome.min.css') }}
+    @yield('styles')
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -40,15 +41,13 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    @if(Auth::check())
-                        <li>{{ link_to_route('home','Dashboard') }}</li>
-                    @endif
                     <li>{{ link_to_route('news.index','News') }}</li>
                     <li>{{ link_to_route('event.index','Events') }}</li>
                     <li>{{ link_to_route('alumini.index','Alumini') }}</li>
                     <li>{{ link_to_route('gallery.index', 'Gallery') }}</li>
                     <li>{{ link_to_route('questions.index','Questions') }}</li>
-                    <li>{{ link_to_route('codewar.index','Code War') }}</li>
+                    <li>{{ link_to_route('codewar.index','CodeWar') }}</li>
+                    <li><a href="/showcase">AppClub</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -64,7 +63,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li class="spin"><a href="{{ route('users.profile.show',[Auth::user()->username]) }}"><i class="fa fa-btn fa-user"></i>My Profile</a></li>
+                                <li class="spin"><a href="{{ route('home') }}"><i class="fa fa-btn fa-desktop"></i>Dashboard</a></li>
+                                <li class="spin"><a href="{{ route('users.profile.show',[Auth::user()->username]) }}"><i class="fa fa-btn fa-user"></i>View Profile</a></li>
                                 <li class="spin"><a href="{{ route('users.profile.edit',[Auth::user()->username]) }}"><i class="fa fa-btn fa-cog"></i>Setting</a></li>
                                 <li class="spin"><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
@@ -90,6 +90,7 @@
 
     @yield('content')
 
+    @include('partials.footer')
     <!-- JavaScripts -->
     {{--<script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>

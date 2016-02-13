@@ -18,6 +18,11 @@ class Question extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function likes()
+    {
+        return $this->morphMany('App\Like', 'likeable');
+    }
+
     public function askedTo()
     {
         if(is_null($this->for_user_id))

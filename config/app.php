@@ -159,6 +159,7 @@ return [
         McCool\LaravelAutoPresenter\AutoPresenterServiceProvider::class,
         VTalbot\Markdown\MarkdownServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
 
         /*
          * Application Service Providers...
