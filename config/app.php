@@ -158,6 +158,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         McCool\LaravelAutoPresenter\AutoPresenterServiceProvider::class,
         VTalbot\Markdown\MarkdownServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -218,6 +219,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Markdown' => VTalbot\Markdown\Facades\Markdown::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnapImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
     ],
 
