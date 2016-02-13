@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     users.initialize();
 
-    $('#navsearch').typeahead({
+    $('.navsearch').typeahead({
             hint: true,
             highlight: true,
             minlength: 3

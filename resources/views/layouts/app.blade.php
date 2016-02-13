@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Department of Computer Science - ACERC</title>
 
     <!-- Fonts -->
     {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -74,7 +74,7 @@
 
                 <form class="navbar-form navbar-right" role="search" action='/search/'>
                     <div class="form-group">
-                        <input type="text" id="navsearch" name='q' class="form-control" placeholder="Members Search" autocomplete="off">
+                        <input type="text" id="navsearch" name='q' class="form-control navsearch" placeholder="Members Search" autocomplete="off">
                     </div>
                     {{--<button type="submit" class="btn btn-default">Search</button>--}}
                 </form>
