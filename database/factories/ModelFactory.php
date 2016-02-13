@@ -29,9 +29,32 @@ $factory->define(App\Alumini::class, function (Faker\Generator $faker) {
     return [
         'speech' => $faker->paragraph(),
         'speaker' => $faker->name,
-        'batch' => $faker->words(3),
+        'batch' => $faker->word,
         'profession' => $faker->company,
-        'user_id' => App\User::class,
+        'user_id' => 1,
+        'slug' => $faker->slug(8),
+    ];
+});
+
+$factory->define(App\Event::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->sentence(3),
+        'date' => $faker->dateTimeBetween('now','+1 year'),
+        'description' => $faker->paragraph(3),
+        'venue' => $faker->streetName,
+        'user_id' => 1,
+        'photo_id' => $faker->randomElement([1,2,3,4,5,7]),
+        'slug' => $faker->slug(8),
+    ];
+});
+
+
+$factory->define(App\News::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(10),
+        'description' => $faker->paragraph(10),
+        'user_id' => 1,
+        'photo_id' => $faker->randomElement([1,2,3,4,5,7]),
         'slug' => $faker->slug(8),
     ];
 });

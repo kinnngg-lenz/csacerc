@@ -83,7 +83,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/codewar/{slug}', ['as' => 'codewar.show', 'uses' => 'CodeWarsController@show']);
     Route::post('/codewar/{slug}', ['as' => 'codewar.answer', 'uses' => 'CodeWarsController@answer']);
 
+    Route::get('/gallery', ['as' => 'gallery.index', 'uses' => 'PhotosController@index']);
+    Route::get('/gallery/create', ['as' => 'gallery.create', 'uses' => 'PhotosController@create']);
+    Route::post('/gallery/create', ['as' => 'gallery.store', 'uses' => 'PhotosController@store']);
+    Route::get('/gallery/{url}', ['as' => 'gallery.show', 'uses' => 'PhotosController@show']);
 });
 
-
+/**
+ * For API Calls and Ajax Search
+ */
 Route::get('/users/{query}', ['as' => 'users.search', 'uses' => 'UsersController@search']);

@@ -11,17 +11,17 @@
                 </div>
                 @endcan
 
-                <div class="col-md-11 well" style="background: #DDE8F6">
+                <div class="col-md-11 panel">
                     <h4>{{ $question->title }}</h4>
                     @unless(is_null($question->description) || empty($question->description))
-                        <div class="panel padding10">{!! (render_markdown_for_view($question->description)) !!}</div>
+                        <div class="well padding10">{!! (render_markdown_for_view($question->description)) !!}</div>
                     @endunless
 
                     <p class="blockquote-reverse">
                         <span class="text-small">{{ link_to_route('codewar.show', $question->created_at->diffForHumans(), $question->slug) }}
                             <br></span>
                     </p>
-                    <p class="blockquote-reverse"><b>War End Time:</b>{{ $question->ends_at != null ? $question->ends_at->diffForHumans() : "None" }}</p>
+                    <p class="blockquote-reverse"><b>War End Time: </b>{{ $question->ends_at != null ? $question->ends_at->diffForHumans() : "None" }}</p>
                 </div>
 
                 @forelse($question->answers as $answer)

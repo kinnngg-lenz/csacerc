@@ -13,10 +13,10 @@
             <div class="col-md-11 col-md-offset-1">
                 <div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>Code War</h3></div>
                 @forelse($questions as $question)
-                    <div class="panel col-md-11 well">
+                    <div class="panel col-md-11">
                         <h4>{{ link_to_route('codewar.show', $question->title, [$question->slug]) }}</h4>
                         @unless(is_null($question->description) || empty($question->description))
-                        <div class="panel padding10">{!! (render_markdown_for_view($question->description)) !!}</div>
+                        <div class="panel well padding10">{!! (render_markdown_for_view($question->description)) !!}</div>
                         @endunless
                         <p class="blockquote-reverse">
                             <span class="text-small">{{  $question->created_at->diffForHumans() }}<br></span>

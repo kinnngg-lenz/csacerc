@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-11 col-md-offset-1">
 
-                <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 500 }'>
+                <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 330 }'>
                 @forelse($allnews as $news)
 
                         <div class="col-sm-6 grid-item col-md-4">
@@ -19,7 +19,10 @@
                                 <div class="caption">
                                     <p class="blockquote-reverse">
                                         <span class="text-small">
-                                            {{ $news->created_at->toFormattedDateString() }} <br> ({{ $news->created_at->diffForHumans() }})</span>
+                                            {{ $news->created_at->toFormattedDateString() }} <br>
+                                            {{--({{ $news->created_at->diffForHumans() }}) <br>--}}
+                                             - {{ $news->user->name }}
+                                        </span>
                                     </p>
                                     <h4>{{ $news->title }}</h4>
                                     <p class="well">

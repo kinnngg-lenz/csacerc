@@ -9,10 +9,10 @@
             <div class="col-md-11 col-md-offset-1">
                 <div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>Questions & Answers</h3></div>
                 @forelse($questions as $question)
-                    <div class="panel col-md-11 well">
+                    <div class="panel col-md-11" style="background: #fbfdfd">
                         Question:
                         {{-- @TODO: Unsecured. Secure this code, and filter thru Markdown --}}
-                        <div class="panel padding10">{!! (render_markdown_for_view($question->question)) !!}</div>
+                        <div class="panel well padding10">{!! (render_markdown_for_view($question->question)) !!}</div>
                         Answer:
                         <div class="panel padding10">
                             @if(is_null($question->answer))

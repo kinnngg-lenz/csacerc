@@ -10,7 +10,7 @@ class Photo extends Model
      * @var array
      */
     protected $fillable = [
-        'url'
+        'url', 'gallery'
     ];
 
     /*
@@ -27,5 +27,15 @@ class Photo extends Model
      *       return $this->belongsTo('App\Event');
      *   }
      */
+
+    public function scopeGallery($query)
+    {
+        $query->whereGallery(1);
+    }
+
+    public function getGallery()
+    {
+        return $this->gallery();
+    }
 
 }

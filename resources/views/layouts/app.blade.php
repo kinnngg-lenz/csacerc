@@ -17,68 +17,6 @@
     {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
      <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
     {{ Html::style('/css/fa/css/font-awesome.min.css') }}
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-        .fa-btn {
-            margin-right: 6px;
-        }
-        .input-append .add-on, .input-prepend .add-on
-        {
-            display: inline-block;
-            width: auto;
-            height: 20px;
-            min-width: 16px;
-            padding: 4px 5px;
-            font-size: 14px;
-            font-weight: normal;
-            line-height: 20px;
-            text-align: center;
-            text-shadow: 0 1px 0 #ffffff;
-            background-color: #eeeeee;
-            border: 1px solid #ccc;
-        }
-        .bootstrap-datetimepicker-widget ul
-        {
-            padding: 0px !important;
-            padding: 5px;
-        }
-        .bootstrap-datetimepicker-widget.dropdown-menu li > a {
-            display: block;
-            padding: 3px 20px;
-            clear: both;
-            font-weight: normal;
-            line-height: 20px;
-            color: #0081c2;
-            white-space: nowrap;
-        }
-        .bootstrap-datetimepicker-widget.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
-            color: #ffffff;
-            text-decoration: none;
-            background-color: #0081c2;
-            background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
-            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
-            background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
-            background-image: -o-linear-gradient(top, #0088cc, #0077b3);
-            background-image: linear-gradient(to bottom, #0088cc, #0077b3);
-            background-repeat: repeat-x;
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
-            cursor: pointer;
-        }
-
-        body
-        {
-            background: #FAFAFF;
-        }
-        .thumbnail
-        {
-            padding: 0px;
-        }
-
-        .grid-item { width: 500px }
-
-    </style>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -108,9 +46,9 @@
                     <li>{{ link_to_route('news.index','News') }}</li>
                     <li>{{ link_to_route('event.index','Events') }}</li>
                     <li>{{ link_to_route('alumini.index','Alumini') }}</li>
-                    <li><a href="">Gallery</a></li>
+                    <li>{{ link_to_route('gallery.index', 'Gallery') }}</li>
                     <li>{{ link_to_route('questions.index','Questions') }}</li>
-                        <li>{{ link_to_route('codewar.index','Code War') }}</li>
+                    <li>{{ link_to_route('codewar.index','Code War') }}</li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

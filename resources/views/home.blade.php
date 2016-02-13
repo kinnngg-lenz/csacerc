@@ -24,6 +24,7 @@
                     {{ link_to_route('event.create', 'Add an Event', [], ['class' => 'btn btn-success btn-block btn-sm']) }}
                     {{ link_to_route('questions.pending', 'Pending Questions', [], ['class' => 'btn btn-primary btn-block btn-sm']) }}
                     {{ link_to_route('codewar.create', 'Create a CodeWar', [], ['class' => 'btn btn-info btn-block btn-sm']) }}
+                    {{ link_to_route('gallery.create', 'Add Image to Gallery', [], ['class' => 'btn btn-success btn-block btn-sm']) }}
                 </div>
             </div>
         </div>

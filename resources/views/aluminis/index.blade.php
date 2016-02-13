@@ -9,19 +9,28 @@
                 @endif
             </div>
             <div class="col-md-11 col-md-offset-1">
-                <div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>Alumini Speak</h3></div>
+                {{--<div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>Alumini Speak</h3></div>--}}
+                <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 330 }'>
                 @forelse($aluminis as $alumini)
-                    <div class="panel col-md-5 well marginright10">
-                        <p class="panel padding10">{!! nl2br($alumini->speech) !!}</p>
-                        <p class="blockquote-reverse"><strong>
-                        - {{ link_to_route('alumini.show', $alumini->speaker, $alumini->slug) }}<br></strong>
-                        <span class="text-small">{{ $alumini->batch }}<br>
-                        ( {{ $alumini->profession }} )</span>
-                        </p>
+
+                    <div class="col-sm-6 grid-item col-md-4">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <p class="well">
+                                    {!! nl2br($alumini->speech) !!}
+                                </p>
+                                <p class="blockquote-reverse">
+                                    <b> - {{ $alumini->speaker }}</b><br>
+                                        <span class="text-small">
+                                            {{ $alumini->batch }} <br> ({{ $alumini->profession }})</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 @empty
                     Empty
                 @endforelse
+                    </div>
                 </div>
                 <div class="text-center">
                     {{ $aluminis->render() }}
