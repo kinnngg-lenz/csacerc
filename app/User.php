@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','gender','type','about','dob',
+        'name', 'email', 'password','username','gender','type','about','dob', 'college', 'department'
     ];
 
     /**
@@ -107,6 +107,67 @@ class User extends Authenticatable
                 return "Super Administrator";
             default:
                 return "Member";
+        }
+    }
+
+
+    public function gta()
+    {
+        switch($this->type)
+        {
+            case 0:
+                return "Student";
+            case 1:
+                return "Faculty Member";
+            default:
+                return "Student";
+        }
+    }
+
+    public function gca()
+    {
+        switch($this->college)
+        {
+            case 0:
+                return "None";
+            case 1:
+                return "ARYA College of Engg & Research Center";
+            case 2:
+                return "ARYA Institute of Engg & Technology";
+            case 3:
+                return "ARYA Institute of Engg Tech & Management";
+            case 4:
+                return "ARYA College of Pharmacy";
+            case 5:
+                return "Old ARYA";
+            case 6:
+                return "Others";
+            default:
+                return "None";
+        }
+    }
+
+
+    public function gda()
+    {
+        switch($this->department)
+        {
+            case 0:
+                return "None";
+            case 1:
+                return "Department of Computer Science Engineering";
+            case 2:
+                return "Department for 1st Year";
+            case 3:
+                return "Department of Civil Engineering";
+            case 4:
+                return "Department of Electrical Engineering";
+            case 5:
+                return "Department of Mechanical Engineering";
+            case 6:
+                return "Others";
+            default:
+                return "None";
         }
     }
 

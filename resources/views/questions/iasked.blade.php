@@ -32,6 +32,7 @@
                             <span class="text-small">{{ link_to_route('questions.show', $question->created_at->diffForHumans(), $question->slug) }}<br></span>
                             <span class="text-small"><b>Visible to public: </b>{{ $question->public==1 ? 'Yes' : 'No' }}</span>
                             <br><span class="text-small"><b>Asked To: </b>{{ $question->askedTo()->name==null ? "Everybody" : $question->askedTo()->name }}</span>
+                            <br><span class="text-small"><b>Approved: </b>{{ $question->approved ? "Yes" : "No" }}</span>
                         </p>
                     </div>
                 @empty

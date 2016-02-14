@@ -80,6 +80,10 @@ class QuestionsController extends Controller
             'for_user_id' => $askingTo,
             'slug' => $slug,
         ]);
+
+        $request->user()->xp = $request->user()->xp + 10;
+        $request->user()->save();
+
         return back()->withNotification('Success! Your question is awaiting approval by a Moderator.');
 
     }
@@ -183,6 +187,9 @@ class QuestionsController extends Controller
 
         $question->answer = $request->answer;
         $question->save();
+
+        $request->user()->xp = $request->user()->xp + 20;
+        $request->user()->save();
 
         return back()->withNotification("Success! Question has been answered.");
     }

@@ -2,18 +2,12 @@
 
 @section('styles')
     <style>
-        .navbar-inverse {
-            background: url('/images/static/head.png') #573e81;
-            margin: 0;
-        }
-
         .jumbotron {
             background: url('/images/static/head.png') #573e81;
             margin-top: -28px;
             border-radius: 0px !important;
             color: white;
         }
-
         .jumbotron pre {
             padding: 0px;
             border: none;
@@ -23,11 +17,9 @@
         {
             padding: 0px;
         }
-
         h1 {
             font-size: 300% !important;
         }
-
         .tiny {
             font-size: 14px;
         }
@@ -56,7 +48,7 @@
                 @if($question->ends_at == null)
                     <p class="blockquote-reverse">No End Time</p>
                 @elseif($question->ends_at < Carbon\Carbon::now())
-                    <p class="blockquote-reverse text-danger">War has Ended</p>
+                    <p class="blockquote-reverse text-danger">War has Ended {{ $question->ends_at->diffForHumans() }}</p>
                 @else
                     <p class="blockquote-reverse">
                         <span class="counter"></span><br>
@@ -67,7 +59,7 @@
             </div>
 
             <div class="container">
-                @forelse($question->answers as $answer)
+                @forelse($question->answers()->latest()->get() as $answer)
                     <div class="row">
                         <div class="col-md-2 hidden-xs hidden-sm">
                             <img class="img-thumbnail" src="/images/static/{{ $answer->user->gender }}.jpeg" alt="">
@@ -75,26 +67,31 @@
                                 <h4>{{ link_to_route('users.profile.show',$answer->user->name,$question->user->username) }}</h4>
                                 <p class="text-muted">{{ $answer->created_at->diffForHumans() }}</p>
                                 @if($question->best_answer_id == $answer->id && $question->ends_at <= \Carbon\Carbon::now())
-                                    <h3><span class="label label-success">Best Answer</span></h3>
+                                    <h3><span class="label label-success">Winner</span></h3>
                                 @endif
                             </div>
                         </div>
                     <div class="panel col-md-10">
+
                         <p class="padding10 visible-xs">
                             <b>{{ link_to_route('users.profile.show',$answer->user->name,$question->user->username) }}</b>
                              - <span class="text-muted small">{{ $answer->created_at->diffForHumans() }}</span>
+                        @if($question->best_answer_id == $answer->id && $question->ends_at <= \Carbon\Carbon::now())
+                            <span class="padding10 visible-xs"><span class="label label-success">Winner</span></span>
+                        @endif
                         </p>
+
                         <div class="padding10">{!! render_markdown_for_view($answer->answer) !!}</div>
                         <p class="blockquote-reverse">
                             @can('edit', $question)
                             @unless($question->best_answer_id == $answer->id)
                                 {{ Form::open(['route' => ['codewar.bestanswer', $question->id],'method' => 'patch']) }}
                                 {{ Form::hidden('best_answer_id', $answer->id) }}
-                                {{ Form::submit('Set as Best Answer', ['class' => 'btn btn-success btn-sm']) }}
+                                {{ Form::submit('Set as Winner', ['class' => 'btn btn-success btn-sm']) }}
                                 {{ Form::close() }}
                                 @else
                                     {{ Form::open() }}
-                                    {{ Form::submit('Selected as Best Answer', ['class' => 'btn btn-warning btn-sm', 'disabled' => 'true']) }}
+                                    {{ Form::submit('Selected as Winner', ['class' => 'btn btn-warning btn-sm', 'disabled' => 'true']) }}
                                     {{ Form::close() }}
                                     @endunless
                             @endcan

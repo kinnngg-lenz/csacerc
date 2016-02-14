@@ -11,19 +11,48 @@
             </div>
 
             <div class="col-md-11 col-md-offset-1">
-                <div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>Code War</h3></div>
                 @forelse($questions as $question)
                     <div class="panel col-md-11">
                         <h4>{{ link_to_route('codewar.show', $question->title, [$question->slug]) }}</h4>
-                        @unless(is_null($question->description) || empty($question->description))
+                        {{--@unless(is_null($question->description) || empty($question->description))
                         <div class="panel well padding10">{!! (render_markdown_for_view($question->description)) !!}</div>
+                        @endunless--}}
+
+                                <span class="text-muted">Total Answers: </span>
+                                    <i>
+                                    <span class="badge">
+                                        {{  $question->answers->count() }}
+                                    </span>
+                                    </i>
+
+
+                        @unless(is_null($question->bestAnswer()->first()) || $question->ends_at > \Carbon\Carbon::now())
+                            |
+                        <span class="text-muted">Winner: </span>
+                            <i>
+                                    <span class="">
+                                        {{  link_to_route('users.profile.show',$question->bestAnswer()->first()->user()->first()->name,$question->bestAnswer()->first()->user()->first()->username) }}
+                                    </span>
+                            </i>
+
                         @endunless
+
+
                         <p class="blockquote-reverse">
-                            <span class="text-small">{{  $question->created_at->diffForHumans() }}<br></span>
+                            <i><span class="text-small">Started {{  $question->created_at->diffForHumans() }}</span></i>
                         </p>
+                        @if($question->ends_at == null)
+                            <p class="blockquote-reverse">No End Time</p>
+                        @elseif($question->ends_at < Carbon\Carbon::now())
+                            <p class="blockquote-reverse text-danger">Ended {{ $question->ends_at->diffForHumans() }}</p>
+                        @else
+                            <p class="blockquote-reverse">
+                                <span class="">Ends approx {{ $question->ends_at->diffForHumans() }}</span>
+                            </p>
+                        @endif
                     </div>
                 @empty
-                    Empty
+                    <p>Empty</p>
                 @endforelse
             </div>
             <div class="text-center">

@@ -141,7 +141,7 @@ class CodeWarsController extends Controller
         $question->ends_at = $ends_at;
         $question->save();
 
-        return back()->withNotification("Success! Code War Updated.");
+        return redirect()->route('codewar.show',$question->slug)->withNotification("Success! Code War Updated.");
 
     }
 

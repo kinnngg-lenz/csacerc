@@ -20,6 +20,11 @@ class CodeWarQuestion extends Model
         return $this->hasMany('App\CodeWarAnswer');
     }
 
+    public function bestAnswer()
+    {
+        return $this->belongsTo('App\CodeWarAnswer','best_answer_id');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

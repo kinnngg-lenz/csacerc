@@ -32,6 +32,9 @@ class QuestionPolicy
         if(!is_null($question->answer))
             return false;
 
+        if(!$question->approved)
+            return false;
+
         /**
          * If question is asked globally then any admin can Answer
          */

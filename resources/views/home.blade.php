@@ -7,8 +7,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
                 <div class="panel-body">
-                    {{ link_to_route('questions.iasked', 'My Asked Questions') }}<br>
-                    <a href="{{ route('questions.user.unanswered') }}">You have {{ Auth::user()->notAnsweredQuestions()->approved()->count().str_plural(' question', Auth::user()->notAnsweredQuestions()->count()) }} to answer.</a>
+                    <a class="btn btn-success" href="{{ route('questions.iasked') }}">Question I Asked</a>
+
+                    <a class="btn btn-primary" href="{{ route('questions.user.unanswered') }}">Pending Questions to Answer <span class="badge">{{Auth::user()->notAnsweredQuestions()->approved()->count()}}</span></a>
+                    {{-- <a href="{{ route('questions.user.unanswered') }}">You have {{ Auth::user()->notAnsweredQuestions()->approved()->count().str_plural(' question', Auth::user()->notAnsweredQuestions()->count()) }} to answer.</a>--}}
                     <br>Your rank is <b>{{ Auth::user()->rank() }}</b>
                 </div>
             </div>

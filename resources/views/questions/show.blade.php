@@ -1,56 +1,76 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-11 col-md-offset-1">
-                {{--<div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>Question Viewer</h3></div>--}}
+@section('styles')
+    <style>
+        .jumbotron {
+            background: url('/images/static/head.png') #573e81;
+            margin-top: -28px;
+            border-radius: 0px !important;
+            color: white;
+        }
+        .jumbotron pre {
+            padding: 0px;
+            border: none;
+            border-radius: 0px;
+        }
+        pre
+        {
+            padding: 0px;
+        }
+        h1 {
+            font-size: 300% !important;
+        }
+        .tiny {
+            font-size: 14px;
+        }
 
-                <div class="panel col-md-11 well">
-                    Question:
-                    {{-- @TODO: Unsecured. Secure this code, and filter thru Markdown --}}
-                    <div class="panel padding10">{!! (render_markdown_for_view($question->question)) !!}</div>
-                    Answer:
+    </style>
+@endsection
+
+
+@section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron">
+                <h3 class="padding10">{!! (render_markdown_for_view($question->question)) !!}</h3>
+                <p class="text-muted blockquote-reverse">
+                    Asked {{  $question->created_at->diffForHumans()}}
+                </p>
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
                     @if(is_null($question->answer))
                         @can('answer', $question)
-                            {{ Form::open(['method' => 'patch', 'class' => 'form-horizontal']) }}
-                        
-                            <div class="form-group{{ $errors->has('answer') ? ' has-error' : '' }}">
-                                <div class="col-md-6">
+                        {{ Form::open(['method' => 'patch', 'class' => 'form-horizontal']) }}
+                        <div class="form-group{{ $errors->has('answer') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
                                 {{ Form::textarea('answer',null,['class' => 'form-control']) }}
-                                    <div class="text-info small">Github flavored <b>Markdown</b> supported</div>
+                                <div class="text-info small">Github flavored <b>Markdown</b> supported</div>
                                 @if ($errors->has('answer'))
-                                <span class="help-block">
+                                    <span class="help-block">
                                 <strong>{{ $errors->first('answer') }}</strong>
                                 </span>
                                 @endif
-                                </div>
                             </div>
-
-                            {{ Form::hidden('question_id',$question->id) }}
-
+                        </div>
+                        {{ Form::hidden('question_id',$question->id) }}
                         <div class="form-group">
                             <div class="col-md-6">
                                 {{ Form::submit('Submit Answer', ['class' => 'btn btn-info']) }}
                                 {{ Form::reset('Reset Form', ['class' => 'btn btn-warning']) }}
                             </div>
                         </div>
+                        {{ Form::close() }}
 
-                            {{ Form::close() }}
-                        @else
-                        <i class='text-danger'>No answered yet!</i>
-                        @endcan
                     @else
-                        <div class="panel padding10">{!! render_markdown_for_view($question->answer) !!}</div>
-                    @endif
-                    <p class="blockquote-reverse">
-                        <span class="text-small">{{ link_to_route('questions.show', $question->created_at->diffForHumans(), $question->slug) }}<br></span>
-                        <span class="text-small"><b>Visible to public: </b>{{ $question->public==1 ? 'Yes' : 'No' }}</span>
-                    </p>
+                        <p class="text-center"><i class='text-danger'>No answered yet!</i></p>
+                        @endcan
+                        @else
+                            <div class="padding10 panel">{!! render_markdown_for_view($question->answer) !!}</div>
+                        @endif
                 </div>
-
+                </div>
             </div>
-        </div>
-    </div>
-    </div>
 @endsection

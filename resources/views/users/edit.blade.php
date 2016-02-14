@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            {{ Form::label('username', 'Username', ['class' => 'col-md-4 control-label']) }}
+                            {{ Form::label('username', 'Username:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
                                 {{ Form::text('username',null,['class' => 'form-control', 'disabled' => 'true']) }}
                                 @if ($errors->has('username'))
@@ -40,6 +40,46 @@
                                 @if ($errors->has('type'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('type') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('college') ? ' has-error' : '' }}">
+                            {{ Form::label('college', 'College:', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                {{ Form::select('college', array(
+                                '1' => 'ARYA College of Engg & Research Center',
+                                '2' => 'ARYA Institute of Engg & Technology',
+                                '3' => 'ARYA Institute of Engg Tech & Management',
+                                '4' => 'ARYA College of Pharmacy',
+                                '6' => 'Others',
+                                '0' => 'None'
+                                ), null, ['placeholder' => 'Select College', 'class' => 'form-control']) }}
+                                @if ($errors->has('college'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('college') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
+                            {{ Form::label('department', 'Department:', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                {{ Form::select('department', array(
+                                '1' => 'Dept of Computer Science',
+                                '2' => 'Dept for 1st Year',
+                                '3' => 'Dept of Civil Engg.',
+                                '4' => 'Dept of Electrical Engg.',
+                                '5' => 'Dept of Mechanical Engg.',
+                                '6' => 'Others',
+                                '0' => 'None'
+                                ), null, ['placeholder' => 'Select Department', 'class' => 'form-control']) }}
+                                @if ($errors->has('department'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('department') }}</strong>
                                     </span>
                                 @endif
                             </div>

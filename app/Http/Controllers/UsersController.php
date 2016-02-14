@@ -55,9 +55,11 @@ class UsersController extends Controller
             'dob' => 'required',
             'name' => 'required',
             'about' => 'required',
+            'college' => 'required|in:0,1,2,3,4,5,6',
+            'department' => 'required'
         ]);
 
-        $user->fill($request->only('dob', 'name', 'about'))->save();
+        $user->fill($request->only('dob', 'name', 'about', 'college', 'department'))->save();
 
         return back()->withNotification('Profile has been updated');
 
