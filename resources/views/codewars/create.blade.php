@@ -39,7 +39,7 @@
                                 </div>
 
                                 {{-- Form::date('ends_at',null,['class' => 'form-control']) --}}
-                                <div class="text-info small">Leave blank for no end time</div>
+                                <div class="text-info small">Leave blank for no end time. <i>(We strongly recommend end time)</i></div>
                                 @if ($errors->has('ends_at'))
                                     <span class="help-block">
                             <strong>{{ $errors->first('ends_at') }}</strong>
@@ -52,7 +52,8 @@
                             {{ Form::label('description', 'Full Description', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
                                 {{ Form::textarea('description',null,['class' => 'form-control', 'placeholder' => 'Describe your War here...']) }}
-                                <div class="text-info small">Github flavored <b>Markdown</b> supported</div>
+                                <div class="text-info small">Github flavored
+                                    <a class="text-info" target="_blank" href="https://guides.github.com/features/mastering-markdown/"><b>Markdown</b></a> supported</div>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
                             <strong>{{ $errors->first('description') }}</strong>

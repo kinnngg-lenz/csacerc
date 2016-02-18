@@ -120,7 +120,7 @@
                                 <div class="col-md-10">
                                     {{ Form::textarea('answer',null,['class' => 'form-control', 'rows' => '4']) }}
                                     <div class="text-info small text-right">
-                                        Github flavored <b>Markdown</b> supported
+                                        Github flavored <a class="text-info" target="_blank" href="https://guides.github.com/features/mastering-markdown/"><b>Markdown</b></a> supported
                                     </div>
                                     <br>
                                     <i class="text-danger"><b>Note:</b> Please review your answer before posting, it can

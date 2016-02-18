@@ -21,6 +21,9 @@ class CodeWarQuestionPolicy
 
     public function edit(User $user, CodeWarQuestion $question)
     {
+        if($user->isSuperAdmin())
+            return true;
+
         if(!$user->isAdmin())
             return false;
 

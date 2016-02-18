@@ -47,7 +47,22 @@
                     <li class="{{ set_active(['gallery']) }}">{{ link_to_route('gallery.index', 'Gallery') }}</li>
                     <li class="{{ set_active(['questions*']) }}">{{ link_to_route('questions.index','Questions') }}</li>
                     <li class="{{ set_active(['codewar*']) }}">{{ link_to_route('codewar.index','CodeWar') }}</li>
-                    <li><a href="/showcase">AppClub</a></li>
+
+                    {{-- DropDown for Extras --}}
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Extras<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="spin"><a href="{{ route('home') }}"><i class="fa fa-btn fa-desktop"></i>Showcase</a></li>
+                            <li class="spin"><a href="{{ route('home') }}"><i class="fa fa-btn fa-user"></i>Notes</a></li>
+                            <li class="spin"><a href="{{ route('home') }}"><i class="fa fa-btn fa-cog"></i>Computer Tricks</a></li>
+                            <li class="spin"><a href="{{ url('/home') }}"><i class="fa fa-btn fa-sign-out"></i>Quotes</a></li>
+                            <li class="spin"><a href="{{ url('/home') }}"><i class="fa fa-btn fa-sign-out"></i>Discuss Forum</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->

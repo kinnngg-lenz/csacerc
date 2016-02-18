@@ -69,6 +69,8 @@ class User extends Authenticatable
     }
 
     /**
+     * If this user has extra role than regular member
+     *
      * @return bool
      */
     public function isAdmin()
@@ -77,6 +79,18 @@ class User extends Authenticatable
     }
 
     /**
+     * If this User is Super Admin
+     *
+     * @return bool
+     */
+    public function isSuperAdmin()
+    {
+        return $this->role >= 3 && $this->role <= 4;
+    }
+
+    /**
+     * List of all questions ASKED TO THIS USER by others.
+     *
      * @param bool|false $withGlobal
      * @return mixed
      */
@@ -89,6 +103,8 @@ class User extends Authenticatable
     }
 
     /**
+     * All QUESTIONS ASKED TO THIS USER and STILL NOT ANSWERED.
+     *
      * @param bool|false $withGlobal
      * @return mixed
      */
@@ -97,6 +113,11 @@ class User extends Authenticatable
         return $this->askedQuestions($withGlobal)->unanswered();
     }
 
+    /**
+     * Returns RANK of current User in String
+     *
+     * @return string
+     */
     public function rank()
     {
         switch($this->role)
@@ -114,7 +135,12 @@ class User extends Authenticatable
         }
     }
 
-
+    /**
+     * Returns Type of User in String.
+     * Get Type Attribute
+     *
+     * @return string
+     */
     public function gta()
     {
         switch($this->type)
@@ -128,6 +154,12 @@ class User extends Authenticatable
         }
     }
 
+    /**
+     * Returns College of User in string.
+     * Get College Attribute
+     *
+     * @return string
+     */
     public function gca()
     {
         switch($this->college)
@@ -152,6 +184,12 @@ class User extends Authenticatable
     }
 
 
+    /**
+     * Returns department in String
+     * Get Department Attribute
+     *
+     * @return string
+     */
     public function gda()
     {
         switch($this->department)
@@ -175,6 +213,11 @@ class User extends Authenticatable
         }
     }
 
+    /**
+     * Returns all like this User has made.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function likes()
     {
         return $this->hasMany('App\Like');
