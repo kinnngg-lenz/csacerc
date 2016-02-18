@@ -44,6 +44,7 @@
                 </button>
                     <h1>{{ $user->name }}</h1>
                     <p class="text-warning"><a class="text-warning" href="{{ route('users.profile.show',$user->username) }}">{{ "@".$user->username }}</a></p>
+                    <p><i class="fa fa-birthday-cake"></i> {{ $user->dob->format('jS F') }}</p>
                 <p class="about">{!! nl2br(htmlentities($user->about)) !!}</p>
 
 

@@ -3,21 +3,20 @@
 This website is being developed as an unofficial website for CS Dept of ACERC.
 
 ## Features List:
-* Image Gallery
-* Upcoming Events
-* News & Happening of College
-* Technology News
- * New of Day
- * Hot on Net
-* Alumini
-* Quote of the Day
-* Brain Teasers
-* Computer Tricks
-* Joke of the Day
-* Newsletter Subscription
-* Discuss Area
-* Signup & Login
-* Question anyone , anything even anonymously (We respect your privacy).
+* [x] Image Gallery
+* [x] Upcoming Events
+* [x] News & Happening of College
+* [ ] Technology News
+* [x] Alumini
+* [ ] Quote of the Day
+* [ ] _Brain Teasers_
+* [ ] Computer Tricks
+* [ ] _Joke of the Day_
+* [ ] Newsletter Subscription
+* [ ] _Discuss Area_
+* [x] Signup & Login
+* [x] Question anyone , anything anonymously (We respect your privacy).
+* [ ] Online Notes for all Subjects , Semesters with downloadable pdf version.
 
 
 ## Packages Required:

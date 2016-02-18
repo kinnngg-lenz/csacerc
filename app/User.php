@@ -24,6 +24,10 @@ class User extends Authenticatable
         'password', 'remember_token','role',
     ];
 
+    protected $dates = [
+        'created_at', 'updated_at', 'dob'
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

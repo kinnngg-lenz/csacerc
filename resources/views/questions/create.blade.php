@@ -49,10 +49,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('public') ? ' has-error' : '' }}">
-                            {{ Form::label('public', 'Visible to Public', ['class' => 'col-md-4 control-label']) }}
+                            {{ Form::label('public', 'Visibility', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                                {{ Form::select('public', array('1' => 'Yes! For public sake', '0' => 'No! Its a private question'), null, ['placeholder' => 'Make this visible to Questions section', 'class' => 'form-control']) }}
-                                <div class="text-info small">Even public, Your identity will never be disclosed</div>
+                                {{ Form::select('public', array('1' => 'Yes! Make this visible to everybody', '0' => 'No! Don\'t wanna this to be visible'), null, ['placeholder' => 'Make this visible to Questions section?', 'class' => 'form-control']) }}
+                                <div class="text-info small">Even public, Your identity will not be disclosed</div>
                                 @if ($errors->has('public'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('public') }}</strong>
