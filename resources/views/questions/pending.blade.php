@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Questions Pending Approval')
 @section('content')
     <div class="container">
         <div class="row">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Add Picture to Gallery')
 @section('content')
     <div class="container">
         <div class="row">

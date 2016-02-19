@@ -68,6 +68,11 @@ class User extends Authenticatable
         return $this->hasMany('App\CodeWarQuestion');
     }
 
+    public function codeWarAnswers()
+    {
+        return $this->hasMany('App\CodeWarAnswer');
+    }
+
     /**
      * If this user has extra role than regular member
      *

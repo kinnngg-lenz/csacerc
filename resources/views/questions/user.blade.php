@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Question Pending Answer (Asked to you)')
 @section('content')
     <div class="container">
         <div class="row">

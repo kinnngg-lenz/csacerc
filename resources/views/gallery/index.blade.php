@@ -1,11 +1,11 @@
 @extends('layouts.app')
-
+@section('title', 'Image Gallery')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-right">
                 @if(Auth::check() && Auth::user()->isAdmin())
-                    {{ link_to_route('gallery.create', 'Add new Image', [], ['class' => 'btn btn-danger btn-sm']) }}
+                    {{ link_to_route('gallery.create', 'Add new Image', [], ['class' => 'btn btn-info btn-sm']) }}
                 @endif
             </div>
             <div class="col-md-10 col-md-offset-1">

@@ -87,6 +87,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/gallery/create', ['as' => 'gallery.create', 'uses' => 'PhotosController@create']);
     Route::post('/gallery/create', ['as' => 'gallery.store', 'uses' => 'PhotosController@store']);
     Route::get('/gallery/{url}', ['as' => 'gallery.show', 'uses' => 'PhotosController@show']);
+
+    /**
+     * Likes Controller
+     */
+    Route::post('/codewar/{war_id}/answers/{answer_id}/likes', ['as' => 'codewar.likes.post', 'uses' => 'LikesController@likeCWA']);
+    Route::post('/codewar/{war_id}/likes', ['as' => 'codewar.question.likes.post', 'uses' => 'LikesController@likeCWQ']);
+    Route::post('/questions/{question_id}/likes', ['as' => 'questions.question.likes.post', 'uses' => 'LikesController@likeQQ']);
 });
 
 /**

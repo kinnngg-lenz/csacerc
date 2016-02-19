@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', str_limit($question->question,50)." (Question)")
 @section('styles')
     <style>
         .jumbotron {
@@ -23,7 +23,37 @@
         .tiny {
             font-size: 14px;
         }
-
+        .List
+        {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            margin-left: 10px;
+            color: #c5c5c5;
+        }
+        .post-like-button
+        {
+            vertical-align: middle;
+        }
+        .label.label-info
+        {
+            padding: 5px;
+            margin-left: 5px;
+            color: #c5c5c5;
+        }
+        .label.label-info a
+        {
+            color: white;
+        }
+        .well.well-sm
+        {
+            border: 1px solid #e9e9e9;
+        }
+        .well.well-sm.question-well
+        {
+            border: 1px solid #845574;
+            background: transparent;
+        }
     </style>
 @endsection
 
@@ -36,6 +66,34 @@
                 <p class="text-muted blockquote-reverse">
                     Asked {{  $question->created_at->diffForHumans()}}
                 </p>
+
+                <div class="likes well well-sm question-well">
+                    {{ Form::open(['route' => ['questions.question.likes.post',$question->id], 'class' => 'like-reply-form']) }}
+                    @if(Auth::check())
+                        @if($question->likes()->where('user_id', Auth::user()->id)->get()->isEmpty())
+                            <button title="Like it" type="submit" class="btn btn-info btn-sm post-like-button">
+                                <i class="fa fa-thumbs-up"></i> <sub>{{ $question->likes->count() }}</sub>
+                            </button>
+                        @else
+                            <button title="Unlike it" type="submit" class="btn btn-danger btn-sm post-like-button">
+                                <i class="fa fa-thumbs-down"></i> <sub>{{ $question->likes->count() }}</sub>
+                            </button>
+                        @endif
+                    @else
+                        <button class="btn btn-default disabled btn-sm post-like-button">
+                            <i class="fa fa-thumbs-up"></i> <sub>{{ $question->likes->count() }}</sub>
+                        </button>
+                    @endif
+                    <ul class="likes List">
+                        @foreach($question->likes()->limit(7)->get() as $like)
+                            <li class="label label-info">
+                                {{ link_to_route('users.profile.show',$like->user->username,$like->user->username) }}
+                            </li>
+                        @endforeach
+                    </ul>
+                    {{ Form::close() }}
+                </div>
+
             </div>
             </div>
 
@@ -68,7 +126,9 @@
                         <p class="text-center"><i class='text-danger'>No answered yet!</i></p>
                         @endcan
                         @else
-                            <div class="padding10 panel">{!! render_markdown_for_view($question->answer) !!}</div>
+                            <div class="padding10 panel">
+                                {!! render_markdown_for_view($question->answer) !!}
+                            </div>
                         @endif
                 </div>
                 </div>

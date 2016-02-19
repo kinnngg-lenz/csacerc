@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Edit CodeWar - '.$question->title)
 @section('content')
     <div class="container">
         <div class="row">

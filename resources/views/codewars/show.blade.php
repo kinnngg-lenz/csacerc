@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', $question->title." (CodeWar)")
 @section('styles')
     <style>
         .jumbotron {
@@ -22,6 +22,37 @@
         }
         .tiny {
             font-size: 14px;
+        }
+        .List
+        {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            margin-left: 10px;
+            color: #c5c5c5;
+        }
+        .post-like-button
+        {
+            vertical-align: middle;
+        }
+        .label.label-info
+        {
+            padding: 5px;
+            margin-left: 5px;
+            color: #c5c5c5;
+        }
+        .label.label-info a
+        {
+            color: white;
+        }
+        .well.well-sm
+        {
+            border: 1px solid #e9e9e9;
+        }
+        .well.well-sm.question-well
+        {
+            border: 1px solid #845574;
+            background: transparent;
         }
 
     </style>
@@ -56,6 +87,33 @@
                                 )</span></i>
                     </p>
                 @endif
+
+                <div class="likes well well-sm question-well">
+                    {{ Form::open(['route' => ['codewar.question.likes.post',$question->id], 'class' => 'like-reply-form']) }}
+                    @if(Auth::check())
+                        @if($question->likes()->where('user_id', Auth::user()->id)->get()->isEmpty())
+                            <button title="Like it" type="submit" class="btn btn-info btn-sm post-like-button">
+                                <i class="fa fa-thumbs-up"></i> <sub>{{ $question->likes->count() }}</sub>
+                            </button>
+                        @else
+                            <button title="Unlike it" type="submit" class="btn btn-danger btn-sm post-like-button">
+                                <i class="fa fa-thumbs-down"></i> <sub>{{ $question->likes->count() }}</sub>
+                            </button>
+                        @endif
+                    @else
+                        <button class="btn btn-default disabled btn-sm post-like-button">
+                            <i class="fa fa-thumbs-up"></i> <sub>{{ $question->likes->count() }}</sub>
+                        </button>
+                    @endif
+                    <ul class="likes List">
+                        @foreach($question->likes()->limit(7)->get() as $like)
+                            <li class="label label-info">
+                                {{ link_to_route('users.profile.show',$like->user->username,$like->user->username) }}
+                            </li>
+                        @endforeach
+                    </ul>
+                    {{ Form::close() }}
+                </div>
             </div>
 
             <div class="container">
@@ -82,7 +140,7 @@
                         </p>
 
                         <div class="padding10">{!! render_markdown_for_view($answer->answer) !!}</div>
-                        <p class="blockquote-reverse">
+                        <p class="">
                             @can('edit', $question)
                             @unless($question->best_answer_id == $answer->id)
                                 {{ Form::open(['route' => ['codewar.bestanswer', $question->id],'method' => 'patch']) }}
@@ -96,6 +154,34 @@
                                     @endunless
                             @endcan
                         </p>
+
+                        <div class="likes well well-sm">
+                               {{ Form::open(['route' => ['codewar.likes.post',$question->id,$answer->id], 'class' => 'like-reply-form']) }}
+                               @if(Auth::check())
+                                    @if($answer->likes()->where('user_id', Auth::user()->id)->get()->isEmpty())
+                                    <button title="Like it" type="submit" class="btn btn-info btn-sm post-like-button">
+                                    <i class="fa fa-thumbs-up"></i> <sub>{{ $answer->likes->count() }}</sub>
+                                    </button>
+                                    @else
+                                    <button title="Unlike it" type="submit" class="btn btn-danger btn-sm post-like-button">
+                                    <i class="fa fa-thumbs-down"></i> <sub>{{ $answer->likes->count() }}</sub>
+                                    </button>
+                                    @endif
+                                @else
+                                <button class="btn btn-default disabled btn-sm post-like-button">
+                                    <i class="fa fa-thumbs-up"></i> <sub>{{ $answer->likes->count() }}</sub>
+                                </button>
+                                @endif
+                                <ul class="likes List">
+                                    @foreach($answer->likes()->limit(7)->get() as $like)
+                                    <li class="label label-info">
+                                        {{ link_to_route('users.profile.show',$like->user->username,$like->user->username) }}
+                                    </li>
+                                    @endforeach
+                                </ul>
+                                {{ Form::close() }}
+                        </div>
+
                     </div>
                     </div>
                 @empty

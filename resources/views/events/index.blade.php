@@ -1,11 +1,11 @@
 @extends('layouts.app')
-
+@section('title', 'Events')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-right">
                 @if(Auth::check() && Auth::user()->isAdmin())
-                    {{ link_to_route('event.create', 'Add New Event', [], ['class' => 'btn btn-danger btn-sm']) }}
+                    {{ link_to_route('event.create', 'Add New Event', [], ['class' => 'btn btn-info btn-sm']) }}
                 @endif
             </div>
             <div class="col-md-11 col-md-offset-1">

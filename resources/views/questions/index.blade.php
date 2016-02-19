@@ -1,10 +1,10 @@
 @extends('layouts.app')
-
+@section('title', 'Questions & Answers')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-right">
-                    {{ link_to_route('questions.create', 'Ask a Question', [], ['class' => 'btn btn-danger btn-sm']) }}
+                    {{ link_to_route('questions.create', 'Ask a Question', [], ['class' => 'btn btn-info btn-sm']) }}
             </div>
             <div class="col-md-11 col-md-offset-1">
                 <div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>Questions & Answers</h3></div>
