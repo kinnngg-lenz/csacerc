@@ -35,19 +35,27 @@
     <div class="container-fluid">
         <div class="row">
             <div class="jumbotron">
+                <div class="row">
                 <div class="col-md-3">
                     <img class="img-thumbnail" src="/images/static/{{ $user->gender }}.jpeg" alt="Female" style="height: 250px">
                 </div>
+                    <div class="col-md-9">
                 <button class="btn btn-info xp-btn btn-sm disabled pull-right" href="#">
                     <i class="fa fa-trophy"></i>
                     XP &nbsp;<span class="badge text-danger">{{ $user->xp }}</span>
                 </button>
-                    <h1>{{ $user->name }}</h1>
-                    <p class="text-warning"><a class="text-warning" href="{{ route('users.profile.show',$user->username) }}">{{ "@".$user->username }}</a></p>
-                    @unless($user->dob == null)
-                        <p><i class="fa fa-birthday-cake"></i> {{ $user->dob->format('jS F') }}</p>
-                    @endunless
-                <p class="about">{!! nl2br(htmlentities($user->about)) !!}</p>
+
+                        <h1 class="nomargin">{{ $user->name }}</h1><i class="text-muted">( {{ $user->rank() }} )</i>
+                        <p class="text-warning"><a class="text-warning" href="{{ route('users.profile.show',$user->username) }}">{{ "@".$user->username }}</a></p>
+                        @unless($user->dob == null)
+                            <p><i class="fa fa-birthday-cake"></i> {{ $user->dob->format('jS F') }}</p>
+                        @endunless
+                        <p class="about">{!! nl2br(htmlentities($user->about)) !!}</p>
+                    </div>
+                </div>
+
+
+
 
 
                 <p class="text-muted blockquote-reverse">

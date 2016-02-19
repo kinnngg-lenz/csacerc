@@ -1,12 +1,44 @@
 @extends('layouts.app')
 @section('title', "Reset Password")
+
+@section('styles')
+    <style>
+        .jumbotron {
+            background: url('/images/static/head.png') #573e81;
+            margin-top: -28px;
+            border-radius: 0px !important;
+            color: white;
+        }
+        .jumbotron pre {
+            padding: 0px;
+            border: none;
+            border-radius: 0px;
+        }
+        pre
+        {
+            padding: 0px;
+        }
+        h1 {
+            font-size: 300% !important;
+        }
+        .tiny {
+            font-size: 14px;
+        }
+    </style>
+    @endsection
+
 <!-- Main Content -->
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
+        <div class="jumbotron text-center">
+            <h1>Forgot your Password</h1>
+            <p class="">Enter your email and we will send reset link there</p>
+        </div>
+
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                <div class="panel-heading"></div>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">

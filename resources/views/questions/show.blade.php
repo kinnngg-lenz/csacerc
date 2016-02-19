@@ -2,6 +2,10 @@
 @section('title', str_limit($question->question,50)." (Question)")
 @section('styles')
     <style>
+        footer
+        {
+            margin-top: 50px;
+        }
         .jumbotron {
             background: url('/images/static/head.png') #573e81;
             margin-top: -28px;
