@@ -35,13 +35,14 @@
 
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-                <div class="panel-body">
-                    <a class="btn btn-success" href="{{ route('questions.iasked') }}">Question I Asked</a>
-
-                    <a class="btn btn-primary" href="{{ route('questions.user.unanswered') }}">Pending Questions to Answer <span class="badge">{{Auth::user()->notAnsweredQuestions()->approved()->count()}}</span></a>
+                <div class="panel-heading"><b>Questions</b></div>
+                <div class="panel-body text-center">
+                    <div class="btn-group">
+                        <a data-toggle="tooltip" title="Question that are asked to you by someone" class="btn btn-warning" href="{{ route('questions.user.unanswered') }}">To Answer <span class="badge">{{Auth::user()->notAnsweredQuestions()->approved()->count()}}</span></a>
+                        <a data-toggle="tooltip" title="Question that you asked to someone" class="btn btn-info" href="{{ route('questions.iasked') }}">I Ask</a>
+                    </div>
                     {{-- <a href="{{ route('questions.user.unanswered') }}">You have {{ Auth::user()->notAnsweredQuestions()->approved()->count().str_plural(' question', Auth::user()->notAnsweredQuestions()->count()) }} to answer.</a>--}}
-                    <br>Your rank is <b>{{ Auth::user()->rank() }}</b>
+                    <br>
                 </div>
             </div>
         </div>
@@ -49,14 +50,14 @@
         @if(Auth::user()->isAdmin())
         <div class="col-md-4">
             <div class="panel panel-default">
-                <div class="panel-heading">Admin Panel</div>
+                <div class="panel-heading"><b>Admin Panel</b> (<i>{{ Auth::user()->rank() }}</i>)</div>
                 <div class="panel-body">
                     {{ link_to_route('news.create', 'Add a News', [], ['class' => 'btn btn-info btn-block btn-sm']) }}
                     {{ link_to_route('alumini.create', 'Add an Alumini', [], ['class' => 'btn btn-danger btn-block btn-sm']) }}
                     {{ link_to_route('event.create', 'Add an Event', [], ['class' => 'btn btn-success btn-block btn-sm']) }}
                     {{ link_to_route('questions.pending', 'Pending Questions', [], ['class' => 'btn btn-primary btn-block btn-sm']) }}
                     {{ link_to_route('codewar.create', 'Create a CodeWar', [], ['class' => 'btn btn-info btn-block btn-sm']) }}
-                    {{ link_to_route('gallery.create', 'Add Image to Gallery', [], ['class' => 'btn btn-success btn-block btn-sm']) }}
+                    {{ link_to_route('gallery.create', 'Add Image to Gallery', [], ['class' => 'btn btn-warning btn-block btn-sm']) }}
                 </div>
             </div>
         </div>

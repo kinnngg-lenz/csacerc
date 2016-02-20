@@ -1,29 +1,56 @@
 @extends('layouts.app')
 @section('title', 'Question Pending Answer (Asked to you)')
+@section('styles')
+    <style>
+        .jumbotron {
+            background: url('/images/static/head.png') #573e81;
+            margin-top: -28px;
+            border-radius: 0px !important;
+            color: white;
+        }
+        .jumbotron pre {
+            padding: 0px;
+            border: none;
+            border-radius: 0px;
+        }
+        pre
+        {
+            padding: 0px;
+        }
+        h1 {
+            font-size: 300% !important;
+        }
+        .tiny {
+            font-size: 14px;
+        }
+    </style>
+@endsection
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 text-right">
-                {{ link_to_route('questions.create', 'Ask a Question', [], ['class' => 'btn btn-danger btn-sm']) }}
+            <div class="jumbotron text-center">
+                <h1>Questions Asked to You</h1>
+                <p class="">These are questions that are asked to you by someone</p>
+                {{ link_to_route('questions.create', 'Ask', [], ['class' => 'btn btn-info']) }}
             </div>
+
             <div class="col-md-11 col-md-offset-1">
-                <div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>Questions asked to You</h3></div>
+
                 @forelse($questions as $question)
-                    <div class="panel col-md-11 well">
-                        Question:
+                    <div class="panel col-md-11">
                         {{-- @TODO: Unsecured. Secure this code, and filter thru Markdown --}}
-                        <div class="panel padding10">{!! (Markdown::string(htmlentities($question->question))) !!}</div>
-                        Answer:
-                        <div class="panel padding10">
+                        <div class="padding10">{!! render_markdown_for_view($question->question) !!}</div>
+
+                        <div class="well padding10">
                             @if(is_null($question->answer))
                                 @can('answer', $question)
-                                <i class='text-danger'>No answered yet!</i>
-                                <div class="text-right">{{ link_to_route('questions.show', 'Answer this Question', [$question->slug], ['class' => 'btn btn-danger btn-sm float-right']) }}</div>
+                                <i class='text-danger'>Not answered yet!</i>
+                                <div class="text-right">{{ link_to_route('questions.show', 'Answer this Question', [$question->slug], ['class' => 'btn btn-info btn-sm float-right']) }}</div>
                             @else
-                                <i class='text-danger'>No answered yet!</i>
+                                <i class='text-danger'>Not answered yet!</i>
                                 @endcan
                                 @else
-                                    {!! (Markdown::string(htmlentities($question->answer))) !!}
+                                    {{ link_to_route('questions.show', "View Answer", $question->slug, ['class' => 'btn btn-sm btn-primary']) }}
                                 @endif
                         </div>
 

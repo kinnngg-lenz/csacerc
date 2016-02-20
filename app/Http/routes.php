@@ -25,15 +25,26 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+
+    /**
+     * Landing Page
+     */
     Route::get('/', function () {
         return view('welcome');
     });
 
-    // FOR TESTING THINGS
+    /**
+     * Coming Soon Page
+     */
+    Route::get('/comingsoon', function(){
+        return view('comingsoon');
+    });
 
+    // FOR TESTING ONLY NOT FOR PRODUCTION
     Route::get('/test', function(){
         $question = App\CodeWarQuestion::find(1);
     });
+
 });
 
 Route::group(['middleware' => 'web'], function () {

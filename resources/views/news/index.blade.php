@@ -4,12 +4,12 @@
     <style>
      @media screen and (min-width: 768px) {
          .grid-item {
-             width: 500px;
+             width: 520px;
          }
      }
      @media (max-width: 767px) {
          .grid-item {
-             width: 300px;
+             width: 100%;
          }
      }
     .text-bold
@@ -20,19 +20,44 @@
     {
         margin: 0 !important;
     }
+     .jumbotron {
+         background: url('/images/static/head.png') #573e81;
+         margin-top: -28px;
+         border-radius: 0px !important;
+         color: white;
+     }
+     .jumbotron pre {
+         padding: 0px;
+         border: none;
+         border-radius: 0px;
+     }
+     pre
+     {
+         padding: 0px;
+     }
+     h1 {
+         font-size: 300% !important;
+     }
+     .tiny {
+         font-size: 14px;
+     }
     </style>
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 text-right">
+
+            <div class="jumbotron text-center">
+                <h1>News &amp; Happening</h1>
+                <p class="">All about what's going on the college and surrounding</p>
                 @if(Auth::check() && Auth::user()->isAdmin())
-                    {{ link_to_route('news.create', 'Add New News', [], ['class' => 'btn btn-info btn-sm']) }}
+                    {{ link_to_route('news.create', 'Add News', [], ['class' => 'btn btn-info btn-sm']) }}
                 @endif
             </div>
+
             <div class="col-md-11 col-md-offset-1">
 
-                <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 500 }'>
+                <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 520 }'>
                 @forelse($allnews as $news)
 
                         <div class="col-sm-6 grid-item col-md-4">

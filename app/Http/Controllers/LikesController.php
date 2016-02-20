@@ -42,6 +42,14 @@ class LikesController extends Controller
         $this->codeWarQuestion = $codeWarQuestion;
     }
 
+    /**
+     * Like Post Request Handler for Code War Answers
+     *
+     * @param $war_id
+     * @param $answer_id
+     * @param Request $request
+     * @return mixed
+     */
     public function likeCWA($war_id, $answer_id, Request $request)
     {
         //Find Answer with Current Id;
@@ -56,6 +64,13 @@ class LikesController extends Controller
         return back()->withNotification('Success! You liked '.$answer->user->name."'s answer");
     }
 
+    /**
+     * Like Post Request handler for Code War Questions
+     *
+     * @param $war_id
+     * @param Request $request
+     * @return mixed
+     */
     public function likeCWQ($war_id, Request $request)
     {
         //Find Answer with Current Id;
@@ -70,6 +85,13 @@ class LikesController extends Controller
         return back()->withNotification('Success! You liked '.$question->title);
     }
 
+    /**
+     * Like post request handler for Questions
+     *
+     * @param $question_id
+     * @param Request $request
+     * @return mixed
+     */
     public function likeQQ($question_id, Request $request)
     {
         //Find Answer with Current Id;

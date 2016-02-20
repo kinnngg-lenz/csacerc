@@ -62,11 +62,6 @@
     <div class="container-fluid">
         <div class="row">
             {{--<div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>Question Viewer</h3></div>--}}
-            @can('edit', $question)
-            <div class="col-md-12 text-right">
-                {{ link_to_route('codewar.edit', 'Edit War', [$question->id], ['class' => 'btn btn-danger btn-sm']) }}
-            </div>
-            @endcan
 
             <div class="jumbotron">
                 <h1>{{ $question->title }}</h1>
@@ -114,6 +109,11 @@
                     </ul>
                     {{ Form::close() }}
                 </div>
+
+                @can('edit', $question)
+                {{ link_to_route('codewar.edit', 'Edit War', [$question->id], ['class' => 'pull-right btn btn-info btn-sm']) }}
+                @endcan
+
             </div>
 
             <div class="container">

@@ -1,13 +1,41 @@
 @extends('layouts.app')
 @section('title', 'Events')
+@section('styles')
+    <style>
+        .jumbotron {
+            background: url('/images/static/head.png') #573e81;
+            margin-top: -28px;
+            border-radius: 0px !important;
+            color: white;
+        }
+        .jumbotron pre {
+            padding: 0px;
+            border: none;
+            border-radius: 0px;
+        }
+        pre
+        {
+            padding: 0px;
+        }
+        h1 {
+            font-size: 300% !important;
+        }
+        .tiny {
+            font-size: 14px;
+        }
+    </style>
+@endsection
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 text-right">
+            <div class="jumbotron text-center">
+                <h1>Events</h1>
+                <p class="">All Upcomming and past events held on the college</p>
                 @if(Auth::check() && Auth::user()->isAdmin())
-                    {{ link_to_route('event.create', 'Add New Event', [], ['class' => 'btn btn-info btn-sm']) }}
+                    {{ link_to_route('event.create', 'Add an Event', [], ['class' => 'btn btn-info btn-sm']) }}
                 @endif
             </div>
+
             <div class="col-md-11 col-md-offset-1">
 
                 <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 330 }'>

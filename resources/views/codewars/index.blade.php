@@ -1,12 +1,39 @@
 @extends('layouts.app')
 @section('title', "Code Wars")
+@section('styles')
+    <style>
+        .jumbotron {
+            background: url('/images/static/head.png') #573e81;
+            margin-top: -28px;
+            border-radius: 0px !important;
+            color: white;
+        }
+        .jumbotron pre {
+            padding: 0px;
+            border: none;
+            border-radius: 0px;
+        }
+        pre
+        {
+            padding: 0px;
+        }
+        h1 {
+            font-size: 300% !important;
+        }
+        .tiny {
+            font-size: 14px;
+        }
+    </style>
+@endsection
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
 
-            <div class="col-md-12 text-right">
+            <div class="jumbotron text-center">
+                <h1>Code War</h1>
+                <p class="">Participate in the challeges and show your skills</p>
                 @if(Auth::check() && Auth::user()->isAdmin())
-                    {{ link_to_route('codewar.create', 'Create new CodeWar', [], ['class' => 'btn btn-info btn-sm']) }}
+                    {{ link_to_route('codewar.create', 'Start New War', [], ['class' => 'btn btn-info']) }}
                 @endif
             </div>
 
