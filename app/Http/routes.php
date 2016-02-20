@@ -109,5 +109,7 @@ Route::group(['middleware' => 'web'], function () {
 
 /**
  * For API Calls and Ajax Search
+ *
+ * Outside of Web Guard so that escaped by CRSF middleware
  */
 Route::get('/users/{query}', ['as' => 'users.search', 'uses' => 'UsersController@search']);

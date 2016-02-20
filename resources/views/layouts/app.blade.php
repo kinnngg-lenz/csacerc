@@ -89,7 +89,7 @@
 
                 <form class="navbar-form navbar-right" role="search" action='/search/'>
                     <div class="form-group">
-                        <input type="text" id="navsearch" name='q' class="form-control navsearch" placeholder="Members Search" autocomplete="off">
+                        <input type="text" id="navsearch" name='q' class="form-control navsearch" placeholder="Search members" autocomplete="off">
                     </div>
                     {{--<button type="submit" class="btn btn-default">Search</button>--}}
                 </form>
