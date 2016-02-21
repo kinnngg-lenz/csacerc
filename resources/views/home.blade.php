@@ -21,7 +21,16 @@
             font-size: 300% !important;
         }
         .tiny {
-            font-size: 14px;
+            font-size: 14px !important;
+        }
+        .inspire
+        {
+            font-size:2rem !important;;
+        }
+        .text-lg
+        {
+            font-size: 1.5em !important;
+            font-family: "Trebuchet MS", Verdana, sans-serif;
         }
     </style>
 @endsection
@@ -30,7 +39,9 @@
     <div class="row">
         <div class="jumbotron text-center">
             <h1>Dashboard</h1>
-            <p class="">Welcome abroad {{ Auth::user()->name }} </p>
+            <p class="inspire text-{{ ['warning','success','info', 'danger'][array_rand([0,1,2,3])] }}"><span class="text-lg">&#8220;</span> {{ Illuminate\Foundation\Inspiring::quote() }} <span class="text-lg">&#8221;</span></p>
+            <p class="">Welcome abroad <span style="color: #91B5FF;">{{ Auth::user()->name }}</span> </p>
+            <p class="tiny text-muted">Your rank is <b>{{ Auth::user()->rank() }}</b></p>
         </div>
 
         <div class="col-md-8">
@@ -39,7 +50,7 @@
                 <div class="panel-body text-center">
                     <div class="btn-group">
                         <a data-toggle="tooltip" title="Question that are asked to you by someone" class="btn btn-warning" href="{{ route('questions.user.unanswered') }}">To Answer <span class="badge">{{Auth::user()->notAnsweredQuestions()->approved()->count()}}</span></a>
-                        <a data-toggle="tooltip" title="Question that you asked to someone" class="btn btn-info" href="{{ route('questions.iasked') }}">I Ask</a>
+                        <a data-toggle="tooltip" title="Question that you asked to someone" class="btn btn-info" href="{{ route('questions.iasked') }}">I Asked</a>
                     </div>
                     {{-- <a href="{{ route('questions.user.unanswered') }}">You have {{ Auth::user()->notAnsweredQuestions()->approved()->count().str_plural(' question', Auth::user()->notAnsweredQuestions()->count()) }} to answer.</a>--}}
                     <br>

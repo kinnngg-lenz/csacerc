@@ -42,7 +42,8 @@ Route::group(['middleware' => ['web']], function () {
 
     // FOR TESTING ONLY NOT FOR PRODUCTION
     Route::get('/test', function(){
-        $question = App\CodeWarQuestion::find(1);
+        $d = Newsletter::subscribe('afaquezishanansari@gmail.com');
+        dd($d);
     });
 
 });

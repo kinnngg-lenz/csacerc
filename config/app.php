@@ -160,6 +160,7 @@ return [
         VTalbot\Markdown\MarkdownServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+        Spatie\Newsletter\NewsletterServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -222,6 +223,7 @@ return [
         'Markdown' => VTalbot\Markdown\Facades\Markdown::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnapImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
 
     ],
 
