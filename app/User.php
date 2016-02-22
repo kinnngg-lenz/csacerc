@@ -80,7 +80,7 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return $this->role > 0;
+        return $this->role > 0 && $this->role <= 4;
     }
 
     /**
@@ -135,6 +135,8 @@ class User extends Authenticatable
                 return "Administrator";
             case 3:
                 return "Super Administrator";
+            case 4:
+                return "Anonymous";
             default:
                 return "Member";
         }

@@ -8,6 +8,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Newsletter;
 
 class AuthController extends Controller
 {
@@ -90,6 +91,12 @@ class AuthController extends Controller
          * @TODO: Add this to a Queue and extract to a Event Listener
          */
         $this->mailer->welcome($user);
+
+        /**
+         *Subscribe this user to Weekly Newsletter
+         *@TODO: Enable this in production
+         */
+        //Newsletter::subscribe($user->email);
 
         return $user;
     }

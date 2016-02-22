@@ -39,7 +39,9 @@
     <div class="row">
         <div class="jumbotron text-center">
             <h1>Dashboard</h1>
-            <p class="inspire text-{{ ['warning','success','info', 'danger'][array_rand([0,1,2,3])] }}"><span class="text-lg">&#8220;</span> {{ Illuminate\Foundation\Inspiring::quote() }} <span class="text-lg">&#8221;</span></p>
+            <p id="ajaxinspire">
+                <span class="inspire text-{{ ['warning','success','info', 'danger', 'yellow', 'pink', 'green', 'violet', 'muted'][array_rand([0,1,2,3,4,5,6,7,8])] }}"><span class="text-lg">&#8220;</span> {{ Illuminate\Foundation\Inspiring::quote() }} <span class="text-lg">&#8221;</span></span>
+            </p>
             <p class="">Welcome abroad <span style="color: #91B5FF;">{{ Auth::user()->name }}</span> </p>
             <p class="tiny text-muted">Your rank is <b>{{ Auth::user()->rank() }}</b></p>
         </div>
@@ -76,4 +78,14 @@
 
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function () {
+        var refreshId = setInterval(function () {
+            $('#ajaxinspire').hide().load("/inspire").fadeIn(2000);
+        },10000);
+        });
+    </script>
 @endsection

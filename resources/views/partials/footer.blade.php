@@ -13,7 +13,7 @@
             </div>
 
             <div class="col-md-5">
-                {{ Form::open() }}
+                {{ Form::open(['route' => ['newsletter.subscribe']]) }}
                 <div class="{{ $errors->has('email') ? ' has-error' : '' }}">
                     <div class="col-md-12">
                         <div class="input-group">

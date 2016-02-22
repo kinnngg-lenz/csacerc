@@ -4,12 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!--Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#573e81">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#573e81">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#573e81">
+    
     <title>@yield('title') - Department of Computer Science, ACERC</title>
 
     <!-- Fonts -->
-    {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>--}}
+    {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>--}}
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
     {{--<link href="/css/bootstrap.css" rel="stylesheet">
@@ -33,8 +39,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    ACERC CS
+                <a data-toggle="tooltip" data-placement="bottom" title="Department of Computer Science - ACERC" class="navbar-brand" href="{{ url('/') }}" style="padding: 6.5px 15px">
+                    <img src="/images/static/logo.png" alt="ACERC" class="img" style="height: 50px;">
                 </a>
             </div>
 
@@ -46,7 +52,7 @@
                     <li class="{{ set_active(['alumini']) }}">{{ link_to_route('alumini.index','Alumini') }}</li>
                     <li class="{{ set_active(['gallery']) }}">{{ link_to_route('gallery.index', 'Gallery') }}</li>
                     <li class="{{ set_active(['questions*']) }}">{{ link_to_route('questions.index','Questions') }}</li>
-                    <li class="{{ set_active(['codewar*']) }}">{{ link_to_route('codewar.index','CodeWar') }}</li>
+                    <li class="{{ set_active(['codewar*']) }}">{{ link_to_route('codewar.index','Codewar') }}</li>
 
                     {{-- DropDown for Extras --}}
 

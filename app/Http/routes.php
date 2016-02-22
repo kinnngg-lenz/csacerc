@@ -30,7 +30,22 @@ Route::group(['middleware' => ['web']], function () {
      * Landing Page
      */
     Route::get('/', function () {
-        return view('welcome');
+        $news = App\News::latest()->first();
+        $event = App\Event::latest()->first();
+        $codewars = App\CodeWarQuestion::latest()->limit(3)->get();
+        $questions = App\Question::public()->approved()->latest()->limit(3)->get();
+        $aluminis = App\Alumini::latest()->limit(2)->get();
+        $users = App\User::latest()->limit(3)->get();
+
+        $data = [
+            'news' => $news,
+            'event' => $event,
+            'aluminis' => $aluminis,
+            'codewars' => $codewars,
+            'questions' => $questions,
+            'users' => $users,
+        ];
+        return view('welcome',$data);
     });
 
     /**
@@ -42,9 +57,13 @@ Route::group(['middleware' => ['web']], function () {
 
     // FOR TESTING ONLY NOT FOR PRODUCTION
     Route::get('/test', function(){
-        $d = Newsletter::subscribe('afaquezishanansari@gmail.com');
-        dd($d);
+        $token = "05fbb6562117f546a60830f8c11b42ff74484b90a37208775d0e740484057f45";
+        return view('auth.emails.password')->withToken($token)->withUser(App\User::firstOrFail());
     });
+    Route::get('/test2', function(){
+        return view('auth.emails.welcome');
+    });
+
 
 });
 
@@ -106,6 +125,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/codewar/{war_id}/answers/{answer_id}/likes', ['as' => 'codewar.likes.post', 'uses' => 'LikesController@likeCWA']);
     Route::post('/codewar/{war_id}/likes', ['as' => 'codewar.question.likes.post', 'uses' => 'LikesController@likeCWQ']);
     Route::post('/questions/{question_id}/likes', ['as' => 'questions.question.likes.post', 'uses' => 'LikesController@likeQQ']);
+
+    /**
+     * NewsLetter Controller
+     */
+    Route::post('/newsletter/subscribe', ['as' => 'newsletter.subscribe', 'uses' => 'NewsletterController@subscribe']);
 });
 
 /**
@@ -114,3 +138,5 @@ Route::group(['middleware' => 'web'], function () {
  * Outside of Web Guard so that escaped by CRSF middleware
  */
 Route::get('/users/{query}', ['as' => 'users.search', 'uses' => 'UsersController@search']);
+Route::get('/inspire', ['as' => 'inspire', 'uses' => 'ApisController@inspire']);
+
