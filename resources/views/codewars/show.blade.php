@@ -250,6 +250,7 @@
                     {{-- War is Over --}}
                 @endif
 
+                @include('partials.disqus')
 
             </div>
         </div>

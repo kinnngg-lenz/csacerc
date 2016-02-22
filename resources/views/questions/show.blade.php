@@ -134,6 +134,9 @@
                                 {!! render_markdown_for_view($question->answer) !!}
                             </div>
                         @endif
+
+                        @include('partials.disqus')
+
                 </div>
                 </div>
             </div>
