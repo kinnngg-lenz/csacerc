@@ -43,4 +43,5 @@ If you discover a security vulnerability within this Repo, please send an e-mail
 
 ### License
 
-This project is a open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+The project is still in development and *no license* has been opted for.
+If you want to use the code in your project please contact the Team or wait until it go MIT ;)

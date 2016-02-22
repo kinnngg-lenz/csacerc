@@ -57,11 +57,8 @@ Route::group(['middleware' => ['web']], function () {
 
     // FOR TESTING ONLY NOT FOR PRODUCTION
     Route::get('/test', function(){
-        $token = "05fbb6562117f546a60830f8c11b42ff74484b90a37208775d0e740484057f45";
-        return view('auth.emails.password')->withToken($token)->withUser(App\User::firstOrFail());
-    });
-    Route::get('/test2', function(){
-        return view('auth.emails.welcome');
+        $pdf  = PDF::loadView('auth.emails.welcome');
+        return $pdf->download('invoice.pdf');
     });
 
 
