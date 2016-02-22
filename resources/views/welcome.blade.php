@@ -61,11 +61,11 @@
             </div>
 
             <div class="col-md-12">
-                <div class="container">
+                <div class="container" style="padding: 0;">
                     <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 380 }'>
 
                         {{--News Starts--}}
-                        <div class="col-sm-6 grid-item col-md-4">
+                        <div class="col-sm-7 grid-item col-md-5">
                             <div class="panel panel-primary">
                                 <div class="panel-heading"><b>Latest News</b></div>
                                 <div class="panel-body no-padding">
