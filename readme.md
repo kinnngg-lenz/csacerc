@@ -29,7 +29,6 @@ As simple as
 Then cd into newly created directory and
 ``php artisan migrate``
 
-
 ## Contributing
 
 Thank you for considering contributing to the project! The contribution can be make by forking the repo.
@@ -37,6 +36,10 @@ Thank you for considering contributing to the project! The contribution can be m
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within this Repo, please send an e-mail to Zishan Ansari at zishanansari1337@gmail.com. All security vulnerabilities will be promptly addressed.
+
+## Team
+
+[Zishan Ansari](http://github.com/kinnngg)
 
 ### License
 
