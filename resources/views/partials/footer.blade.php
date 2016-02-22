@@ -34,5 +34,9 @@
                 {{ Form::close() }}
             </div>
         </div>
+
+        <div class="text-center hidden-xs">
+        <a class="btn btn-sm btn-primary" href="mailto:zishanansari1337@gmail.com"><i class="fa fa-bug"></i> Bug Report</a>
+        </div>
     </div>
 </footer>
