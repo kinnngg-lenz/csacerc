@@ -122,7 +122,7 @@
                         {{--CodeWar Starts--}}
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="panel panel-primary">
-                                <div class="panel-heading"><b>Latest Codewar</b></div>
+                                <div class="panel-heading"><b>Latest Codewars</b></div>
                                 <div class="panel-body no-padding">
                                     @foreach($codewars as $codewar)
                                         <div class="thumbnail">
