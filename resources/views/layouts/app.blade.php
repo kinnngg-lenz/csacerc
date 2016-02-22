@@ -61,11 +61,16 @@
                             Extras <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-desktop"></i>Showcase</a></li>
-                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-user"></i>Notes</a></li>
-                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-cog"></i>Computer Tricks</a></li>
-                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-sign-out"></i>Quotes</a></li>
-                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-sign-out"></i>Discuss Forum</a></li>
+                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-magic"></i>Showcase</a>
+                            </li>
+                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-paperclip"></i>Notes</a>
+                            </li>
+                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-laptop"></i>Computer
+                                    Tricks</a></li>
+                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-quote-left"></i>Quotes</a>
+                            </li>
+                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-fax"></i>Discuss
+                                    Forum</a></li>
                         </ul>
                     </li>
 

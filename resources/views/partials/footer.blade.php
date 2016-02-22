@@ -4,11 +4,12 @@
         <div class="row">
             <div class="col-md-7">
                 <p class="copyright">
-                    &copy; Department of Computer Science - ACERC, {{ date('Y') }}. All rights reserved.
+                    <i class="fa fa-copyright"></i> Department of Computer Science - ACERC, {{ date('Y') }}. Some rights
+                    reserved.
                 </p>
 
                 <div class="text-muted small">
-                    Proudly developed by <b>Students of CS Department ACERC - 3<sup>rd</sup> Year</b>
+                    <i class="fa fa-code"></i> Developed by <b>Students of CS Department ACERC - 3<sup>rd</sup> Year</b>
                 </div>
             </div>
 
@@ -37,6 +38,8 @@
 
         <div class="text-center hidden-xs">
         <a class="btn btn-sm btn-primary" href="mailto:zishanansari1337@gmail.com"><i class="fa fa-bug"></i> Bug Report</a>
+            <a class="btn btn-sm btn-primary" target="_blank" href="https://github.com/kinnngg-lenz/csacerc"><i
+                        class="fa fa-github"></i> View Source</a>
         </div>
     </div>
 </footer>

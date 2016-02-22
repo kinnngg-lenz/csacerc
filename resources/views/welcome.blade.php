@@ -177,7 +177,9 @@
                                         <div class="thumbnail">
                                             <div class="caption">
                                                 <a href="{{ route('users.profile.show',$user->username) }}">
-                                                    <h4>{{ $user->name }} <i class="small">{{ "@".$user->username }}</i>
+                                                    <h4>
+                                                        <i class="fa fa-{{ snake_case($user->gender) }}"></i> {{ $user->name }}
+                                                        <i class="small">{{ "@".$user->username }}</i>
                                                     </h4></a>
                                                 <p class="blockquote-reverse">
                                                     <i><span class="text-small">Joined {{  $user->created_at->diffForHumans() }}</span></i>

@@ -1,14 +1,17 @@
-## ACERC CS Dept Website
+## Website for Department of Computer Science, ACERC
 
-This website is being developed as an unofficial website for CS Dept of ACERC.
+A website specifically for cs dept. for any college. This website has many feature some one which are department
+specific while some of them can be used by any department. All features and logic are abstracted to its own level
+to make website more flexible.
 
 ## Features List:
+
 * [x] Image Gallery
 * [x] Upcoming Events
 * [x] News & Happening of College
 * [ ] Technology News
 * [x] Alumini
-* [ ] Quote of the Day
+* [x] Quotes
 * [ ] _Brain Teasers_
 * [ ] Computer Tricks
 * [ ] _Joke of the Day_
@@ -18,22 +21,14 @@ This website is being developed as an unofficial website for CS Dept of ACERC.
 * [x] Question anyone , anything anonymously (We respect your privacy).
 * [ ] Online Notes for all Subjects , Semesters with downloadable pdf version.
 
+## Installation
 
-## Packages Required:
-* Laravel Framework
-* laravelcollective/html
-* guzzlehttp/guzzle
-* Intervension Image
-* Image Gallery
-* RSS
-* NewsLetter
-* Admin Panel
-* Weather API
-* News API
-* Discuss Forum
-* mccool/laravel-auto-presenter
-* spatie/laravel-newsletter
-* doctrine/dbal
+As simple as
+``composer create-project kinnngg/acercs``
+
+Then cd into newly created directory and
+``php artisan migrate``
+
 
 ## Contributing
 
