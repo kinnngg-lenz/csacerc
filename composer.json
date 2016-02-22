@@ -18,7 +18,8 @@
         "vtalbot/markdown": "2.0.1",
         "google/apiclient": "^1.1",
         "barryvdh/laravel-snappy": "^0.2.2",
-        "laracasts/utilities": "^2.1"
+        "laracasts/utilities": "^2.1",
+        "jenssegers/agent": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

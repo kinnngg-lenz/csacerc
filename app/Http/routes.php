@@ -33,7 +33,7 @@ Route::group(['middleware' => ['web']], function () {
         $news = App\News::latest()->first();
         $event = App\Event::latest()->first();
         $codewars = App\CodeWarQuestion::latest()->limit(3)->get();
-        $questions = App\Question::public()->approved()->latest()->limit(3)->get();
+        $questions = App\Question::wherePublic(1)->approved()->latest()->limit(3)->get();
         $aluminis = App\Alumini::latest()->limit(2)->get();
         $users = App\User::latest()->limit(3)->get();
 

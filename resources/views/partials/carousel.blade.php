@@ -1,3 +1,4 @@
+@unless(Agent::isMobile())
 <div id="wrapper" class="hidden-xs">
     <div id="slider">
         <div class="slide" style="background-image: url(images/static/iceage.jpg);">
@@ -23,3 +24,4 @@
 
     </div>
 </div>
+@endunless
