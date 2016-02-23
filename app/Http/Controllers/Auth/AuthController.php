@@ -62,8 +62,8 @@ class AuthController extends Controller
             'username' => 'required|min:4|max:255|Regex:/([a-zA-Z0-9_])+$/i|unique:users',
             'gender' => 'required|in:Male,Female,Others',
             'type' => 'required|in:0,1',
-            'college' => 'required|in:0,1,2,3,4,5,6',
-            'department' => 'required|integer'
+            'college_id' => 'required|exists:colleges,id',
+            'department_id' => 'required|exists:departments,id'
         ]);
     }
 
@@ -82,8 +82,8 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'gender' => $data['gender'],
             'type' => $data['type'],
-            'college' => $data['college'],
-            'department' => $data['department'],
+            'college_id' => $data['college_id'],
+            'department_id' => $data['department_id'],
         ]);
 
         /**

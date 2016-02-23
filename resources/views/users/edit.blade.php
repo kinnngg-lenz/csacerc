@@ -46,40 +46,25 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('college') ? ' has-error' : '' }}">
-                            {{ Form::label('college', 'College:', ['class' => 'col-md-4 control-label']) }}
+                            {{ Form::label('college_id', 'College:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                                {{ Form::select('college', array(
-                                '1' => 'ARYA College of Engg & Research Center',
-                                '2' => 'ARYA Institute of Engg & Technology',
-                                '3' => 'ARYA Institute of Engg Tech & Management',
-                                '4' => 'ARYA College of Pharmacy',
-                                '6' => 'Others',
-                                '0' => 'None'
-                                ), null, ['placeholder' => 'Select College', 'class' => 'form-control']) }}
-                                @if ($errors->has('college'))
+                                {{ Form::select('college_id', App\College::lists('name', 'id'), null, ['placeholder' => 'Select your College..', 'class' => 'form-control']) }}
+                                @if ($errors->has('college_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('college') }}</strong>
+                                        <strong>{{ $errors->first('college_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
-                            {{ Form::label('department', 'Department:', ['class' => 'col-md-4 control-label']) }}
+                        <div class="form-group{{ $errors->has('department_id') ? ' has-error' : '' }}">
+                            {{ Form::label('department_id', 'Department:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                                {{ Form::select('department', array(
-                                '1' => 'Dept of Computer Science',
-                                '2' => 'Dept for 1st Year',
-                                '3' => 'Dept of Civil Engg.',
-                                '4' => 'Dept of Electrical Engg.',
-                                '5' => 'Dept of Mechanical Engg.',
-                                '6' => 'Others',
-                                '0' => 'None'
-                                ), null, ['placeholder' => 'Select Department', 'class' => 'form-control']) }}
-                                @if ($errors->has('department'))
+                                {{ Form::select('department_id', App\Department::lists('name', 'id'), null, ['placeholder' => 'Select your Department..', 'class' => 'form-control']) }}
+                                @if ($errors->has('department_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('department') }}</strong>
+                                        <strong>{{ $errors->first('department_id') }}</strong>
                                     </span>
                                 @endif
                             </div>

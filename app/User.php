@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','gender','type','about','dob', 'college', 'department'
+        'name', 'email', 'password','username','gender','type','about','dob', 'college_id', 'department_id'
     ];
 
     /**
@@ -71,6 +71,22 @@ class User extends Authenticatable
     public function codeWarAnswers()
     {
         return $this->hasMany('App\CodeWarAnswer');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function college()
+    {
+        return $this->belongsTo('App\College');
     }
 
     /**
@@ -136,7 +152,7 @@ class User extends Authenticatable
             case 3:
                 return "Super Administrator";
             case 4:
-                return "Anonymous";
+                return "Developer";
             default:
                 return "Member";
         }
@@ -169,27 +185,8 @@ class User extends Authenticatable
      */
     public function gca()
     {
-        switch($this->college)
-        {
-            case 0:
-                return "None";
-            case 1:
-                return "ARYA College of Engg & Research Center";
-            case 2:
-                return "ARYA Institute of Engg & Technology";
-            case 3:
-                return "ARYA Institute of Engg Tech & Management";
-            case 4:
-                return "ARYA College of Pharmacy";
-            case 5:
-                return "Old ARYA";
-            case 6:
-                return "Others";
-            default:
-                return "None";
-        }
+        return $this->college->name;
     }
-
 
     /**
      * Returns department in String
@@ -199,25 +196,7 @@ class User extends Authenticatable
      */
     public function gda()
     {
-        switch($this->department)
-        {
-            case 0:
-                return "None";
-            case 1:
-                return "Department of Computer Science Engineering";
-            case 2:
-                return "Department for 1st Year";
-            case 3:
-                return "Department of Civil Engineering";
-            case 4:
-                return "Department of Electrical Engineering";
-            case 5:
-                return "Department of Mechanical Engineering";
-            case 6:
-                return "Others";
-            default:
-                return "None";
-        }
+        return $this->department->name;
     }
 
     /**

@@ -14,25 +14,8 @@ class AddFewColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            /**
-             * 0 -> None
-             * 1 -> CS
-             * 2 -> EE
-             * 3 -> CE
-             */
-            $table->integer('department')->default(0)->after('type');
-
-            /**
-             * College Belongs to
-             * 0 -> None
-             * 1 -> ACERC
-             * 2 -> AIET
-             * 3 -> AIETM
-             * 4 -> Arya College of Pharmacy
-             * 5 -> Arya Old
-             * 6 -> Others
-             */
-            $table->integer('college')->default(0)->after('type');
+            $table->integer('department_id')->unsigned()->default(1)->after('type');
+            $table->integer('college_id')->unsigned()->default(1)->after('type');
 
             /**
              * Exp Point of User
@@ -50,8 +33,8 @@ class AddFewColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('xp');
-            $table->dropColumn('department');
-            $table->dropColumn('college');
+            $table->dropColumn('department_id');
+            $table->dropColumn('college_id');
         });
     }
 }

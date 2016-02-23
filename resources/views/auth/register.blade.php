@@ -107,60 +107,17 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('college') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('college_id') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Your College</label>
                             <div class="col-md-6">
-                                <select name="college" class="form-control" id="inputType">
-                                    <option value="" class="text-muted">Select College</option>
-                                    <option value="1" {{ (old("college") == "1" ? "selected":"") }}>
-                                        ARYA College of Engg & Research Center
-                                    </option>
-                                    <option value="2" {{ (old("college") == "2" ? "selected":"") }}>
-                                        ARYA Institute of Engg & Technology
-                                    </option>
-                                    <option value="3" {{ (old("college") == "3" ? "selected":"") }}>
-                                        ARYA Institute of Engg Tech & Management
-                                    </option>
-                                    <option value="4" {{ (old("college") == "4" ? "selected":"") }}>
-                                        ARYA College of Pharmacy
-                                    </option>
-                                    <option value="6" {{ (old("college") == "6" ? "selected":"") }}>
-                                        Others
-                                    </option>
-                                    <option value="0" {{ (old("college") == "0" ? "selected":"") }}>
-                                        None
-                                    </option>
-                                </select>
+                                {{ Form::select('college_id', App\College::lists('name','id'), null, ['placeholder' => 'Select your College..', 'class' => 'form-control', 'id' => "inputType"]) }}
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('department_id') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Department</label>
                             <div class="col-md-6">
-                                <select name="department" class="form-control" id="inputType">
-                                    <option value="" class="text-muted">Select Department</option>
-                                    <option value="1" {{ (old("department") == "1" ? "selected":"") }}>
-                                        Dept of Computer Science
-                                    </option>
-                                    <option value="2" {{ (old("department") == "2" ? "selected":"") }}>
-                                        Dept for 1st Year
-                                    </option>
-                                    <option value="3" {{ (old("department") == "3" ? "selected":"") }}>
-                                        Dept of Civil Engg.
-                                    </option>
-                                    <option value="4" {{ (old("department") == "4" ? "selected":"") }}>
-                                        Dept of Electrical Engg.
-                                    </option>
-                                    <option value="5" {{ (old("department") == "5" ? "selected":"") }}>
-                                        Dept of Mechanical Engg.
-                                    </option>
-                                    <option value="6" {{ (old("department") == "6" ? "selected":"") }}>
-                                        Others
-                                    </option>
-                                    <option value="0" {{ (old("department") == "0" ? "selected":"") }}>
-                                        None
-                                    </option>
-                                </select>
+                                {{ Form::select('department_id', App\Department::lists('name','id'), null, ['placeholder' => 'Select your Department..', 'class' => 'form-control']) }}
                             </div>
                         </div>
 
