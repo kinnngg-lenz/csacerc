@@ -17,8 +17,8 @@ elixir(function(mix) {
 
     mix.styles(['bootstrap.css', 'highlight/railscasts.css', ,'bootstrap-datetimepicker.min.css', 'bubble.css', 'app.css'],null,'public/css');
 
-    //@TODO: Try to remove vue.min.js, highlight.pack.js, jquery.carouFredSel-6.2.0-packed.js
-    mix.scripts(['jquery.min.js', 'bootstrap.min.js', 'modernizr.js', 'typeahead.bundle.min.js', 'masonry.pkgd.min.js', 'jquery.imagesloaded.js', 'highlight.pack.js', 'bootstrap-datetimepicker.min.js', 'jquery.countdown2.js', 'jquery.carouFredSel-6.2.0-packed.js', 'jquery.flexslider-min.js', 'app.js'],null,'public/js');
+    //@TODO: Try to remove vue.min.js, jquery.carouFredSel-6.2.0-packed.js
+    mix.scripts(['jquery.min.js', 'bootstrap.min.js', 'modernizr.js', 'typeahead.bundle.min.js', 'masonry.pkgd.min.js', 'jquery.imagesloaded.js', 'bootstrap-datetimepicker.min.js', 'jquery.countdown2.js', 'jquery.flexslider-min.js', 'app.js'],null,'public/js');
 
     mix.version(['css/all.css','js/all.js']);
 });

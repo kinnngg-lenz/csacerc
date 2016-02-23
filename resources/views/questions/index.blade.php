@@ -68,3 +68,12 @@
     </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('/js/highlight.pack.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+@endsection

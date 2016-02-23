@@ -259,6 +259,13 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript" src="{{ asset('/js/highlight.pack.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        hljs.initHighlightingOnLoad();
+    });
+</script>
+
     @if($question->ends_at != null && $question->ends_at > Carbon\Carbon::now())
         <script type="text/javascript">
             $('.counter').countdown(count_down, function (event) {
