@@ -221,6 +221,7 @@
 
                         {{--Weather API Ends--}}
 
+                        @unless($technews->isEmpty())
                         {{--Tech News Starts--}}
                         <div class="col-sm-7 grid-item col-md-5">
                             <div class="panel panel-primary">
@@ -248,6 +249,7 @@
                             </div>
                         </div>
                         {{--Tech News Ends--}}
+                        @endunless
 
                         {{--Quote of the Day Starts--}}
                         <div class="col-sm-6 grid-item col-md-4">
