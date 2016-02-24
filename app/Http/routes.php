@@ -36,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
         $questions = App\Question::wherePublic(1)->approved()->latest()->limit(3)->get();
         $aluminis = App\Alumini::latest()->limit(2)->get();
         $users = App\User::latest()->limit(3)->get();
-        $picture = App\Photo::gallery()->get()->random();
+        $picture = App\Photo::whereGallery(1)->get()->random();
         $technews = App\News::whereType(1)->latest()->first();
 
         $data = [
