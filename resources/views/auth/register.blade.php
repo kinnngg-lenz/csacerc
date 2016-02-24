@@ -91,8 +91,13 @@
                                     <option value="" class="text-muted">Select Gender</option>
                                     <option value="Female" {{ (old("gender") == "Female" ? "selected":"") }}>Female</option>
                                     <option value="Male" {{ (old("gender") == "Male" ? "selected":"") }}>Male</option>
-                                    <option value="Others" {{ (old("gender") == "Others" ? "selected":"") }}>Others</option>
+                                    {{--<option value="Others" {{ (old("gender") == "Others" ? "selected":"") }}>Others</option>--}}
                                 </select>
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -104,6 +109,11 @@
                                     <option value="0" {{ (old("type") == "0" ? "selected":"") }}>A Student</option>
                                     <option value="1" {{ (old("type") == "1" ? "selected":"") }}>Faculty Member</option>
                                 </select>
+                                @if ($errors->has('type'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('type') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -111,6 +121,11 @@
                             <label class="col-md-4 control-label">Your College</label>
                             <div class="col-md-6">
                                 {{ Form::select('college_id', App\College::lists('name','id'), null, ['placeholder' => 'Select your College..', 'class' => 'form-control', 'id' => "inputType"]) }}
+                                @if ($errors->has('college_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('college_id') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -118,6 +133,11 @@
                             <label class="col-md-4 control-label">Department</label>
                             <div class="col-md-6">
                                 {{ Form::select('department_id', App\Department::lists('name','id'), null, ['placeholder' => 'Select your Department..', 'class' => 'form-control']) }}
+                                @if ($errors->has('department_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('department_id') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

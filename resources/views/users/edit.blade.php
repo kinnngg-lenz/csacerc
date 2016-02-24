@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('college') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('college_id') ? ' has-error' : '' }}">
                             {{ Form::label('college_id', 'College:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
                                 {{ Form::select('college_id', App\College::lists('name', 'id'), null, ['placeholder' => 'Select your College..', 'class' => 'form-control']) }}

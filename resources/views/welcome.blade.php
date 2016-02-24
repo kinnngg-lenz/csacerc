@@ -72,7 +72,7 @@
                                 <div class="panel-body no-padding">
                                     <div class="thumbnail no-border">
                                         <img data-src="holder.js/100%x200" alt="100%x200"
-                                             src="images/{{ $news->photo->url }}" data-holder-rendered="true"
+                                             src="{{ route('make.thumbnail',[$news->photo->url]) }}" data-holder-rendered="true"
                                              style="height: 100%; width: 500px; display: block;">
                                         <div class="caption">
                                             <p class="blockquote-reverse">
@@ -100,7 +100,7 @@
                                 <div class="panel-body no-padding">
                                     <div class="thumbnail no-border">
                                         <img data-src="holder.js/100%x200" alt="100%x200"
-                                             src="images/{{ $event->photo->url }}" data-holder-rendered="true"
+                                             src="{{ route('make.thumbnail',[$event->photo->url]) }}" data-holder-rendered="true"
                                              style="height: 100%; width: 500px; display: block;">
                                         <div class="caption">
                                             <h4>{{ $event->name }}</h4>
@@ -218,7 +218,7 @@
                                 <div class="panel-body no-padding">
                                     <div class="thumbnail no-border">
                                         <img data-src="holder.js/100%x200" alt="100%x200"
-                                             src="images/{{ $technews->photo->url }}" data-holder-rendered="true"
+                                             src="{{ route('make.thumbnail',[$technews->photo->url]) }}" data-holder-rendered="true"
                                              style="height: 100%; width: 500px; display: block;">
                                         <div class="caption">
                                             <p class="blockquote-reverse">
@@ -261,7 +261,7 @@
                                 <div class="panel-body no-padding text-center">
                                     <div class="thumbnail no-border">
                                         <img data-src="holder.js/100%x200" alt="100%x200"
-                                             src="images/{{ $picture->url }}" data-holder-rendered="true"
+                                             src="{{ route('make.thumbnail',[$picture->url]) }}" data-holder-rendered="true"
                                              style="height: 100%; width: 500px; display: block;">
                                     </div>
                                 </div>

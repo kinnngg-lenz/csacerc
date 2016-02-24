@@ -19,7 +19,7 @@ class NewsletterController extends Controller
 
     public function subscribe(NewsletterRequest $request)
     {
-        $subs = Newsletter::subscribe($request->email);
+        $subs = Newsletter::subscribe($request->subscriber_email);
 
         if($subs)
         {

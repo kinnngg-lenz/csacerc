@@ -60,9 +60,16 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     // FOR TESTING ONLY NOT FOR PRODUCTION
-    Route::get('/test', function(){
-        $pdf  = PDF::loadView('auth.emails.welcome');
-        return $pdf->download('invoice.pdf');
+    Route::get('/images/{url}/thumbnail/{width?}', function(){
+
+        $image = Image::make(public_path().'/images/static/birds.jpg');
+
+        $image->resize(600, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        $new = new Intervention\Image\Response($image);
+        return $new->make();
     });
 
 
@@ -119,6 +126,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/gallery/create', ['as' => 'gallery.create', 'uses' => 'PhotosController@create']);
     Route::post('/gallery/create', ['as' => 'gallery.store', 'uses' => 'PhotosController@store']);
     Route::get('/gallery/{url}', ['as' => 'gallery.show', 'uses' => 'PhotosController@show']);
+    Route::get('image/{url}/thumbnail/{width?}', ['as' => 'make.thumbnail', 'uses' => 'PhotosController@thumbnail']);
 
     /**
      * Likes Controller

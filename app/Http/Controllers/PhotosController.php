@@ -6,6 +6,7 @@ use App\Http\Requests\PhotoRequest;
 use App\Photo;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Image;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -19,8 +20,8 @@ class PhotosController extends Controller
 
     public function __construct(Photo $photo)
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-        $this->middleware('admin', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'thumbnail']]);
+        $this->middleware('admin', ['except' => ['index', 'show', 'thumbnail']]);
         $this->photo = $photo;
     }
 
@@ -115,5 +116,17 @@ class PhotosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function thumbnail($url,$width=500)
+    {
+        $image = Image::make(public_path().'/images/'.$url);
+
+        $image->resize($width, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        $new = new \Intervention\Image\Response($image,null,100);
+        return $new->make();
     }
 }
