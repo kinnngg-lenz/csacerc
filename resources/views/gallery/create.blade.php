@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('title', 'Add Picture to Gallery')
+@section('styles')
+    <style>
+        footer
+        {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 @section('content')
     <div class="container">
         <div class="row">

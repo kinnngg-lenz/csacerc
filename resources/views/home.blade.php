@@ -88,7 +88,7 @@
             $('#ajaxinspire').fadeOut('normal', function()
             {
                 $('#ajaxinspire').load('/inspire');
-                $('#ajaxinspire').fadeIn(2000, function()
+                $('#ajaxinspire').fadeIn(3000, function()
                 {
                     window.setTimeout("update_div()", 8000);
                 });

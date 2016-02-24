@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('styles')
+    {{-- HTML::style('/packages/torann/laravel-weather/weather.css') --}}
     <style>
         @media (max-width: 767px) {
             .quote-container {
@@ -209,18 +210,6 @@
                             {{--Alumini 1 Ends--}}
                         @endforeach
 
-                        {{--Weather API Starts--}}
-                        <div class="col-sm-6 grid-item col-md-4">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading"><b>Today's Forecast</b></div>
-                                <div class="panel-body no-padding text-center">
-                                    <h3>Coming Soon</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{--Weather API Ends--}}
-
                         @unless(is_null($technews))
                         {{--Tech News Starts--}}
                         <div class="col-sm-7 grid-item col-md-5">
@@ -279,6 +268,17 @@
                             </div>
                         </div>
                         {{--Pic of the Day Ends--}}
+
+                        {{--Weather API Starts--}}
+                        <div class="col-sm-6 grid-item col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><b>Today's Forecast</b></div>
+                                <div class="panel-body no-padding text-center">
+                                    <h3>Coming Soon</h3>
+                                </div>
+                            </div>
+                        </div>
+                        {{--Weather API Ends--}}
 
                     </div>
                 </div>
@@ -558,7 +558,7 @@
                 $('#ajaxinspire').fadeOut('normal', function()
                 {
                     $('#ajaxinspire').load('/inspire');
-                    $('#ajaxinspire').fadeIn(2000, function()
+                    $('#ajaxinspire').fadeIn(3000, function()
                     {
                         window.setTimeout("update_div()", 8000);
                     });
