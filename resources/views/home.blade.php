@@ -82,10 +82,18 @@
 
 @section('scripts')
     <script type="text/javascript">
-        $(document).ready(function () {
-        var refreshId = setInterval(function () {
-            $('#ajaxinspire').hide().load("/inspire").fadeIn(2000);
-        },10000);
-        });
+        // Quotes AJAX load
+        function update_div()
+        {
+            $('#ajaxinspire').fadeOut('normal', function()
+            {
+                $('#ajaxinspire').load('/inspire');
+                $('#ajaxinspire').fadeIn(2000, function()
+                {
+                    window.setTimeout("update_div()", 8000);
+                });
+            });
+        }
+        update_div();
     </script>
 @endsection

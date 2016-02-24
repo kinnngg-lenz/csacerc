@@ -22,6 +22,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                            {{ Form::label('type', 'News Type', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                {{ Form::select('type', ['0' => 'College & Happening', '1' => 'Science & Technology'], null, ['placeholder' => 'Select News Type..', 'class' => 'form-control']) }}
+                                @if ($errors->has('type'))
+                                    <span class="help-block">
+                            <strong>{{ $errors->first('type') }}</strong>
+                            </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                             {{ Form::label('description', 'News Text', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">

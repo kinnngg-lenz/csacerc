@@ -218,18 +218,65 @@
                                 </div>
                             </div>
                         </div>
+
                         {{--Weather API Ends--}}
 
-                        {{--Tech News API Starts--}}
-                        <div class="col-sm-6 grid-item col-md-4">
+                        {{--Tech News Starts--}}
+                        <div class="col-sm-7 grid-item col-md-5">
                             <div class="panel panel-primary">
-                                <div class="panel-heading"><b>Tech News</b></div>
-                                <div class="panel-body no-padding text-center">
-                                    <h3>Coming Soon</h3>
+                                <div class="panel-heading"><b>Technology News</b></div>
+                                <div class="panel-body no-padding">
+                                    <div class="thumbnail no-border">
+                                        <img data-src="holder.js/100%x200" alt="100%x200"
+                                             src="images/{{ $technews->photo->url }}" data-holder-rendered="true"
+                                             style="height: 100%; width: 500px; display: block;">
+                                        <div class="caption">
+                                            <p class="blockquote-reverse">
+                                        <span class="text-small">
+                                            {{ $technews->created_at->toDayDateTimeString() }} <br>
+                                            {{--({{ $news->created_at->diffForHumans() }}) <br>--}}
+                                        </span>
+                                            </p>
+                                            <h3 class="text-bold padding10 title">{{ $technews->title }}</h3>
+                                            <i class="padding10 small text-muted">By {{ $technews->user->name }}</i>
+                                            <p class="padding10 text-justify">
+                                                {!! nl2br($technews->description) !!}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        {{--Tech News API Ends--}}
+                        {{--Tech News Ends--}}
+
+                        {{--Quote of the Day Starts--}}
+                        <div class="col-sm-6 grid-item col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><b>Quote of the day</b></div>
+                                <div class="panel-body no-padding text-center">
+                                    <h4 id="quoteofday">
+                    <i class="inspire text-violet"><span
+                                class="text-lg">&#8220;</span> Best revenge is massive success <span class="text-lg">&#8221;</span><br> - Frank Sinatra</i>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        {{--Quote of the Day Ends--}}
+
+                        {{--Pic of the Day Starts--}}
+                        <div class="col-sm-6 grid-item col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><b>Picture of the day</b></div>
+                                <div class="panel-body no-padding text-center">
+                                    <div class="thumbnail no-border">
+                                        <img data-src="holder.js/100%x200" alt="100%x200"
+                                             src="images/{{ $picture->url }}" data-holder-rendered="true"
+                                             style="height: 100%; width: 500px; display: block;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{--Pic of the Day Ends--}}
 
                     </div>
                 </div>
@@ -502,11 +549,21 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('/js/jquery.carouFredSel-6.2.0-packed.js') }}"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            var refreshId = setInterval(function () {
-                $('#ajaxinspire').hide().load("/inspire").fadeIn(2000);
-            }, 10000);
-        });
+
+        // Quotes AJAX load
+            function update_div()
+            {
+                $('#ajaxinspire').fadeOut('normal', function()
+                {
+                    $('#ajaxinspire').load('/inspire');
+                    $('#ajaxinspire').fadeIn(2000, function()
+                    {
+                        window.setTimeout("update_div()", 8000);
+                    });
+                });
+            }
+            update_div();
+
 
         // Carousel Function
         $(function() {

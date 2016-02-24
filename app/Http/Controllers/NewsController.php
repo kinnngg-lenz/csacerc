@@ -64,6 +64,7 @@ class NewsController extends Controller
 
                 $request->user()->news()->create([
                     'title' => $request->title,
+                    'type' => $request->type,
                     'description' => $request->description,
                     'photo_id' => $photo->id,
                     'slug' => $slug,

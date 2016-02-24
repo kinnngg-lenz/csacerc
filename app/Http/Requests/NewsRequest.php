@@ -28,6 +28,7 @@ class NewsRequest extends Request
     {
         return [
             'title' => 'required|min:5',
+            'type' => 'required|in:0,1',
             'description' => 'required|min:10',
             'photo' => 'required|image',
         ];
