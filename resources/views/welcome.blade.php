@@ -221,7 +221,7 @@
 
                         {{--Weather API Ends--}}
 
-                        @unless($technews->isEmpty())
+                        @unless(is_null($technews))
                         {{--Tech News Starts--}}
                         <div class="col-sm-7 grid-item col-md-5">
                             <div class="panel panel-primary">
