@@ -149,7 +149,8 @@ class QuestionsController extends Controller
     }
 
     /**
-     * Returns all Questions to User
+     * Returns all Questions asked to this User
+     * Both that User answered and not
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

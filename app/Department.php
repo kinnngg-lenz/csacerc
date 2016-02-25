@@ -10,4 +10,9 @@ class Department extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public function notes()
+    {
+        return $this->hasMany('App\Note');
+    }
 }

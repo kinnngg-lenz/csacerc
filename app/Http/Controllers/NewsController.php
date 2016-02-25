@@ -33,7 +33,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('news.index')->withAllnews($this->news->with('photo')->latest()->paginate(10));
+        return view('news.index')->withAllnews($this->news->with('photo')->with('user')->latest()->paginate(10));
     }
 
     /**

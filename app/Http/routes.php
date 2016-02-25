@@ -136,6 +136,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/questions/{question_id}/likes', ['as' => 'questions.question.likes.post', 'uses' => 'LikesController@likeQQ']);
 
     /**
+     * Notes Controller
+     */
+    Route::get('/notes/create', ['as' => 'notes.create', 'uses' => 'NotesController@create']);
+    Route::post('/notes/create', ['as' => 'notes.create', 'uses' => 'NotesController@store']);
+    Route::get('/notes', ['as' => 'notes.index', 'uses' => 'NotesController@index']);
+    Route::get('/notes/{id}/download', ['as' => 'notes.download', 'uses' => 'NotesController@download']);
+    Route::get('/notes/{slug}', ['as' => 'notes.show', 'uses' => 'NotesController@show']);
+    /**
      * NewsLetter Controller
      */
     Route::post('/newsletter/subscribe', ['as' => 'newsletter.subscribe', 'uses' => 'NewsletterController@subscribe']);

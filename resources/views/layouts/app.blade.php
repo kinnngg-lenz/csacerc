@@ -51,26 +51,24 @@
                     <li class="{{ set_active(['events']) }}">{{ link_to_route('event.index','Events') }}</li>
                     <li class="{{ set_active(['alumini']) }}">{{ link_to_route('alumini.index','Alumini') }}</li>
                     <li class="{{ set_active(['gallery']) }}">{{ link_to_route('gallery.index', 'Gallery') }}</li>
-                    <li class="{{ set_active(['questions*']) }}">{{ link_to_route('questions.index','Questions') }}</li>
                     <li class="{{ set_active(['codewar*']) }}">{{ link_to_route('codewar.index','Codewar') }}</li>
+                    <li class="{{ set_active(['notes']) }}">{{ link_to_route('notes.index','Notes') }}</li>
 
                     {{-- DropDown for Extras --}}
 
-                    <li class="dropdown">
+                    <li class="dropdown {{ set_active(['question*']) }}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            Extras <span class="caret"></span>
+                            More <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-magic"></i>Showcase</a>
+                            <li class="spin {{ set_active(['questions*']) }}"><a href="{{ route('questions.index') }}"><i class="fa fa-btn fa-question"></i>Questions</a>
                             </li>
-                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-paperclip"></i>Notes</a>
+                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-magic"></i>Showcase</a>
                             </li>
                             <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-laptop"></i>Computer
                                     Tricks</a></li>
                             <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-quote-left"></i>Quotes</a>
                             </li>
-                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-fax"></i>Discuss
-                                    Forum</a></li>
                         </ul>
                     </li>
 

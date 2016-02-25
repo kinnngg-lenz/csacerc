@@ -52,7 +52,7 @@ class UsersController extends Controller
         }
 
         $this->validate($request, [
-            'dob' => 'required',
+            'dob' => 'required|date|before:2016-01-01',
             'name' => 'required',
             'about' => 'required',
             'college_id' => 'required|exists:colleges,id',

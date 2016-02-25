@@ -208,4 +208,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Like');
     }
+
+    /**
+     *
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notes()
+    {
+        return $this->hasMany('App\Note');
+    }
 }
