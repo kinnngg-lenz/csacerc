@@ -28,6 +28,43 @@
             margin-top: 5px;;
         }
 
+        /* code for animated blinking cursor */
+        .typed-cursor{
+            opacity: 1;
+            font-weight: 100;
+            -webkit-animation: blink 0.7s infinite;
+            -moz-animation: blink 0.7s infinite;
+            -ms-animation: blink 0.7s infinite;
+            -o-animation: blink 0.7s infinite;
+            animation: blink 0.7s infinite;
+        }
+        @-keyframes blink{
+        0% { opacity:1; }
+        50% { opacity:0; }
+        100% { opacity:1; }
+        }
+        @-webkit-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-moz-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-ms-keyframes blink{
+        0% { opacity:1; }
+        50% { opacity:0; }
+        100% { opacity:1; }
+        }
+        @-o-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+
+
     </style>
 @endsection
 
@@ -50,13 +87,13 @@
                         @unless($user->dob == null)
                             <p><i class="fa fa-birthday-cake"></i> {{ $user->dob->format('jS F') }}</p>
                         @endunless
-                        <p class="about">{!! nl2br(htmlentities($user->about)) !!}</p>
+                        <div id="typed-strings">
+                            <p class="hidden">Few words about me . . .</p>
+                            <p>{!! nl2br(htmlentities($user->about)) !!}</p>
+                        </div>
+                        <p class="about"><span id="typed"></span></p>
                     </div>
                 </div>
-
-
-
-
 
                 <p class="text-muted blockquote-reverse">
                     {{ $user->gta() }}
@@ -75,7 +112,25 @@
             <div class="col-md-6 col-md-offset-3">
 
             </div>
+            </div>
         </div>
 
     </div>
+@endsection
+
+@section('scripts')
+    <script src="/js/typed.min.js" type="text/javascript"></script>
+    <script>
+        $(function(){
+
+            $("#typed").typed({
+                // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
+                stringsElement: $('#typed-strings'),
+                typeSpeed: 50,
+                contentType: 'html' // or text
+                // defaults to false for infinite loop
+
+            });
+        });
+    </script>
 @endsection
