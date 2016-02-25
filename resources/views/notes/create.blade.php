@@ -59,9 +59,9 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('owner') ? ' has-error' : '' }}">
-                            {{ Form::label('owner', 'Owner Name:', ['class' => 'col-md-4 control-label']) }}
+                            {{ Form::label('owner', 'Writer Name:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                            {{ Form::text('owner',null,['class' => 'form-control']) }}
+                            {{ Form::text('owner',null,['class' => 'form-control','placeholder' => 'Name of the Owner or Writer']) }}
                             @if ($errors->has('owner'))
                             <span class="help-block">
                             <strong>{{ $errors->first('owner') }}</strong>
