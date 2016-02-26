@@ -123,8 +123,10 @@
     </div>
 </nav>
 @if(Session::has('notification'))
-    <div class="alert alert-info col-md-8 col-md-offset-2 text-center notification">
+    <div class="container">
+    <div class="alert alert-{{ Session::has('type') ? Session::get('type') : 'info' }} col-md-10 text-center notification" style="position: absolute;z-index:100;">
         {{ Session::get('notification') }}
+    </div>
     </div>
     @endif
 

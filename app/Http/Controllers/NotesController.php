@@ -65,7 +65,7 @@ class NotesController extends Controller
                     'slug' => $slug,
                 ]);
 
-                return back()->withNotification('Notes has been added!');
+                return back()->withNotification('Notes has been added!')->withType('success');
             }
         }
     }

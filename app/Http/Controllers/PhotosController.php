@@ -66,11 +66,11 @@ class PhotosController extends Controller
                     'gallery' => 1
                 ]);
 
-                return back()->withNotification('Success! Image has been added to gallery.');
+                return back()->withNotification('Success! Image has been added to gallery.')->withType('success');
             }
-            return back()->withNotification('Error! Something went wrong.');
+            return back()->withNotification('Error! Something went wrong.')->withType('danger');
         }
-        return back()->withNotification('Error! Something went wrong.');
+        return back()->withNotification('Error! Something went wrong.')->withType('danger');
     }
 
     /**

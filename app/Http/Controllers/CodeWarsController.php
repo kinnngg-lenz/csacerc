@@ -73,7 +73,7 @@ class CodeWarsController extends Controller
             'ends_at' => $ends_at,
         ]);
 
-        return back()->withNotification('Success! War has been started.');
+        return back()->withNotification('Success! War has been started.')->withType('success');
     }
 
     /**

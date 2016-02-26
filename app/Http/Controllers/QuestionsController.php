@@ -84,7 +84,7 @@ class QuestionsController extends Controller
         $request->user()->xp = $request->user()->xp + 10;
         $request->user()->save();
 
-        return back()->withNotification('Success! Your question is awaiting approval by a Moderator.');
+        return back()->withNotification('Success! Your question is awaiting approval by a Moderator.')->withType('success');
 
     }
 
@@ -139,7 +139,7 @@ class QuestionsController extends Controller
         $question->approved = 1;
         $question->save();
 
-        return back()->withNotification("Success! Question has been approved.");
+        return back()->withNotification("Success! Question has been approved.")->withType('success');
     }
 
     public function pending()
@@ -192,7 +192,7 @@ class QuestionsController extends Controller
         $request->user()->xp = $request->user()->xp + 20;
         $request->user()->save();
 
-        return back()->withNotification("Success! Question has been answered.");
+        return back()->withNotification("Success! Question has been answered.")->withType('success');
     }
 
     public function iAsked()

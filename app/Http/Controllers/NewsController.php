@@ -70,7 +70,7 @@ class NewsController extends Controller
                     'slug' => $slug,
                 ]);
 
-                return back()->withNotification('News has been created!');
+                return back()->withNotification('News has been created!')->withType('success');
             }
         }
     }

@@ -72,7 +72,7 @@ class EventsController extends Controller
                     'slug' => $slug,
                 ]);
 
-                return back()->withNotification('Event has been created!');
+                return back()->withNotification('Event has been created!')->withType('success');
             }
         }
     }

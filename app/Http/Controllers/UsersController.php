@@ -61,7 +61,7 @@ class UsersController extends Controller
 
         $user->fill($request->only('dob', 'name', 'about', 'college_id', 'department_id'))->save();
 
-        return back()->withNotification('Profile has been updated');
+        return back()->withNotification('Profile has been updated')->withType('success');
 
     }
 
@@ -88,34 +88,34 @@ class UsersController extends Controller
     {
         if($request->username != $username)
         {
-            return back()->withNotification("Aw! Please don't try to mess up the code ;)");
+            return back()->withNotification("Aw! Please don't try to mess up the code ;)")->withType('danger');
         }
 
         $user = User::whereUsername($request->username)->first();
 
         if(is_null($user))
         {
-            return back()->withNotification("Sorry! User not found");
+            return back()->withNotification("Sorry! User not found")->withType('warning');
         }
 
         if($request->user()->role <= $user->role)
         {
-            return back()->withNotification("Sorry! You don't have rights to ban this user");
+            return back()->withNotification("Sorry! You don't have rights to ban this user")->withType('danger');
         }
 
         if($user->banned == 1)
         {
             $user->banned = 0;
             $user->save();
-            return back()->withNotification("Success! You have unbanned this user");
+            return back()->withNotification("Success! You have unbanned this user")->withType('success');
         }
         elseif($user->banned == 0)
         {
             $user->banned = 1;
             $user->save();
-            return back()->withNotification("Success! You have banned this user");
+            return back()->withNotification("Success! You have banned this user")->withType('success');
         }
 
-        return back()->withNotification("Error! something not well");
+        return back()->withNotification("Error! something not well")->withType('danger');
     }
 }

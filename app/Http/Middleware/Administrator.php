@@ -31,7 +31,7 @@ class Administrator
          */
         if($request->user()->role > 4)
         {
-            return redirect('/')->withNotification("Sorry buddy! You are not authorized for that action.");
+            return redirect('/')->withNotification("Sorry buddy! You are not authorized for that action.")->withType('warning');
         }
 
         /**
@@ -39,7 +39,7 @@ class Administrator
          */
         if($request->user()->role < $role)
         {
-            return redirect('/')->withNotification("Sorry buddy! You are not authorized for that action.");
+            return redirect('/')->withNotification("Sorry buddy! You are not authorized for that action.")->withType('warning');
         }
 
         return $next($request);

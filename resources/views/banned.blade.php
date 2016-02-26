@@ -31,12 +31,16 @@
             width: 100%;
             bottom: 0;
         }
+        .red
+        {
+            color: #D53735 !important;
+        }
     </style>
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="jumbotron text-center">
-                <h1 class="white">Oops! You are Banned!</h1>
+                <h1 class="red">Oops! You are Banned!</h1>
                 <p class="white">This may be a reaction of some action done by you ;)</p>
                 <p class="white">If you think you are banned without any valid reason then please contact administrator.</p>
             </div>

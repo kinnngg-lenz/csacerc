@@ -57,7 +57,7 @@ class AluminisController extends Controller
                 'profession' => $request->profession,
                 'slug' => $slug,
             ]);
-        return back()->withNotification('A New Alumini has been created successfully!');
+        return back()->withNotification('A New Alumini has been created successfully!')->withType('success');
 
     }
 

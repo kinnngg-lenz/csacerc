@@ -23,8 +23,8 @@ class NewsletterController extends Controller
 
         if($subs)
         {
-            return back()->withNotification('You have subscribed successfully! Check your email for confirmation.');
+            return back()->withNotification('You have subscribed successfully! Check your email for confirmation.')->withType('success');
         }
-        return back()->withNotification('Error! We are working to fix it.');
+        return back()->withNotification('Error! We are working to fix it.')->withType('danger');
     }
 }
