@@ -59,31 +59,52 @@ Route::group(['middleware' => ['web']], function () {
         return view('comingsoon');
     });
 
+    //TEST
+    Route::get('/test', function(){
+        return view('newsletter.voyage');
+    });
+
 });
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/dashboard', ['as' => 'home', 'uses' => 'HomeController@index']);
 
+    /**
+     * Users Controller
+     */
     Route::get('/@{username}', ['as' => 'users.profile.show', 'uses' => 'UsersController@showProfile']);
     Route::get('/@{username}/edit',['as' => 'users.profile.edit', 'uses' => 'UsersController@editProfile']);
     Route::post('/@{username}/edit',['as' => 'users.profile.update', 'uses' => 'UsersController@updateProfile']);
+    Route::patch('/toggleban/@{username}',['middleware' => 'admin:3', 'as' => 'users.toggleban', 'uses' => 'UsersController@toggleBanUser']);
 
+    /**
+     * Aluminis Controller
+     */
     Route::get('/alumini', ['as' => 'alumini.index', 'uses' => 'AluminisController@index']);
     Route::get('/alumini/create', ['as' => 'alumini.create', 'uses' => 'AluminisController@create']);
     Route::post('/alumini/create', ['as' => 'alumini.store', 'uses' => 'AluminisController@store']);
     Route::get('/alumini/{slug}', ['as' => 'alumini.show', 'uses' => 'AluminisController@show']);
 
+    /**
+     * Events Controller
+     */
     Route::get('/events', ['as' => 'event.index', 'uses' => 'EventsController@index']);
     Route::get('/events/create', ['as' => 'event.create', 'uses' => 'EventsController@create']);
     Route::post('/events/create', ['as' => 'event.store', 'uses' => 'EventsController@store']);
     Route::get('/events/{slug}', ['as' => 'event.show', 'uses' => 'EventsController@show']);
 
+    /**
+     * News Controller
+     */
     Route::get('/news', ['as' => 'news.index', 'uses' => 'NewsController@index']);
     Route::get('/news/create', ['as' => 'news.create', 'uses' => 'NewsController@create']);
     Route::post('/news/create', ['as' => 'news.store', 'uses' => 'NewsController@store']);
     Route::get('/news/{slug}', ['as' => 'news.show', 'uses' => 'NewsController@show']);
 
+    /**
+     * Questions Controller
+     */
     Route::get('/questions', ['as' => 'questions.index', 'uses' => 'QuestionsController@index']);
     Route::get('/questions/create', ['as' => 'questions.create', 'uses' => 'QuestionsController@create']);
     Route::post('/questions/create', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
@@ -97,7 +118,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/questions-asked-to-me/unanswered', ['as' => 'questions.user.unanswered', 'uses' => 'QuestionsController@forUserToAnswer']);
 
     /**
-     * CODE WAR
+     * CODE WAR Controller
      */
     Route::get('/codewar', ['as' => 'codewar.index', 'uses' => 'CodeWarsController@index']);
     Route::get('/codewar/create', ['as' => 'codewar.create', 'uses' => 'CodeWarsController@create']);
@@ -108,6 +129,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/codewar/{slug}', ['as' => 'codewar.show', 'uses' => 'CodeWarsController@show']);
     Route::post('/codewar/{slug}', ['as' => 'codewar.answer', 'uses' => 'CodeWarsController@answer']);
 
+    /**
+     * Gallery Controller
+     */
     Route::get('/gallery', ['as' => 'gallery.index', 'uses' => 'PhotosController@index']);
     Route::get('/gallery/create', ['as' => 'gallery.create', 'uses' => 'PhotosController@create']);
     Route::post('/gallery/create', ['as' => 'gallery.store', 'uses' => 'PhotosController@store']);

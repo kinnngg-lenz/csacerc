@@ -56,7 +56,7 @@
                 <div class="panel-body text-center stats">
                     <p>You have <kbd class="text-lg">{{ Auth::user()->xp }}</kbd> e<b>X</b>perience points <i class="fa fa-trophy"></i> </p>
                     <p>You have attempted <kbd class="text-lg">{{ Auth::user()->codeWarAnswers->count() }}</kbd> codewars <i class="fa fa-code"></i></p>
-                    <p>You have asked <kbd class="text-lg">{{ Auth::user()->askedQuestions()->count() }}</kbd> questions <i class="fa fa-question"></i> </p>
+                    <p>You have asked <kbd class="text-lg">{{ Auth::user()->questions->count() }}</kbd> questions <i class="fa fa-question"></i> </p>
                     {{-- <a href="{{ route('questions.user.unanswered') }}">You have {{ Auth::user()->notAnsweredQuestions()->approved()->count().str_plural(' question', Auth::user()->notAnsweredQuestions()->count()) }} to answer.</a>--}}
                     <br>
                 </div>

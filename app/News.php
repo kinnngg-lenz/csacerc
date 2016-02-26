@@ -28,6 +28,9 @@ class News extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function likes()
     {
         return $this->morphMany('App\Like', 'likeable');

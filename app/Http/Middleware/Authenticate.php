@@ -25,6 +25,15 @@ class Authenticate
             }
         }
 
+        /**
+         * Restrict Everything if Banned!
+         */
+        if($request->user()->banned)
+        {
+            Auth::logout();
+            return view('banned');
+        }
+
         return $next($request);
     }
 }

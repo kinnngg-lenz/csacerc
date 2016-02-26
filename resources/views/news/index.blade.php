@@ -71,7 +71,7 @@
                                         </span>
                                     </p>
                                     <h3 class="text-bold padding10 title">{{ $news->title }}</h3>
-                                    <i class="padding10 small text-muted">By {{ $news->user->name }}</i>
+                                    <i class="padding10 small text-muted">By <a class="text-muted" href="{{ route('users.profile.show',$news->user->username) }}">{{ $news->user->name }}</a></i>
                                     <p class="padding10 text-justify">
                                         {!! nl2br($news->description) !!}
                                     </p>

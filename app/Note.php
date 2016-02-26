@@ -18,11 +18,22 @@ class Note extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * Belonging department of this note
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function department()
     {
         return $this->belongsTo('App\Department');
     }
 
+    /**
+     * Return semester string instead of Id
+     *
+     * @param $sem
+     * @return string
+     */
     public function getSemesterAttribute($sem)
     {
         switch($sem)

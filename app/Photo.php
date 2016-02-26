@@ -15,7 +15,7 @@ class Photo extends Model
 
     /*
      * Doing this may cause problem becoz its not a polymorphic.
-     * If you wanna levarage this feature then plz use a polymorphic table for Photo.
+     * If you wanna leverage this feature then plz use a polymorphic table for Photo.
      *
      *   public function news()
      *   {

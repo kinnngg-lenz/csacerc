@@ -18,11 +18,17 @@ class Question extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function likes()
     {
         return $this->morphMany('App\Like', 'likeable');
     }
 
+    /**
+     * @return \stdClass
+     */
     public function askedTo()
     {
         if(is_null($this->for_user_id))
@@ -36,30 +42,43 @@ class Question extends Model
         return $user;
     }
 
+    /**
+     * @param $query
+     */
     public function scopePublic($query)
     {
         $query->wherePublic(1);
     }
 
+    /**
+     * @param $query
+     */
     public function scopeApproved($query)
     {
         $query->whereApproved(1);
     }
 
+    /**
+     * @param $query
+     */
     public function scopePending($query)
     {
         $query->whereApproved(0);
     }
 
+    /**
+     * @param $query
+     */
     public function scopeUnanswered($query)
     {
         $query->whereAnswer(null);
     }
 
+    /**
+     * @param $query
+     */
     public function scopeGlobal($query)
     {
         $query->whereForUserId(null);
     }
-
-
 }

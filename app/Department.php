@@ -11,6 +11,11 @@ class Department extends Model
         return $this->hasMany('App\User');
     }
 
+    /**
+     * All notes of this college
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function notes()
     {
         return $this->hasMany('App\Note');

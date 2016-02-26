@@ -105,6 +105,15 @@
                         </div>
 
                         <div class="form-group">
+                            {{ Form::label('none', 'Profile Picture', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                            <i class="text-info">To change your profile picture you need to signup/login at <a
+                                        href="//gravatar.com">gravatar.com</a> with email <span class="text-pink">{{ Auth::user()->email }}</span> and upload a picture there.
+                            </i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 {{ Form::submit('Update Profile', ['class' => 'btn btn-primary']) }}
                             </div>

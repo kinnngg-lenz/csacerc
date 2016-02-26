@@ -210,12 +210,20 @@ class User extends Authenticatable
     }
 
     /**
-     *
+     * Return all notes submitted by this User
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function notes()
     {
         return $this->hasMany('App\Note');
+    }
+
+    /**
+     * @return string
+     */
+    public function getGravatarId()
+    {
+        return md5($this->email);
     }
 }

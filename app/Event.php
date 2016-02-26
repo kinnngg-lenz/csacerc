@@ -24,11 +24,21 @@ class Event extends Model
         return $this->belongsTo('App\Photo');
     }
 
+    /**
+     * Submitter of this event
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * Like
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function likes()
     {
         return $this->morphMany('App\Like', 'likeable');

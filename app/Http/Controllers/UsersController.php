@@ -78,4 +78,44 @@ class UsersController extends Controller
     {
         return (User::where('username','like','%'.$query.'%')->orWhere('name','like','%'.$query.'%')->orWhere('email','like','%'.$query.'%')->get(['id','name','username']));
     }
+
+    /**
+     * @param Request $request
+     * @param $username
+     * @return mixed
+     */
+    public function toggleBanUser(Request $request, $username)
+    {
+        if($request->username != $username)
+        {
+            return back()->withNotification("Aw! Please don't try to mess up the code ;)");
+        }
+
+        $user = User::whereUsername($request->username)->first();
+
+        if(is_null($user))
+        {
+            return back()->withNotification("Sorry! User not found");
+        }
+
+        if($request->user()->role <= $user->role)
+        {
+            return back()->withNotification("Sorry! You don't have rights to ban this user");
+        }
+
+        if($user->banned == 1)
+        {
+            $user->banned = 0;
+            $user->save();
+            return back()->withNotification("Success! You have unbanned this user");
+        }
+        elseif($user->banned == 0)
+        {
+            $user->banned = 1;
+            $user->save();
+            return back()->withNotification("Success! You have banned this user");
+        }
+
+        return back()->withNotification("Error! something not well");
+    }
 }

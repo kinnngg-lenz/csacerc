@@ -179,7 +179,8 @@
                                             <div class="caption">
                                                 <a href="{{ route('users.profile.show',$user->username) }}">
                                                     <h4>
-                                                        <i class="fa fa-{{ snake_case($user->gender) }}"></i> {{ $user->name }}
+                                                      <img class="img" src="//gravatar.com/avatar/{{ $user->getGravatarId() }}?d=mm&s=20" width="20" height="20" />
+                                                            {{ $user->name }}
                                                         <i class="small">{{ "@".$user->username }}</i>
                                                     </h4></a>
                                                 <p class="blockquote-reverse">

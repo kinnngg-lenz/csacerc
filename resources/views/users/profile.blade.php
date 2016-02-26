@@ -8,28 +8,31 @@
             border-radius: 0px !important;
             color: white;
         }
+
         .jumbotron pre {
             padding: 0px;
             border: none;
             border-radius: 0px;
         }
-        pre
-        {
+
+        pre {
             padding: 0px;
         }
+
         h1 {
             font-size: 300% !important;
         }
+
         .tiny {
             font-size: 14px;
         }
-        .xp-btn
-        {
+
+        .xp-btn {
             margin-top: 5px;;
         }
 
         /* code for animated blinking cursor */
-        .typed-cursor{
+        .typed-cursor {
             opacity: 1;
             font-weight: 100;
             -webkit-animation: blink 0.7s infinite;
@@ -38,30 +41,83 @@
             -o-animation: blink 0.7s infinite;
             animation: blink 0.7s infinite;
         }
-        @-keyframes blink{
-        0% { opacity:1; }
-        50% { opacity:0; }
-        100% { opacity:1; }
+
+        @-keyframes blink {
+
+        0
+        %
+        {
+            opacity: 1
+        ;
         }
-        @-webkit-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
+        50
+        %
+        {
+            opacity: 0
+        ;
         }
-        @-moz-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
+        100
+        %
+        {
+            opacity: 1
+        ;
         }
-        @-ms-keyframes blink{
-        0% { opacity:1; }
-        50% { opacity:0; }
-        100% { opacity:1; }
         }
-        @-o-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
+        @-webkit-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-ms-keyframes blink {
+
+        0
+        %
+        {
+            opacity: 1
+        ;
+        }
+        50
+        %
+        {
+            opacity: 0
+        ;
+        }
+        100
+        %
+        {
+            opacity: 1
+        ;
+        }
+        }
+        @-o-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
 
@@ -73,17 +129,22 @@
         <div class="row">
             <div class="jumbotron">
                 <div class="row">
-                <div class="col-md-3">
-                    <img class="img-thumbnail" src="/images/static/{{ $user->gender }}.jpeg" alt="Female" style="height: 250px">
-                </div>
+                    <div class="col-md-3">
+                        <img class="img img-thumbnail"
+                             src="//gravatar.com/avatar/{{ $user->getGravatarId() }}?d=mm&s=250" width="250"
+                             height="250"/>
+                        {{--<img class="img-thumbnail" src="/images/static/{{ $user->gender }}.jpeg" alt="Female" style="height: 250px">--}}
+                    </div>
                     <div class="col-md-9">
-                <button class="btn btn-info xp-btn btn-sm disabled pull-right" href="#">
-                    <i class="fa fa-trophy"></i>
-                    XP &nbsp;<span class="badge text-danger">{{ $user->xp }}</span>
-                </button>
+                        <button class="btn btn-info xp-btn btn-sm disabled pull-right" href="#">
+                            <i class="fa fa-trophy"></i>
+                            XP &nbsp;<span class="badge text-danger">{{ $user->xp }}</span>
+                        </button>
 
                         <h1 class="nomargin">{{ $user->name }}</h1><i class="text-muted">( {{ $user->rank() }} )</i>
-                        <p class="text-warning"><a class="text-warning" href="{{ route('users.profile.show',$user->username) }}">{{ "@".$user->username }}</a></p>
+                        <p class="text-warning"><a class="text-warning"
+                                                   href="{{ route('users.profile.show',$user->username) }}">{{ "@".$user->username }}</a>
+                        </p>
                         @unless($user->dob == null)
                             <p><i class="fa fa-birthday-cake"></i> {{ $user->dob->format('jS F') }}</p>
                         @endunless
@@ -105,6 +166,18 @@
                 <p class="text-muted blockquote-reverse">
                     Joined {{  $user->created_at->diffForHumans()}}
                 </p>
+
+                @if(Auth::check() && Auth::user()->isSuperAdmin())
+                    {{ Form::open(['method' => 'patch', 'route' => ['users.toggleban',$user->username]]) }}
+                    {{ Form::hidden('username',$user->username) }}
+                    @if($user->banned == 1)
+                        {{ Form::submit('Unban @'.$user->username,['class' => 'btn btn-success btn-sm']) }}
+                    @else
+                        {{ Form::submit('Ban @'.$user->username,['class' => 'btn btn-danger btn-sm']) }}
+                    @endif
+                    {{ Form::close() }}
+                @endif
+
             </div>
         </div>
 
@@ -112,8 +185,8 @@
             <div class="col-md-6 col-md-offset-3">
 
             </div>
-            </div>
         </div>
+    </div>
 
     </div>
 @endsection
@@ -121,7 +194,7 @@
 @section('scripts')
     <script src="/js/typed.min.js" type="text/javascript"></script>
     <script>
-        $(function(){
+        $(function () {
 
             $("#typed").typed({
                 stringsElement: $('#typed-strings'),

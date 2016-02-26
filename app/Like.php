@@ -13,6 +13,11 @@ class Like extends Model
         return $this->morphTo();
     }
 
+    /**
+     * Liker
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo('App\User');
