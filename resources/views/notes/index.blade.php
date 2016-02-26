@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Events')
+@section('title', 'Notes &amp Papers')
 @section('styles')
     <style>
         .jumbotron {

@@ -59,20 +59,6 @@ Route::group(['middleware' => ['web']], function () {
         return view('comingsoon');
     });
 
-    // FOR TESTING ONLY NOT FOR PRODUCTION
-    Route::get('/images/{url}/thumbnail/{width?}', function(){
-
-        $image = Image::make(public_path().'/images/static/birds.jpg');
-
-        $image->resize(600, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-
-        $new = new Intervention\Image\Response($image);
-        return $new->make();
-    });
-
-
 });
 
 Route::group(['middleware' => 'web'], function () {
@@ -152,7 +138,7 @@ Route::group(['middleware' => 'web'], function () {
 /**
  * For API Calls and Ajax Search
  *
- * Outside of Web Guard so that escaped by CRSF middleware
+ * Outside of Web Guard so that escaped by CSRF middleware
  */
 Route::get('/users/{query}', ['as' => 'users.search', 'uses' => 'UsersController@search']);
 Route::get('/inspire', ['as' => 'inspire', 'uses' => 'ApisController@inspire']);

@@ -32,6 +32,10 @@
             font-size: 1.5em !important;
             font-family: "Trebuchet MS", Verdana, sans-serif;
         }
+        .stats
+        {
+            font-size:18px !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -48,12 +52,11 @@
 
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading"><b>Questions</b></div>
-                <div class="panel-body text-center">
-                    <div class="btn-group">
-                        <a data-toggle="tooltip" title="Question that are asked to you by someone" class="btn btn-warning" href="{{ route('questions.user.unanswered') }}">To Answer <span class="badge">{{Auth::user()->notAnsweredQuestions()->approved()->count()}}</span></a>
-                        <a data-toggle="tooltip" title="Question that you asked to someone" class="btn btn-info" href="{{ route('questions.iasked') }}">I Asked</a>
-                    </div>
+                <div class="panel-heading"><b> <i class="fa fa-bar-chart"></i> Your Statistics</b></div>
+                <div class="panel-body text-center stats">
+                    <p>You have <kbd class="text-lg">{{ Auth::user()->xp }}</kbd> e<b>X</b>perience points <i class="fa fa-trophy"></i> </p>
+                    <p>You have attempted <kbd class="text-lg">{{ Auth::user()->codeWarAnswers->count() }}</kbd> codewars <i class="fa fa-code"></i></p>
+                    <p>You have asked <kbd class="text-lg">{{ Auth::user()->askedQuestions()->count() }}</kbd> questions <i class="fa fa-question"></i> </p>
                     {{-- <a href="{{ route('questions.user.unanswered') }}">You have {{ Auth::user()->notAnsweredQuestions()->approved()->count().str_plural(' question', Auth::user()->notAnsweredQuestions()->count()) }} to answer.</a>--}}
                     <br>
                 </div>
@@ -63,7 +66,7 @@
         @if(Auth::user()->isAdmin())
         <div class="col-md-4">
             <div class="panel panel-default">
-                <div class="panel-heading"><b>Admin Panel</b> (<i>{{ Auth::user()->rank() }}</i>)</div>
+                <div class="panel-heading"><b> <i class="fa fa-user"></i> Admin Panel</b> (<i>{{ Auth::user()->rank() }}</i>)</div>
                 <div class="panel-body">
                     {{ link_to_route('news.create', 'Add a News', [], ['class' => 'btn btn-info btn-block btn-sm']) }}
                     {{ link_to_route('alumini.create', 'Add an Alumini', [], ['class' => 'btn btn-danger btn-block btn-sm']) }}
@@ -73,7 +76,24 @@
                     {{ link_to_route('gallery.create', 'Add Image to Gallery', [], ['class' => 'btn btn-warning btn-block btn-sm']) }}
                 </div>
             </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b> <i class="fa fa-question-circle"></i> Questions</b></div>
+                    <div class="panel-body">
+                        <a data-toggle="tooltip" data-placement="left" title="Question that are asked to you by someone" class="btn btn-sm btn-block btn-info" href="{{ route('questions.user.unanswered') }}">To be answered <span class="badge">{{Auth::user()->notAnsweredQuestions()->approved()->count()}}</span></a>
+                        <a data-toggle="tooltip" data-placement="left" title="Question that you asked to someone" class="btn btn-sm btn-block btn-info" href="{{ route('questions.iasked') }}">I Asked</a>
+                    </div>
+                </div>
         </div>
+        @else
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Questions</b></div>
+                    <div class="panel-body">
+                        <a data-toggle="tooltip" data-placement="left" title="Question that are asked to you by someone" class="btn btn-sm btn-block btn-info" href="{{ route('questions.user.unanswered') }}">To be answered <span class="badge">{{Auth::user()->notAnsweredQuestions()->approved()->count()}}</span></a>
+                        <a data-toggle="tooltip" data-placement="left" title="Question that you asked to someone" class="btn btn-sm btn-block btn-info" href="{{ route('questions.iasked') }}">I Asked</a>
+                    </div>
+                </div>
+            </div>
         @endif
 
     </div>

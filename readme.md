@@ -36,13 +36,13 @@ Thank you for considering contributing to the project! The contribution can be m
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within this Repo, please send an e-mail to Zishan Ansari at zishanansari1337@gmail.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this Repo, please send an e-mail to zishanansari1337@gmail.com. All security vulnerabilities will be promptly addressed.
 
 ## Team
 
 [Zishan Ansari](http://github.com/kinnngg)
-[Ankit Kumar](http://github.com/ankitbarnwal)
-[Vivek Kumar](http://github.com/victorlenz)
+[Victor Lenz (Vivek)](http://github.com/victorlenz)
+[Ankit Barnwal](http://github.com/ankitbarnwal)
 
 ### License
 
