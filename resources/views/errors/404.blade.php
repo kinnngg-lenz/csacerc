@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Oop! You are Banned')
+@section('title', 'Whoops! 404 Not Found')
 @section('styles')
     <style>
         .jumbotron {
@@ -61,7 +61,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="jumbotron text-center">
-                <h1 class="red">Oops! Its's a <span id="typed"></span></h1>
+                <h1 class="red">Whoops! Its's a <span id="typed"></span></h1>
                 <h2 class="white">The page you are looking for is not found</h2>
                 <p class="white">Maybe you have typed something wrong or url has changed.</p>
             </div>

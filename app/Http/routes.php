@@ -70,7 +70,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
     //TEST
-    Route::get('/test', function(){
+    Route::get('/flush', function(){
        Cache::flush();
     });
 
@@ -146,7 +146,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/gallery/create', ['as' => 'gallery.create', 'uses' => 'PhotosController@create']);
     Route::post('/gallery/create', ['as' => 'gallery.store', 'uses' => 'PhotosController@store']);
     Route::get('/gallery/{url}', ['as' => 'gallery.show', 'uses' => 'PhotosController@show']);
-    Route::get('image/{url}/thumbnail/{width?}', ['as' => 'make.thumbnail', 'uses' => 'PhotosController@thumbnail']);
+    Route::get('/image/{url}/thumbnail/{width?}', ['as' => 'make.thumbnail', 'uses' => 'PhotosController@thumbnail']);
 
     /**
      * Likes Controller
@@ -178,6 +178,7 @@ Route::group(['middleware' => 'web'], function () {
      * NewsLetter Controller
      */
     Route::post('/newsletter/subscribe', ['as' => 'newsletter.subscribe', 'uses' => 'NewsletterController@subscribe']);
+
 });
 
 /**
@@ -185,6 +186,5 @@ Route::group(['middleware' => 'web'], function () {
  *
  * Outside of Web Guard so that escaped by CSRF middleware
  */
-Route::get('/users/{query}', ['as' => 'users.search', 'uses' => 'UsersController@search']);
 Route::get('/inspire', ['as' => 'inspire', 'uses' => 'ApisController@inspire']);
-
+Route::get('/users/{query}', ['as' => 'users.search', 'uses' => 'UsersController@search']);

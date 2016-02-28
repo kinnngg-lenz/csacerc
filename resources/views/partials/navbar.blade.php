@@ -1,4 +1,4 @@
-@if(!Agent::isMobile() && Request::route()->getName() == 'welcome')
+@if(!Agent::isMobile() && !is_null(Request::route()) && Request::route()->getName() == 'welcome')
 <style>
     #aryaheader
     {

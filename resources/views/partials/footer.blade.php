@@ -35,27 +35,29 @@
                 </div>
             </div>
 
+            @unless(csrf_token() == null)
             <div class="col-md-5">
                 {{ Form::open(['name' => 'newsletter', 'route' => ['newsletter.subscribe']]) }}
-                <div class="{{ $errors->has('subscriber_email') ? ' has-error' : '' }}">
+                <div class="{{ !isset($errors) || is_null($errors) || $errors=='' ? '' : $errors->has('subscriber_email') ? ' has-error' : '' }}">
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input name="subscriber_email" class="subscriber_email_input form-control" value="{{ old('subscriber_email') }}" type="text" placeholder="{{ Agent::isMobile() ? "Opt for Newsletter" : "Opt for the Weekly Newsletter" }}" required>
+                            {{ Form::text('subscriber_email',null,['class' => 'subscriber_email_input form-control', 'placeholder' => Agent::isMobile() ? "Opt for Newsletter" : "Opt for the Weekly Newsletter"]) }}
                                     <span class="add-on input-group-btn">
                                         <button class="btn btn-info">
                                             Subscribe
                                         </button>
                                     </span>
                         </div>
-                        @if ($errors->has('subscriber_email'))
+                        @if (isset($errors) && $errors->has('subscriber_email'))
                             <span class="help-block">
-                            <strong>{{ $errors->first('subscriber_email') }}</strong>
+                            <strong>{{!isset($errors) || is_null($errors) || $errors=='' ? '' : $errors->first('subscriber_email') }}</strong>
                             </span>
                         @endif
                     </div>
                 </div>
                 {{ Form::close() }}
             </div>
+            @endunless
         </div>
 
         <div class="text-center hidden-xs">
