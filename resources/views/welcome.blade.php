@@ -247,7 +247,7 @@
                                 <div class="panel-heading"><b>Quote of the day</b></div>
                                 <div class="panel-body no-padding text-center">
                                     <h4 id="quoteofday">
-                    <i class="inspire text-violet">{!! ($qotd) !!}</i>
+                    <i class="inspire text-{{ ['success','info', 'green', 'violet', 'muted', 'primary'][array_rand([0,1,2,3,4,5])] }}">{!! ($qotd) !!}</i>
                                     </h4>
                                 </div>
                             </div>
@@ -260,9 +260,11 @@
                                 <div class="panel-heading"><b>Picture of the day</b></div>
                                 <div class="panel-body no-padding text-center">
                                     <div class="thumbnail no-border">
+                                        <a href="/images/{{ $picture->url }}" target="_blank">
                                         <img data-src="holder.js/100%x200" alt="100%x200"
                                              src="{{ route('make.thumbnail',[$picture->url]) }}" data-holder-rendered="true"
                                              style="height: 100%; width: 500px; display: block;">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -274,7 +276,8 @@
                             <div class="panel panel-primary">
                                 <div class="panel-heading"><b>Today's Forecast</b></div>
                                 <div class="panel-body no-padding text-center">
-                                    <h3>Coming Soon</h3>
+                                    <h3 style="font-weight: 100;margin: 10px auto"> <i class="fa fa-sun-o"></i> It's sunny today</h3>
+                                    <h3 style="font-weight: 100;margin: 10px auto">27<sup>o</sup>C at Kukas</h3>
                                 </div>
                             </div>
                         </div>

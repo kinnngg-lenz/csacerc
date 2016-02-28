@@ -45,7 +45,7 @@
                             <label class="col-md-4 control-label">Full Name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="firstname middlename lastname">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -60,7 +60,7 @@
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="a valid email address">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -74,7 +74,7 @@
                             <label class="col-md-4 control-label">Username</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="username" value="{{ old('username') }}">
+                                <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="should match regex [a-zA-Z0-9_]">
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -102,7 +102,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">You Are?</label>
+                            <label class="col-md-4 control-label">You Are</label>
                             <div class="col-md-6">
                                 <select name="type" class="form-control" id="inputType">
                                     <option value="" class="text-muted">Select Account</option>
@@ -145,7 +145,7 @@
                             <label class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password" placeholder="minimum 6 characters">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -159,7 +159,7 @@
                             <label class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
+                                <input type="password" class="form-control" name="password_confirmation" placeholder="repeat password">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">

@@ -43,7 +43,7 @@
                 <h1>Notes & Papers</h1>
                 <p class="">Download notes and papers provided by faculties and listed semester wise.</p>
                 @if(Auth::check() && Auth::user()->isAdmin())
-                    {{ link_to_route('notes.create', 'Add Notes', [], ['class' => 'btn btn-info btn-sm']) }}
+                    {{ link_to_route('notes.create', 'Upload Notes', [], ['class' => 'btn btn-info btn-sm']) }}
                 @endif
             </div>
 
