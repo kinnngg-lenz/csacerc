@@ -12,9 +12,10 @@ to make website more flexible, thereby can be used any any department as their w
 * [x] Technology News
 * [x] Alumini
 * [x] Quotes
+* [x] Quote of the Day
 * [x] Signup & Login
-* [x] Question anyone , anything anonymously (We respect your privacy).
-* [x] Like and Comment system.
+* [x] Question anyone , anything anonymously (with privacy).
+* [x] Like and Comment system for any Feature.
 * [x] Online Notes for all Subjects , Semesters with downloadable pdf version.
 * [x] Newsletter Subscription
 * [ ] _Brain Teasers_

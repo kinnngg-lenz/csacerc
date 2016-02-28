@@ -29,7 +29,7 @@ Route::group(['middleware' => ['web']], function () {
     /**
      * Landing Page
      */
-    Route::get('/', function () {
+    Route::get('/', ['as' => 'welcome', function () {
         $news = App\News::whereType(0)->latest()->first();
         $event = App\Event::latest()->first();
         $codewars = App\CodeWarQuestion::latest()->limit(3)->get();
@@ -38,6 +38,7 @@ Route::group(['middleware' => ['web']], function () {
         $users = App\User::latest()->limit(3)->get();
         $picture = App\Photo::whereGallery(1)->get()->random();
         $technews = App\News::whereType(1)->latest()->first();
+        $qotd = App\Quote::getQotd();
 
         $data = [
             'news' => $news,
@@ -48,9 +49,10 @@ Route::group(['middleware' => ['web']], function () {
             'users' => $users,
             'picture' => $picture,
             'technews' => $technews,
+            'qotd' => $qotd,
         ];
         return view('welcome',$data);
-    });
+    }]);
 
     /**
      * Coming Soon Page
@@ -59,9 +61,17 @@ Route::group(['middleware' => ['web']], function () {
         return view('comingsoon');
     });
 
+    /**
+     * About Us Page
+     */
+    Route::get('/aboutus', function(){
+        return view('aboutus');
+    });
+
+
     //TEST
     Route::get('/test', function(){
-        return view('newsletter.voyage');
+       Cache::flush();
     });
 
 });
@@ -153,6 +163,17 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/notes', ['as' => 'notes.index', 'uses' => 'NotesController@index']);
     Route::get('/notes/{id}/download', ['as' => 'notes.download', 'uses' => 'NotesController@download']);
     Route::get('/notes/{slug}', ['as' => 'notes.show', 'uses' => 'NotesController@show']);
+
+    /**
+     * Quotes Controller
+     */
+    Route::get('/quotes/create', ['as' => 'quotes.create', 'uses' => 'QuotesController@create']);
+    Route::post('/quotes/create', ['as' => 'quotes.create', 'uses' => 'QuotesController@store']);
+    Route::get('/quotes', ['as' => 'quotes.index', 'uses' => 'QuotesController@index']);
+    Route::get('/quotes/{id}/edit', ['as' => 'quotes.edit', 'uses' => 'QuotesController@edit']);
+    Route::patch('/quotes/{id}/edit', ['as' => 'quotes.update', 'uses' => 'QuotesController@update']);
+    Route::get('/quotes/{id}/setasqotd', ['as' => 'quotes.setasqotd','uses' => 'QuotesController@setasqotd']);
+
     /**
      * NewsLetter Controller
      */

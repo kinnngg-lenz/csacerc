@@ -105,7 +105,7 @@ class CodeWarsController extends Controller
 
         if($request->user()->cannot('edit', $question))
         {
-            return redirect("/")->withNotification("Sorry Buddy! You are not authorized.");
+            return redirect("/")->withNotification("Sorry Buddy! You are not authorized.")->withType('danger');;
         }
 
         return view('codewars.edit')->withQuestion($question);
@@ -124,7 +124,7 @@ class CodeWarsController extends Controller
 
         if($request->user()->cannot('edit', $question))
         {
-            return redirect('/')->withNotification("Sorry Buddy! You are not authorized.");
+            return redirect('/')->withNotification("Sorry Buddy! You are not authorized.")->withType('danger');
         }
 
         $this->validate($request, [

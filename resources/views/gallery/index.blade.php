@@ -1,5 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Image Gallery')
+
+@unless(Agent::isMobile())
+@section('styles')
+    <link rel="stylesheet" href="/css/facebox.css">
+@endsection
+@endunless
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -13,11 +20,11 @@
                 <div id="container"></div>
                 <div id="images">
                     @forelse($images as $image)
-                            <div class="item">
-                                <a href="/images/{{ $image->url }}">
-                                    <img src="/images/{{ $image->url }}">
-                                </a>
-                            </div>
+                        <div class="item">
+                            <a href="/images/{{ $image->url }}" rel="facebox">
+                                <img src="/images/{{ $image->url }}">
+                            </a>
+                        </div>
                     @empty
                         Empty
                     @endforelse
@@ -33,6 +40,18 @@
 
 
 @section('scripts')
+    @unless(Agent::isMobile())
+        <script type="text/javascript" src="/js/facebox.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $('a[rel*=facebox]').facebox({
+                    loadingImage: '../images/static/ajax-loading.gif',
+                    closeImage: '../images/static/closelabel.png'
+                })
+            })
+        </script>
+    @endunless
+
     <script type="text/javascript">
         $(function () {
 

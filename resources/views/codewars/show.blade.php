@@ -120,7 +120,7 @@
                 @forelse($question->answers()->latest()->get() as $answer)
                     <div class="row">
                         <div class="col-md-2 hidden-xs hidden-sm">
-                            <img class="img-thumbnail" src="/images/static/{{ $answer->user->gender }}.jpeg" alt="">
+                            <img class="img img-thumbnail" src="//gravatar.com/avatar/{{ $answer->user->getGravatarId() }}?d=mm&s=250"/>
                             <div class="text-center">
                                 <h4>{{ link_to_route('users.profile.show',$answer->user->name,$question->user->username) }}</h4>
                                 <p class="text-muted">{{ $answer->created_at->diffForHumans() }}</p>

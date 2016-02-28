@@ -247,8 +247,7 @@
                                 <div class="panel-heading"><b>Quote of the day</b></div>
                                 <div class="panel-body no-padding text-center">
                                     <h4 id="quoteofday">
-                    <i class="inspire text-violet"><span
-                                class="text-lg">&#8220;</span> Best revenge is massive success <span class="text-lg">&#8221;</span><br> - Frank Sinatra</i>
+                    <i class="inspire text-violet">{!! ($qotd) !!}</i>
                                     </h4>
                                 </div>
                             </div>
@@ -548,9 +547,9 @@
     </div>
 @endsection
 
-
 @section('scripts')
     <script type="text/javascript" src="{{ asset('/js/jquery.carouFredSel-6.2.0-packed.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/nav-scroll.js') }}"></script>
     <script type="text/javascript">
 
         // Quotes AJAX load

@@ -90,6 +90,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function quotes()
+    {
+        return $this->hasMany('App\Quote');
+    }
+
+    /**
      * If this user has extra role than regular member
      *
      * @return bool

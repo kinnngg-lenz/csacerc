@@ -74,15 +74,15 @@
                             {{ Form::label('dob', 'Date of Birth:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
 
-                                    <div id="datetimepicker1" class="input-group">
-                                        {{ Form::text('dob', null, ['class' => 'form-control', 'data-format' => 'yyyy-MM-dd']) }}
-                                        <span class="add-on input-group-btn">
+                                <div id="datetimepicker1" class="input-group">
+                                    {{ Form::text('dob', null, ['class' => 'form-control', 'data-format' => 'yyyy-MM-dd']) }}
+                                    <span class="add-on input-group-btn">
                                             <button class="btn btn-info">
-                                        <i data-time-icon="fa fa-clock-o" data-date-icon="fa fa-calendar">
-                                        </i>
+                                                <i data-time-icon="fa fa-clock-o" data-date-icon="fa fa-calendar">
+                                                </i>
                                             </button>
                                         </span>
-                                    </div>
+                                </div>
 
                                 @if ($errors->has('dob'))
                                     <span class="help-block">
@@ -107,9 +107,10 @@
                         <div class="form-group">
                             {{ Form::label('none', 'Profile Picture', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                            <i class="text-info">To change your profile picture you need to signup/login at <a
-                                        href="//gravatar.com">gravatar.com</a> with email <span class="text-pink">{{ Auth::user()->email }}</span> and upload a picture there.
-                            </i>
+                                <i class="text-info">To change your profile picture you need to signup/login at <a target="_blank" href="//gravatar.com">gravatar.com</a> with email <span
+                                            class="text-pink">{{ Auth::user()->email }}</span> and upload a picture
+                                    there.
+                                </i>
                             </div>
                         </div>
 
