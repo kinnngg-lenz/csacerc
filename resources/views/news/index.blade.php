@@ -57,7 +57,7 @@
 
             <div class="col-md-11 col-md-offset-1">
 
-                <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 520 }'>
+                <div class="grid">
                 @forelse($allnews as $news)
 
                         <div class="col-sm-6 grid-item col-md-4">
@@ -89,4 +89,18 @@
         </div>
     </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        /**
+         * Masonry
+         */
+        $(window).load(function(){
+            $('.grid').masonry({
+                itemSelector: ".grid-item",
+                "columnWidth": 520
+            });
+        });
+    </script>
 @endsection

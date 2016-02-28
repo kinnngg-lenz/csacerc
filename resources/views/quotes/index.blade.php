@@ -72,7 +72,7 @@
             <div class="col-md-11 col-md-offset-1">
                 {{--<div class="panel panel-info text-center col-md-7 col-md-offset-2"><h3>quote Speak</h3></div>--}}
 
-                <div class="grid js-masonry container" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 330 }'>
+                <div class="grid container">
                     @forelse($quotes as $quote)
                         <div class="col-sm-6 grid-item col-md-4">
                             <blockquote class="example-{{ ['obtuse','right','wrong'][array_rand([0,1,2])] }}">
@@ -123,5 +123,15 @@
             });
         }
         update_div();
+
+        /**
+         * Masonry
+         */
+        $(window).load(function(){
+            $('.grid').masonry({
+                itemSelector: ".grid-item",
+                "columnWidth": 330
+            });
+        });
     </script>
 @endsection

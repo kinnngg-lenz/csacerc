@@ -63,7 +63,7 @@
 
             <div class="col-md-12">
                 <div class="container" style="padding: 0;">
-                    <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 380 }'>
+                    <div class="grid">
 
                         {{--News Starts--}}
                         <div class="col-sm-7 grid-item col-md-5">
@@ -654,6 +654,16 @@
                 slider.trigger( 'configuration', ['items.width', _width * 0.15] );
             });
 
+        });
+
+        /**
+         * Masonry
+         */
+        $(window).load(function(){
+            $('.grid').masonry({
+                itemSelector: ".grid-item",
+                "columnWidth": 380
+            });
         });
     </script>
 @endsection
