@@ -31,6 +31,10 @@ $factory->define(App\Alumini::class, function (Faker\Generator $faker) {
         'speaker' => $faker->name,
         'batch' => $faker->word,
         'profession' => $faker->company,
+        'organisation_id' => $faker->randomElement([1,2,3,4,5,7]),
+        'photo_id' => $faker->randomElement([1,2,3,4,5,7]),
+        'email' => $faker->companyEmail,
+        'facebook' => $faker->url,
         'user_id' => 1,
         'slug' => $faker->slug(8),
     ];
@@ -55,6 +59,19 @@ $factory->define(App\News::class, function (Faker\Generator $faker) {
         'description' => $faker->paragraph(10),
         'user_id' => 1,
         'photo_id' => $faker->randomElement([1,2,3,4,5,7]),
+        'slug' => $faker->slug(8),
+    ];
+});
+
+
+$factory->define(App\Organisation::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company,
+        'initials' => $faker->word,
+        'details' => $faker->paragraph(10),
+        'photo_id' => $faker->randomElement([1, 2, 3, 4, 5, 7]),
+        'user_id' => 1,
+        'address' => $faker->address,
         'slug' => $faker->slug(8),
     ];
 });

@@ -2,24 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrganisationRequest;
+use App\Organisation;
 use App\Photo;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AluminisRequest;
-use App\Alumini;
 
-class AluminisController extends Controller
+class OrganisationsController extends Controller
 {
-    protected $alumini;
+    /**
+     * @var Organisation
+     */
+    protected $organisation;
 
-    public function __construct(Alumini $alumini)
+    /**
+     * @param Organisation $organisation
+     */
+    public function __construct(Organisation $organisation)
     {
-        $this->alumini = $alumini;
-        $this->middleware('auth',['except' => ['index', 'show']]);
+        $this->organisation = $organisation;
+        $this->middleware('auth', ['except' => ['index', 'show']]);
         $this->middleware('admin', ['except' => ['index', 'show']]);
     }
 
@@ -30,7 +35,7 @@ class AluminisController extends Controller
      */
     public function index()
     {
-        return view('aluminis.index')->withAluminis($this->alumini->latest()->paginate(10));
+        return view('org.index');
     }
 
     /**
@@ -40,18 +45,17 @@ class AluminisController extends Controller
      */
     public function create()
     {
-        return view('aluminis.create');
+        return view('org.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param AluminisRequest|Request $request
+     * @param OrganisationRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AluminisRequest $request)
+    public function store(OrganisationRequest $request)
     {
-
         if ($request->hasFile('photo')) {
             if ($request->file('photo')->isValid()) {
                 $photoName = md5(Carbon::now()).".".$request->file('photo')->getClientOriginalExtension();
@@ -62,40 +66,35 @@ class AluminisController extends Controller
                     'url' => $photoName
                 ]);
 
-                $slug = slug_for_url($request->speech, ' by '.$request->speaker);
+                $slug = slug_for_url($request->name);
 
-                $speech = empty($request->speech) ? null : $request->speech;
-                $facebook = empty($request->facebook) ? null : $request->facebook;
-                $organisation_id = empty($request->organisation_id) ? null : $request->organisation_id;
+                $details = empty($request->details) ? null : $request->details;
+                $initials = empty($request->initials) ? null : $request->initials;
+                $address = empty($request->address) ? null : $request->address;
 
-                $request->user()->aluminis()->create([
-                    'speech' => $speech,
-                    'speaker' => $request->speaker,
-                    'batch' => $request->batch,
-                    'profession' => $request->profession,
-                    'organisation_id' => $organisation_id,
+                $request->user()->organisations()->create([
+                    'name' => $request->name,
+                    'initials' => $initials,
+                    'details' => $details,
+                    'address' => $address,
                     'photo_id' => $photo->id,
-                    'email' => $request->email,
-                    'facebook' => $facebook,
                     'slug' => $slug,
                 ]);
-                return back()->withNotification('A New Alumini has been added successfully!')->withType('success');
+
+                return back()->withNotification('Organisation has been added!')->withType('success');
             }
-            return back()->withNotification('Error! Photo is invalid')->withType('danger');
         }
-        return back()->withNotification('Error! Its not a photo')->withType('danger');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $alumini = Alumini::whereSlug($slug)->firstorFail();
-        return view('aluminis.show')->withAlumini($alumini);
+        //
     }
 
     /**

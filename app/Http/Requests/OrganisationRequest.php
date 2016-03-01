@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AluminisRequest extends Request
+class OrganisationRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,14 +27,11 @@ class AluminisRequest extends Request
     public function rules()
     {
         return [
-            'speaker' => 'required|min:5',
-            'speech' => '',
-            'profession' => 'required|min:5',
-            'batch' => 'required|min:2',
-            'organisation_id' => 'exists:organisations,id',
+            'name' => 'required',
+            'initials' => '',
+            'details' => '',
             'photo' => 'required|image',
-            'email' => 'required|email',
-            'facebook' => '',
+            'address' => '',
         ];
     }
 }

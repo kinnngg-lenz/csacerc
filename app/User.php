@@ -98,6 +98,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function organisations()
+    {
+        return $this->hasMany('App\Organisation');
+    }
+
+    /**
      * If this user has extra role than regular member
      *
      * @return bool

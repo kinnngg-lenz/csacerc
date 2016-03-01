@@ -14,15 +14,19 @@ class CreateAluminisTable extends Migration
     {
         Schema::create('aluminis', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('speech');
+            $table->text('speech')->nullable();
             $table->string('speaker');
             $table->string('batch');
             $table->string('profession');
-
-            $table->integer('user_id')->unsigned();
+            $table->integer('organisation_id')->nullable()->unsigned();
+            $table->integer('photo_id')->nullable()->unsigned();
+            $table->string('email')->nullable();
+            $table->string('facebook')->nullable();
             $table->string('slug')->unique();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('photo_id')->references('id')->on('photos');
         });
     }
 

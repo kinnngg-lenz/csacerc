@@ -175,6 +175,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/quotes/{id}/setasqotd', ['as' => 'quotes.setasqotd','uses' => 'QuotesController@setasqotd']);
 
     /**
+     * OrganisationsController
+     */
+    Route::get('/org/create', ['as' => 'org.create', 'uses' => 'OrganisationsController@create']);
+    Route::post('/org/create', ['as' => 'org.create', 'uses' => 'OrganisationsController@store']);
+    Route::get('/org', ['as' => 'org.index', 'uses' => 'QuotesController@index']);
+
+    /**
      * NewsLetter Controller
      */
     Route::post('/newsletter/subscribe', ['as' => 'newsletter.subscribe', 'uses' => 'NewsletterController@subscribe']);
