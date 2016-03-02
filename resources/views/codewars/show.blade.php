@@ -120,7 +120,7 @@
                 @forelse($question->answers()->latest()->get() as $answer)
                     <div class="row">
                         <div class="col-md-2 hidden-xs hidden-sm">
-                            <img class="img img-thumbnail" src="//gravatar.com/avatar/{{ $answer->user->getGravatarId() }}?d=mm&s=250"/>
+                            <img class="img img-thumbnail" src="/images/{{ $answer->user->getProfilePicUrl() }}" style="width:200px;">
                             <div class="text-center">
                                 <h4>{{ link_to_route('users.profile.show',$answer->user->name,$question->user->username) }}</h4>
                                 <p class="text-muted">{{ $answer->created_at->diffForHumans() }}</p>
@@ -201,7 +201,7 @@
                             {{ Form::open(['class' => 'form-horizontal']) }}
                             <div class="row form-group{{ $errors->has('answer') ? ' has-error' : '' }}">
                                 <div class="col-md-2 hidden-xs hidden-sm">
-                                    <img class="img-thumbnail col-md-9" src="/images/static/{{ Auth::user()->gender }}.jpeg" alt="">
+                                    <img class="img-thumbnail col-md-9" src="/images/{{ Auth::user()->getProfilePicUrl() }}" alt="Profile" style="">
                                 </div>
                                 <div class="col-md-10">
                                     {{ Form::textarea('answer',null,['class' => 'form-control', 'rows' => '4']) }}

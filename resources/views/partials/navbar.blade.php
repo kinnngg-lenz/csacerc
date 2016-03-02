@@ -53,7 +53,7 @@
                 <li class="{{ set_active(['alumini']) }}">{{ link_to_route('alumini.index','Alumini') }}</li>
                 <li class="{{ set_active(['gallery']) }}">{{ link_to_route('gallery.index', 'Gallery') }}</li>
                 <li class="{{ set_active(['codewar*']) }}">{{ link_to_route('codewar.index','Codewar') }}</li>
-                <li class="{{ set_active(['notes']) }}">{{ link_to_route('notes.index','Notes') }}</li>
+                <li class="{{ set_active(['newsletter']) }}">{{ link_to_route('newsletter.index','Newsletter') }}</li>
 
                 {{-- DropDown for Extras --}}
 
@@ -64,6 +64,9 @@
                     <ul class="dropdown-menu" role="menu">
                         <li class="spin {{ set_active(['questions*']) }}"><a href="{{ route('questions.index') }}"><i
                                         class="fa fa-btn fa-question"></i>Questions</a>
+                        </li>
+                        <li class="spin {{ set_active(['notes']) }}"><a href="{{ route('notes.index') }}"><i
+                                        class="fa fa-btn fa-files-o"></i>Notes</a>
                         </li>
                         <li class="spin {{ set_active(['quotes']) }}"><a href="{{ route('quotes.index') }}"><i class="fa fa-btn fa-quote-left"></i>Quotes</a>
                         </li>
@@ -89,8 +92,7 @@
                     <li class="dropdown">
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <img class="img" src="//gravatar.com/avatar/{{ Auth::user()->getGravatarId() }}?d=mm&s=20"
-                                 width="20" height="20"/>
+                            <img class="img" src="{{ Auth::user()->photo_id == null ? "/images/".Auth::user()->getProfilePicUrl() : "/image/".Auth::user()->getProfilePicUrl()."/thumbnail/30" }}" width="20" height="20"/>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
@@ -150,7 +152,7 @@
                     <li class="{{ set_active(['alumini']) }}">{{ link_to_route('alumini.index','Alumini') }}</li>
                     <li class="{{ set_active(['gallery']) }}">{{ link_to_route('gallery.index', 'Gallery') }}</li>
                     <li class="{{ set_active(['codewar*']) }}">{{ link_to_route('codewar.index','Codewar') }}</li>
-                    <li class="{{ set_active(['notes']) }}">{{ link_to_route('notes.index','Notes') }}</li>
+                    <li class="{{ set_active(['newsletter']) }}">{{ link_to_route('newsletter.index','Newsletter') }}</li>
 
                     {{-- DropDown for Extras --}}
 
@@ -161,6 +163,9 @@
                         <ul class="dropdown-menu" role="menu">
                             <li class="spin {{ set_active(['questions*']) }}"><a href="{{ route('questions.index') }}"><i
                                             class="fa fa-btn fa-question"></i>Questions</a>
+                            </li>
+                            <li class="spin {{ set_active(['notes']) }}"><a href="{{ route('notes.index') }}"><i
+                                            class="fa fa-btn fa-files-o"></i>Notes</a>
                             </li>
                             <li class="spin {{ set_active(['quotes']) }}"><a href="{{ route('quotes.index') }}"><i class="fa fa-btn fa-quote-left"></i>Quotes</a>
                             </li>
@@ -186,8 +191,7 @@
                         <li class="dropdown">
 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <img class="img" src="//gravatar.com/avatar/{{ Auth::user()->getGravatarId() }}?d=mm&s=20"
-                                     width="20" height="20"/>
+                                <img class="img" src="{{ Auth::user()->photo_id == null ? "/images/".Auth::user()->getProfilePicUrl() : "/image/".Auth::user()->getProfilePicUrl()."/thumbnail/30" }}" width="20" height="20"/>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 

@@ -70,6 +70,32 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('batch') ? ' has-error' : '' }}">
+                            {{ Form::label('batch', 'Your Batch:', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                {{ Form::select('batch', [
+                                '2000-2004' => '2000-2004',
+                                '2001-2005' => '2001-2005',
+                                '2002-2006' => '2002-2006',
+                                '2003-2007' => '2003-2007',
+                                '2004-2008' => '2004-2008',
+                                '2005-2009' => '2005-2009',
+                                '2006-2010' => '2006-2010',
+                                '2007-2011' => '2007-2011',
+                                '2008-2012' => '2008-2012',
+                                '2009-2013' => '2009-2013',
+                                '2010-2014' => '2010-2014',
+                                '2011-2015' => '2011-2015',
+                                '2012-2016' => '2012-2016',
+                                '2013-2017' => '2013-2017',
+                                '2014-2018' => '2014-2018',
+                                '2015-2019' => '2015-2019',
+                                '2016-2020' => '2016-2020',
+                                ], null, ['placeholder' => 'No Batch', 'class' => 'form-control', 'disabled' => 'true']) }}
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
                             {{ Form::label('dob', 'Date of Birth:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
@@ -107,9 +133,7 @@
                         <div class="form-group">
                             {{ Form::label('none', 'Profile Picture', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                                <i class="text-info">To change your profile picture you need to signup/login at <a target="_blank" href="//gravatar.com">gravatar.com</a> with email <span
-                                            class="text-pink">{{ Auth::user()->email }}</span> and upload a picture
-                                    there.
+                                <i class="text-warning">Updating profile picture not available at this moment. It will be made available Asap but if its urgent please contact Admin.
                                 </i>
                             </div>
                         </div>

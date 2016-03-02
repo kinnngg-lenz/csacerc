@@ -28,9 +28,18 @@ class AluminisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('aluminis.index')->withAluminis($this->alumini->latest()->paginate(10));
+        if(isset($request->batch)) {
+            $batch = $request->batch;
+            $aluminis = $this->alumini->whereBatch($batch)->latest()->paginate();
+        }
+        else
+        {
+            $aluminis = $this->alumini->latest()->paginate();
+        }
+
+        return view('aluminis.index')->withAluminis($aluminis);
     }
 
     /**

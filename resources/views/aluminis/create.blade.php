@@ -25,7 +25,25 @@
                         <div class="form-group{{ $errors->has('batch') ? ' has-error' : '' }}">
                             {{ Form::label('batch', 'Alumini\'s Batch', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                            {{ Form::text('batch',null,['class' => 'form-control']) }}
+                                {{ Form::select('batch', [
+                                    '2000-2004' => '2000-2004',
+                                    '2001-2005' => '2001-2005',
+                                    '2002-2006' => '2002-2006',
+                                    '2003-2007' => '2003-2007',
+                                    '2004-2008' => '2004-2008',
+                                    '2005-2009' => '2005-2009',
+                                    '2006-2010' => '2006-2010',
+                                    '2007-2011' => '2007-2011',
+                                    '2008-2012' => '2008-2012',
+                                    '2009-2013' => '2009-2013',
+                                    '2010-2014' => '2010-2014',
+                                    '2011-2015' => '2011-2015',
+                                    '2012-2016' => '2012-2016',
+                                    '2013-2017' => '2013-2017',
+                                    '2014-2018' => '2014-2018',
+                                    '2015-2019' => '2015-2019',
+                                    '2016-2020' => '2016-2020',
+                                    ], null, ['placeholder' => 'Select Batch..', 'class' => 'form-control']) }}
                             @if ($errors->has('batch'))
                             <span class="help-block">
                             <strong>{{ $errors->first('batch') }}</strong>
@@ -50,7 +68,10 @@
                             {{ Form::label('organisation_id', 'Company (if any)', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
                                 {{ Form::select('organisation_id', App\Organisation::lists('name','id'), null, ['placeholder' => 'Select Organisation..', 'class' => 'form-control', 'id' => "inputType"]) }}
-                            @if ($errors->has('organisation_id'))
+                                <div class="text-info small">If the company of alumini is not listed then please add by
+                                    <b>{{ link_to_route('org.create','clicking here') }}</b>
+                                </div>
+                                @if ($errors->has('organisation_id'))
                             <span class="help-block">
                             <strong>{{ $errors->first('organisation_id') }}</strong>
                             </span>

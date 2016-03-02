@@ -127,7 +127,7 @@
                         {{ Form::close() }}
 
                     @else
-                        <p class="text-center"><i class='text-danger'>No answered yet!</i></p>
+                        <p class="text-center"><i class='text-danger'>Not answered yet!</i></p>
                         @endcan
                         @else
                             <div class="padding10 panel">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Oop! You are Banned')
+@section('title', 'Oops! You are Banned')
 @section('styles')
     <style>
         .jumbotron {

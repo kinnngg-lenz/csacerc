@@ -131,7 +131,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <img class="img img-thumbnail"
-                             src="//gravatar.com/avatar/{{ $user->getGravatarId() }}?d=mm&s=250" width="250"
+                             src="/images/{{ $user->getProfilePicUrl() }}" width="250"
                              height="250"/>
                         {{--<img class="img-thumbnail" src="/images/static/{{ $user->gender }}.jpeg" alt="Female" style="height: 250px">--}}
                     </div>

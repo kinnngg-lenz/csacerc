@@ -17,6 +17,11 @@ class NewsletterController extends Controller
 
     }
 
+    public function index()
+    {
+        return view('newsletter.index');
+    }
+
     public function subscribe(NewsletterRequest $request)
     {
         $subs = Newsletter::subscribe($request->subscriber_email);

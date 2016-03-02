@@ -13,10 +13,11 @@ class OrganisationRequest extends Request
      */
     public function authorize()
     {
-        if($this->user()->isAdmin())
+        /*if($this->user()->isAdmin())
             return true;
 
-        return false;
+        return false;*/
+        return true;
     }
 
     /**
@@ -30,7 +31,7 @@ class OrganisationRequest extends Request
             'name' => 'required',
             'initials' => '',
             'details' => '',
-            'photo' => 'required|image',
+            'photo' => 'required|image|max:250',
             'address' => '',
         ];
     }

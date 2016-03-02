@@ -45,6 +45,10 @@ function set_active_or_disabled($path, $active = 'active') {
 
 }
 
+function set_active_has($path, $data = null, $active = 'active') {
+    return Request::has($path) && Request::get($path)==$data ? $active : '';
+}
+
 function slug_for_url($first, $second=null)
 {
    return str_slug(str_limit($first, 50, $second), '-');

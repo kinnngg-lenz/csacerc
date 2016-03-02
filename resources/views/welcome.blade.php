@@ -179,7 +179,7 @@
                                             <div class="caption">
                                                 <a href="{{ route('users.profile.show',$user->username) }}">
                                                     <h4>
-                                                      <img class="img" src="//gravatar.com/avatar/{{ $user->getGravatarId() }}?d=mm&s=20" width="20" height="20" />
+                                                        <img class="img" src="{{ $user->photo_id == null ? "/images/".$user->getProfilePicUrl() : "/image/".$user->getProfilePicUrl()."/thumbnail/30" }}" width="20" height="20"/>
                                                             {{ $user->name }}
                                                         <i class="small">{{ "@".$user->username }}</i>
                                                     </h4></a>
@@ -205,7 +205,7 @@
                                 <p>
                                     <b> - {{ $alumini->speaker }}</b><br>
                                         <span class="text-small">
-                                            {{ $alumini->batch }} <br> ({{ $alumini->profession }})</span>
+                                            {{ $alumini->batch }} <br> ({{ $alumini->profession }} {{ $alumini->organisation_id != null ? "at ".$alumini->organisation->name : "" }})</span>
                                 </p>
                             </div>
                             {{--Alumini 1 Ends--}}

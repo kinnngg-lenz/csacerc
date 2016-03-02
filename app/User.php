@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','gender','type','about','dob', 'college_id', 'department_id'
+        'name', 'email', 'password','username','gender','type','about','dob', 'college_id', 'department_id', 'photo_id', 'batch',
     ];
 
     /**
@@ -235,11 +235,31 @@ class User extends Authenticatable
         return $this->hasMany('App\Note');
     }
 
+    public function photo()
+    {
+        return $this->belongsTo('App\Photo');
+    }
+
     /**
      * @return string
      */
     public function getGravatarId()
     {
         return md5($this->email);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfilePicUrl()
+    {
+        if(is_null($this->photo))
+        {
+            if($this->gender == "Male")
+                return "static/Male.jpeg";
+            else
+                return "static/Female.jpeg";
+        }
+        return $this->photo->url;
     }
 }

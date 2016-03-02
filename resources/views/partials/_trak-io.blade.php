@@ -11,6 +11,7 @@
 
 
 @if(Session::has('user.has.loggedin'))
+    @if(Auth::check() && Auth::user()->banned == 0)
     <script>
         trak.io.identify("{{ Auth::user()->email }}", {
             email: "{{ Auth::user()->email }}",
@@ -19,4 +20,5 @@
             gender: "{{ Auth::user()->gender }}"
         });
     </script>
+    @endif
 @endif

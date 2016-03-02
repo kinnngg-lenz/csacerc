@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Acerc\Mailers\UserMailer;
+use App\Photo;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Newsletter;
+use Image;
 
 class AuthController extends Controller
 {
@@ -52,7 +55,7 @@ class AuthController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -65,19 +68,48 @@ class AuthController extends Controller
             'gender' => 'required|in:Male,Female,Others',
             'type' => 'required|in:0,1',
             'college_id' => 'required|exists:colleges,id',
-            'department_id' => 'required|exists:departments,id'
+            'department_id' => 'required|exists:departments,id',
+            'photo' => 'image|max:500',
+            'batch' => 'required_if:type,0',
+
+            'speech' => 'min:10',
+            'profession' => 'required_with:alumini|min:5',
+            'organisation_id' => 'exists:organisations,id',
+            'facebook' => '',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
     {
-        $user  =  User::create([
+        if (isset($data['photo'])) {
+            if ($data['photo']->isValid()) {
+                $photoName = md5(Carbon::now()) . "." . $data['photo']->getClientOriginalExtension();
+
+                $image = Image::make($data['photo']);
+                $image->fit(300)->save(public_path('images/') . $photoName);
+
+                $photo = Photo::create([
+                    'url' => $photoName
+                ]);
+
+                $photoId = $photo->id;
+            }
+        } else {
+            $photoId = null;
+        }
+
+        /**
+         * Allow Insertion of Batch only if Submitter is Student
+         */
+        $batch = $data['type'] == 0 ? $data['batch'] : null;
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'username' => $data['username'],
@@ -86,6 +118,8 @@ class AuthController extends Controller
             'type' => $data['type'],
             'college_id' => $data['college_id'],
             'department_id' => $data['department_id'],
+            'photo_id' => $photoId,
+            'batch' => $batch,
         ]);
 
         /**
@@ -94,11 +128,36 @@ class AuthController extends Controller
          */
         $this->mailer->welcome($user);
 
-        \Session::flash('user.has.registered',true);
+        /**
+         * Create Alumini
+         */
+        if (isset($data['alumini'])) {
+
+            $slug = slug_for_url($data['speech'], ' by ' . $data['name']);
+
+            $speech = empty($data['speech']) ? null : $data['speech'];
+            $facebook = empty($data['facebook']) ? null : $data['facebook'];
+            $organisation_id = empty($data['organisation_id']) ? null : $data['organisation_id'];
+
+            $user->aluminis()->create([
+                'speech' => $speech,
+                'speaker' => $data['name'],
+                'batch' => $batch,
+                'profession' => $data['profession'],
+                'organisation_id' => $organisation_id,
+                'photo_id' => $photoId,
+                'email' => $data['email'],
+                'facebook' => $facebook,
+                'slug' => $slug,
+            ]);
+
+        }
+
+        \Session::flash('user.has.registered', true);
 
         /**
          *Subscribe this user to Weekly Newsletter
-         *@TODO: Enable this in production
+         * @TODO: Enable this in production
          */
         //Newsletter::subscribe($user->email);
 
@@ -131,7 +190,7 @@ class AuthController extends Controller
         if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
 
             //Put in Session that User is Authenticated
-            \Session::flash('user.has.loggedin',true);
+            \Session::flash('user.has.loggedin', true);
 
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
@@ -139,7 +198,7 @@ class AuthController extends Controller
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
-        if ($throttles && ! $lockedOut) {
+        if ($throttles && !$lockedOut) {
             $this->incrementLoginAttempts($request);
         }
 

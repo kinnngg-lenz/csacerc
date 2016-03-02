@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrganisationRequest;
 use App\Organisation;
 use App\Photo;
+use App\User;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -24,8 +26,8 @@ class OrganisationsController extends Controller
     public function __construct(Organisation $organisation)
     {
         $this->organisation = $organisation;
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-        $this->middleware('admin', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'create' ,'store']]);
+        $this->middleware('admin', ['except' => ['index', 'show', 'create', 'store']]);
     }
 
     /**
@@ -72,14 +74,29 @@ class OrganisationsController extends Controller
                 $initials = empty($request->initials) ? null : $request->initials;
                 $address = empty($request->address) ? null : $request->address;
 
-                $request->user()->organisations()->create([
-                    'name' => $request->name,
-                    'initials' => $initials,
-                    'details' => $details,
-                    'address' => $address,
-                    'photo_id' => $photo->id,
-                    'slug' => $slug,
-                ]);
+                if(Auth::check()) {
+                    $request->user()->organisations()->create([
+                        'name' => $request->name,
+                        'initials' => $initials,
+                        'details' => $details,
+                        'address' => $address,
+                        'photo_id' => $photo->id,
+                        'slug' => $slug,
+                    ]);
+                }
+                // If not signed in then let it be added by the name of first user ie Zishan
+                else
+                {
+                    $user = User::findOrFail(1);
+                    $user->organisations()->create([
+                        'name' => $request->name,
+                        'initials' => $initials,
+                        'details' => $details,
+                        'address' => $address,
+                        'photo_id' => $photo->id,
+                        'slug' => $slug,
+                    ]);
+                }
 
                 return back()->withNotification('Organisation has been added!')->withType('success');
             }

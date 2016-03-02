@@ -5,6 +5,9 @@ $(document).ready(function(){
    $('.notification').delay(2000).fadeOut(1000);
     $("[data-toggle='tooltip']").tooltip();
 
+    // Setup Select2 Instance
+    $("select").select2();
+
     var users = new Bloodhound({
         datumTokenizer: function (datum) {
             return Bloodhound.tokenizers.whitespace(datum.value);

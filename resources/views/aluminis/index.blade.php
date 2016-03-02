@@ -31,10 +31,35 @@
         <div class="row">
 
             <div class="jumbotron text-center">
-                <h1>Aluminis of ARYA</h1>
-                <a href="" class="btn btn-info">Search By Organisation</a>
+                <h1>Aluminis of ARYA {{ Request::has('batch') ? "of batch ".Request::get('batch') : '' }}</h1>
+                <!-- Single button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        List Alumini by Batch <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" style="text-align: center;overflow:auto;height:300px;">
+                        <li><a href="{{ route('alumini.index') }}">All</a></li>
+                        <li class="{{ set_active_has('batch','2000-2004') }}"><a href="{{ route('alumini.index') }}?batch=2000-2004">2000 - 2004</a></li>
+                        <li class="{{ set_active_has('batch','2001-2005') }}"><a href="{{ route('alumini.index') }}?batch=2001-2005">2001 - 2005</a></li>
+                        <li class="{{ set_active_has('batch','2002-2006') }}"><a href="{{ route('alumini.index') }}?batch=2002-2006">2002 - 2006</a></li>
+                        <li class="{{ set_active_has('batch','2003-2007') }}"><a href="{{ route('alumini.index') }}?batch=2003-2007">2003 - 2007</a></li>
+                        <li class="{{ set_active_has('batch','2004-2008') }}"><a href="{{ route('alumini.index') }}?batch=2004-2008">2004 - 2008</a></li>
+                        <li class="{{ set_active_has('batch','2005-2009') }}"><a href="{{ route('alumini.index') }}?batch=2005-2009">2005 - 2009</a></li>
+                        <li class="{{ set_active_has('batch','2006-2010') }}"><a href="{{ route('alumini.index') }}?batch=2006-2010">2006 - 2010</a></li>
+                        <li class="{{ set_active_has('batch','2007-2011') }}"><a href="{{ route('alumini.index') }}?batch=2007-2011">2007 - 2011</a></li>
+                        <li class="{{ set_active_has('batch','2008-2012') }}"><a href="{{ route('alumini.index') }}?batch=2008-2012">2008 - 2012</a></li>
+                        <li class="{{ set_active_has('batch','2009-2013') }}"><a href="{{ route('alumini.index') }}?batch=2009-2013">2009 - 2013</a></li>
+                        <li class="{{ set_active_has('batch','2010-2014') }}"><a href="{{ route('alumini.index') }}?batch=2010-2014">2010 - 2014</a></li>
+                        <li class="{{ set_active_has('batch','2011-2015') }}"><a href="{{ route('alumini.index') }}?batch=2011-2015">2011 - 2015</a></li>
+                        <li class="{{ set_active_has('batch','2012-2016') }}"><a href="{{ route('alumini.index') }}?batch=2012-2016">2012 - 2016</a></li>
+                        <li class="{{ set_active_has('batch','2013-2017') }}"><a href="{{ route('alumini.index') }}?batch=2013-2017">2013 - 2017</a></li>
+                        <li class="{{ set_active_has('batch','2014-2018') }}"><a href="{{ route('alumini.index') }}?batch=2014-2018">2014 - 2018</a></li>
+                        <li class="{{ set_active_has('batch','2015-2019') }}"><a href="{{ route('alumini.index') }}?batch=2015-2019">2015 - 2019</a></li>
+                        <li class="{{ set_active_has('batch','2016-2020') }}"><a href="{{ route('alumini.index') }}?batch=2016-2020">2016 - 2020</a></li>
+                    </ul>
+                </div><p></p>
                 @if(Auth::check() && Auth::user()->isAdmin())
-                    {{ link_to_route('alumini.create', 'Add New Alumini', [], ['class' => 'btn btn-danger btn-sm']) }}
+                    {{ link_to_route('alumini.create', 'Add New Alumini', [], ['class' => 'btn btn-primary btn-sm']) }}
                 @endif
             </div>
 
@@ -70,7 +95,12 @@
                         </div>
 
                 @empty
-                    Empty
+                    <div class="col-sm-8 text-center grid-item col-md-8" style="width:90% !important;">
+                        <div class="thumbnail">
+                            <h1>List is Empty</h1>
+                            <h3>No Alumini of batch {{ Request::get('batch') }}</h3>
+                        </div>
+                    </div>
                 @endforelse
                     </div>
                 </div>
@@ -79,7 +109,6 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('scripts')
