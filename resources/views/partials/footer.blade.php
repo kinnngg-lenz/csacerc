@@ -42,7 +42,7 @@
     }*/
 </style>
 <footer class="footer" style="    padding: 25px 0;
-    background: #0b1e35;color: #f6f6f6">
+    background: #232323;color: #f6f6f6">
     <div class="container">
         <div class="row">
             <div class="col-md-7">

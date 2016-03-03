@@ -133,7 +133,7 @@ class AuthController extends Controller
          */
         if (isset($data['alumini'])) {
 
-            $slug = slug_for_url($data['speech'], ' by ' . $data['name']);
+            $slug = slug_for_url($data['name'].' of '.$data['batch'].'-'.$data['profession']);
 
             $speech = empty($data['speech']) ? null : $data['speech'];
             $facebook = empty($data['facebook']) ? null : $data['facebook'];

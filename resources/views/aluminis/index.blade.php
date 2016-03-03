@@ -76,7 +76,7 @@
                                     <h4>{{ $alumini->speaker }}</h4>
                                     <p class="text-center">
                                         {{ ($alumini->batch) }}<br>
-                                        {{ $alumini->department->name or "None" }}
+                                        {{ $alumini->department->name or "" }}
                                     </p>
                                     <p>
                                         <i>{{ $alumini->profession }} {{ $alumini->organisation_id != null ? "at ".$alumini->organisation->name : "" }}</i>
@@ -88,6 +88,11 @@
                                         </i>
                                     </p>
                                     @endif
+
+                                    @can('edit',$alumini)
+                                        <a data-toggle="tooltip" title="Edit Alumini" class="pull-left btn-xs btn btn-info" href="{{ route('alumini.edit',$alumini->id) }}"><i class="fa fa-edit"></i></a>
+                                    @endcan
+
                                     <p class="blockquote-reverse">
                                         <b>Email:</b> {{ $alumini->email }}<br>
                                     </p>

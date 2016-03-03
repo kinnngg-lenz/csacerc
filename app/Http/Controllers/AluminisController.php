@@ -20,7 +20,7 @@ class AluminisController extends Controller
     {
         $this->alumini = $alumini;
         $this->middleware('auth',['except' => ['index', 'show']]);
-        $this->middleware('admin', ['except' => ['index', 'show']]);
+        $this->middleware('admin', ['except' => ['index', 'show', 'edit', 'update']]);
     }
 
     /**
@@ -71,7 +71,7 @@ class AluminisController extends Controller
                     'url' => $photoName
                 ]);
 
-                $slug = slug_for_url($request->speech, ' by '.$request->speaker);
+                $slug = slug_for_url($request->speaker.' of '.$request->batch.'-'.$request->profession);
 
                 $speech = empty($request->speech) ? null : $request->speech;
                 $facebook = empty($request->facebook) ? null : $request->facebook;
@@ -114,21 +114,58 @@ class AluminisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Alumini $id)
     {
-        //
+        if(Auth::user()->can('edit',$id)) {
+            return view('aluminis.edit')->withAlumini($id);
+        }
+        else {
+            return redirect('/')->withNotification('You are not authorized')->withType('danger');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param Alumini $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Alumini $id)
     {
-        //
+        if($request->user()->can('edit',$id)) {
+            $this->validate($request, [
+                'speaker' => 'required|min:5',
+                'speech' => '',
+                'profession' => 'required|min:5',
+                'batch' => 'required|min:2',
+                'organisation_id' => 'exists:organisations,id',
+                'email' => 'required|email',
+                'facebook' => '',
+                'department_id' => 'required|exists:departments,id',
+            ]);
+
+            $speech = empty($request->speech) ? null : $request->speech;
+            $facebook = empty($request->facebook) ? null : $request->facebook;
+            $organisation_id = empty($request->organisation_id) ? null : $request->organisation_id;
+
+            $id->update([
+                'speaker' => $request->speaker,
+                'speech' => $speech,
+                'profession' => $request->profession,
+                'batch' => $request->batch,
+                'organisation_id' => $organisation_id,
+                'email' => $request->email,
+                'facebook' => $facebook,
+                'department_id' => $request->department_id,
+            ]);
+
+            return back()->withNotification('Alumini has been updated')->withType('success');
+        }
+        else {
+            return redirect('/')->withNotification('You are not authorized')->withType('danger');
+        }
+
     }
 
     /**

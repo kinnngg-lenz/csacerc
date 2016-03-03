@@ -3,7 +3,8 @@
     #aryaheader
     {
         min-height: 280px;
-        background: rgb(152,159,43) url('/images/static/header.jpg') no-repeat scroll 0% 51%;
+        background: rgb(52, 42, 84) url('/images/static/header.jpg') no-repeat;
+        background-size: 100% 100%;
     }
     .image
     {
@@ -21,7 +22,7 @@
 
         </div>
         <div class="col-md-6">
-            <img src="/images/static/header.png" alt="Header" class="image">
+
         </div>
     </div>
 </div>

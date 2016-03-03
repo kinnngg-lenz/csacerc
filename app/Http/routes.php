@@ -99,6 +99,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/alumini/create', ['as' => 'alumini.create', 'uses' => 'AluminisController@create']);
     Route::post('/alumini/create', ['as' => 'alumini.store', 'uses' => 'AluminisController@store']);
     Route::get('/alumini/{slug}', ['as' => 'alumini.show', 'uses' => 'AluminisController@show']);
+    Route::get('/alumini/{id}/edit', ['as' => 'alumini.edit', 'uses' => 'AluminisController@edit']);
+    Route::patch('/alumini/{id}/edit', ['as' => 'alumini.update', 'uses' => 'AluminisController@update']);
 
     /**
      * Events Controller
