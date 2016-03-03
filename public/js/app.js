@@ -2,7 +2,7 @@
  * Created by Zishan on 08-Feb-16.
  */
 $(document).ready(function(){
-   $('.notification').delay(2000).fadeOut(1000);
+   $('.notification').delay(7000).fadeOut(1000);
     $("[data-toggle='tooltip']").tooltip();
 
     // Setup Select2 Instance
