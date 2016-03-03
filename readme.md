@@ -41,9 +41,9 @@ If you discover a security vulnerability within this Repo, please send an e-mail
 
 ## Team
 
-[Zishan Ansari](http://github.com/kinnngg)
-[Victor Lenz (Vivek)](http://github.com/victorlenz)
-[Ankit Barnwal](http://github.com/ankitbarnwal)
+1) [Zishan Ansari](http://github.com/kinnngg)
+2) [Victor Lenz (Vivek)](http://github.com/victorlenz)
+3) [Ankit Barnwal](http://github.com/ankitbarnwal)
 
 ### License
 
