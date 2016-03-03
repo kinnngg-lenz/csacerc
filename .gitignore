@@ -2,6 +2,7 @@
 /node_modules
 Homestead.yaml
 Homestead.json
+.env
 .idea
 tests/_output/*
 acerc_rsa
