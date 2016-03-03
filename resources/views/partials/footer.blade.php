@@ -100,4 +100,3 @@
 </footer>
 
 @include('partials._google-analytics')
-@include('partials._trak-io')
