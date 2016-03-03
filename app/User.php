@@ -168,7 +168,7 @@ class User extends Authenticatable
             case 3:
                 return "Super Administrator";
             case 4:
-                return "Developer";
+                return "Super Administrator";
             default:
                 return "Member";
         }

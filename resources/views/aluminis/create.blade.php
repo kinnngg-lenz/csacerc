@@ -52,6 +52,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('department_id') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Department</label>
+                            <div class="col-md-6">
+                                {{ Form::select('department_id', App\Department::lists('name','id'), null, ['placeholder' => 'Select belonging Department..', 'class' => 'form-control']) }}
+                                @if ($errors->has('department_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('department_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('profession') ? ' has-error' : '' }}">
                             {{ Form::label('profession', 'Alumini\'s Profession', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">

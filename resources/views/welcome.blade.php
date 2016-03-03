@@ -45,6 +45,10 @@
             -moz-border-radius: 0px;
             border-radius: 0px;
         }
+        .font14
+        {
+            font-size: 14px !important;
+        }
     </style>
 @endsection
 
@@ -198,14 +202,14 @@
                             {{--Alumini 1 Starts--}}
                             <div class="col-sm-6 grid-item col-md-4">
                                 <blockquote class="example-{{ ['obtuse','right','wrong'][array_rand([0,1,2])] }}">
-                                    <p class="text-justify">
+                                    <p class="text-justify font14">
                                         {!! nl2br(htmlentities($alumini->speech)) !!}
                                     </p>
                                 </blockquote>
                                 <p>
                                     <b> - {{ $alumini->speaker }}</b><br>
                                         <span class="text-small">
-                                            {{ $alumini->batch }} <br> ({{ $alumini->profession }} {{ $alumini->organisation_id != null ? "at ".$alumini->organisation->name : "" }})</span>
+                                            {{ $alumini->department->name }} ({{ $alumini->batch }}) <br> ({{ $alumini->profession }} {{ $alumini->organisation_id != null ? "at ".$alumini->organisation->name : "" }})</span>
                                 </p>
                             </div>
                             {{--Alumini 1 Ends--}}

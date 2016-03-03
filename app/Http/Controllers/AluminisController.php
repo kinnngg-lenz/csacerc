@@ -81,6 +81,7 @@ class AluminisController extends Controller
                     'speech' => $speech,
                     'speaker' => $request->speaker,
                     'batch' => $request->batch,
+                    'department_id' => $request->department_id,
                     'profession' => $request->profession,
                     'organisation_id' => $organisation_id,
                     'photo_id' => $photo->id,

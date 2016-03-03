@@ -62,6 +62,13 @@
                         </div>
 
                         <div class="form-group">
+                            {{ Form::label('', 'Terms', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                            <p class="text-warning"><i>Before asking this question you agree that it is not made to hurt others sentiment & doesn't contain anything that shouldn't be here.Your question will be reviewed by a moderator before it goes live.</i></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 {{ Form::submit('Ask this Question', ['class' => 'btn btn-info']) }}
                                 {{ Form::reset('Reset Form', ['class' => 'btn btn-warning']) }}

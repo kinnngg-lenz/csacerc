@@ -143,6 +143,7 @@ class AuthController extends Controller
                 'speech' => $speech,
                 'speaker' => $data['name'],
                 'batch' => $batch,
+                'department_id' => $data['department_id'],
                 'profession' => $data['profession'],
                 'organisation_id' => $organisation_id,
                 'photo_id' => $photoId,

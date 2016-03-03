@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alumini extends Model
 {
     protected $fillable = [
-        'speech', 'speaker', 'batch', 'profession', 'slug', 'photo_id', 'organisation_id', 'email', 'facebook'
+        'speech', 'speaker', 'batch', 'profession', 'slug', 'photo_id', 'organisation_id', 'email', 'facebook', 'department_id',
     ];
 
     protected $hidden = [
@@ -48,5 +48,13 @@ class Alumini extends Model
     public function photo()
     {
         return $this->belongsTo('App\Photo');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
     }
 }

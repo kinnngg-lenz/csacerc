@@ -75,7 +75,8 @@
                                 <div class="caption text-center">
                                     <h4>{{ $alumini->speaker }}</h4>
                                     <p class="text-center">
-                                        {{ ($alumini->batch) }}
+                                        {{ ($alumini->batch) }}<br>
+                                        {{ $alumini->department->name or "None" }}
                                     </p>
                                     <p>
                                         <i>{{ $alumini->profession }} {{ $alumini->organisation_id != null ? "at ".$alumini->organisation->name : "" }}</i>

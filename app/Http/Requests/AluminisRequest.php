@@ -35,6 +35,7 @@ class AluminisRequest extends Request
             'photo' => 'required|image',
             'email' => 'required|email',
             'facebook' => '',
+            'department_id' => 'required|exists:departments,id',
         ];
     }
 }

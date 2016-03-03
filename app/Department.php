@@ -20,4 +20,12 @@ class Department extends Model
     {
         return $this->hasMany('App\Note');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function aluminis()
+    {
+        return $this->hasMany('App\Alumini');
+    }
 }

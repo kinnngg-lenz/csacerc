@@ -52,7 +52,7 @@
                 </p>
 
                 <div class="developed_by text-muted small">
-                    <i class="fa fa-2x fa-code" style="color: #3498DB;"></i> by Dept. of Computer Science with <i class="animate-heart text-danger fa fa-heart"></i>
+                    <i class="fa fa-2x fa-code" style="color: #3498DB;"></i> by Dept. of Computer Science at Arya College of Engg &amp; Research Center
                 </div>
             </div>
 
@@ -83,8 +83,8 @@
 
         <div class="row">
             <div class="col-md-8 hidden-xs">
-                <a class="btn btn-xs btn-primary" href="mailto:zishanansari1337@gmail.com"><i class="fa fa-bug"></i></a>
-                <a class="btn btn-xs btn-primary" target="_blank" href="https://github.com/kinnngg-lenz/csacerc"><i
+                <a data-toggle="tooltip" title="Bug Report or Feedback" class="btn btn-xs btn-primary" href="mailto:zishanansari1337@gmail.com"><i class="fa fa-bug"></i></a>
+                <a data-toggle="tooltip" title="View Source Code" class="btn btn-xs btn-primary" target="_blank" href="https://github.com/kinnngg-lenz/csacerc"><i
                             class="fa fa-github"></i></a>
             </div>
             <div class="col-md-4 text-right" style="margin-left:-10px;">

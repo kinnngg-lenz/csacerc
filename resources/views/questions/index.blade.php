@@ -30,7 +30,7 @@
         <div class="row">
             <div class="jumbotron text-center">
                 <h1>Questions & Answers</h1>
-                <p class="">This is StackOverflow of Arya Group. Ask any question of your liking and one will answer.</p>
+                <p class="">It's <b>StackOverflow</b> for Arya. Ask any question of your liking and one will answer.</p>
                 {{ link_to_route('questions.create', 'Ask Question!', [], ['class' => 'btn btn-info', 'title' => 'Ask anyone, anything Anonymously!', 'data-toggle' => 'tooltip']) }}
             </div>
 
