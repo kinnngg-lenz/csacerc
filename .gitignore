@@ -5,3 +5,5 @@ Homestead.json
 .env
 .idea
 tests/_output/*
+acerc_rsa
+acerc_rsa.pub
