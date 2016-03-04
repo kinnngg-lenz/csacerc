@@ -69,7 +69,8 @@
                                         <i class="text-small">
                                             Uploaded {{ $note->created_at->diffForHumans() }}</i>
                                     </p>
-                                    {{ link_to_route('notes.download',"Download",[$note->id],['class' => 'btn btn-info btn-block btn-sm']) }}
+                                    {{ link_to_route('notes.show',"Read Online",[$note->slug],['class' => 'btn btn-info btn-block btn-sm']) }}
+                                    {{ link_to_route('notes.download',"Download",[$note->id],['class' => 'btn btn-primary btn-block btn-sm']) }}
                                 </div>
                             </div>
                         </div>

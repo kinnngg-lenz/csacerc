@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NotesRequest;
 use App\Note;
 use Carbon\Carbon;
+use File;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Response;
 
 class NotesController extends Controller
 {
@@ -73,12 +75,26 @@ class NotesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $notes = Note::whereSlug($slug)->first();
+
+        if(is_null($notes))
+            abort(404);
+
+        $file = storage_path('pdf/').$notes->url;
+        if(File::isFile($file))
+        {
+            $file = File::get($file);
+            $response = Response::make($file,200);
+            $response->header('Content-Type','application/pdf');
+
+            return $response;
+        }
+        return back()->withNotification('Error! Something Wrong')->withType('danger');
     }
 
     /**

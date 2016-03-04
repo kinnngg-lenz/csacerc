@@ -96,7 +96,7 @@
                                             {{--({{ $news->created_at->diffForHumans() }}) <br>--}}
                                         </span>
                                                 </p>
-                                                <h3 class="text-bold padding10 title">{{ $news->title }}</h3>
+                                                <h4 class="text-bold padding10 title">{{ $news->title }}</h4>
                                                 <i class="padding10 small text-muted">By {{ $news->user->name }}</i>
                                                 <p class="padding10 text-justify">
                                                     {!! nl2br($news->description) !!}
@@ -285,7 +285,7 @@
                                             {{--({{ $news->created_at->diffForHumans() }}) <br>--}}
                                         </span>
                                                 </p>
-                                                <h3 class="text-bold padding10 title">{{ $technews->title }}</h3>
+                                                <h4 class="text-bold padding10 title">{{ $technews->title }}</h4>
                                                 <i class="padding10 small text-muted">By {{ $technews->user->name }}</i>
                                                 <p class="padding10 text-justify">
                                                     {!! nl2br($technews->description) !!}
@@ -311,6 +311,19 @@
                         </div>
                         {{--Quote of the Day Ends--}}
 
+                        {{--Did you Know API Starts--}}
+                        <div class="col-sm-6 grid-item col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><b>Did you know?</b></div>
+                                <div class="panel-body padding10 text-center">
+                                    <h4 id="didyouknow">
+                                        78 is the atomic number of platinum.
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        {{--Did you Know API Ends--}}
+
                         {{--Pic of the Day Starts--}}
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="panel panel-primary">
@@ -328,19 +341,6 @@
                             </div>
                         </div>
                         {{--Pic of the Day Ends--}}
-
-                        {{--Did you Know API Starts--}}
-                        <div class="col-sm-6 grid-item col-md-4">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading"><b>Did you know?</b></div>
-                                <div class="panel-body padding10 text-center">
-                                    <h4 id="didyouknow">
-                                        78 is the atomic number of platinum.
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                        {{--Did you Know API Ends--}}
 
                     </div>
                 </div>

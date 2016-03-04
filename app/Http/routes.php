@@ -75,7 +75,15 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('/test', function(){
-        return view('auth.emails.welcome');
+        $file = storage_path('pdf/')."502e75b049d5463edbf8e66a666f58c0.pdf";
+        if(File::isFile($file))
+        {
+            $file = File::get($file);
+            $response = Response::make($file,200);
+            $response->header('Content-Type','application/pdf');
+
+            return $response;
+        }
     });
 
 });
