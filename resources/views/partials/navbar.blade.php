@@ -3,8 +3,8 @@
     #aryaheader
     {
         min-height: 280px;
-        background: rgb(52, 42, 84) url('/images/static/header.jpg') no-repeat;
-        background-size: 100% 100%;
+        background: rgb(125, 125, 125) url('/images/static/header.jpg') no-repeat;
+        background-size: cover;
     }
     .image
     {
