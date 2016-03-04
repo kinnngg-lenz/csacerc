@@ -172,8 +172,12 @@ class CodeWarsController extends Controller
             'user_id' => $request->user()->id,
         ]);
 
+        $request->user()->xp = $request->user()->xp + 20;
+        $request->user()->save();
+
         return back()->withNotification("Success! Your answer now online.");
     }
+
 
     public function bestanswer(Request $request, $id)
     {

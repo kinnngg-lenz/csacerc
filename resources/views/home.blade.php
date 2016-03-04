@@ -76,7 +76,6 @@
                     {{ link_to_route('gallery.create', 'Add Image to Gallery', [], ['class' => 'btn btn-warning btn-block btn-sm']) }}
                     {{ link_to_route('quotes.create', 'Add Quote', [], ['class' => 'btn btn-success btn-block btn-sm']) }}
                     {{ link_to_route('org.create', 'Add Company/Org', [], ['class' => 'btn btn-info btn-block btn-sm']) }}
-
                 </div>
             </div>
                 <div class="panel panel-default">
