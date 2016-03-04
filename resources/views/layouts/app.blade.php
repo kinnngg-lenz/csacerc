@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#573e81">
+    <meta name="theme-color" content="#333333">
     <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#573e81">
+    <meta name="msapplication-navbutton-color" content="#333333">
     <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#573e81">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#333333">
 
     <title>@yield('title') - Department of Computer Science, ACERC</title>
 

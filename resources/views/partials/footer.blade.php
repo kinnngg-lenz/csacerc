@@ -7,6 +7,10 @@
         .subscriber_email_input {
             font-size: 12px;
         }
+        .footer-social-icon
+        {
+            margin-top:13px !important;
+        }
 
         .copyright {
             font-size: 14px;
@@ -87,7 +91,7 @@
                 <a data-toggle="tooltip" title="View Source Code" class="btn btn-xs btn-primary" target="_blank" href="https://github.com/kinnngg-lenz/csacerc"><i
                             class="fa fa-github"></i></a>
             </div>
-            <div class="col-md-4 text-right" style="margin-left:-10px;">
+            <div class="col-md-4 text-right footer-social-icon" style="margin-left:-10px;">
                 <a class="facebookBtn" target="_blank" data-toggle="tooltip" title="Our Facebook Page"
                    href="http://acerc.org"><i class="fa fa-2x fa-facebook"></i></a>
                 <a class="googleBtn" target="_blank" data-toggle="tooltip" title="Our Google+ Page"

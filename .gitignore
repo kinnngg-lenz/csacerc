@@ -7,3 +7,6 @@ Homestead.json
 tests/_output/*
 acerc_rsa
 acerc_rsa.pub
+/public/images/*
+!public/images/static/
+!public/images/index.php
