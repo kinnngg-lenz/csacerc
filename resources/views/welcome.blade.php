@@ -2,10 +2,10 @@
 @section('title', 'Home')
 @section('styles')
     <style>
-        #didyouknow
-        {
-            font-weight:300;
+        #didyouknow {
+            font-weight: 300;
         }
+
         @media (max-width: 767px) {
             .quote-container {
                 margin-top: -28px;
@@ -48,8 +48,8 @@
             -moz-border-radius: 0px;
             border-radius: 0px;
         }
-        .font14
-        {
+
+        .font14 {
             font-size: 14px !important;
         }
     </style>
@@ -73,41 +73,58 @@
                     <div class="grid">
 
                         {{--News Starts--}}
-                        <div class="col-sm-7 grid-item col-md-5">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading"><b>Latest News</b></div>
-                                <div class="panel-body no-padding">
-                                    <div class="thumbnail no-border">
-                                        <img data-src="holder.js/100%x200" alt="100%x200"
-                                             src="{{ route('make.thumbnail',[$news->photo->url]) }}" data-holder-rendered="true"
-                                             style="height: 100%; width: 500px; display: block;">
-                                        <div class="caption">
-                                            <p class="blockquote-reverse">
+                        @if(is_null($news))
+                            <div class="col-sm-7 grid-item col-md-5">
+                                <div class="panel text-center">
+                                    <h3>No News</h3>
+                                </div>
+                            </div>
+                        @else
+                            <div class="col-sm-7 grid-item col-md-5">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading"><b>Latest News</b></div>
+                                    <div class="panel-body no-padding">
+                                        <div class="thumbnail no-border">
+                                            <img data-src="holder.js/100%x200" alt="100%x200"
+                                                 src="{{ route('make.thumbnail',[$news->photo->url]) }}"
+                                                 data-holder-rendered="true"
+                                                 style="height: 100%; width: 500px; display: block;">
+                                            <div class="caption">
+                                                <p class="blockquote-reverse">
                                         <span class="text-small">
                                             {{ $news->created_at->toDayDateTimeString() }} <br>
                                             {{--({{ $news->created_at->diffForHumans() }}) <br>--}}
                                         </span>
-                                            </p>
-                                            <h3 class="text-bold padding10 title">{{ $news->title }}</h3>
-                                            <i class="padding10 small text-muted">By {{ $news->user->name }}</i>
-                                            <p class="padding10 text-justify">
-                                                {!! nl2br($news->description) !!}
-                                            </p>
+                                                </p>
+                                                <h3 class="text-bold padding10 title">{{ $news->title }}</h3>
+                                                <i class="padding10 small text-muted">By {{ $news->user->name }}</i>
+                                                <p class="padding10 text-justify">
+                                                    {!! nl2br($news->description) !!}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                         {{--News Ends--}}
 
                         {{--Event Starts--}}
+                        @if(is_null($event))
+                            <div class="col-sm-7 grid-item col-md-5">
+                                <div class="panel text-center">
+                                    <h3>No Events</h3>
+                                </div>
+                            </div>
+                        @else
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="panel panel-primary">
                                 <div class="panel-heading"><b>Latest Event</b></div>
                                 <div class="panel-body no-padding">
                                     <div class="thumbnail no-border">
                                         <img data-src="holder.js/100%x200" alt="100%x200"
-                                             src="{{ route('make.thumbnail',[$event->photo->url]) }}" data-holder-rendered="true"
+                                             src="{{ route('make.thumbnail',[$event->photo->url]) }}"
+                                             data-holder-rendered="true"
                                              style="height: 100%; width: 500px; display: block;">
                                         <div class="caption">
                                             <h4>{{ $event->name }}</h4>
@@ -125,9 +142,17 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         {{--Event Ends--}}
 
                         {{--CodeWar Starts--}}
+                        @if(is_null($codewars) || $codewars->isEmpty())
+                            <div class="col-sm-7 grid-item col-md-5">
+                                <div class="panel text-center">
+                                    <h3>No Wars</h3>
+                                </div>
+                            </div>
+                        @else
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="panel panel-primary">
                                 <div class="panel-heading"><b>Latest Codewars</b></div>
@@ -153,9 +178,17 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         {{--CodeWar Ends--}}
 
                         {{--Question Starts--}}
+                        @if(is_null($questions) || $questions->isEmpty())
+                            <div class="col-sm-7 grid-item col-md-5">
+                                <div class="panel text-center">
+                                    <h3>No Questions</h3>
+                                </div>
+                            </div>
+                        @else
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="panel panel-primary">
                                 <div class="panel-heading"><b>Latest Questions</b></div>
@@ -174,9 +207,17 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         {{--Question Ends--}}
 
                         {{--Latest Signups Starts--}}
+                        @if(is_null($users) || $users->isEmpty())
+                            <div class="col-sm-7 grid-item col-md-5">
+                                <div class="panel text-center">
+                                    <h3>No Users</h3>
+                                </div>
+                            </div>
+                        @else
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="panel panel-primary">
                                 <div class="panel-heading"><b>Latest Members</b></div>
@@ -186,8 +227,10 @@
                                             <div class="caption">
                                                 <a href="{{ route('users.profile.show',$user->username) }}">
                                                     <h4>
-                                                        <img class="img" src="{{ $user->photo_id == null ? "/images/".$user->getProfilePicUrl() : "/image/".$user->getProfilePicUrl()."/thumbnail/30" }}" width="20" height="20"/>
-                                                            {{ $user->name }}
+                                                        <img class="img"
+                                                             src="{{ $user->photo_id == null ? "/images/".$user->getProfilePicUrl() : "/image/".$user->getProfilePicUrl()."/thumbnail/30" }}"
+                                                             width="20" height="20"/>
+                                                        {{ $user->name }}
                                                         <i class="small">{{ "@".$user->username }}</i>
                                                     </h4></a>
                                                 <p class="blockquote-reverse">
@@ -199,8 +242,11 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         {{--Latest Signups Ends--}}
 
+
+                        @unless($aluminis->isEmpty())
                         @foreach($aluminis as $alumini)
                             {{--Alumini 1 Starts--}}
                             <div class="col-sm-6 grid-item col-md-4">
@@ -212,40 +258,44 @@
                                 <p>
                                     <b> - {{ $alumini->speaker }}</b><br>
                                         <span class="text-small">
-                                            {{ $alumini->department->name }} ({{ $alumini->batch }}) <br> ({{ $alumini->profession }} {{ $alumini->organisation_id != null ? "at ".$alumini->organisation->name : "" }})</span>
+                                            {{ $alumini->department->name }} ({{ $alumini->batch }}
+                                            ) <br> ({{ $alumini->profession }} {{ $alumini->organisation_id != null ? "at ".$alumini->organisation->name : "" }}
+                                            )</span>
                                 </p>
                             </div>
                             {{--Alumini 1 Ends--}}
                         @endforeach
+                        @endunless
 
                         @unless(is_null($technews))
-                        {{--Tech News Starts--}}
-                        <div class="col-sm-7 grid-item col-md-5">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading"><b>Technology News</b></div>
-                                <div class="panel-body no-padding">
-                                    <div class="thumbnail no-border">
-                                        <img data-src="holder.js/100%x200" alt="100%x200"
-                                             src="{{ route('make.thumbnail',[$technews->photo->url]) }}" data-holder-rendered="true"
-                                             style="height: 100%; width: 500px; display: block;">
-                                        <div class="caption">
-                                            <p class="blockquote-reverse">
+                            {{--Tech News Starts--}}
+                            <div class="col-sm-7 grid-item col-md-5">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading"><b>Technology News</b></div>
+                                    <div class="panel-body no-padding">
+                                        <div class="thumbnail no-border">
+                                            <img data-src="holder.js/100%x200" alt="100%x200"
+                                                 src="{{ route('make.thumbnail',[$technews->photo->url]) }}"
+                                                 data-holder-rendered="true"
+                                                 style="height: 100%; width: 500px; display: block;">
+                                            <div class="caption">
+                                                <p class="blockquote-reverse">
                                         <span class="text-small">
                                             {{ $technews->created_at->toDayDateTimeString() }} <br>
                                             {{--({{ $news->created_at->diffForHumans() }}) <br>--}}
                                         </span>
-                                            </p>
-                                            <h3 class="text-bold padding10 title">{{ $technews->title }}</h3>
-                                            <i class="padding10 small text-muted">By {{ $technews->user->name }}</i>
-                                            <p class="padding10 text-justify">
-                                                {!! nl2br($technews->description) !!}
-                                            </p>
+                                                </p>
+                                                <h3 class="text-bold padding10 title">{{ $technews->title }}</h3>
+                                                <i class="padding10 small text-muted">By {{ $technews->user->name }}</i>
+                                                <p class="padding10 text-justify">
+                                                    {!! nl2br($technews->description) !!}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {{--Tech News Ends--}}
+                            {{--Tech News Ends--}}
                         @endunless
 
                         {{--Quote of the Day Starts--}}
@@ -254,7 +304,7 @@
                                 <div class="panel-heading"><b>Quote of the day</b></div>
                                 <div class="panel-body no-padding text-center">
                                     <h4 id="quoteofday">
-                    <i class="inspire text-{{ ['success','info', 'green', 'violet', 'muted', 'primary'][array_rand([0,1,2,3,4,5])] }}">{!! ($qotd) !!}</i>
+                                        <i class="inspire text-{{ ['success','info', 'green', 'violet', 'muted', 'primary'][array_rand([0,1,2,3,4,5])] }}">{!! ($qotd) !!}</i>
                                     </h4>
                                 </div>
                             </div>
@@ -268,9 +318,10 @@
                                 <div class="panel-body no-padding text-center">
                                     <div class="thumbnail no-border">
                                         <a href="/images/{{ $picture->url }}" target="_blank">
-                                        <img data-src="holder.js/100%x200" alt="100%x200"
-                                             src="{{ route('make.thumbnail',[$picture->url]) }}" data-holder-rendered="true"
-                                             style="height: 100%; width: 500px; display: block;">
+                                            <img data-src="holder.js/100%x200" alt="100%x200"
+                                                 src="{{ route('make.thumbnail',[$picture->url]) }}"
+                                                 data-holder-rendered="true"
+                                                 style="height: 100%; width: 500px; display: block;">
                                         </a>
                                     </div>
                                 </div>
@@ -564,24 +615,21 @@
     <script type="text/javascript">
 
         // Quotes AJAX load
-            function update_div()
-            {
-                $('#ajaxinspire').fadeOut('normal', function()
-                {
-                    $('#ajaxinspire').load('/inspire');
-                    //Did you know
-                    $('#ajaxinspire').fadeIn(3000, function()
-                    {
-                        $('#didyouknow').load('/dyk');
-                        window.setTimeout("update_div()", 8000);
-                    });
+        function update_div() {
+            $('#ajaxinspire').fadeOut('normal', function () {
+                $('#ajaxinspire').load('/inspire');
+                //Did you know
+                $('#ajaxinspire').fadeIn(3000, function () {
+                    $('#didyouknow').load('/dyk');
+                    window.setTimeout("update_div()", 8000);
                 });
-            }
-            update_div();
+            });
+        }
+        update_div();
 
 
         // Carousel Function
-        $(function() {
+        $(function () {
             $('#slider').carouFredSel({
                 width: '100%',
                 align: false,
@@ -594,8 +642,8 @@
                 },
                 scroll: {
                     items: 1,
-                    timeoutDuration : 5000,
-                    onBefore: function(data) {
+                    timeoutDuration: 5000,
+                    onBefore: function (data) {
 
                         //	find current and next slide
                         var currentSlide = $('.slide.active', this),
@@ -606,34 +654,34 @@
                         currentSlide.stop().animate({
                             width: _width * 0.15
                         });
-                        currentSlide.removeClass( 'active' );
+                        currentSlide.removeClass('active');
 
                         //	hide current block
-                        data.items.old.add( data.items.visible ).find( '.slide-block' ).stop().fadeOut();
+                        data.items.old.add(data.items.visible).find('.slide-block').stop().fadeOut();
 
                         //	animate clicked slide to large size
-                        nextSlide.addClass( 'active' );
+                        nextSlide.addClass('active');
                         nextSlide.stop().animate({
                             width: _width * 0.7
                         });
                     },
-                    onAfter: function(data) {
+                    onAfter: function (data) {
                         //	show active slide block
-                        data.items.visible.last().find( '.slide-block' ).stop().fadeIn();
+                        data.items.visible.last().find('.slide-block').stop().fadeIn();
                     }
                 },
-                onCreate: function(data){
+                onCreate: function (data) {
 
                     //	clone images for better sliding and insert them dynamacly in slider
-                    var newitems = $('.slide',this).clone( true ),
+                    var newitems = $('.slide', this).clone(true),
                             _width = $('#wrapper').width();
 
-                    $(this).trigger( 'insertItem', [newitems, newitems.length, false] );
+                    $(this).trigger('insertItem', [newitems, newitems.length, false]);
 
                     //	show images
                     $('.slide', this).fadeIn();
-                    $('.slide:first-child', this).addClass( 'active' );
-                    $('.slide', this).width( _width * 0.15 );
+                    $('.slide:first-child', this).addClass('active');
+                    $('.slide', this).width(_width * 0.15);
 
                     //	enlarge first slide
                     $('.slide:first-child', this).animate({
@@ -641,30 +689,30 @@
                     });
 
                     //	show first title block and hide the rest
-                    $(this).find( '.slide-block' ).hide();
-                    $(this).find( '.slide.active .slide-block' ).stop().fadeIn();
+                    $(this).find('.slide-block').hide();
+                    $(this).find('.slide.active .slide-block').stop().fadeIn();
                 }
             });
 
             //	Handle click events
-            $('#slider').children().click(function() {
-                $('#slider').trigger( 'slideTo', [this] );
+            $('#slider').children().click(function () {
+                $('#slider').trigger('slideTo', [this]);
             });
 
             //	Enable code below if you want to support browser resizing
-            $(window).resize(function(){
+            $(window).resize(function () {
 
                 var slider = $('#slider'),
                         _width = $('#wrapper').width();
 
                 //	show images
-                slider.find( '.slide' ).width( _width * 0.15 );
+                slider.find('.slide').width(_width * 0.15);
 
                 //	enlarge first slide
-                slider.find( '.slide.active' ).width( _width * 0.7 );
+                slider.find('.slide.active').width(_width * 0.7);
 
                 //	update item width config
-                slider.trigger( 'configuration', ['items.width', _width * 0.15] );
+                slider.trigger('configuration', ['items.width', _width * 0.15]);
             });
 
         });
@@ -672,7 +720,7 @@
         /**
          * Masonry
          */
-        $(window).load(function(){
+        $(window).load(function () {
             $('.grid').masonry({
                 itemSelector: ".grid-item",
                 "columnWidth": 380
