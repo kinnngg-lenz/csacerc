@@ -5,4 +5,3 @@
         <h3 class="text-center text-info">Enjoy your stay!</h3>
     </div>
 @endsection
-

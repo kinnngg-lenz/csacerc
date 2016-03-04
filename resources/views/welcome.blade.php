@@ -1,8 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('styles')
-    {{-- HTML::style('/packages/torann/laravel-weather/weather.css') --}}
     <style>
+        #didyouknow
+        {
+            font-weight:300;
+        }
         @media (max-width: 767px) {
             .quote-container {
                 margin-top: -28px;
@@ -275,17 +278,18 @@
                         </div>
                         {{--Pic of the Day Ends--}}
 
-                        {{--Weather API Starts--}}
+                        {{--Did you Know API Starts--}}
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="panel panel-primary">
-                                <div class="panel-heading"><b>Today's Forecast</b></div>
-                                <div class="panel-body no-padding text-center">
-                                    <h3 style="font-weight: 100;margin: 10px auto"> <i class="fa fa-sun-o"></i> It's sunny today</h3>
-                                    <h3 style="font-weight: 100;margin: 10px auto">27<sup>o</sup>C at Kukas</h3>
+                                <div class="panel-heading"><b>Did you know?</b></div>
+                                <div class="panel-body padding10 text-center">
+                                    <h4 id="didyouknow">
+                                        78 is the atomic number of platinum.
+                                    </h4>
                                 </div>
                             </div>
                         </div>
-                        {{--Weather API Ends--}}
+                        {{--Did you Know API Ends--}}
 
                     </div>
                 </div>
@@ -416,10 +420,10 @@
 
                 </ul> <!-- cd-testimonials -->
 
-                <a href="#0" class="cd-see-all">See all</a>
+                <a href="#0" class="cd-see-all" style="display: none">See all</a>
             </div> <!-- cd-testimonials-wrapper -->
 
-            <div class="cd-testimonials-all">
+            <div class="cd-testimonials-all" style="display: none">
                 <div class="cd-testimonials-all-wrapper">
                     <ul>
                         <li class="cd-testimonials-item">
@@ -565,8 +569,10 @@
                 $('#ajaxinspire').fadeOut('normal', function()
                 {
                     $('#ajaxinspire').load('/inspire');
+                    //Did you know
                     $('#ajaxinspire').fadeIn(3000, function()
                     {
+                        $('#didyouknow').load('/dyk');
                         window.setTimeout("update_div()", 8000);
                     });
                 });

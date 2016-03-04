@@ -75,7 +75,7 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('/test', function(){
-        dd(Auth::user()->getProfilePicUrl());
+        return view('auth.emails.welcome');
     });
 
 });
@@ -202,3 +202,4 @@ Route::group(['middleware' => 'web'], function () {
  */
 Route::get('/inspire', ['as' => 'inspire', 'uses' => 'ApisController@inspire']);
 Route::get('/users/{query}', ['as' => 'users.search', 'uses' => 'UsersController@search']);
+Route::get('/dyk', ['as' => 'dyk', 'uses' => 'ApisController@didyouknow']);
