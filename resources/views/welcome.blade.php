@@ -410,10 +410,10 @@
                             motivation for all to achieve heights.
                         </p>
                         <div class="cd-author">
-                            <img src="/images/static/sanjay_tiwari.jpg" alt="Author image">
+                            <img src="/images/static/pradeep_jha.jpg" alt="Author image">
                             <ul class="cd-author-info">
-                                <li>Dr. Sanjay Tiwari</li>
-                                <li>HOD CS Dept, AIET</li>
+                                <li>Er. Pradeep Jha</li>
+                                <li>HOD CS Dept, ACERC</li>
                             </ul>
                         </div>
                     </li>
