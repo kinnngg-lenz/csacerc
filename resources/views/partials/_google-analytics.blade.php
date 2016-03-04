@@ -9,17 +9,8 @@
 
 </script>
 
-@if(Session::has('user.has.registered'))
-    <script>
-        ga('set', 'userId', "{{ Auth::user()->email }}"); // Set the user ID using signed-in user_id.
-    </script>
-@endif
-
-
-@if(Session::has('user.has.loggedin'))
     @if(Auth::check() && Auth::user()->banned == 0)
         <script>
             ga('set', 'userId', "{{ Auth::user()->email }}"); // Set the user ID using signed-in user_id.
         </script>
     @endif
-@endif
