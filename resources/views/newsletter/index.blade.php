@@ -96,6 +96,7 @@
                                     <i class="text-small">
                                         Uploaded 2 months ago</i>
                                 </p>
+                                {{ link_to_route('notes.show',"Read Online",[$note->slug],['class' => 'btn btn-info btn-block btn-sm']) }}
                                 <a href="" class="btn btn-sm btn-info btn-block">Download</a>
                             </div>
                         </div>

@@ -89,6 +89,7 @@ class NotesController extends Controller
         if(File::isFile($file))
         {
             $file = File::get($file);
+            dd($file);
             $response = Response::make($file,200);
             $response->header('Content-Type','application/pdf');
 

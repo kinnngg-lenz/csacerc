@@ -71,6 +71,17 @@ class AluminisController extends Controller
                     'url' => $photoName
                 ]);
 
+                $photoId = $photo->id;
+            }
+            else {
+                return back()->withNotification('Error! Photo is invalid')->withType('danger');
+            }
+        }
+        else
+        {
+            $photoId = null;
+        }
+
                 $slug = slug_for_url($request->speaker.' of '.$request->batch.'-'.$request->profession);
 
                 $speech = empty($request->speech) ? null : $request->speech;
@@ -84,16 +95,12 @@ class AluminisController extends Controller
                     'department_id' => $request->department_id,
                     'profession' => $request->profession,
                     'organisation_id' => $organisation_id,
-                    'photo_id' => $photo->id,
+                    'photo_id' => $photoId,
                     'email' => $request->email,
                     'facebook' => $facebook,
                     'slug' => $slug,
                 ]);
                 return back()->withNotification('A New Alumini has been added successfully!')->withType('success');
-            }
-            return back()->withNotification('Error! Photo is invalid')->withType('danger');
-        }
-        return back()->withNotification('Error! Its not a photo')->withType('danger');
     }
 
     /**

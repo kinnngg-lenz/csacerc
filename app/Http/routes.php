@@ -69,13 +69,17 @@ Route::group(['middleware' => ['web']], function () {
     });
 
 
-    //TEST
-    Route::get('/flush', function(){
-       Cache::flush();
-    });
+    Route::get('/newsletter/{name}', function($name){
 
-    Route::get('/test', function(){
-
+        $file = storage_path('pdf/').$name.".pdf";
+        if(File::isFile($file))
+        {
+            $file = File::get($file);
+            $response = Response::make($file,200);
+            $response->header('Content-Type','application/pdf');
+            return $response;
+        }
+        return back()->withNotification('Error! Something Wrong')->withType('danger');
     });
 
 });

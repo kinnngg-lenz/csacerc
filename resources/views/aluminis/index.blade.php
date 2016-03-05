@@ -71,7 +71,7 @@
 
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="thumbnail">
-                                <img class="img img-circle" data-src="holder.js/100%x200" alt="100%x200" src="images/{{ $alumini->photo->url }}" data-holder-rendered="true" style="width:200px;height:200px;margin-top:15px;">
+                                <img class="img img-circle" data-src="holder.js/100%x200" alt="100%x200" src="images/{{ is_null($alumini->photo_id) ? "static/alumini_profile.jpg" : $alumini->photo->url }}" data-holder-rendered="true" style="width:200px;height:200px;margin-top:15px;">
                                 <div class="caption text-center">
                                     <h4>{{ $alumini->speaker }}</h4>
                                     <p class="text-center">
