@@ -11,7 +11,7 @@
                         {{ Form::open(['files' => 'true', 'class' => 'form-horizontal']) }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            {{ Form::label('name', 'Organisation Name', ['class' => 'col-md-4 control-label']) }}
+                            <label for="name" class="col-md-4 control-label">Organisation Name <span class="text-danger">*</span></label>
                             <div class="col-md-6">
                             {{ Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Full name of Organisation']) }}
                             @if ($errors->has('name'))

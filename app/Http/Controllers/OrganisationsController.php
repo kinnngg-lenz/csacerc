@@ -58,15 +58,30 @@ class OrganisationsController extends Controller
      */
     public function store(OrganisationRequest $request)
     {
+        /**
+         * If Photo is present then
+         */
         if ($request->hasFile('photo')) {
             if ($request->file('photo')->isValid()) {
-                $photoName = md5(Carbon::now()).".".$request->file('photo')->getClientOriginalExtension();
+                $photoName = md5(Carbon::now()) . "." . $request->file('photo')->getClientOriginalExtension();
 
                 $request->file('photo')->move(public_path('images'), $photoName);
 
                 $photo = Photo::create([
                     'url' => $photoName
                 ]);
+
+                $photoId = $photo->id;
+            }
+            // If Photo is Invalid then
+            else {
+                return back()->withNotification('Error! Photo Invalid!')->withType('danger');
+            }
+        }
+        // Else set photo_id to null
+        else {
+            $photoId = null;
+        }
 
                 $slug = slug_for_url($request->name);
 
@@ -80,7 +95,7 @@ class OrganisationsController extends Controller
                         'initials' => $initials,
                         'details' => $details,
                         'address' => $address,
-                        'photo_id' => $photo->id,
+                        'photo_id' => $photoId,
                         'slug' => $slug,
                     ]);
                 }
@@ -93,14 +108,11 @@ class OrganisationsController extends Controller
                         'initials' => $initials,
                         'details' => $details,
                         'address' => $address,
-                        'photo_id' => $photo->id,
+                        'photo_id' => $photoId,
                         'slug' => $slug,
                     ]);
                 }
-
                 return back()->withNotification('Organisation has been added!')->withType('success');
-            }
-        }
     }
 
     /**

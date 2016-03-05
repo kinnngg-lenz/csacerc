@@ -54,7 +54,7 @@
                             {!! csrf_field() !!}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Full Name</label>
+                                <label class="col-md-4 control-label">Full Name <span class="text-danger">*</span> </label>
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}"
@@ -70,7 +70,7 @@
 
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
+                                <label class="col-md-4 control-label">E-Mail Address <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="email" class="form-control" name="email" value="{{ old('email') }}"
@@ -85,7 +85,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Username</label>
+                                <label class="col-md-4 control-label">Username <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="username"
@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Gender</label>
+                                <label class="col-md-4 control-label">Gender <span class="text-danger">*</span></label>
                                 <div class="col-md-6">
                                     <select name="gender" class="form-control" id="inputGender">
                                         <option value="" class="text-muted">Select Gender</option>
@@ -120,7 +120,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">You Are</label>
+                                <label class="col-md-4 control-label">You Are <span class="text-danger">*</span></label>
                                 <div class="col-md-6">
                                     <select name="type" class="form-control" id="inputType">
                                         <option value="" class="text-muted">Select Account</option>
@@ -137,7 +137,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('college_id') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Your College</label>
+                                <label class="col-md-4 control-label">Your College <span class="text-danger">*</span></label>
                                 <div class="col-md-6">
                                     {{ Form::select('college_id', App\College::lists('name','id'), null, ['placeholder' => 'Select your College..', 'class' => 'form-control', 'id' => "inputType"]) }}
                                     @if ($errors->has('college_id'))
@@ -149,7 +149,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('department_id') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Department</label>
+                                <label class="col-md-4 control-label">Department <span class="text-danger">*</span></label>
                                 <div class="col-md-6">
                                     {{ Form::select('department_id', App\Department::lists('name','id'), null, ['placeholder' => 'Select your Department..', 'class' => 'form-control']) }}
                                     @if ($errors->has('department_id'))
@@ -161,7 +161,7 @@
                             </div>
 
                             <div class="group-batch form-group{{ $errors->has('batch') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Batch</label>
+                                <label class="col-md-4 control-label">Batch <span class="text-danger">*</span></label>
                                 <div class="col-md-6">
                                     {{ Form::select('batch', [
                                     '2000-2004' => '2000-2004',
@@ -191,7 +191,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Password</label>
+                                <label class="col-md-4 control-label">Password <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="password" class="form-control" name="password"
@@ -206,7 +206,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Confirm Password</label>
+                                <label class="col-md-4 control-label">Confirm Password <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="password" class="form-control" name="password_confirmation"
@@ -263,7 +263,7 @@
                                     <div class="col-md-6">
                                         {{ Form::select('organisation_id', App\Organisation::lists('name','id'), null, ['placeholder' => 'Select Organisation..', 'class' => 'form-control', 'id' => "inputType"]) }}
                                         <div class="text-info small">If the company you work in is not listed here then
-                                            please help us and add you company
+                                            please help us and add the company you work with,
                                             <b>{{ link_to_route('org.create','click here') }}</b>
                                         </div>
                                         @if ($errors->has('organisation_id'))

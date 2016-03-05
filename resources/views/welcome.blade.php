@@ -311,19 +311,6 @@
                         </div>
                         {{--Quote of the Day Ends--}}
 
-                        {{--Did you Know API Starts--}}
-                        <div class="col-sm-6 grid-item col-md-4">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading"><b>Did you know?</b></div>
-                                <div class="panel-body padding10 text-center">
-                                    <h4 id="didyouknow">
-                                        78 is the atomic number of platinum.
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                        {{--Did you Know API Ends--}}
-
                         {{--Pic of the Day Starts--}}
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="panel panel-primary">
@@ -341,6 +328,19 @@
                             </div>
                         </div>
                         {{--Pic of the Day Ends--}}
+
+                        {{--Did you Know API Starts--}}
+                        <div class="col-sm-6 grid-item col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><b>Did you know?</b></div>
+                                <div class="panel-body padding10 text-center">
+                                    <h4 id="didyouknow">
+                                        78 is the atomic number of platinum.
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        {{--Did you Know API Ends--}}
 
                     </div>
                 </div>

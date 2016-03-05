@@ -28,10 +28,10 @@ class OrganisationRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:organisations,name',
             'initials' => '',
             'details' => '',
-            'photo' => 'required|image|max:250',
+            'photo' => 'image|max:250',
             'address' => '',
         ];
     }
