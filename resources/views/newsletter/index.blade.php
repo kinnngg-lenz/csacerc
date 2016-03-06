@@ -62,7 +62,8 @@
                                         <i class="text-small">
                                             Uploaded 2 days ago</i>
                                     </p>
-                                    <a href="" class="btn btn-sm btn-info btn-block">Download</a>
+                                    {{ link_to_route('newsletter.show',"Read Online",["voyage_3"],['class' => 'btn btn-info btn-block btn-sm']) }}
+                                    {{ link_to_route('newsletter.download',"Download",["voyage_3"],['class' => 'btn btn-primary btn-block btn-sm']) }}
                                 </div>
                             </div>
                         </div>
@@ -79,7 +80,8 @@
                                     <i class="text-small">
                                         Uploaded 21 days ago</i>
                                 </p>
-                                <a href="" class="btn btn-sm btn-info btn-block">Download</a>
+                                {{ link_to_route('newsletter.show',"Read Online",["voyage_3"],['class' => 'btn btn-info btn-block btn-sm']) }}
+                                {{ link_to_route('newsletter.download',"Download",["voyage_3"],['class' => 'btn btn-primary btn-block btn-sm']) }}
                             </div>
                         </div>
                     </div>
@@ -96,8 +98,8 @@
                                     <i class="text-small">
                                         Uploaded 2 months ago</i>
                                 </p>
-                                {{ link_to_route('notes.show',"Read Online",[$note->slug],['class' => 'btn btn-info btn-block btn-sm']) }}
-                                <a href="" class="btn btn-sm btn-info btn-block">Download</a>
+                                {{ link_to_route('newsletter.show',"Read Online",["voyage_3"],['class' => 'btn btn-info btn-block btn-sm']) }}
+                                {{ link_to_route('newsletter.download',"Download",["voyage_3"],['class' => 'btn btn-primary btn-block btn-sm']) }}
                             </div>
                         </div>
                     </div>

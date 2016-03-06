@@ -17,7 +17,7 @@ elixir(function(mix) {
 
     mix.styles(['bootstrap.css', 'highlight/railscasts.css', 'bootstrap-datetimepicker.min.css', 'bubble.css', 'select2.css', 'app.css'],null,'public/css');
 
-    mix.scripts(['jquery.min.js', 'bootstrap.min.js', 'modernizr.js', 'typeahead.bundle.min.js', 'masonry.pkgd.min.js', 'jquery.imagesloaded.js', 'bootstrap-datetimepicker.min.js', 'jquery.countdown2.js', 'jquery.flexslider-min.js', 'select2/select2.full.min.js', 'app.js'],null,'public/js');
+    mix.scripts(['jquery.min.js', 'bootstrap.min.js', 'modernizr.js', 'typeahead.bundle.min.js', 'masonry.pkgd.min.js', 'jquery.imagesloaded.js', 'bootstrap-datetimepicker.min.js', 'jquery.countdown2.js', 'jquery.flexslider-min.js', 'select2/select2.full.min.js', 'autosize.min.js', 'app.js'],null,'public/js');
 
     mix.version(['css/all.css','js/all.js']);
 });

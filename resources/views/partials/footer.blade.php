@@ -52,7 +52,7 @@
             <div class="col-md-7">
                 <p class="copyright">
                     <i class="fa fa-copyright"></i> Department of Computer Science - ACERC, {{ date('Y') }}. All rights
-                    reserved. Yes! All of them
+                    reserved.
                 </p>
 
                 <div class="developed_by text-muted small">

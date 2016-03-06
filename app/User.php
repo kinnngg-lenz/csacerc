@@ -106,6 +106,26 @@ class User extends Authenticatable
     }
 
     /**
+     * Messages Sent
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
+    {
+        return $this->hasMany('App\Message', 'sender_id', 'id');
+    }
+
+    /**
+     * Messages Received
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function receivedMessages()
+    {
+        return $this->hasMany('App\Message', 'receiver_id', 'id');
+    }
+
+    /**
      * If this user has extra role than regular member
      *
      * @return bool
@@ -261,5 +281,66 @@ class User extends Authenticatable
                 return "static/Female.jpeg";
         }
         return $this->photo->url;
+    }
+
+    /**
+     * @param $username
+     * @return mixed
+     */
+    public static function findOrFailByUsername($username)
+    {
+        $user = static::whereUsername($username)->first();
+
+        if(is_null($user))
+            abort(404);
+        else
+            return $user;
+    }
+
+    /**
+     * Returns all messages of this user sent by provided username
+     *
+     * @param $username
+     * @return mixed
+     */
+    public function messagesBy($username)
+    {
+        $by = static::findOrFailByUsername($username);
+        $messages = $this->receivedMessages()->where('sender_id',$by->id);
+        return $messages;
+    }
+
+
+    /**
+     * Returns all messages of this user sent by provided username and also Unseen
+     *
+     * @param $username
+     * @return mixed
+     */
+    public function messagesUnseenBy($username)
+    {
+        $by = static::findOrFailByUsername($username);
+        $messages = $this->receivedMessages()->where('sender_id',$by->id)->whereSeenAt(null);
+        return $messages;
+    }
+
+    /**
+     * All messages that are received and also not seen
+     *
+     * @return mixed
+     */
+    public function receivedMessagesUnseen()
+    {
+        return $this->receivedMessages()->whereSeenAt(null);
+    }
+
+    /**
+     * Collection of all message either send or received by this user
+     *
+     * @return mixed
+     */
+    public function allMessages()
+    {
+        return Message::where('sender_id',$this->id)->orWhere('receiver_id',$this->id);
     }
 }

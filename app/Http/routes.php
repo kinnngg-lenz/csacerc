@@ -68,18 +68,11 @@ Route::group(['middleware' => ['web']], function () {
         return view('aboutus');
     });
 
+    Route::get('/test', function(){
+       $user = Auth::user();
+       $m = $user->receivedMessagesUnseen()->with('sender');
 
-    Route::get('/newsletter/{name}', function($name){
-
-        $file = storage_path('pdf/').$name.".pdf";
-        if(File::isFile($file))
-        {
-            $file = File::get($file);
-            $response = Response::make($file,200);
-            $response->header('Content-Type','application/pdf');
-            return $response;
-        }
-        return back()->withNotification('Error! Something Wrong')->withType('danger');
+        dd($m->groupBy('sender_id')->get());
     });
 
 });
@@ -196,7 +189,15 @@ Route::group(['middleware' => 'web'], function () {
      */
     Route::post('/newsletter/subscribe', ['as' => 'newsletter.subscribe', 'uses' => 'NewsletterController@subscribe']);
     Route::get('/newsletter', ['as' => 'newsletter.index', 'uses' => 'NewsletterController@index']);
+    Route::get('/newsletter/{name}', ['as' => 'newsletter.show', 'uses' => 'NewsletterController@show']);
+    Route::get('/newsletter/{name}/download', ['as' => 'newsletter.download', 'uses' => 'NewsletterController@download']);
 
+    /**
+     * Messages Controller
+     */
+    Route::get('/conversation/new', ['as' => 'messages.new', 'uses' => 'MessagesController@start']);
+    Route::get('/messages/@{username}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+    Route::post('/messages/@{username}', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
 });
 
 /**

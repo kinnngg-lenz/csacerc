@@ -167,16 +167,25 @@
                     Joined {{  $user->created_at->diffForHumans()}}
                 </p>
 
-                @if(Auth::check() && Auth::user()->isSuperAdmin())
-                    {{ Form::open(['method' => 'patch', 'route' => ['users.toggleban',$user->username]]) }}
-                    {{ Form::hidden('username',$user->username) }}
-                    @if($user->banned == 1)
-                        {{ Form::submit('Unban @'.$user->username,['class' => 'btn btn-success btn-sm']) }}
-                    @else
-                        {{ Form::submit('Ban @'.$user->username,['class' => 'btn btn-danger btn-sm']) }}
+                <div class="col-md-6 row">
+                    @if(Auth::check() && Auth::user()->isSuperAdmin())
+                        <div class="col-md-3">
+                            {{ Form::open(['method' => 'patch', 'route' => ['users.toggleban',$user->username]]) }}
+                            {{ Form::hidden('username',$user->username) }}
+                            @if($user->banned == 1)
+                                {{ Form::submit('Unban @'.$user->username,['class' => 'btn btn-success btn-sm']) }}
+                            @else
+                                {{ Form::submit('Ban @'.$user->username,['class' => 'btn btn-danger btn-sm']) }}
+                            @endif
+                            {{ Form::close() }}
+                        </div>
                     @endif
-                    {{ Form::close() }}
-                @endif
+                    @unless($user->id == Auth::user()->id)
+                    <div class="col-md-3">
+                        {{ link_to_route('messages.show',"Send Message",$user->username,['class' => 'btn btn-info btn-sm']) }}
+                    </div>
+                    @endunless
+                </div>
 
             </div>
         </div>

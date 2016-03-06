@@ -2,6 +2,9 @@
  * Created by Zishan on 08-Feb-16.
  */
 $(document).ready(function(){
+
+    autosize($('textarea'));
+
    $('.notification').delay(7000).fadeOut(1000);
     $("[data-toggle='tooltip']").tooltip();
 

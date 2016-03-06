@@ -21,8 +21,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $messages = $request->user()->receivedMessages()->with('sender')->with('receiver')->latest()->groupBy('sender_id')->get();
+
+        return view('home')->withMessages($messages);
     }
 }
