@@ -59,7 +59,7 @@ class ShoutsController extends Controller
 
 
         $validator = \Validator::make($request->all(), [
-            'shout' => 'required|max:160'
+            'shout' => 'required|max:500'
         ]);
 
         /**

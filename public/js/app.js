@@ -163,7 +163,7 @@ $(document).ready(function(){
 
         if(parseInt(data.shout.id)%2 == 0)
         {
-            $('#shoutbox-chat').append("<li class='left clearfix'><span class='chat-img pull-left'><img src='/image/"+data.shout.profile_pic+"/thumbnail/60' width='50' height='50' alt='User Avatar' class='img-circle'/> \
+            $('#shoutbox-chat').append("<li class='left clearfix'><span class='chat-img pull-left'><img src='/image/"+data.shout.profile_pic+"/thumbnail/60' width='40' height='40' alt='User Avatar' class='img-circle'/> \
             </span> \
             <div class='chat-body clearfix'> \
             <div class='header'> \
@@ -183,7 +183,7 @@ $(document).ready(function(){
         else
         {
             $('#shoutbox-chat').append("<li class='right clearfix'><span class='chat-img pull-right'> \
-        <img src='/image/"+data.shout.profile_pic+"/thumbnail/60' width='50' height='50' alt='User Avatar' class='img-circle'/> \
+        <img src='/image/"+data.shout.profile_pic+"/thumbnail/60' width='40' height='40' alt='User Avatar' class='img-circle'/> \
             </span> \
             <div class='chat-body clearfix'> \
             <div class='header'> \

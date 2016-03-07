@@ -18,7 +18,7 @@
                         @if($shout->user_id % 2 == 0)
 
                             <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="/image/{{ $shout->user->getProfilePicUrl() }}/thumbnail/60" width="50" height="50" alt="User Avatar" class="img-circle"/>
+                            <img src="/image/{{ $shout->user->getProfilePicUrl() }}/thumbnail/60" width="40" height="40" alt="User Avatar" class="img-circle"/>
                                 </span>
                                 <div class="chat-body clearfix">
                                     <div class="header">
@@ -37,7 +37,7 @@
                         @else
 
                             <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="/image/{{ $shout->user->getProfilePicUrl() }}/thumbnail/60" width="50" height="50" alt="User Avatar" class="img-circle"/>
+                            <img src="/image/{{ $shout->user->getProfilePicUrl() }}/thumbnail/60" width="40" height="40" alt="User Avatar" class="img-circle"/>
                         </span>
                                 <div class="chat-body clearfix">
                                     <div class="header">
@@ -93,7 +93,7 @@
     .shoutbox-cont .chat li {
         margin-bottom: 10px;
         padding-bottom: 5px;
-        border-bottom: 1px dotted #B3A9A9;
+        border-bottom: 1px #E1E1E1 solid;
     }
 
     .shoutbox-cont .chat li.left .chat-body {
@@ -116,6 +116,7 @@
     .shoutbox-cont .panel-body {
         overflow-y: auto;
         height: 400px;
+        font-size: 90%;
     }
 
     .shoutbox-cont ::-webkit-scrollbar-track {

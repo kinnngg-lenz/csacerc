@@ -40,7 +40,7 @@
             font-size: 18px !important;
         }
 
-        .twitter-typeahead {
+        .start-con-form .twitter-typeahead {
             width: 100% !important;
             margin-top: 5px;
         }
@@ -147,7 +147,7 @@
                 <div class="panel panel-default" style="margin:20px">
                     <div class="panel-heading"><b> <i class="fa fa-mail-forward"></i> Start New Conversation</b></div>
                     <div class="panel-body">
-                        <form method="get" action="/conversation/new">
+                        <form method="get" action="/conversation/new" class="start-con-form">
                             <div class="input-group col-md-7 col-md-offset-2">
                                 {{ Form::text('with',null,['class' => 'formsearch subscriber_email_input form-control', 'placeholder' => 'Username or Email']) }}
                                 <span class="add-on input-group-btn">
