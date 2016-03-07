@@ -3,6 +3,12 @@
  */
 $(document).ready(function(){
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     autosize($('textarea'));
 
    $('.notification').delay(7000).fadeOut(1000);
@@ -36,7 +42,24 @@ $(document).ready(function(){
             source: users.ttAdapter(),
             templates: {
                 suggestion: function(data){
-                    return '<p><a href="/@' +data.username+ '">' + data.username + '</a> - ' + data.name + '</p>';
+                    return '<p><a href="/@' +data.username+ '">' + data.username + ' - ' + data.name + '</a></p>';
+                }
+            }
+        }
+    );
+    $('.formsearch').typeahead({
+            hint: true,
+            highlight: true,
+            minlength: 3
+        },
+        {
+            name: 'users',
+            limit: 5,
+            displayKey: 'username',
+            source: users.ttAdapter(),
+            templates: {
+                suggestion: function(data){
+                    return '<p>@' + data.username + ' - ' + data.name + '</p>';
                 }
             }
         }
@@ -86,6 +109,85 @@ $(document).ready(function(){
     //build the grid for the testimonials modal page
     $('.cd-testimonials-all-wrapper').children('ul').masonry({
         itemSelector: '.cd-testimonials-item'
+    });
+
+    //Pusher API
+    var pusher = new Pusher('6a1122c0070c81d3d80a',{
+        cluster: 'eu',
+        encrypted: true}
+    );
+    var channel = pusher.subscribe('shoutbox');
+
+    channel.bind('App\\Events\\ShoutWasFired', function(data){
+        if(parseInt(data.shout.id)%2 == 0)
+        {
+            $('#shoutbox-chat').append("<li class='left clearfix'><span class='chat-img pull-left'><img src='/images/"+data.shout.profile_pic+"' width='50' alt='User Avatar' class='img-circle'/> \
+            </span> \
+            <div class='chat-body clearfix'> \
+            <div class='header'> \
+            <strong class='primary-font'>"+data.shout.name+"</strong> \
+        <small class='pull-right text-muted'> \
+            <span class='fa fa-clock-o'></span> "+data.shout.created_at+" \
+        </small> \
+        </div> \
+        <p> \
+        "+data.shout.message+" \
+        </p> \
+        </div> \
+        </li>\
+        ");
+            $(".messageLog").animate({ scrollTop: $(".messageLog")[0].scrollHeight}, 1000);
+        }
+        else
+        {
+            $('#shoutbox-chat').append("<li class='right clearfix'><span class='chat-img pull-right'> \
+        <img src='/images/"+data.shout.profile_pic+"' width='50' alt='User Avatar' class='img-circle'/> \
+            </span> \
+            <div class='chat-body clearfix'> \
+            <div class='header'> \
+            <small class='text-muted'><span class='fa fa-clock-o'></span> "+data.shout.created_at+" \
+        </small> \
+        <strong class='pull-right primary-font'>"+data.shout.name+"</strong> \
+        </div> \
+        <p class='text-right'> \
+            "+data.shout.message+" \
+        </p> \
+        </div> \
+        </li>");
+            $(".messageLog").animate({ scrollTop: $(".messageLog")[0].scrollHeight}, 1000);
+        }
+    });
+
+
+    /**
+     * Shoutbox Submit System with Ajax
+     */
+    $('#shoutbox-form').submit(function(event) {
+
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = {
+            'shout'              : $('input[name=shout]').val()
+        };
+
+        // process the form
+        $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '/shouts/do', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode          : true
+            })
+            // using the done promise callback
+            .done(function(data) {
+                // log data to the console so we can see
+                $('input[name=shout]').val('');
+
+                // here we will handle errors and validation messages
+            });
+
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
     });
 
 });

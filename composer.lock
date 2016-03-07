@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7c62e5569b482d311970a6a895c0d1fc",
-    "content-hash": "e932dc0036135f2deeeb3dda0a21c8f3",
+    "hash": "b683fe3cf52174cfd2a3b15f370a526a",
+    "content-hash": "8de147e2e92dd42db357c22077864d84",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2934,6 +2934,50 @@
                 "shell"
             ],
             "time": "2015-11-12 16:18:56"
+        },
+        {
+            "name": "pusher/pusher-php-server",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pusher/pusher-http-php.git",
+                "reference": "c03f5702d774d2c68785d4b61cd4701ed10759c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/c03f5702d774d2c68785d4b61cd4701ed10759c5",
+                "reference": "c03f5702d774d2c68785d4b61cd4701ed10759c5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Library for interacting with the Pusher REST API",
+            "homepage": "https://github.com/pusher/pusher-php-server",
+            "keywords": [
+                "events",
+                "php-pusher-server",
+                "publish",
+                "pusher",
+                "realtime",
+                "rest",
+                "trigger"
+            ],
+            "time": "2016-02-22 15:43:51"
         },
         {
             "name": "sebastian/comparator",

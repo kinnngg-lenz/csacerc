@@ -180,7 +180,7 @@
                             {{ Form::close() }}
                         </div>
                     @endif
-                    @unless($user->id == Auth::user()->id)
+                    @unless(Auth::check() && $user->id == Auth::user()->id)
                     <div class="col-md-3">
                         {{ link_to_route('messages.show',"Send Message",$user->username,['class' => 'btn btn-info btn-sm']) }}
                     </div>

@@ -64,14 +64,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><b> <i class="fa fa-bar-chart"></i> Your Statistics</b></div>
                     <div class="panel-body text-center stats">
-                        <p>You have <kbd class="text-lg">{{ Auth::user()->xp }}</kbd> e<b>X</b>perience points <i
-                                    class="fa fa-trophy"></i></p>
-                        <p>You have attempted <kbd class="text-lg">{{ Auth::user()->codeWarAnswers->count() }}</kbd>
-                            codewars <i class="fa fa-code"></i></p>
-                        <p>You have asked <kbd class="text-lg">{{ Auth::user()->questions->count() }}</kbd> questions <i
-                                    class="fa fa-question"></i></p>
-                        <p>You have sent <kbd class="text-lg">{{ Auth::user()->messages->count() }}</kbd> messages <i
-                                    class="fa fa-inbox"></i></p>
+                        <p>You have <kbd class="text-lg">{{ Auth::user()->xp }}</kbd> e<b>X</b>perience points <i class="fa fa-trophy"></i></p>
+                        <p>You have attempted <kbd class="text-lg">{{ Auth::user()->codeWarAnswers->count() }}</kbd> {{ str_plural("codewar", Auth::user()->codeWarAnswers->count() ) }} <i class="fa fa-code"></i></p>
+                        <p>You have asked <kbd class="text-lg">{{ Auth::user()->questions->count() }}</kbd>  {{ str_plural("question", Auth::user()->questions->count() ) }} <i class="fa fa-question"></i></p>
+                        <p>You have sent <kbd class="text-lg">{{ Auth::user()->messages->count() }}</kbd> {{ str_plural("message", Auth::user()->messages->count() ) }} <i class="fa fa-mail-forward"></i></p>
+                        <p>You have received <kbd class="text-lg">{{ Auth::user()->receivedMessages()->count() }}</kbd> {{ str_plural("message", Auth::user()->receivedMessages()->count() ) }} <i class="fa fa-mail-reply"></i></p>
 
                         {{-- <a href="{{ route('questions.user.unanswered') }}">You have {{ Auth::user()->notAnsweredQuestions()->approved()->count().str_plural(' question', Auth::user()->notAnsweredQuestions()->count()) }} to answer.</a>--}}
                         <br>
@@ -125,12 +122,12 @@
             @endif
         </div>
 
+        <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading"><b> <i class="fa fa-inbox"></i> Messages & Conversations</b></div>
+                <div class="panel-heading"><b> <i class="fa fa-envelope"></i> Conversations</b></div>
                 <div class="panel-body text-center stats">
-                    <p>You have <kbd class="text-lg">{{ Auth::user()->receivedMessagesUnseen()->count() }}</kbd> new
-                        messages <i class="fa fa-inbox"></i></p>
+                    <p>You have <kbd class="">{{ Auth::user()->receivedMessagesUnseen()->count() }}</kbd> new {{ str_plural('message', Auth::user()->receivedMessagesUnseen()->count()) }} <i class="fa fa-envelope-o"></i></p>
                     {{-- <a href="{{ route('questions.user.unanswered') }}">You have {{ Auth::user()->notAnsweredQuestions()->approved()->count().str_plural(' question', Auth::user()->notAnsweredQuestions()->count()) }} to answer.</a>--}}
                     <br>
 
@@ -148,11 +145,11 @@
                 </div>
 
                 <div class="panel panel-default" style="margin:20px">
-                    <div class="panel-heading"><b> <i class="fa fa-arrow-right"></i> Start New Conversation</b></div>
+                    <div class="panel-heading"><b> <i class="fa fa-mail-forward"></i> Start New Conversation</b></div>
                     <div class="panel-body">
                         <form method="get" action="/conversation/new">
                             <div class="input-group col-md-7 col-md-offset-2">
-                                {{ Form::text('with',null,['class' => 'navsearch subscriber_email_input form-control', 'placeholder' => 'Username or Email']) }}
+                                {{ Form::text('with',null,['class' => 'formsearch subscriber_email_input form-control', 'placeholder' => 'Username or Email']) }}
                                 <span class="add-on input-group-btn">
                                         <button class="btn btn-info" type="submit">
                                             Start
@@ -166,11 +163,18 @@
             </div>
         </div>
 
+            <div class="col-md-4">
+                @include('partials.shoutbox',['shouts' => $shouts])
+            </div>
+        </div>
+
     </div>
 @endsection
 
 @section('scripts')
     <script type="text/javascript">
+        //$(".messageLog").attr({ scrollTop: $(".messageLog").attr("scrollHeight") });
+
         // Quotes AJAX load
         function update_div() {
             $('#ajaxinspire').fadeOut('normal', function () {
@@ -181,5 +185,16 @@
             });
         }
         update_div();
+
+
+        $(document).ready(function(){
+
+            /**
+             * For Scroll To Bottom
+             */
+            $(".messageLog").animate({ scrollTop: $(".messageLog")[0].scrollHeight}, 1000);
+
+        });
+
     </script>
 @endsection

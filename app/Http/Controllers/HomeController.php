@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Shout;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,6 +26,10 @@ class HomeController extends Controller
     {
         $messages = $request->user()->receivedMessages()->with('sender')->with('receiver')->latest()->groupBy('sender_id')->get();
 
-        return view('home')->withMessages($messages);
+        $shouts = Shout::limit(15)->latest()->get();
+
+        $shouts = $shouts->sortBy('created_at');
+
+        return view('home')->withMessages($messages)->withShouts($shouts);
     }
 }

@@ -74,6 +74,22 @@ class MessagesController extends Controller
     }
 
     /**
+     * @param $username1
+     * @param $username2
+     * @param Request $request
+     * @return mixed
+     */
+    public function showAdmin($username1,$username2, Request $request)
+    {
+        $user1 = User::findOrFailByUsername($username1);
+        $user2 = User::findOrFailByUsername($username2);
+
+        $messages = Message::conversation($user1,$user2)->withTrashed()->latest()->paginate(20);
+
+        return view('messages.showadmin')->withMessages($messages)->withRecuser1($user1)->withRecuser2($user2);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -102,8 +118,15 @@ class MessagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        $message = Message::findOrFail($id);
+
+        if($request->user()->can('delete', $message))
+        {
+            $message->delete();
+            return back()->withNotification("Message Deleted")->withType('success');
+        }
+        return back()->withNotification("Sorry! You are not authorized.")->withType('danger');
     }
 }

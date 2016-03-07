@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','role',
+        'password', 'remember_token','role','dob','banned','approved','type'
     ];
 
     protected $dates = [
@@ -342,5 +342,10 @@ class User extends Authenticatable
     public function allMessages()
     {
         return Message::where('sender_id',$this->id)->orWhere('receiver_id',$this->id);
+    }
+
+    public function shouts()
+    {
+        return $this->hasMany('App\Shout');
     }
 }

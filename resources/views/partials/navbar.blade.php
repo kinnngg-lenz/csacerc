@@ -72,7 +72,7 @@
                         <li class="spin {{ set_active(['quotes']) }}"><a href="{{ route('quotes.index') }}"><i class="fa fa-btn fa-quote-left"></i>Quotes</a>
                         </li>
                         <li class="spin"><a href="{{ url('/comingsoon') }}"><i
-                                        class="fa fa-btn fa-magic"></i>Showcase</a>
+                                        class="fa fa-btn fa-android"></i>AppsClub</a>
                         </li>
                         <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-laptop"></i>Computer
                                 Tricks</a></li>
@@ -171,7 +171,7 @@
                             <li class="spin {{ set_active(['quotes']) }}"><a href="{{ route('quotes.index') }}"><i class="fa fa-btn fa-quote-left"></i>Quotes</a>
                             </li>
                             <li class="spin"><a href="{{ url('/comingsoon') }}"><i
-                                            class="fa fa-btn fa-magic"></i>Showcase</a>
+                                            class="fa fa-btn fa-android"></i>AppsClub</a>
                             </li>
                             <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-laptop"></i>Computer
                                     Tricks</a></li>

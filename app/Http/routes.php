@@ -39,6 +39,13 @@ Route::group(['middleware' => ['web']], function () {
         $picture = App\Photo::whereGallery(1)->get()->random();
         $technews = App\News::whereType(1)->latest()->first();
         $qotd = App\Quote::getQotd();
+        $shouts = App\Shout::limit(15)->latest()->get();
+
+        $shouts = $shouts->sortBy('created_at');
+
+        $urls = ['http://numbersapi.com/random/','http://numbersapi.com/random/year/','http://numbersapi.com/random/date'];
+
+        $didyouknow = file_get_contents($urls[array_rand($urls)]);
 
         $data = [
             'news' => $news,
@@ -50,6 +57,8 @@ Route::group(['middleware' => ['web']], function () {
             'picture' => $picture,
             'technews' => $technews,
             'qotd' => $qotd,
+            'shouts' => $shouts,
+            'didyouknow' => $didyouknow
         ];
         return view('welcome',$data);
     }]);
@@ -69,10 +78,9 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('/test', function(){
-       $user = Auth::user();
-       $m = $user->receivedMessagesUnseen()->with('sender');
+        $shout = \App\Shout::first();
+        event(new \App\Events\ShoutWasFired($shout));
 
-        dd($m->groupBy('sender_id')->get());
     });
 
 });
@@ -198,6 +206,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/conversation/new', ['as' => 'messages.new', 'uses' => 'MessagesController@start']);
     Route::get('/messages/@{username}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
     Route::post('/messages/@{username}', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+    Route::get('/administrator/messages/@{username1}/@{username2}', ['middleware' => ['auth', 'admin:4'], 'as' => 'messages.showadmin', 'uses' => 'MessagesController@showadmin']);
+    Route::delete('/messages/{id}', ['as' => 'messages.delete', 'uses' => 'MessagesController@destroy']);
+
+    /**
+     * Shouts Controller
+     */
+    Route::post('/shouts/do',['as' => 'shouts.store', 'uses' => 'ShoutsController@store']);
+
 });
 
 /**

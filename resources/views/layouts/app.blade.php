@@ -11,6 +11,8 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#333333">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
     <title>@yield('title') - Department of Computer Science, ACERC</title>
 
     <!-- Fonts -->
@@ -47,6 +49,7 @@
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
+    <script src="//js.pusher.com/2.2/pusher.min.js"></script>
     <script src="{{ elixir('js/all.js') }}"></script>
     @yield('scripts')
 </body>

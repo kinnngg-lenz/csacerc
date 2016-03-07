@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Pusher;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $options = array(
+            'cluster' => 'eu',
+            'encrypted' => false
+        );
+        $this->app->singleton('pusher',function() use($options){
+            return new Pusher(env('PUSHER_KEY'),env('PUSHER_SECRET'),env('PUSHER_APP_ID'),$options);
+        });
     }
 }

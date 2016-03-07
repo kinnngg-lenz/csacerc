@@ -38,7 +38,7 @@
                         <div class="form-group{{ $errors->has('asking_to') ? ' has-error' : '' }}">
                             {{ Form::label('asking_to', 'Asking To', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                            {{ Form::text('asking_to',null,['class' => 'form-control navsearch', 'autocomplete' => 'off', 'placeholder' => 'Username or Email only']) }}
+                            {{ Form::text('asking_to',null,['class' => 'form-control formsearch', 'autocomplete' => 'off', 'placeholder' => 'Username or Email only']) }}
                                 <div class="text-info small">Leave blank if asking Globally</div>
                             @if ($errors->has('asking_to'))
                             <span class="help-block">
