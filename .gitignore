@@ -3,7 +3,6 @@
 Homestead.yaml
 Homestead.json
 .idea
-.env
 tests/_output/*
 acerc_rsa
 acerc_rsa.pub
