@@ -69,7 +69,7 @@ class ShoutsController extends Controller
          */
         if ($validator->fails())
         {
-            return ($validator->messages());
+            return response($validator->messages(), 422);
         }
 
         $shout = $request->user()->shouts()->create([
@@ -77,13 +77,9 @@ class ShoutsController extends Controller
         ]);
 
         // fire Shout Added event if shout successfully added to database
-        if($shout)
-        {
-            event(new ShoutWasFired($shout));
-            return ['success' => true];
-        }
+        event(new ShoutWasFired($shout));
 
-        return ['error' => true];
+        return response($shout, 201);
     }
 
     /**

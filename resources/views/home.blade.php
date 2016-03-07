@@ -215,10 +215,19 @@
                             url         : '/shouts/do', // the url where we want to POST
                             data        : $('#shoutbox-form').serialize(), // our data object
                             dataType    : 'json', // what type of data do we expect back from the server
-                            encode      : true
-                        })
+                            encode      : true,
+                            success     : function(data){
+                                    console.log(data);
+                            },
+                            error: function(data) {
+                                // Error...
+                                var errors = data.responseJSON;
+
+                                console.log(errors);
+                            }
+                            });
                         // using the done promise callback
-                        .done(function(data) {
+                        /*.done(function(data) {
 
                             console.log(data);
 
@@ -245,7 +254,7 @@
 
                             // here we will handle errors and validation messages
                         });
-
+*/
                 // stop the form from submitting the normal way and refreshing the page
                 event.preventDefault();
             });
