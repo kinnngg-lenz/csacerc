@@ -119,6 +119,9 @@ $(document).ready(function(){
     var channel = pusher.subscribe('shoutbox');
 
     channel.bind('App\\Events\\ShoutWasFired', function(data){
+
+        console.log(data);
+
         if(parseInt(data.shout.id)%2 == 0)
         {
             $('#shoutbox-chat').append("<li class='left clearfix'><span class='chat-img pull-left'><img src='/images/"+data.shout.profile_pic+"' width='50' alt='User Avatar' class='img-circle'/> \
