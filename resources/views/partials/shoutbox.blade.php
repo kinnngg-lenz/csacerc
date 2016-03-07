@@ -57,7 +57,7 @@
             <div class="panel-footer">
                 @if(Auth::check())
                 {{ Form::open(['route' => 'shouts.store','id' => 'shoutbox-form']) }}
-                <div class="input-group">
+                <div id="shout-input-group" class="input-group">
                     <input name="shout" id="btn-input" type="text" class="form-control input-sm"
                            placeholder="Type your message here..."/>
                         <span class="input-group-btn">
@@ -66,6 +66,8 @@
                             </button>
                         </span>
                 </div>
+                    <div id="shout-input-group-error" class="help-block"></div>
+
                 {{ Form::close() }}
                  @else
                     <div class='panel nomargin padding10 text-muted'><b>Please {{ link_to('/login','Login') }}

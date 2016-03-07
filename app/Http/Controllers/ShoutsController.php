@@ -59,7 +59,7 @@ class ShoutsController extends Controller
 
 
         $validator = \Validator::make($request->all(), [
-            'shout' => 'required|max:160'
+            'shout' => 'required|max:1'
         ]);
 
         /**
@@ -69,7 +69,7 @@ class ShoutsController extends Controller
          */
         if ($validator->fails())
         {
-            return response($validator->messages(), 422);
+            return ($validator->messages());
         }
 
         $shout = $request->user()->shouts()->create([
@@ -77,9 +77,13 @@ class ShoutsController extends Controller
         ]);
 
         // fire Shout Added event if shout successfully added to database
-        event(new ShoutWasFired($shout));
+        if($shout)
+        {
+            event(new ShoutWasFired($shout));
+            return ['success' => true];
+        }
 
-        return response($shout, 201);
+        return ['error' => true];
     }
 
     /**
