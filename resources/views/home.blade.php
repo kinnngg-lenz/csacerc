@@ -213,7 +213,7 @@
                 $.ajax({
                             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
                             url         : '/shouts/do', // the url where we want to POST
-                            data        : formData, // our data object
+                            data        : $('#shoutbox-form').serialize(), // our data object
                             dataType    : 'json', // what type of data do we expect back from the server
                             encode      : true
                         })
