@@ -217,11 +217,27 @@
                             dataType    : 'json', // what type of data do we expect back from the server
                             encode      : true,
                             success     : function(data){
-                                    console.log(data);
+                                $('input[name=shout]').val('');
                             },
                             error: function(data) {
                                 // Error...
                                 var errors = data.responseJSON;
+                                var message = "Error";
+                                switch(data.status)
+                                {
+                                    case 422:
+                                        message = errors.shout;
+                                        break;
+                                    case 500:
+                                        message = "Unknown Error!";
+                                        break;
+                                    default:
+                                        message = data.statusText;
+                                        break;
+                                }
+
+                                $('#shout-input-group').addClass('has-error'); // add the error class to show red input
+                                $('#shout-input-group-error').html(message); // add the actual error message under our input
 
                                 console.log(errors);
                             }
