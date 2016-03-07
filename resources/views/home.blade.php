@@ -173,8 +173,6 @@
 
 @section('scripts')
     <script type="text/javascript">
-        //$(".messageLog").attr({ scrollTop: $(".messageLog").attr("scrollHeight") });
-
         // Quotes AJAX load
         function update_div() {
             $('#ajaxinspire').fadeOut('normal', function () {
@@ -186,94 +184,11 @@
         }
         update_div();
 
-
         $(document).ready(function(){
-
             /**
              * For Scroll To Bottom
              */
             $(".messageLog").animate({ scrollTop: $(".messageLog")[0].scrollHeight}, 1000);
-
-
-            /**
-             * Shoutbox Submit System with Ajax
-             */
-            $('#shoutbox-form').submit(function(event) {
-
-                $('#shout-input-group').removeClass('has-error');
-                $('#shout-input-group-error').html('');
-
-                // get the form data
-                // there are many ways to get this data using jQuery (you can use the class or id also)
-                var formData = {
-                    'shout' : $('input[name=shout]').val()
-                };
-
-                // process the form
-                $.ajax({
-                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                            url         : '/shouts/do', // the url where we want to POST
-                            data        : $('#shoutbox-form').serialize(), // our data object
-                            dataType    : 'json', // what type of data do we expect back from the server
-                            encode      : true,
-                            success     : function(data){
-                                $('input[name=shout]').val('');
-                            },
-                            error: function(data) {
-                                // Error...
-                                var errors = data.responseJSON;
-                                var message = "Error";
-                                switch(data.status)
-                                {
-                                    case 422:
-                                        message = errors.shout;
-                                        break;
-                                    case 500:
-                                        message = "Unknown Error!";
-                                        break;
-                                    default:
-                                        message = data.statusText;
-                                        break;
-                                }
-
-                                $('#shout-input-group').addClass('has-error'); // add the error class to show red input
-                                $('#shout-input-group-error').html(message); // add the actual error message under our input
-
-                                console.log(errors);
-                            }
-                            });
-                        // using the done promise callback
-                        /*.done(function(data) {
-
-                            console.log(data);
-
-                            if ( ! data.success) {
-
-                                // handle errors for name ---------------
-                                if (data) {
-                                    $('#shout-input-group').addClass('has-error'); // add the error class to show red input
-                                    $('#shout-input-group-error').html(data.shout); // add the actual error message under our input
-                                }
-
-                            } else {
-
-                                // ALL GOOD! just show the success message!
-
-                                $('input[name=shout]').val('');
-
-                                // usually after form submission, you'll want to redirect
-                                // window.location = '/thank-you'; // redirect a user to another page
-
-                            }
-
-                            // log data to the console so we can see
-
-                            // here we will handle errors and validation messages
-                        });
-*/
-                // stop the form from submitting the normal way and refreshing the page
-                event.preventDefault();
-            });
 
         });
 

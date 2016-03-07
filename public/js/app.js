@@ -1,6 +1,41 @@
 /**
  * Created by Zishan on 08-Feb-16.
  */
+
+
+function spawnNotify(name,message,icon) {
+    // Let's check if the browser supports notifications
+    if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification");
+    }
+
+    // Let's check whether notification permissions have already been granted
+    else if (Notification.permission === "granted") {
+        // If it's okay let's create a notification
+        var options = {
+            body: message,
+            icon: icon
+        }
+        var notification = new Notification(name,options);
+        setTimeout(notification.close.bind(notification), 5000);
+    }
+
+    // Otherwise, we need to ask the user for permission
+    else if (Notification.permission !== 'denied') {
+        Notification.requestPermission(function (permission) {
+            // If the user accepts, let's create a notification
+            if (permission === "granted") {
+                var notification = new Notification(name,options);
+                setTimeout(notification.close.bind(notification), 5000);
+            }
+        });
+    }
+
+    // At last, if the user has denied notifications, and you
+    // want to be respectful there is no need to bother them any more.
+}
+
+
 $(document).ready(function(){
 
     $.ajaxSetup({
@@ -120,15 +155,15 @@ $(document).ready(function(){
 
     channel.bind('App\\Events\\ShoutWasFired', function(data){
 
-        console.log(data);
+        spawnNotify(data.shout.name+" shouted!",data.shout.message,"/image/"+data.shout.profile_pic+"/thumbnail/150");
 
         if(parseInt(data.shout.id)%2 == 0)
         {
-            $('#shoutbox-chat').append("<li class='left clearfix'><span class='chat-img pull-left'><img src='/images/"+data.shout.profile_pic+"' width='50' alt='User Avatar' class='img-circle'/> \
+            $('#shoutbox-chat').append("<li class='left clearfix'><span class='chat-img pull-left'><img src='/image/"+data.shout.profile_pic+"/thumbnail/60' width='50' height='50' alt='User Avatar' class='img-circle'/> \
             </span> \
             <div class='chat-body clearfix'> \
             <div class='header'> \
-            <strong class='primary-font'>"+data.shout.name+"</strong> \
+            <a href='/@'"+data.shout.username+"><strong class='primary-font'>"+data.shout.name+"</strong></a> \
         <small class='pull-right text-muted'> \
             <span class='fa fa-clock-o'></span> "+data.shout.created_at+" \
         </small> \
@@ -144,13 +179,13 @@ $(document).ready(function(){
         else
         {
             $('#shoutbox-chat').append("<li class='right clearfix'><span class='chat-img pull-right'> \
-        <img src='/images/"+data.shout.profile_pic+"' width='50' alt='User Avatar' class='img-circle'/> \
+        <img src='/image/"+data.shout.profile_pic+"/thumbnail/60' width='50' height='50' alt='User Avatar' class='img-circle'/> \
             </span> \
             <div class='chat-body clearfix'> \
             <div class='header'> \
             <small class='text-muted'><span class='fa fa-clock-o'></span> "+data.shout.created_at+" \
         </small> \
-        <strong class='pull-right primary-font'>"+data.shout.name+"</strong> \
+        <a href='/@'"+data.shout.username+"><strong class='pull-right primary-font'>"+data.shout.name+"</strong></a> \
         </div> \
         <p class='text-right'> \
             "+data.shout.message+" \
@@ -159,6 +194,60 @@ $(document).ready(function(){
         </li>");
             $(".messageLog").animate({ scrollTop: $(".messageLog")[0].scrollHeight}, 1000);
         }
+    });
+
+    /**
+     * Shoutbox Submit System with Ajax
+     */
+    $('#shoutbox-form').submit(function(event) {
+
+        $('#shout-input-group').removeClass('has-error');
+        $('#shout-input-group-error').html('');
+
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = {
+            'shout' : $('input[name=shout]').val()
+        };
+
+        // process the form
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '/shouts/do', // the url where we want to POST
+            data        : $('#shoutbox-form').serialize(), // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode      : true,
+            beforeSend: function() {
+                $("#shout-input-group-error").html("<option class='text-center'> Posting plz wait...</option>");
+            },
+            success     : function(data){
+                $('input[name=shout]').val('');
+                $('#shoutbox-form').prop('disabled', false);
+                $("#shout-input-group-error").html("");
+            },
+            error: function(data) {
+                // Error...
+                var errors = data.responseJSON;
+                var message = "Error";
+                switch(data.status)
+                {
+                    case 422:
+                        message = errors.shout;
+                        break;
+                    case 500:
+                        message = "Unknown Error!";
+                        break;
+                    default:
+                        message = data.statusText;
+                        break;
+                }
+
+                $('#shout-input-group').addClass('has-error'); // add the error class to show red input
+                $('#shout-input-group-error').html(message); // add the actual error message under our input
+            }
+        });
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
     });
 
 });

@@ -43,7 +43,7 @@ class ShoutWasFired extends Event implements ShouldBroadcast
     {
         return [
             'shout' => [
-                'message' => $this->shout->shout,
+                'message' => htmlentities($this->shout->shout),
                 'username' => $this->user->username,
                 'id' => $this->user->id,
                 'name' => $this->user->name,
