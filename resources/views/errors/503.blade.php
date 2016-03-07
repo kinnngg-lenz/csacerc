@@ -33,6 +33,7 @@
             .title {
                 font-size: 72px;
                 margin-bottom: 40px;
+                color: rebeccapurple;
             }
         </style>
     </head>
