@@ -44,6 +44,8 @@ $(document).ready(function(){
         }
     });
 
+    $('<audio id="chatAudio"><source src="/sounds/notify.ogg" type="audio/ogg"><source src="/sounds/notify.mp3" type="audio/mpeg"><source src="/sounds/notify.wav" type="audio/wav"></audio>').appendTo('body');
+
     autosize($('textarea'));
 
    $('.notification').delay(7000).fadeOut(1000);
@@ -156,6 +158,8 @@ $(document).ready(function(){
     channel.bind('App\\Events\\ShoutWasFired', function(data){
 
         spawnNotify(data.shout.name+" shouted!",data.shout.message,"/image/"+data.shout.profile_pic+"/thumbnail/150");
+
+        $('#chatAudio')[0].play();
 
         if(parseInt(data.shout.id)%2 == 0)
         {
