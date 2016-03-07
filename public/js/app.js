@@ -167,7 +167,7 @@ $(document).ready(function(){
             </span> \
             <div class='chat-body clearfix'> \
             <div class='header'> \
-            <a href='/@'"+data.shout.username+"><strong class='primary-font'>"+data.shout.name+"</strong></a> \
+            <a href='/@"+data.shout.username+"'><strong class='primary-font'>"+data.shout.name+"</strong></a> \
         <small class='pull-right text-muted'> \
             <span class='fa fa-clock-o'></span> "+data.shout.created_at+" \
         </small> \
@@ -189,7 +189,7 @@ $(document).ready(function(){
             <div class='header'> \
             <small class='text-muted'><span class='fa fa-clock-o'></span> "+data.shout.created_at+" \
         </small> \
-        <a href='/@'"+data.shout.username+"><strong class='pull-right primary-font'>"+data.shout.name+"</strong></a> \
+        <a href='/@"+data.shout.username+"'><strong class='pull-right primary-font'>"+data.shout.name+"</strong></a> \
         </div> \
         <p class='text-right'> \
             "+data.shout.message+" \
