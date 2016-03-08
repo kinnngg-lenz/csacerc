@@ -30,6 +30,8 @@ class HomeController extends Controller
 
         $shouts = $shouts->sortBy('created_at');
 
-        return view('home')->withMessages($messages)->withShouts($shouts);
+        $aluminis = $request->user()->aluminis()->latest()->get();
+
+        return view('home')->withMessages($messages)->withShouts($shouts)->withAluminis($aluminis);
     }
 }

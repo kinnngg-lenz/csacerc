@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alumini extends Model
 {
     protected $fillable = [
-        'speech', 'speaker', 'batch', 'profession', 'slug', 'photo_id', 'organisation_id', 'email', 'facebook', 'department_id',
+        'speech', 'speaker', 'batch', 'profession', 'slug', 'photo_id', 'organisation_id', 'email', 'facebook', 'department_id', 'user_id'
     ];
 
     protected $hidden = [
@@ -57,4 +57,17 @@ class Alumini extends Model
     {
         return $this->belongsTo('App\Department');
     }
+
+    /**
+     * @return string
+     */
+    public function getPhoto()
+    {
+        if(is_null($this->photo_id))
+        {
+            return "alumini_profile.jpg";
+        }
+        return $this->photo->url;
+    }
+
 }

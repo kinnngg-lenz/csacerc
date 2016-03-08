@@ -71,7 +71,7 @@
 
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="thumbnail">
-                                <img class="img img-circle" data-src="holder.js/100%x200" alt="100%x200" src="images/{{ is_null($alumini->photo_id) ? "static/alumini_profile.jpg" : $alumini->photo->url }}" data-holder-rendered="true" style="width:200px;height:200px;margin-top:15px;">
+                                <img class="img" data-src="holder.js/100%x200" alt="100%x200" src="images/{{ $alumini->getPhoto() }}" data-holder-rendered="true" style="width: 100%">
                                 <div class="caption text-center">
                                     <h4>{{ $alumini->speaker }}</h4>
                                     <p class="text-center">
@@ -83,8 +83,8 @@
                                     </p>
 
                                     @if($alumini->speech != null && !empty($alumini))
-                                    <p class="well well-sm">
-                                        <i><span class='text-lg'>&#8220;</span> {{ $alumini->speech }} <span class='text-lg'>&#8221;</span>
+                                    <p class="well well-sm" data-toggle="tooltip" title="{{ $alumini->speech }}">
+                                        <i><span class='text-lg'>&#8220;</span> {{ str_limit($alumini->speech)  }} <span class='text-lg'>&#8221;</span>
                                         </i>
                                     </p>
                                     @endif

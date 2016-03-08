@@ -168,6 +168,39 @@
             </div>
         </div>
 
+        {{--Alumini Profile Row--}}
+        <div class="row">
+            <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>Edit your Alumini Profile</b></div>
+                <div class="panel-body">
+
+                    @forelse($aluminis as $alumini)
+                        <a href="{{ route('alumini.edit',$alumini->id) }}">
+                            <div data-toggle="tooltip" title="Edit {{ $alumini->speaker }}" class="col-md-5 col-xs-5 no-padding" style="border: 1px solid #bababa;margin: 10px">
+                                <div class="col-md-4 no-padding">
+                                    <img style="height: 80px;width: 100%;" class="img" src="/image/{{ $alumini->getPhoto() }}/thumbnail/100" alt="">
+                                </div>
+                                <div class="col-md-8 col-xs-8 no-padding">
+                                <p class="padding10">
+                                    {{ $alumini->speaker }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                     @empty
+                        <div class="text-center text-danger">
+                            <p>No Alumini profile has been associated with your account.
+                                <br>If you are an alumini and wishes to add one then please contact Admin or shout!.
+                            </p>
+                        </div>
+                    @endforelse
+
+                </div>
+            </div>
+            </div>
+        </div>
+
     </div>
 @endsection
 

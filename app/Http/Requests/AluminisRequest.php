@@ -32,7 +32,7 @@ class AluminisRequest extends Request
             'profession' => 'required|min:5',
             'batch' => 'required|min:2',
             'organisation_id' => 'exists:organisations,id',
-            'photo' => 'image',
+            'photo' => 'image|max:500',
             'email' => 'required|email',
             'facebook' => '',
             'department_id' => 'required|exists:departments,id',

@@ -276,9 +276,9 @@ class User extends Authenticatable
         if(is_null($this->photo))
         {
             if($this->gender == "Male")
-                return "static/Male.jpeg";
+                return "Male.jpeg";
             else
-                return "static/Female.jpeg";
+                return "Female.jpeg";
         }
         return $this->photo->url;
     }

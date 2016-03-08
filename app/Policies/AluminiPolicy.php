@@ -21,6 +21,9 @@ class AluminiPolicy
 
     public function edit(User $user, Alumini $alumini)
     {
+        if($user->isAdmin())
+            return true;
+
         return $user->id === $alumini->user_id;
     }
 }

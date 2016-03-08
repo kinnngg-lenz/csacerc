@@ -8,7 +8,7 @@
                     <div class="panel-heading">Edit Profile</div>
 
                     <div class="panel-body">
-                        {{ Form::model($user,['class' => 'form-horizontal']) }}
+                        {{ Form::model($user,['files' => 'true','class' => 'form-horizontal']) }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             {{ Form::label('name', 'Full Name:', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
@@ -130,11 +130,17 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            {{ Form::label('none', 'Profile Picture', ['class' => 'col-md-4 control-label']) }}
+                        <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
+                            {{ Form::label('photo', 'Profile Picture', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                                <i class="text-warning">Updating profile picture not available at this moment. It will be made available Asap but if its urgent please contact Admin.
-                                </i>
+                                <img style="margin-bottom:5px;border: 1px solid grey" class="img" src="/image/{{ $user->getProfilePicUrl() }}/thumbnail/100" alt="" width="100" height="100">
+                                {{ Form::file('photo',null,['class' => 'form-control']) }}
+                                <i class="small text-info">Leave empty if you don't want to change.</i>
+                                @if ($errors->has('photo'))
+                                    <span class="help-block">
+                            <strong>{{ $errors->first('photo') }}</strong>
+                            </span>
+                                @endif
                             </div>
                         </div>
 

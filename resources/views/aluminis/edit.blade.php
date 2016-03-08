@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', "Edit Alumini with Id".$alumini->id)
+@section('title', "Edit Alumini of ".$alumini->speaker)
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit Alumini</div>
+                    <div class="panel-heading">Edit Alumini of {{ $alumini->speaker }}</div>
                     <div class="panel-body">
 
                         {{ Form::model($alumini,['files' => 'true', 'class' => 'form-horizontal','method' => 'patch']) }}
@@ -125,6 +125,36 @@
                             <strong>{{ $errors->first('speech') }}</strong>
                             </span>
                                 @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
+                            {{ Form::label('photo', 'Alumini\'s photo', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                <img style="margin-bottom:5px;border: 1px solid grey" class="img" src="/image/{{ $alumini->getPhoto() }}/thumbnail/100" alt="" width="100" height="100">
+                                {{ Form::file('photo',null,['class' => 'form-control']) }}
+                                <i class="small text-info">Leave empty if you don't want to change.</i>
+                                @if ($errors->has('photo'))
+                                    <span class="help-block">
+                            <strong>{{ $errors->first('photo') }}</strong>
+                            </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
+                            {{ Form::label('user_id', 'Ownership', ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                            {{ Form::select('user_id',App\User::lists('name','id'),null,['class' => 'form-control']) }}
+                            @if(!Auth::user()->isAdmin())
+                                <i class="small text-warning">Warning: After transfer of ownership you will not be able to control this alumini profile</i>
+                            @endif
+                            @if ($errors->has('user_id'))
+                            <span class="help-block">
+                            <strong>{{ $errors->first('user_id') }}</strong>
+                            </span>
+                            @endif
                             </div>
                         </div>
 

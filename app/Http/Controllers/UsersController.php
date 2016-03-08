@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Alumini;
+use App\Photo;
+use Carbon\Carbon;
+use File;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Image;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -46,6 +51,7 @@ class UsersController extends Controller
     public function updateProfile($username, Request $request)
     {
         $user = User::whereUsername($username)->firstOrFail();
+
         if(Auth::user() != $user)
         {
             return redirect('/');
@@ -56,10 +62,77 @@ class UsersController extends Controller
             'name' => 'required',
             'about' => 'required',
             'college_id' => 'required|exists:colleges,id',
-            'department_id' => 'required|exists:departments,id'
+            'department_id' => 'required|exists:departments,id',
+            'photo' => 'image|max:500',
         ]);
 
-        $user->fill($request->only('dob', 'name', 'about', 'college_id', 'department_id'))->save();
+        /**
+         * If Request has Photo Uploaded Then
+         * 1> Delete prev Image
+         * 2> Store Photo in storage and link in DB
+         * 3> Pass new PhotoId
+         */
+        if ($request->hasFile('photo') && $request->file('photo')->isValid())
+        {
+            // Create name for new Image
+            $photoName = md5(Carbon::now()).".".$request->file('photo')->getClientOriginalExtension();
+
+            // Move image to storage
+            $image = Image::make($request->file('photo'));
+            $image->fit(300)->save(public_path('images/') . $photoName);
+            $photo = Photo::create([
+                'url' => $photoName
+            ]);
+
+            /*
+             * Delete previous Profile pic if any
+             * Delete only if this Photo is not referenced by any Alumini profile.
+             */
+            if($prevPic = $request->user()->photo)
+            {
+                // If any alumini references then ignore deletion else delete
+                if(Alumini::where('photo_id',$prevPic->id)->first() == null)
+                {
+                    $file = public_path('images/').$prevPic->url;
+                    if(File::exists($file))
+                    {
+                        // Delete from Storage
+                        File::delete($file);
+                        // Delete link from DB
+                        $user->photo_id = null;
+                        $user->save();
+                        $prevPic->delete();
+                    }
+                }
+            }
+            $photoId = $photo->id;
+        }
+        /**
+         * If No Upload Then
+         * 1> Check if already has a profile Pic
+         *  Yes? : Pass old profile pic Id.
+         *  No?  : Pass null as Profile pic Id
+         */
+        else
+        {
+            if($prevPic = $request->user()->photo)
+            {
+                $photoId = $prevPic->id;
+            }
+            else
+            {
+                $photoId = null;
+            }
+        }
+
+        $user->update([
+            'dob' => $request->dob,
+            'name' => $request->name,
+            'about' => $request->about,
+            'college_id' => $request->college_id,
+            'department_id' => $request->department_id,
+            'photo_id' => $photoId
+        ]);
 
         return back()->withNotification('Profile has been updated')->withType('success');
 

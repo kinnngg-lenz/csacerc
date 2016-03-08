@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Photo;
+use App\User;
 use Auth;
 use Carbon\Carbon;
+use File;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -150,7 +152,69 @@ class AluminisController extends Controller
                 'email' => 'required|email',
                 'facebook' => '',
                 'department_id' => 'required|exists:departments,id',
+                'user_id' => 'required|exists:users,id',
+                'photo' => 'image|max:500'
             ]);
+
+            /**
+             * If Request has Photo Uploaded Then
+             * 1> Delete prev Image
+             * 2> Store Photo in storage and link in DB
+             * 3> Pass new PhotoId
+             */
+            if ($request->hasFile('photo') && $request->file('photo')->isValid())
+            {
+                // Create name for new Image
+                $photoName = md5(Carbon::now()).".".$request->file('photo')->getClientOriginalExtension();
+
+                // Move image to storage
+                $request->file('photo')->move(public_path('images'), $photoName);
+
+                $photo = Photo::create([
+                    'url' => $photoName
+                ]);
+
+                /*
+                 * Delete previous pic if any
+                 * Delete only if this Photo is not referenced by any User profile.
+                 */
+                if($prevPic = $id->photo)
+                {
+                    // If any User references then ignore deletion else delete
+                    if(User::where('photo_id',$prevPic->id)->first() == null)
+                    {
+                        $file = public_path('images/').$prevPic->url;
+                        if(File::exists($file))
+                        {
+                            // Delete from Storage
+                            File::delete($file);
+                            // Delete link from DB
+                            $id->photo_id = null;
+                            $id->save();
+                            $prevPic->delete();
+                        }
+                    }
+                }
+                $photoId = $photo->id;
+            }
+            /**
+             * If No Upload Then
+             * 1> Check if already has a profile Pic
+             *  Yes? : Pass old profile pic Id.
+             *  No?  : Pass null as Profile pic Id
+             */
+            else
+            {
+                if($prevPic = $id->photo)
+                {
+                    $photoId = $prevPic->id;
+                }
+                else
+                {
+                    $photoId = null;
+                }
+            }
+
 
             $speech = empty($request->speech) ? null : $request->speech;
             $facebook = empty($request->facebook) ? null : $request->facebook;
@@ -165,10 +229,20 @@ class AluminisController extends Controller
                 'email' => $request->email,
                 'facebook' => $facebook,
                 'department_id' => $request->department_id,
+                'user_id' => $request->user_id,
+                'photo_id' => $photoId
             ]);
 
-            return back()->withNotification('Alumini has been updated')->withType('success');
+            if($request->user()->isAdmin() || $request->user_id == $request->user()->id)
+            {
+                return back()->withNotification('Alumini has been updated')->withType('success');
+            }
+            else
+            {
+                return redirect()->route('alumini.index')->withNotification("Alumini has been updated");
+            }
         }
+
         else {
             return redirect('/')->withNotification('You are not authorized')->withType('danger');
         }

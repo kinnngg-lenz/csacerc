@@ -10,3 +10,6 @@ acerc_rsa.pub
 /public/images/*
 !public/images/static/
 !public/images/index.php
+!public/images/Male.jpeg
+!public/images/Female.jpeg
+!public/images/alumini_profile.jpg

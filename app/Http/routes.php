@@ -45,7 +45,15 @@ Route::group(['middleware' => ['web']], function () {
 
         $urls = ['http://numbersapi.com/random/','http://numbersapi.com/random/year/','http://numbersapi.com/random/date'];
 
-        $didyouknow = file_get_contents($urls[array_rand($urls)]);
+
+        try
+        {
+            $didyouknow = file_get_contents($urls[array_rand($urls)]);
+        }
+        catch(Exception $e)
+        {
+            $didyouknow = "This website is hosted on a VPS with 1GB of RAM and is developed using PHP as backend, MySQL & Redis for database storage, and Sockets for real time events.";
+        }
 
         $data = [
             'news' => $news,
@@ -213,6 +221,11 @@ Route::group(['middleware' => 'web'], function () {
      * Shouts Controller
      */
     Route::post('/shouts/do',['as' => 'shouts.store', 'uses' => 'ShoutsController@store']);
+
+    /**
+     * Apps Club Controller
+     */
+    Route::get('/appsclub', ['as' => 'appsclub.index', 'uses' => 'AppsclubController@index']);
 
 });
 

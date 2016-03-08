@@ -71,11 +71,12 @@
                         </li>
                         <li class="spin {{ set_active(['quotes']) }}"><a href="{{ route('quotes.index') }}"><i class="fa fa-btn fa-quote-left"></i>Quotes</a>
                         </li>
-                        <li class="spin"><a href="{{ url('/comingsoon') }}"><i
-                                        class="fa fa-btn fa-android"></i>AppsClub</a>
+                        <li class="spin {{ set_active(['appsclub']) }}"><a href="{{ url('/appsclub') }}"><i
+                                        class="fa fa-btn fa-android"></i>Apps Club</a>
                         </li>
                         <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-laptop"></i>Computer
                                 Tricks</a></li>
+                        <li role="separator" class="divider"></li>
                         <li class="spin {{ set_active(['aboutus']) }}"><a href="{{ url('/aboutus') }}"><i class="fa fa-btn fa-university"></i>About Us</a>
                         </li>
                     </ul>
@@ -170,8 +171,8 @@
                             </li>
                             <li class="spin {{ set_active(['quotes']) }}"><a href="{{ route('quotes.index') }}"><i class="fa fa-btn fa-quote-left"></i>Quotes</a>
                             </li>
-                            <li class="spin"><a href="{{ url('/comingsoon') }}"><i
-                                            class="fa fa-btn fa-android"></i>AppsClub</a>
+                            <li class="spin {{ set_active(['appsclub']) }}"><a href="{{ url('/appsclub') }}"><i
+                                            class="fa fa-btn fa-android"></i>Apps Club</a>
                             </li>
                             <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-laptop"></i>Computer
                                     Tricks</a></li>
