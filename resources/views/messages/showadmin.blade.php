@@ -26,6 +26,30 @@
         .tiny {
             font-size: 14px;
         }
+        .chatbox1:after
+        {
+            content: "";
+            position: absolute;
+            right: 66px;
+            top: 11px;
+            border-width: 10px 0px 10px 15px;
+            border-style: solid;
+            border-color: transparent #FFFFFF;
+            display: block;
+            width: 0;
+        }
+        .chatbox2:before
+        {
+            content: "";
+            position: absolute;
+            left: 66px;
+            top: 11px;
+            border-width: 10px 15px 10px 0px;
+            border-style: solid;
+            border-color: transparent #FFFFFF;
+            display: block;
+            width: 0;
+        }
     </style>
 @endsection
 @section('content')
@@ -43,7 +67,7 @@
                             <div class="media-left">
                                 <a href="{{ route('users.profile.show',$message->sender->username) }}"><img src="/images/{{ $message->sender->getProfilePicUrl() }}" alt="" class="img img-circle" width="50"></a>
                             </div>
-                            <div class="media-body panel padding10">
+                            <div class="media-body panel padding10 chatbox2">
 
                                 {{-- Delete Form --}}
                                 @can('delete',$message)
@@ -63,7 +87,7 @@
                         </div>
                     @else
                         <div class="media col-md-8 col-md-offset-2">
-                            <div class="media-body panel padding10 text-right">
+                            <div class="media-body panel padding10 chatbox1 text-right">
 
                                 {{-- Delete Form --}}
                                 @can('delete',$message)

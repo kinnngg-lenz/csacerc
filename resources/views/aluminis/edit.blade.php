@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('facebook') ? ' has-error' : '' }}">
-                            {{ Form::label('facebook', 'Facebook Profile Url (if any)', ['class' => 'col-md-4 control-label']) }}
+                            {{ Form::label('facebook', 'Facebook Username (if any)', ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
                                 {{ Form::text('facebook',null,['class' => 'form-control']) }}
                                 @if ($errors->has('facebook'))

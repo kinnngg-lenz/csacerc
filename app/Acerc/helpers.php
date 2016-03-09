@@ -33,36 +33,62 @@
  * @param string $active
  * @return string
  */
-function set_active($path, $active = 'active') {
+function set_active($path, $active = 'active')
+{
 
     return call_user_func_array('Request::is', (array)$path) ? $active : '';
 
 }
 
-function set_active_or_disabled($path, $active = 'active') {
+function set_active_or_disabled($path, $active = 'active')
+{
 
     return call_user_func_array('Request::is', (array)$path) ? $active : 'disabled';
 
 }
 
-function set_active_has($path, $data = null, $active = 'active') {
-    return Request::has($path) && Request::get($path)==$data ? $active : '';
-}
-
-function slug_for_url($first, $second=null)
+function set_active_has($path, $data = null, $active = 'active')
 {
-   return str_slug(str_limit($first, 50, $second), '-');
+    return Request::has($path) && Request::get($path) == $data ? $active : '';
 }
 
-function pre_content_filter( $content ) {
-    return preg_replace_callback( '|<pre.*>(.*)</pre|isU' , 'convert_pre_entities', $content );
+function slug_for_url($first, $second = null)
+{
+    return str_slug(str_limit($first, 50, $second), '-');
 }
 
-function convert_pre_entities( $matches ) {
-    return str_replace( $matches[1], html_entity_decode( $matches[1] ), $matches[0] );
+function pre_content_filter($content)
+{
+    return preg_replace_callback('|<pre.*>(.*)</pre|isU', 'convert_pre_entities', $content);
+}
+
+function convert_pre_entities($matches)
+{
+    return str_replace($matches[1], html_entity_decode($matches[1]), $matches[0]);
 }
 
 function render_markdown_for_view($string)
 {
     return pre_content_filter(Markdown::string(htmlentities($string)));
 }
+
+function ReplaceBadWords($comment){
+    $badword = array();
+    $replacementword = array();
+    $wordlist = "fuck,fucking,fucked,ass,motherfuck,motherfucker,bulshit,bastard,asshole"; // replace with the list of bad words from attached rar file
+    $words = explode(",", $wordlist);
+    foreach ($words as $key => $word) {
+        $badword[$key] = $word;
+        $replacementword[$key] = addStars($word);
+        $badword[$key] = "/\b{$badword[$key]}\b/i";
+    }
+    $comment = preg_replace($badword, $replacementword, $comment);
+    return $comment;
+}
+
+function addStars($word) {
+    $length = strlen($word);
+    //return str_repeat("*",$length);
+    return substr($word, 0, 1) . str_repeat("*", $length - 2) . substr($word, $length - 1, 1);
+}
+

@@ -136,10 +136,13 @@
                         {{--<img class="img-thumbnail" src="/images/static/{{ $user->gender }}.jpeg" alt="Female" style="height: 250px">--}}
                     </div>
                     <div class="col-md-9">
-                        <button class="btn btn-info xp-btn btn-sm disabled pull-right" href="#">
+                        <p style="color: #00CF00" class="hidden-xs pull-right text-center"><span class="text-lg" style="font-size: 54px;color: yellow"><i class="fa fa-trophy"></i> {{ $user->xp }}</span><br> XP Points</p>
+                        <p style="color: #00CF00" class="visible-xs text-center"><span><i style="color: yellow" class="fa fa-trophy"></i> {{ $user->xp }}</span> Points</p>
+                        {{--<button class="btn btn-info xp-btn btn-sm disabled pull-right" href="#">
                             <i class="fa fa-trophy"></i>
                             XP &nbsp;<span class="badge text-danger">{{ $user->xp }}</span>
-                        </button>
+                        </button>--}}
+
 
                         <h1 class="nomargin">{{ $user->name }}</h1><i class="text-muted">( {{ $user->rank() }} )</i>
                         <p class="text-warning"><a class="text-warning"

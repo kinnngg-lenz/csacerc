@@ -85,11 +85,6 @@ Route::group(['middleware' => ['web']], function () {
         return view('aboutus');
     });
 
-    Route::get('/test', function(){
-        $shout = \App\Shout::first();
-        event(new \App\Events\ShoutWasFired($shout));
-
-    });
 
 });
 
