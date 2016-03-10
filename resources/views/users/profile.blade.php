@@ -133,6 +133,7 @@
                         <img class="img img-thumbnail"
                              src="/images/{{ $user->getProfilePicUrl() }}" width="250"
                              height="250"/>
+
                         {{--<img class="img-thumbnail" src="/images/static/{{ $user->gender }}.jpeg" alt="Female" style="height: 250px">--}}
                     </div>
                     <div class="col-md-9">

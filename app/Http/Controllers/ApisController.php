@@ -18,10 +18,50 @@ class ApisController extends Controller
         return($view);
     }
 
+    public function inspireAPI()
+    {
+        $inspire = Quote::quote();
+        $data = [
+            'inspire' => $inspire
+        ];
+        return $data;
+    }
+
    public function didyouknow()
    {
        $urls = ['http://numbersapi.com/random/','http://numbersapi.com/random/year/','http://numbersapi.com/random/date'];
 
-       return file_get_contents($urls[array_rand($urls)]);
+       try
+       {
+           $didyouknow = file_get_contents($urls[array_rand($urls)]);
+       }
+       catch(\Exception $e)
+       {
+           $didyouknow = "This website is hosted on a VPS with 1GB of RAM and is developed using PHP as backend, MySQL & Redis for database storage, and Sockets for real time events.";
+       }
+
+       return $didyouknow;
    }
+
+    /**
+     * @return string
+     */
+    public function didyouknowAPI()
+    {
+
+        $urls = ['http://numbersapi.com/random/','http://numbersapi.com/random/year/','http://numbersapi.com/random/date'];
+        try
+        {
+            $didyouknow = file_get_contents($urls[array_rand($urls)]);
+        }
+        catch(\Exception $e)
+        {
+            $didyouknow = "This website is hosted on a VPS with 1GB of RAM and is developed using PHP as backend, MySQL & Redis for database storage, and Sockets for real time events.";
+        }
+
+        $data = [
+            'didyouknow' => $didyouknow
+        ];
+        return $data;
+    }
 }

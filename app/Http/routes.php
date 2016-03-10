@@ -44,8 +44,6 @@ Route::group(['middleware' => ['web']], function () {
         $shouts = $shouts->sortBy('created_at');
 
         $urls = ['http://numbersapi.com/random/','http://numbersapi.com/random/year/','http://numbersapi.com/random/date'];
-
-
         try
         {
             $didyouknow = file_get_contents($urls[array_rand($urls)]);
@@ -232,3 +230,7 @@ Route::group(['middleware' => 'web'], function () {
 Route::get('/inspire', ['as' => 'inspire', 'uses' => 'ApisController@inspire']);
 Route::get('/users/{query}', ['as' => 'users.search', 'uses' => 'UsersController@search']);
 Route::get('/dyk', ['as' => 'dyk', 'uses' => 'ApisController@didyouknow']);
+
+Route::get('/api/inspire', ['as' => 'api.inspire', 'uses' => 'ApisController@inspireAPI']);
+Route::get('/api/users/{query}', ['as' => 'api.users.search', 'uses' => 'UsersController@search']);
+Route::get('/api/didyouknow', ['as' => 'api.dyk', 'uses' => 'ApisController@didyouknowAPI']);
