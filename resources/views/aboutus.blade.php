@@ -125,7 +125,9 @@
                         </div>
                     </div>
                     <div class="col-md-10">
-                        <blockquote><p>Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.</p></blockquote>
+                        <blockquote><p>Nothing in the world is ever completely wrong. Even a stopped clock is right twice a day. ― Paulo Coelho, Brida</p>
+                                <p>The way to get started is to quit talking and begin doing.
+                                Through this website we hope to reach every student and be an inspiration and motivation for all to achieve heights.</p></blockquote>
                     </div>
                 </div>
 
@@ -399,15 +401,15 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/ShilpiMishra.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Shilpi Mishra</a>
+                                    <a target="_blank" href="#">Shilpi Mishra</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Dept. HOD</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">mishra.shilpi20@gmail.com</div>
+
+
                             </div>
 
                         </div>
@@ -420,15 +422,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/AdityaUpadhya.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Aditya Upadhya</a>
+                                    <a target="_blank" href="#">Aditya Upadhya</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Teaching Guide</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">adityaupadhyay144@gmail.com</div>
+
                             </div>
 
                         </div>
@@ -441,15 +442,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/AditiAgarwal.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Aditi Agarwal</a>
+                                    <a target="_blank" href="#">Aditi Agarwal</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Curious developer</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">aditi170@gmail.com</div>
+
                             </div>
 
                         </div>
@@ -462,15 +462,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/>ManojTiwari.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Manoj Tiwari</a>
+                                    <a target="_blank" href="#">Manoj Tiwari</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Curious developer</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">manojkumartiwari@rediffmail.com</div>
+
                             </div>
 
                         </div>
@@ -483,15 +482,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/Naveentiwari.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Naveen tiwari</a>
+                                    <a target="_blank" href="#">Naveen tiwari</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Curious developer</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">tiwarinaveen1994@gmail.com</div>
+
                             </div>
 
                         </div>
@@ -504,15 +502,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/BhawayaSareen.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Bhawaya Sareen</a>
+                                    <a target="_blank" href="#">Bhawaya Sareen</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Curious developer</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">gracy125@hotmail.com</div>
+
                             </div>
 
                         </div>
@@ -525,15 +522,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/SudhanshuVasistha.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Sudhanshu Vasistha</a>
+                                    <a target="_blank" href="#">Sudhanshu Vasistha</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Curious developer</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">sudhanshu.vasistha85@gmail.com</div>
+
                             </div>
 
                         </div>
@@ -546,15 +542,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/ShrutiDadhich.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Shruti Dadhich</a>
+                                    <a target="_blank" href="#">Shruti Dadhich</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Curious developer</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">shruti.dadhich7@gmail.com</div>
+
                             </div>
 
                         </div>
@@ -568,15 +563,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/VipinTomar.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Vipin Tomar</a>
+                                    <a target="_blank" href="#">Vipin Tomar</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Curious developer</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">vipan_tomar32@yahoo.com</div>
+
                             </div>
 
                         </div>
@@ -589,15 +583,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/VivekJethani.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Vivek Jethani</a>
+                                    <a target="_blank" href="#">Vivek Jethani</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Curious developer</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">vivek.jethani@aryaaiet.ac.in</div>
+
                             </div>
 
                         </div>
@@ -611,15 +604,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/MayankGautam.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Mayank Gautam</a>
+                                    <a target="_blank" href="#">Mayank Gautam</a>
                                 </div>
-                                <div class="desc">M.Tech Electronics</div>
-                                <div class="desc">Dept.HOD(ECE)</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">er.mayankgautam@gmail.com</div>
+
                             </div>
 
                         </div>
@@ -632,15 +624,14 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/pradeep_jha.jpg">
+                                <img alt="" src="/images/static/KapilGupta.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="http://scripteden.com/">Kapil Gupta</a>
+                                    <a target="_blank" href="#">Kapil Gupta</a>
                                 </div>
-                                <div class="desc">M.Tech CS</div>
-                                <div class="desc">Curious developer</div>
-                                <div class="desc">Tech geek</div>
+                                <div class="desc">kp.gupta38@gmail.com</div>
+
                             </div>
 
                         </div>
@@ -657,28 +648,28 @@
                 <hr />
                 <div class="row assitant text-center">
                     <div class="col-md-3">
-                        <img src="/images/static/pradeep_jha.jpg" class="img-circle faculties-l" alt="faculty" />
+                        <img src="/images/static/techManojKumar.jpg" class="img-circle faculties-l" alt="faculty" />
                         <div class="info">
                             <div class="title">
-                                <a target="_blank" href="http://scripteden.com/">Manoj Kumar</a>
+                                <a target="_blank" href="#>Manoj Kumar</a>
                             </div>
                             <div class="desc">---</div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <img src="/images/static/pradeep_jha.jpg" class="img-circle faculties-l" alt="faculty" />
+                        <img src="/images/static/techSushilChy.jpg" class="img-circle faculties-l" alt="faculty" />
                         <div class="info">
                             <div class="title">
-                                <a target="_blank" href="http://scripteden.com/">Sushil Chy</a>
+                                <a target="_blank" href="#">Sushil Chy</a>
                             </div>
                             <div class="desc">---</div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <img src="/images/static/pradeep_jha.jpg" class="img-circle faculties-l" alt="faculty" />
+                        <img src="/images/static/techSarveshPrashar.jpg" class="img-circle faculties-l" alt="faculty" />
                         <div class="info">
                             <div class="title">
-                                <a target="_blank" href="http://scripteden.com/">Sarvesh Prashar</a>
+                                <a target="_blank" href="#">Sarvesh Prashar</a>
                             </div>
                             <div class="desc">---</div>
                         </div>
