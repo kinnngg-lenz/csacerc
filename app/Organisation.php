@@ -25,4 +25,25 @@ class Organisation extends Model
     {
         return $this->hasMany('App\Alumini');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function photo()
+    {
+        return $this->belongsTo('App\Photo');
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoto()
+    {
+        if(is_null($this->photo_id))
+        {
+            return "noimage.jpg";
+        }
+        return $this->photo->url;
+    }
+
 }

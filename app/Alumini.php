@@ -65,7 +65,7 @@ class Alumini extends Model
     {
         if(is_null($this->photo_id))
         {
-            return "alumini_profile.jpg";
+            return "noimage.jpg";
         }
         return $this->photo->url;
     }

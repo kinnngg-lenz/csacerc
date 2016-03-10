@@ -37,7 +37,8 @@ class OrganisationsController extends Controller
      */
     public function index()
     {
-        return view('org.index');
+        $orgs = Organisation::latest()->paginate();
+        return view('org.index')->withOrgs($orgs);
     }
 
     /**

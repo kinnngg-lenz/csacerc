@@ -77,6 +77,7 @@
                         <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-laptop"></i>Computer
                                 Tricks</a></li>
                         <li role="separator" class="divider"></li>
+                        <li class="spin {{ set_active(['organisations']) }}"><a href="{{ url('/organisations') }}"><i class="fa fa-btn fa-graduation-cap"></i>Our Recruiters</a></li>
                         <li class="spin {{ set_active(['aboutus']) }}"><a href="{{ url('/aboutus') }}"><i class="fa fa-btn fa-university"></i>About Us</a>
                         </li>
                     </ul>
@@ -176,6 +177,8 @@
                             </li>
                             <li class="spin"><a href="{{ url('/comingsoon') }}"><i class="fa fa-btn fa-laptop"></i>Computer
                                     Tricks</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="spin {{ set_active(['organisations']) }}"><a href="{{ url('/organisations') }}"><i class="fa fa-btn fa-graduation-cap"></i>Our Recruiters</a></li>
                             <li class="spin {{ set_active(['aboutus']) }}"><a href="{{ url('/aboutus') }}"><i class="fa fa-btn fa-university"></i>About Us</a>
                             </li>
                         </ul>

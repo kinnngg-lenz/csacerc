@@ -189,9 +189,9 @@ Route::group(['middleware' => 'web'], function () {
     /**
      * OrganisationsController
      */
+    Route::get('/organisations', ['as' => 'org.index', 'uses' => 'OrganisationsController@index']);
     Route::get('/org/create', ['as' => 'org.create', 'uses' => 'OrganisationsController@create']);
     Route::post('/org/create', ['as' => 'org.create', 'uses' => 'OrganisationsController@store']);
-    Route::get('/org', ['as' => 'org.index', 'uses' => 'QuotesController@index']);
 
     /**
      * NewsLetter Controller
