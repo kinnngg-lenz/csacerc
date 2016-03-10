@@ -18,6 +18,9 @@ to make website more flexible, thereby can be used any any department as their w
 * [x] Like and Comment system for any Feature.
 * [x] Online Notes for all Subjects , Semesters with downloadable pdf version.
 * [x] Newsletter Subscription
+* [x] Private Messaging System
+* [x] Shoutbox with Realtime updates with Sockets. _(Pusher)_
+* [ ] Apps Club
 * [ ] _Brain Teasers_
 * [ ] Computer Tricks
 * [ ] _Joke of the Day_
@@ -45,8 +48,8 @@ If you discover a security vulnerability within this Repo, please send an e-mail
 * [Victor Lenz (Vivek)](http://github.com/victorlenz)
 * [Ankit Barnwal](http://github.com/ankitbarnwal)
 
-### License
+## License
 
-The project is still in development and *no license* has been opted for yet by the development team.
+The project is still in development and **no license** has been opted for yet by the development team.
 If you want to use the code in your project please contact the Team or wait and have a coffee until it turns MIT License ;)
 So probably you are not authorized to use this project or any pie of this cake without permission (y)

@@ -415,17 +415,12 @@
 
                     <li>
                         <p>
-                            Enthralled with the excellence
-                            and perseverance of the students of ACERC, the
-                            CS Department has commenced the newsletter
-                            “Voyage” to guide them towards a better and
-                            bright path. The ever increasing & constant
-                            updation of technology can not be provided a
-                            better platform. I heartily congratulate all the
-                            students and faculties of CS Department of
-                            ACERC for one of the finest newsletter. We wish
-                            them luck & all our support & best wishes will
-                            always be with them.
+                            Enthralled with the excellence and perseverance of the students of ACERC,
+                            the CS Department has commenced the website after the  newsletter “Voyage” to
+                            guide them towards a better and bright path. The ever increasing & constant
+                            updation of technology can not be provided a better platform.
+                            I heartily congratulate all the students and faculties of CS Department of ACERC for
+                            one of the finest website. We wish them luck & all our support & best wishes will always be with them.
                         </p>
                         <div class="cd-author">
                             <img src="/images/static/pn_singhal.jpg" alt="Author image">
