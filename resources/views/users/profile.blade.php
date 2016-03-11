@@ -165,7 +165,7 @@
                 </p>
                 <p class="text-muted blockquote-reverse">
                     {{ $user->gca() }}
-                    <br><span class="tiny">{{ $user->gda() }} ({{ $user->batch }})</span>
+                    <br><span class="tiny">{{ $user->gda() }} {{ $user->batch==null || $user->batch=="" ? "" :  "(".$user->batch.")" }}</span>
                 </p>
                 <p class="text-muted blockquote-reverse">
                     Joined {{  $user->created_at->diffForHumans()}}
