@@ -146,7 +146,7 @@ class AluminisController extends Controller
             $this->validate($request, [
                 'speaker' => 'required|min:5',
                 'speech' => '',
-                'profession' => 'required|min:5',
+                'profession' => 'required',
                 'batch' => 'required|min:2',
                 'organisation_id' => 'exists:organisations,id',
                 'email' => 'required|email',

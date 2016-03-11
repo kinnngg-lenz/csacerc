@@ -27,7 +27,7 @@ class PhotoRequest extends Request
     public function rules()
     {
         return [
-            'photo' => 'required|image'
+            'photo' => 'required|image|max:700'
         ];
     }
 }

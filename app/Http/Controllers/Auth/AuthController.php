@@ -73,7 +73,7 @@ class AuthController extends Controller
             'batch' => 'required_if:type,0',
 
             'speech' => 'min:10',
-            'profession' => 'required_with:alumini|min:5',
+            'profession' => 'required_with:alumini',
             'organisation_id' => 'exists:organisations,id',
             'facebook' => '',
         ]);
@@ -87,8 +87,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        if (isset($data['photo'])) {
-            if ($data['photo']->isValid()) {
+        if (isset($data['photo']) && $data['photo']->isValid()) {
                 $photoName = md5(Carbon::now()) . "." . $data['photo']->getClientOriginalExtension();
 
                 $image = Image::make($data['photo']);
@@ -99,7 +98,6 @@ class AuthController extends Controller
                 ]);
 
                 $photoId = $photo->id;
-            }
         } else {
             $photoId = null;
         }
@@ -126,7 +124,7 @@ class AuthController extends Controller
          * EMAIL User a Welcome Email
          * @TODO: Add this to a Queue and extract to a Event Listener
          */
-        $this->mailer->welcome($user);
+        /*$this->mailer->welcome($user);*/
 
         /**
          * Create Alumini
