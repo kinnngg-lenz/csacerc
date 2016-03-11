@@ -23,6 +23,24 @@
         .tiny {
             font-size: 14px;
         }
+        .alumini-body
+        {
+            background-color: #0A3D3B;
+            color: #FFFFFF !important;
+        }
+        .alumini-body .well
+        {
+            background: rgba(0, 0, 0, 0.38) !important;
+            border: 1px solid #08201F !important;
+        }
+        .thumbnail
+        {
+            border: 7px solid #FAFAFA !important;
+            -webkit-box-shadow: 1px 1px 6px 3px #D7D7D7;
+            -moz-box-shadow: 1px 1px 6px 3px #D7D7D7;
+            box-shadow: 1px 1px 6px 3px #D7D7D7;
+            -o-box-shadow: 1px 1px 6px 3px #D7D7D7;
+        }
     </style>
 @endsection
 
@@ -72,7 +90,7 @@
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="thumbnail">
                                 <img class="img" data-src="holder.js/100%x200" alt="100%x200" src="images/{{ $alumini->getPhoto() }}" data-holder-rendered="true" style="width: 100%">
-                                <div class="caption text-center">
+                                <div class="caption text-center alumini-body">
                                     <h4>{{ $alumini->speaker }}</h4>
                                     <p class="text-center">
                                         {{ ($alumini->batch) }}<br>
