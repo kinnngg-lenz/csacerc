@@ -222,6 +222,7 @@ $(document).ready(function(){
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true,
             beforeSend: function() {
+                $('input[name=shout]').val('');
                 $("#shout-input-group-error").html("<option class='text-center'> Posting plz wait...</option>");
             },
             success     : function(data){
