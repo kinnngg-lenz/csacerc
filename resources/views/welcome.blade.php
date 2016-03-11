@@ -374,11 +374,11 @@
                             technical work force to stand against highly competitive
                             global challenging world.</p>
                         <p>
-                            I congratulate the educational board to come up with
-                            this first issue of quarterly newsletter "VOYAGE" which
+                            I congratulate the educational board on successful launch of website
+                            after the quarterly newsletter "VOYAGE" which
                             highlight the multi diversity sectors where we are
                             working. I convey my message to the team and expect
-                            similar enriched quarterly newsletter in future.
+                            similar enriched updates in future.
                         </p>
                         <div class="cd-author">
                             <img src="/images/static/arvind_agarwal.jpg" alt="Author image">
@@ -391,16 +391,16 @@
 
                     <li>
                         <p>It is my immense pleasure to introduce
-                            the first issue of newsletter of Computer science
-                            engineering “VOYAGE”. The newsletter is a source of
+                            the website of Computer science
+                            engineering “VOYAGE”. The website is a source of
                             motivation for both student and faculties.
                         </p>
                         <p>
-                            Every aspect of this newsletter will help us in enhancing
+                            Every aspect of this website will help us in enhancing
                             our knowledge in every aspect.
                         </p>
                         <p>
-                            I would like to congratulate the Team of editors for their
+                            I would like to congratulate the team of Developers & Admins for their
                             efforts in collecting and compiling information & for
                             bringing up such a piece of work.
                         </p>
@@ -433,18 +433,15 @@
 
                     <li>
                         <p>
-                            I am very glad to announce
-                            the beginning of new chapter of ACERC. I
-                            would like to congratulate the students &
-                            Faculties for their effort in bringing out the
+                            I am very glad to announce the beginning of new chapter of ACERC.
+                            I would like to congratulate the students & Faculties for their effort
+                            in bringing out the website after successfully taking the command over the
                             newsletter VOYAGE.
                         </p>
                         <p>
-                            I hope the activities of the chapter will give
-                            an opportunity to the students to learn new
-                            aspects about computer science
-                            engineering. Wishing best of luck to all
-                            members for the new venture.
+                            I hope the activities of the chapter will give an opportunity to
+                            the students to learn new aspects about computer science engineering.
+                            Wishing best of luck to all members for the new venture.
                         </p>
                         <div class="cd-author">
                             <img src="/images/static/himanshu_arora.jpg" alt="Author image">
@@ -461,11 +458,11 @@
                             the premise of progress. In every society, In every Family ”
                         </p>
                         <p>
-                            It is an ecstasy to re-announce the beginning of the newsletter ‘Voyage’ from Computer
+                            It is an ecstasy to announce the beginning of the website ‘Voyage’ from Computer
                             Science
-                            Department. It is my immense pleasure to dedicate this premiere issue to our prestigious
+                            Department. It is my immense pleasure to dedicate this website to our prestigious
                             Arya
-                            family. Through this newsletter we hope to reach every student and be an inspiration and
+                            family. Through this website we hope to reach every student and be an inspiration and
                             motivation for all to achieve heights.
                         </p>
                         <div class="cd-author">

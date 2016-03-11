@@ -3,29 +3,39 @@
     <div id="slider">
         <div class="slide" style="background: url(images/static/slider1.jpg) no-repeat;background-size: cover">
             <div class="slide-block">
-                <h3>Twinkle! Twinkle! Little Star. &star;</h3>
-                <p>Heading south to avoid a bad case of global frostbite, a group of migrating misfit creatures embark on a hilarious quest to reunite a human baby with his tribe.</p>
+
+                <p>The individual who says it is not possible should move out of the way of those doing it.”
+                    ― Tricia Cunningham
+                    <p>And that is our motive..</p>
+                </p>
             </div>
         </div>
 
         <div class="slide" style="background: url(images/static/slider2.jpg) no-repeat;background-size: cover">
             <div class="slide-block">
-                <h3>How I wonder what you are? &weierp;</h3>
-                <p>For the Birds is an animated short film, produced by Pixar Animation Studios released in 2000. It is shown in a theatrical release of the 2001 Pixar feature film Monsters, Inc.</p>
+
+                <p>You're never as good as everyone tells you when you win, and you're never as bad as they say when you lose.”
+                    and that is the reason we aryans believe in "teamwork'...</p>
             </div>
         </div>
 
         <div class="slide" style="background: url(images/static/slider3.jpg) no-repeat;background-size: cover">
             <div class="slide-block">
-                <h3>Up above the world so high! &uparrow;</h3>
-                <p>A comedy adventure in which 78-year-old Carl Fredricksen fulfills his dream of a great adventure when he ties thousands of balloons to his house and flies away to the wilds of South America.</p>
+                {{--<h3>Up above the world so high! &uparrow;</h3>--}}
+                <p>When we are no longer able to change a situation, we are challenged to change ourselves.
+                    and with this thought we decided to switch from newsletter to website..</p>
             </div>
         </div>
 
         <div class="slide" style="background: url(images/static/slider4.jpg) no-repeat;background-size: cover">
             <div class="slide-block">
-                <h3>Like a diamond in the Sky. &diamondsuit;</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem blanditiis dicta eius et facilis, inventore laudantium nemo nihil, officiis optio porro quam qui quo reiciendis repellat sequi suscipit, ut.</p>
+
+                <p>You chose to react.
+                    You chose to feel insecure.
+                    You chose to feel anger.
+                    You chose to fight back.
+                    You chose to have hope.
+                    </p>
             </div>
         </div>
 

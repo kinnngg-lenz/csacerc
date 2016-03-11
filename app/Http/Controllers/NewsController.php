@@ -81,7 +81,6 @@ class NewsController extends Controller
     public function show($slug)
     {
         $news = News::whereSlug($slug)->firstorFail();
-        dd($news);
         return view('news.show')->withEvent($news);
     }
 }

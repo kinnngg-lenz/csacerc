@@ -299,9 +299,9 @@
         }
 
         .card.hovercard .cardheader {
-            background: url("http://lorempixel.com/850/280/nature/4/");
+            background: url("/images/static/bg.jpg");
             background-size: cover;
-            height: 80px;
+            height: 100px;
         }
 
         .card.hovercard .avatar {
@@ -522,11 +522,31 @@
 
                             </div>
                             <div class="avatar">
-                                <img alt="" src="/images/static/Naveentiwari.jpg">
+                                <img alt="" src="/images/static/ManojTiwari.jpg">
                             </div>
                             <div class="info">
                                 <div class="title">
-                                    <a target="_blank" href="#">Naveen tiwari</a>
+                                    <a target="_blank" href="#">Manoj Tiwari</a>
+                                </div>
+                                <div class="desc">manojkumartiwari@rediffmail.com</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+
+                        <div class="card hovercard">
+                            <div class="cardheader">
+
+                            </div>
+                            <div class="avatar">
+                                <img alt="" src="/images/static/NaveenTiwari.jpg">
+                            </div>
+                            <div class="info">
+                                <div class="title">
+                                    <a target="_blank" href="#">Naveen Tiwari</a>
                                 </div>
                                 <div class="desc">tiwarinaveen1994@gmail.com</div>
 
@@ -555,27 +575,7 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-
-                        <div class="card hovercard">
-                            <div class="cardheader">
-
-                            </div>
-                            <div class="avatar">
-                                <img alt="" src="/images/static/>ManojTiwari.jpg">
-                            </div>
-                            <div class="info">
-                                <div class="title">
-                                    <a target="_blank" href="#">Manoj Tiwari</a>
-                                </div>
-                                <div class="desc">manojkumartiwari@rediffmail.com</div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
+                    {{--<div class="col-lg-3 col-sm-6">
 
                         <div class="card hovercard">
                             <div class="cardheader">
@@ -594,11 +594,11 @@
 
                         </div>
 
-                    </div>
+                    </div>--}}
                 </div>
             </div>
 
-            <!-- Technician -->
+            <!-- Technician
 
             <div class="container">
                 <h3>Technicians</h3>
