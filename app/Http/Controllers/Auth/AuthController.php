@@ -64,7 +64,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'username' => 'required|min:4|max:255|Regex:/([a-zA-Z0-9_])+$/i|unique:users',
+            'username' => 'required|min:4|max:255|alpha_dash|unique:users',
             'gender' => 'required|in:Male,Female,Others',
             'type' => 'required|in:0,1',
             'college_id' => 'required|exists:colleges,id',
