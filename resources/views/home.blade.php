@@ -199,6 +199,30 @@
                 </div>
             </div>
             </div>
+
+            @if(Auth::user()->isSuperAdmin())
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Website Statistics</b></div>
+                    <div class="panel-body">
+                        <h4>We have currently:</h4>
+                        <p><kbd>{{ \App\User::count() }}</kbd> registered members.</p>
+                        <p><kbd>{{ \App\User::whereType(0)->count() }}</kbd> students.</p>
+                        <p><kbd>{{ \App\User::whereType(1)->count() }}</kbd> faculty members.</p>
+                        <p><kbd>{{ \App\User::where('role','>',0)->count() }}</kbd> admins.</p>
+                        <p><kbd>{{ \App\Alumini::count() }}</kbd> aluminis.</p>
+                        <p><kbd>{{ \App\CodeWarQuestion::count() }}</kbd> codewars.</p>
+                        <p><kbd>{{ \App\News::count() }}</kbd> news.</p>
+                        <p><kbd>{{ \App\Event::count() }}</kbd> events.</p>
+                        <p><kbd>{{ \App\Quote::count() }}</kbd> quotes.</p>
+                        <p><kbd>{{ \App\Organisation::count() }}</kbd> companies.</p>
+                        <p><kbd>{{ \App\Photo::whereGallery(1)->count() }}</kbd> images in gallery.</p>
+                        <p><kbd>{{ \App\Message::count() }}</kbd> private messages sent.</p>
+                    </div>
+                </div>
+            </div>
+            @endif
+
         </div>
 
     </div>
