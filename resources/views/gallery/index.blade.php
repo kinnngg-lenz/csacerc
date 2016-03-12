@@ -4,6 +4,12 @@
 @unless(Agent::isMobile())
 @section('styles')
     <link rel="stylesheet" href="/css/facebox.css">
+    <style>
+        .item
+        {
+            padding:8px !important;
+        }
+    </style>
 @endsection
 @endunless
 

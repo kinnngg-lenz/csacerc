@@ -83,7 +83,6 @@ Route::group(['middleware' => ['web']], function () {
         return view('aboutus');
     });
 
-
 });
 
 Route::group(['middleware' => 'web'], function () {
