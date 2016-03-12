@@ -35,8 +35,8 @@
         <div class="row">
             <div class="jumbotron text-center">
                 <h1>Search Result</h1>
-                <p>{{ $users->total() }} {{ str_plural('user',$users->total()) }} were found for the search for "{{ Request::get('q') }}"</p>
-                <p>{{ $aluminis->total() }} {{ str_plural('alumini',$aluminis->total()) }} were found for the search for "{{ Request::get('q') }}"</p>
+                <p>{{ $users->total() }} {{ str_plural('user',$users->total()) }} found for the search for "{{ Request::get('q') }}"</p>
+                <p>{{ $aluminis->total() }} {{ str_plural('alumini',$aluminis->total()) }} found for the search for "{{ Request::get('q') }}"</p>
             </div>
 
             <div class="col-md-11 col-md-offset-1">

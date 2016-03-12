@@ -22,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Quote' => 'App\Policies\QuotePolicy',
         'App\Alumini' => 'App\Policies\AluminiPolicy',
         'App\Message' => 'App\Policies\MessagePolicy',
+        'App\Shout' => 'App\Policies\ShoutPolicy',
     ];
 
     /**

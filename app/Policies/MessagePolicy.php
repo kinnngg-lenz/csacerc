@@ -29,7 +29,7 @@ class MessagePolicy
     {
         /**
          * For Admin View
-         * It disable delete btn in admin view when viewd with trashed
+         * It disable delete btn in admin view when viewed with trashed
          */
         if(!is_null($message->deleted_at))
         {

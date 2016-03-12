@@ -119,11 +119,21 @@ class ShoutsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
-        //
+        $shout = Shout::findOrFail($id);
+        if($request->user()->can('delete',$shout))
+        {
+            $shout->delete();
+            return back()->withNotification("Success! Shout deleted")->withType("success");
+        }
+        else
+        {
+            return back()->withNotification("Sorry! You are not authorized for that action")->withType("Danger");
+        }
     }
 }

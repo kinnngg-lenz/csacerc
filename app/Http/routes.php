@@ -215,6 +215,7 @@ Route::group(['middleware' => 'web'], function () {
      * Shouts Controller
      */
     Route::post('/shouts/do',['as' => 'shouts.store', 'uses' => 'ShoutsController@store']);
+    Route::delete('/shouts/{id}/delete', ['as' => 'shouts.delete', 'uses' => 'ShoutsController@destroy']);
 
     /**
      * Apps Club Controller

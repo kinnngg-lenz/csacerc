@@ -25,6 +25,16 @@
                                         <a href="{{ route('users.profile.show',$shout->user->username) }}">
                                             <strong class="primary-font">{{ $shout->user->name }}</strong>
                                         </a>
+
+                                        {{-- Shout Delete System --}}
+                                        @can('delete',$shout)
+                                        <div class="pull-right">
+                                            {{ Form::open(['method' => 'delete', 'route' => ['shouts.delete',$shout->id], 'class' => 'deleteShout']) }}
+                                            <button data-toggle="tooltip" title="Delete" class="btn btn-link btn-xs"><i class="fa fa-trash"></i></button>
+                                            {{ Form::close() }}
+                                        </div>
+                                        @endcan
+
                                         <small class="pull-right text-muted">
                                             <span class="fa fa-clock-o"></span> {{ $shout->created_at->diffForHumans() }}
                                         </small>
@@ -43,6 +53,16 @@
                                     <div class="header">
                                         <small class=" text-muted"><span class="fa fa-clock-o"></span> {{ $shout->created_at->diffForHumans() }}
                                         </small>
+
+                                        {{-- Shout Delete System --}}
+                                        @can('delete',$shout)
+                                        <div class="pull-left">
+                                            {{ Form::open(['method' => 'delete', 'route' => ['shouts.delete',$shout->id],'class' => 'deleteShout']) }}
+                                            <button data-toggle="tooltip" title="Delete" class="btn btn-link btn-xs"><i class="fa fa-trash"></i></button>
+                                            {{ Form::close() }}
+                                        </div>
+                                        @endcan
+
                                             <a href="{{ route('users.profile.show',$shout->user->username) }}">
                                         <strong class="pull-right primary-font">{{ $shout->user->name }}</strong>
                                             </a>
@@ -134,3 +154,26 @@
         background-color: #555;
     }
 </style>
+{{--
+<script>
+    $('.deleteShout').submit(function(){
+        var form = $(this),
+                formData = form.serialize(),
+                formUrl = form.attr('action'),
+                formMethod = form.attr('method');
+        form.hide();
+        $.ajax({
+            url: formUrl,
+            type: formMethod,
+            data: formData,
+            success:function(){
+                form.parent().parent().fadeOut(500);
+            },
+            error:function(){
+                form.show();
+            }
+        });
+        return false;
+    });
+</script>
+--}}
