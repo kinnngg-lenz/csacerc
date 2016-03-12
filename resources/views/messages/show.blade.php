@@ -70,6 +70,7 @@
                 <div class="col-md-8 col-md-offset-2 form-group{{ $errors->has('message') ? ' has-error' : '' }}">
 
                     {{ Form::textarea('message',null,['id' => 'message', 'class' => 'form-control no-resize', 'rows' => '2', 'placeholder' => 'Your message here']) }}
+                    <span class="help-block tiny pull-left"><p id="" class="nomargin help-block text-success">Type colon ":" for emoji popup</p></span>
                     <span class="help-block pull-right"><p id="characterLeft" class="nomargin help-block ">You have
                             reached the limit</p></span>
                     @if ($errors->has('message'))
@@ -112,7 +113,7 @@
                                     <p><span class="label label-info">New</span></p>
                                     {{ $message->hasBeenSeen() }}
                                 @endif
-                                <p>{!! nl2br(htmlentities($message->message)) !!}</p>
+                                <p class="convert-emoji">{!! nl2br(htmlentities($message->message)) !!}</p>
                             </div>
                         </div>
                     @else
@@ -136,7 +137,7 @@
                                     <p><span class="label label-info">New</span></p>
                                     {{ $message->hasBeenSeen() }}
                                 @endif
-                                <p>{!! nl2br(htmlentities($message->message)) !!}</p>
+                                <p class="convert-emoji">{!! nl2br(htmlentities($message->message)) !!}</p>
                             </div>
                             <div class="media-right">
                                 <a data-toggle="tooltip" data-placement="left" title="{{ $message->sender->name }}" href="{{ route('users.profile.show',$message->sender->username) }}"><img

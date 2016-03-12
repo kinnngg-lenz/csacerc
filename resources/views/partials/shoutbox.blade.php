@@ -47,7 +47,7 @@
                                         <strong class="pull-right primary-font">{{ $shout->user->name }}</strong>
                                             </a>
                                     </div>
-                                    <p class="text-right">
+                                    <p class="text-right convert-emoji">
                                         {!! nl2br(htmlentities($shout->shout)) !!}
                                     </p>
                                 </div>
@@ -62,8 +62,8 @@
                 @if(Auth::check())
                 {{ Form::open(['route' => 'shouts.store','id' => 'shoutbox-form']) }}
                 <div id="shout-input-group" class="input-group">
-                    <input name="shout" id="btn-input" type="text" class="form-control input-sm"
-                           placeholder="Type your message here..."/>
+                    <input name="shout" id="btn-input" type="text" class="textarea form-control input-sm"
+                           placeholder="Type your message here..." autocomplete="off" />
                         <span class="input-group-btn">
                             <button class="btn btn-primary btn-sm" id="btn-chat">
                                 Send

@@ -23,6 +23,7 @@
     {{--<link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">--}}
     {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/2.1.1/assets/css/emojione.min.css"/>
     <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
     {{ Html::style('/css/fa/css/font-awesome.min.css') }}
     @yield('styles')
@@ -50,6 +51,7 @@
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
     <script src="//js.pusher.com/2.2/pusher.min.js"></script>
+    <script src="//cdn.jsdelivr.net/emojione/2.1.1/lib/js/emojione.min.js"></script>
     <script src="{{ elixir('js/all.js') }}"></script>
     @yield('scripts')
 </body>
