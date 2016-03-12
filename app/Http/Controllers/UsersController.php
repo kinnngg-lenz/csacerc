@@ -64,6 +64,17 @@ class UsersController extends Controller
             'college_id' => 'required|exists:colleges,id',
             'department_id' => 'required|exists:departments,id',
             'photo' => 'image|max:500',
+        ],[
+            'dob.required' => 'Please specify your Date of Birth.',
+            'dob.date' => 'Invalid Date of Birth format',
+            'dob.before' => 'You are not enough old :)',
+            'name.required' => 'Please specify your Full name',
+            'about.required' => 'Please tell us something about yourself',
+            'college_id.required' => "You must select your belonging college",
+            'department_id.required' => "You must select your belonging department",
+            'exists' => "Invalid :attribute selected",
+            'photo.image' => "Profile picture must be image type",
+            'photo.max' => "Profile picture must not be greater than 500kb in size",
         ]);
 
         /**

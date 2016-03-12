@@ -76,7 +76,25 @@ class AuthController extends Controller
             'profession' => 'required_with:alumini',
             'organisation_id' => 'exists:organisations,id',
             'facebook' => '',
-        ]);
+        ],
+            [
+                'required'    => 'Please specify your :attribute',
+                'name.required' => 'Please specify your Full name',
+                'max'    => 'The :attribute must note be greater than :size.',
+                'username.alpha_dash' => 'The :attribute must only contain Alphabets,numbers,dashes or underscore',
+                'in'      => 'The :attribute must be one of the following types: :values',
+                'photo.image' => "Profile picture must be image type",
+                'photo.max' => "Profile picture must not be greater than 500kb in size",
+                'batch.required_if' => "Please select your batch",
+                'type.in' => "You must select your account type",
+                'type.required' => "Please select account type",
+                'password.required' => "Please specify a strong password",
+                'college_id.required' => "You must select your belonging college",
+                'department_id.required' => "You must select your belonging department",
+                'exists' => "Invalid :attribute selected",
+                'profession.required_with' => "Please specify your profession",
+
+            ]);
     }
 
     /**

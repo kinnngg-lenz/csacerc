@@ -58,7 +58,7 @@
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}"
-                                           placeholder="firstname middlename lastname">
+                                           placeholder="firstname middlename lastname" required>
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -74,7 +74,7 @@
 
                                 <div class="col-md-6">
                                     <input type="email" class="form-control" name="email" value="{{ old('email') }}"
-                                           placeholder="a valid email address">
+                                           placeholder="a valid email address" required>
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -89,7 +89,7 @@
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="username"
-                                           value="{{ old('username') }}" placeholder="should match regex [a-zA-Z0-9_]">
+                                           value="{{ old('username') }}" placeholder="Choose your username" required>
 
                                     @if ($errors->has('username'))
                                         <span class="help-block">
@@ -102,7 +102,7 @@
                             <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Gender <span class="text-danger">*</span></label>
                                 <div class="col-md-6">
-                                    <select name="gender" class="form-control" id="inputGender">
+                                    <select name="gender" class="form-control" id="inputGender" required>
                                         <option value="" class="text-muted">Select Gender</option>
                                         <option value="Female" {{ (old("gender") == "Female" ? "selected":"") }}>
                                             Female
@@ -122,7 +122,7 @@
                             <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">You Are <span class="text-danger">*</span></label>
                                 <div class="col-md-6">
-                                    <select name="type" class="form-control" id="inputType">
+                                    <select name="type" class="form-control" id="inputType" required>
                                         <option value="" class="text-muted">Select Account</option>
                                         <option value="0" {{ (old("type") == "0" ? "selected":"") }}>A Student</option>
                                         <option value="1" {{ (old("type") == "1" ? "selected":"") }}>Faculty Member
@@ -139,7 +139,7 @@
                             <div class="form-group{{ $errors->has('college_id') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Your College <span class="text-danger">*</span></label>
                                 <div class="col-md-6">
-                                    {{ Form::select('college_id', App\College::lists('name','id'), null, ['placeholder' => 'Select your College..', 'class' => 'form-control', 'id' => "inputType"]) }}
+                                    {{ Form::select('college_id', App\College::lists('name','id'), null, ['placeholder' => 'Select your College..', 'class' => 'form-control', 'id' => "inputType", 'required' => 'true']) }}
                                     @if ($errors->has('college_id'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('college_id') }}</strong>
@@ -151,7 +151,7 @@
                             <div class="form-group{{ $errors->has('department_id') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Department <span class="text-danger">*</span></label>
                                 <div class="col-md-6">
-                                    {{ Form::select('department_id', App\Department::lists('name','id'), null, ['placeholder' => 'Select your Department..', 'class' => 'form-control']) }}
+                                    {{ Form::select('department_id', App\Department::lists('name','id'), null, ['placeholder' => 'Select your Department..', 'class' => 'form-control', 'required' => 'true']) }}
                                     @if ($errors->has('department_id'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('department_id') }}</strong>
@@ -195,7 +195,7 @@
 
                                 <div class="col-md-6">
                                     <input type="password" class="form-control" name="password"
-                                           placeholder="minimum 6 characters">
+                                           placeholder="minimum 6 characters" required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -210,7 +210,7 @@
 
                                 <div class="col-md-6">
                                     <input type="password" class="form-control" name="password_confirmation"
-                                           placeholder="repeat password">
+                                           placeholder="repeat password" required>
 
                                     @if ($errors->has('password_confirmation'))
                                         <span class="help-block">
