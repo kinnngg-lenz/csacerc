@@ -188,7 +188,7 @@
                     <div class="row">
                         <div class="col-md-2"></div>
                     <div class="col-md-10 well">
-                        <div class='padding10 text-danger'><i><b>Nobody has dared to approach this War</b> </i>
+                        <div class='padding10 text-danger'><i><b>Nobody has approached this war yet</b> </i>
                         </div>
                     </div>
                     </div>
