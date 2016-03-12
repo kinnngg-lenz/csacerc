@@ -18,7 +18,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['showProfile', 'search']]);
+        $this->middleware('auth', ['except' => ['showProfile', 'search', 'searchForNav']]);
     }
 
     /**
@@ -150,6 +150,14 @@ class UsersController extends Controller
     public function search($query)
     {
         return (User::where('username','like','%'.$query.'%')->orWhere('name','like','%'.$query.'%')->orWhere('email','like','%'.$query.'%')->get(['id','name','username']));
+    }
+
+    public function searchForNav(Request $request)
+    {
+        $query = $request->get('q');
+        $users = User::where('username','like','%'.$query.'%')->orWhere('name','like','%'.$query.'%')->orWhere('email','like','%'.$query.'%')->paginate(10);
+        $aluminis = Alumini::where('speaker','like','%'.$query.'%')->orWhere('batch','like','%'.$query.'%')->orWhere('profession','like','%'.$query.'%')->orWhere('email','like','%'.$query."%")->paginate(10);
+        return view('users.search')->withUsers($users)->withAluminis($aluminis);
     }
 
     /**

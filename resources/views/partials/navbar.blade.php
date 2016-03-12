@@ -115,12 +115,16 @@
                 @endif
             </ul>
 
-            <form class="navbar-form navbar-right" role="search" action='/search/'>
-                <div class="form-group">
-                    <input type="text" id="navsearch" name='q' class="form-control navsearch"
+            <form method="get" class="search-form navbar-form navbar-right" role="search" action='/search/'>
+                <div class="input-group">
+                    <input type="text" id="navsearch" name='q' class="input-sm form-control navsearch"
                            placeholder="Search members" autocomplete="off">
+                    <span class="add-on input-group-btn">
+                                        <button class="btn btn-sm btn-primary" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                 </div>
-                {{--<button type="submit" class="btn btn-default">Search</button>--}}
             </form>
 
         </div>
@@ -216,12 +220,16 @@
                     @endif
                 </ul>
 
-                <form class="navbar-form navbar-right" role="search" action='/search/'>
-                    <div class="form-group">
-                        <input type="text" id="navsearch" name='q' class="form-control navsearch"
+                <form method="get" class="search-form navbar-form navbar-right" role="search" action='/search/'>
+                    <div class="input-group">
+                        <input type="text" id="navsearch" name='q' class="input-sm form-control navsearch"
                                placeholder="Search members" autocomplete="off">
+                    <span class="add-on input-group-btn">
+                                        <button class="btn btn-sm btn-primary" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                     </div>
-                    {{--<button type="submit" class="btn btn-default">Search</button>--}}
                 </form>
 
             </div>

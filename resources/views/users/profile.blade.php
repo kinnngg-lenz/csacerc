@@ -7,6 +7,7 @@
             margin-top: -28px;
             border-radius: 0px !important;
             color: white;
+            margin-bottom:0px !important;
         }
 
         .jumbotron pre {
@@ -41,28 +42,6 @@
             -o-animation: blink 0.7s infinite;
             animation: blink 0.7s infinite;
         }
-
-        @-keyframes blink {
-
-        0
-        %
-        {
-            opacity: 1
-        ;
-        }
-        50
-        %
-        {
-            opacity: 0
-        ;
-        }
-        100
-        %
-        {
-            opacity: 1
-        ;
-        }
-        }
         @-webkit-keyframes blink {
             0% {
                 opacity: 1;
@@ -86,28 +65,6 @@
                 opacity: 1;
             }
         }
-
-        @-ms-keyframes blink {
-
-        0
-        %
-        {
-            opacity: 1
-        ;
-        }
-        50
-        %
-        {
-            opacity: 0
-        ;
-        }
-        100
-        %
-        {
-            opacity: 1
-        ;
-        }
-        }
         @-o-keyframes blink {
             0% {
                 opacity: 1;
@@ -119,8 +76,35 @@
                 opacity: 1;
             }
         }
+        @-ms-keyframes blink {
+        0%
+        {
+            opacity: 1;
+        }
+        50%
+        {
+            opacity: 0;
+        }
+        100%
+        {
+            opacity: 1;
+        }
+        }
 
-
+        @-keyframes blink {
+        0%
+        {
+            opacity: 1;
+        }
+        50%
+        {
+            opacity: 0;
+        }
+        100%
+        {
+            opacity: 1;
+        }
+        }
     </style>
 @endsection
 

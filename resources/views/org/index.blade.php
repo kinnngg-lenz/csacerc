@@ -31,7 +31,7 @@
         <div class="row">
 
             <div class="jumbotron text-center">
-                <h1>Organisations/Recruiters</h1>
+                <h1>Organisations / Recruiters</h1>
                 <!-- Single button -->
                 @if(Auth::check() && Auth::user()->isAdmin())
                     {{ link_to_route('org.create', 'Add Organisation', [], ['class' => 'btn btn-primary btn-sm']) }}
@@ -48,6 +48,16 @@
                             <div class="thumbnail">
                                 <img class="img" data-src="holder.js/100%x200" alt="100%x200" src="images/{{ $org->getPhoto() }}" data-holder-rendered="true" style="width: 100%;height:200px;">
                                 <div class="caption text-center">
+
+                                    {{-- Delete Form --}}
+                                    @if(Auth::check() && Auth::user()->isSuperAdmin())
+                                        <div class="pull-right">
+                                            {{ Form::open(['method' => 'delete', 'route' => ['org.delete',$org->id]]) }}
+                                            <button data-toggle="tooltip" title="Delete" class="btn btn-link btn-xs"><i class="fa fa-trash"></i></button>
+                                            {{ Form::close() }}
+                                        </div>
+                                    @endif
+
                                     <h4>{{ $org->name }}</h4>
                                     <p class="text-center">
 

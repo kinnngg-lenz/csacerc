@@ -31,7 +31,7 @@
             <div class="jumbotron text-center">
                 <h1>Questions & Answers</h1>
                 <p class="">It's <b>StackOverflow</b> for Arya. Ask any question of your liking and one will answer.</p>
-                {{ link_to_route('questions.create', 'Ask Question!', [], ['class' => 'btn btn-info', 'title' => 'Ask anyone, anything Anonymously!', 'data-toggle' => 'tooltip']) }}
+                {{ link_to_route('questions.create', 'Ask Question!', [], ['class' => 'btn btn-info', 'title' => 'Ask anyone, anything!', 'data-toggle' => 'tooltip']) }}
             </div>
 
             <div class="col-md-11 col-md-offset-1">

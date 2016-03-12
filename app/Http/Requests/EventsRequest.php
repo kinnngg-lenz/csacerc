@@ -31,7 +31,7 @@ class EventsRequest extends Request
             'date' => 'required|date',
             'description' => 'required|min:10',
             'venue' => 'required',
-            'photo' => 'required|image',
+            'photo' => 'required|image|max:500',
         ];
     }
 }

@@ -8,6 +8,7 @@ use App\Photo;
 use App\User;
 use Auth;
 use Carbon\Carbon;
+use File;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -37,7 +38,7 @@ class OrganisationsController extends Controller
      */
     public function index()
     {
-        $orgs = Organisation::latest()->paginate();
+        $orgs = Organisation::orderBy('weight','DESC')->latest()->paginate();
         return view('org.index')->withOrgs($orgs);
     }
 
@@ -153,11 +154,34 @@ class OrganisationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        $org = Organisation::findOrFail($id);
+
+        if($request->user()->isSuperAdmin())
+        {
+            //If has Photo
+            if(!is_null($org->photo))
+            {
+                $photo = $org->photo;
+
+                $file = public_path('images/').$photo->url;
+                if(File::exists($file))
+                {
+                    // Delete from Storage
+                    File::delete($file);
+                    $org->photo_id = null;
+                    $org->save();
+                    $photo->delete();
+                }
+            }
+            $org->delete();
+            return back()->withNotification("Organisation Deleted!")->withType('success');
+        }
+        return back()->withNotification("Sorry! You are not authorized.")->withType('danger');
     }
 }

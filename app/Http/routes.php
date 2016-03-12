@@ -96,6 +96,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/@{username}/edit',['as' => 'users.profile.edit', 'uses' => 'UsersController@editProfile']);
     Route::post('/@{username}/edit',['as' => 'users.profile.update', 'uses' => 'UsersController@updateProfile']);
     Route::patch('/toggleban/@{username}',['middleware' => 'admin:3', 'as' => 'users.toggleban', 'uses' => 'UsersController@toggleBanUser']);
+    Route::get('/search/', ['as' => 'users.search', 'uses' => 'UsersController@searchForNav']);
 
     /**
      * Aluminis Controller
@@ -191,6 +192,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/organisations', ['as' => 'org.index', 'uses' => 'OrganisationsController@index']);
     Route::get('/org/create', ['as' => 'org.create', 'uses' => 'OrganisationsController@create']);
     Route::post('/org/create', ['as' => 'org.create', 'uses' => 'OrganisationsController@store']);
+    Route::delete('/org/{id}', ['as' => 'org.delete', 'uses' => 'OrganisationsController@destroy']);
 
     /**
      * NewsLetter Controller

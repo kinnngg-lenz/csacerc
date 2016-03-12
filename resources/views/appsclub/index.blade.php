@@ -23,6 +23,12 @@
         .tiny {
             font-size: 14px;
         }
+        footer
+        {
+            width:100% !important;
+            bottom:0;
+            position: absolute;
+        }
     </style>
 @endsection
 
@@ -36,6 +42,9 @@
                 for department of computer science at acerc.
                 </p>
                 <!-- Single button -->
+                <p class="text-lg">Here you will be able to showcase your app or codes to others. This feature is under development and will
+                    be live ASAP.
+                </p>
             </div>
         </div>
     </div>
