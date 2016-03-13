@@ -247,7 +247,7 @@
                             <div class="form_alumini">
 
                                 <div class="form-group{{ $errors->has('profession') ? ' has-error' : '' }}">
-                                    {{ Form::label('profession', 'Alumini\'s Profession', ['class' => 'col-md-4 control-label']) }}
+                                    {{ Form::label('profession', 'Your Profession', ['class' => 'col-md-4 control-label']) }}
                                     <div class="col-md-6">
                                         {{ Form::text('profession',null,['class' => 'form-control', 'placeholder' => 'eg: Web Developer, IES Preparation, etc']) }}
                                         @if ($errors->has('profession'))
@@ -259,7 +259,7 @@
                                 </div>
 
                                 <div class="org_select form-group{{ $errors->has('organisation_id') ? ' has-error' : '' }}">
-                                    {{ Form::label('organisation_id', 'Company (if any)', ['class' => 'col-md-4 control-label']) }}
+                                    {{ Form::label('organisation_id', 'Company (optional)', ['class' => 'col-md-4 control-label']) }}
                                     <div class="col-md-6">
                                         {{ Form::select('organisation_id', App\Organisation::lists('name','id'), null, ['placeholder' => 'Select Organisation..', 'class' => 'form-control', 'id' => "inputType"]) }}
                                         <div class="text-info small">If the company you work in is not listed here then
@@ -275,7 +275,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('facebook') ? ' has-error' : '' }}">
-                                    {{ Form::label('facebook', 'Facebook Username (if any)', ['class' => 'col-md-4 control-label']) }}
+                                    {{ Form::label('facebook', 'Facebook Username (optional)', ['class' => 'col-md-4 control-label']) }}
                                     <div class="col-md-6">
                                         {{ Form::text('facebook',null,['class' => 'form-control', 'placeholder' => 'Your facebook profile username']) }}
                                         @if ($errors->has('facebook'))
@@ -287,9 +287,9 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('speech') ? ' has-error' : '' }}">
-                                    {{ Form::label('speech', 'Speech (if any)', ['class' => 'col-md-4 control-label']) }}
+                                    {{ Form::label('speech', 'Speech (optional)', ['class' => 'col-md-4 control-label']) }}
                                     <div class="col-md-6">
-                                        {{ Form::textarea('speech',null,['class' => 'form-control', 'placeholder' => 'eg: Anything you wanna say, news, techs, about yourself. etc']) }}
+                                        {{ Form::textarea('speech',null,['class' => 'form-control', 'placeholder' => 'Speak few words about anything you like. College days, yourself, quotes, your job etc. ']) }}
                                         @if ($errors->has('speech'))
                                             <span class="help-block">
                             <strong>{{ $errors->first('speech') }}</strong>

@@ -99,6 +99,7 @@ class OrganisationsController extends Controller
                         'address' => $address,
                         'photo_id' => $photoId,
                         'slug' => $slug,
+                        'user_ip' => $request->getClientIp()
                     ]);
                 }
                 // If not signed in then let it be added by the name of first user ie Zishan
@@ -112,6 +113,7 @@ class OrganisationsController extends Controller
                         'address' => $address,
                         'photo_id' => $photoId,
                         'slug' => $slug,
+                        'user_ip' => $request->getClientIp()
                     ]);
                 }
                 return back()->withNotification('Organisation has been added!')->withType('success');

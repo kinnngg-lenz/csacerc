@@ -136,6 +136,7 @@ class AuthController extends Controller
             'department_id' => $data['department_id'],
             'photo_id' => $photoId,
             'batch' => $batch,
+            'register_time_ip' => \Request::getClientIp()
         ]);
 
         /**
