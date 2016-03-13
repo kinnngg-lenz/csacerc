@@ -47,6 +47,6 @@ class CodeWarAnswer extends Model
         if(substr($data,0,3) == '```')
         return $data;
         else
-            return "```".$data."```";
+            return "```\n".$data."\n```";
     }
 }
