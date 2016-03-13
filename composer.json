@@ -21,7 +21,8 @@
         "laracasts/utilities": "^2.1",
         "jenssegers/agent": "^2.3",
         "filp/whoops": "^2.0",
-        "pusher/pusher-php-server": "^2.3"
+        "pusher/pusher-php-server": "^2.3",
+        "pragmarx/firewall": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

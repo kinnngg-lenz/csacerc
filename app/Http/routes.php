@@ -24,7 +24,7 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web','fw-block-bl']], function () {
 
     /**
      * Landing Page
@@ -85,7 +85,7 @@ Route::group(['middleware' => ['web']], function () {
 
 });
 
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => ['web','fw-block-bl']], function () {
     Route::auth();
     Route::get('/dashboard', ['as' => 'home', 'uses' => 'HomeController@index']);
 
@@ -223,6 +223,13 @@ Route::group(['middleware' => 'web'], function () {
      * Apps Club Controller
      */
     Route::get('/appsclub', ['as' => 'appsclub.index', 'uses' => 'AppsclubController@index']);
+
+    /**
+     * Firewall Controller
+     */
+    Route::get('/firewall', ['middleware' => ['auth', 'admin:3'], 'as' => 'firewall.index', 'uses' => 'FirewallController@index']);
+    Route::post('/firewall', ['middleware' => ['auth', 'admin:3'], 'as' => 'firewall.store', 'uses' => 'FirewallController@store']);
+    Route::delete('/firewall/{ip}', ['middleware' => ['auth', 'admin:3'], 'as' => 'firewall.destroy', 'uses' => 'FirewallController@destroy']);
 
 });
 

@@ -162,6 +162,7 @@ return [
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Spatie\Newsletter\NewsletterServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        PragmaRX\Firewall\Vendor\Laravel\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -226,6 +227,7 @@ return [
         'SnapImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
         'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'Firewall' => PragmaRX\Firewall\Vendor\Laravel\Facade::class,
 
     ],
 

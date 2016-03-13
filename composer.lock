@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b683fe3cf52174cfd2a3b15f370a526a",
-    "content-hash": "8de147e2e92dd42db357c22077864d84",
+    "hash": "f818ab72b4c463e6dd0895ecd8108ce1",
+    "content-hash": "2b2629a47c918468918586cc53c2c2c1",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2775,6 +2775,116 @@
                 "xunit"
             ],
             "time": "2015-10-02 06:51:40"
+        },
+        {
+            "name": "pragmarx/firewall",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/antonioribeiro/firewall.git",
+                "reference": "9aac37c3c86deba5d0ffa314949d64ee6e71092e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/antonioribeiro/firewall/zipball/9aac37c3c86deba5d0ffa314949d64ee6e71092e",
+                "reference": "9aac37c3c86deba5d0ffa314949d64ee6e71092e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "~4|~5",
+                "illuminate/filesystem": "~4|~5",
+                "illuminate/support": "~4|~5",
+                "php": ">=5.3.7",
+                "pragmarx/support": "~0.5"
+            },
+            "suggest": {
+                "geoip/geoip": "~1.14",
+                "geoip2/geoip2": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PragmaRX\\Firewall\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Carlos Ribeiro",
+                    "email": "acr@antoniocarlosribeiro.com",
+                    "role": "Creator"
+                }
+            ],
+            "description": "A Laravel 4.1+ IP whitelisting and blacklisting",
+            "keywords": [
+                "blacklist",
+                "firewall",
+                "laravel",
+                "whitelist"
+            ],
+            "time": "2015-12-24 21:59:11"
+        },
+        {
+            "name": "pragmarx/support",
+            "version": "v0.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/antonioribeiro/support.git",
+                "reference": "aee512c2e2dfaf11ed9872a78f89ad9634636970"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/antonioribeiro/support/zipball/aee512c2e2dfaf11ed9872a78f89ad9634636970",
+                "reference": "aee512c2e2dfaf11ed9872a78f89ad9634636970",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "~4.0|~5.0",
+                "php": ">=5.4.0",
+                "symfony/var-dumper": "~2.6|~3.0"
+            },
+            "suggest": {
+                "laravel/framework": "Laravel framework."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PragmaRX\\Support\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Carlos Ribeiro",
+                    "email": "acr@antoniocarlosribeiro.com",
+                    "role": "Creator"
+                }
+            ],
+            "description": "PragmaRX components support package",
+            "keywords": [
+                "laravel",
+                "pragmarx"
+            ],
+            "time": "2016-02-16 14:13:39"
         },
         {
             "name": "psr/http-message",

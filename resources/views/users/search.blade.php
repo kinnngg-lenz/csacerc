@@ -34,7 +34,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="jumbotron text-center">
-                <h1>Search Result</h1>
+                <h1>Search Results</h1>
                 <p>{{ $users->total() }} {{ str_plural('user',$users->total()) }} found for the search for "{{ Request::get('q') }}"</p>
                 <p>{{ $aluminis->total() }} {{ str_plural('alumini',$aluminis->total()) }} found for the search for "{{ Request::get('q') }}"</p>
             </div>
