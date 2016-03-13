@@ -34,7 +34,7 @@ Route::group(['middleware' => ['web']], function () {
         $event = App\Event::latest()->first();
         $codewars = App\CodeWarQuestion::latest()->limit(3)->get();
         $questions = App\Question::wherePublic(1)->approved()->latest()->limit(3)->get();
-        $aluminis = App\Alumini::where('speech','!=','null')->latest()->limit(2)->get();
+        $aluminis = App\Alumini::where('speech','!=','null')->get()->random(2);
         $users = App\User::latest()->limit(3)->get();
         $picture = App\Photo::whereGallery(1)->get()->random();
         $technews = App\News::whereType(1)->latest()->first();
