@@ -41,4 +41,12 @@ class CodeWarAnswer extends Model
     {
         return $this->morphMany('App\Like', 'likeable');
     }
+
+    public function getAnswerAttribute($data)
+    {
+        if(substr($data,0,3) == '```')
+        return $data;
+        else
+            return "```".$data."```";
+    }
 }
