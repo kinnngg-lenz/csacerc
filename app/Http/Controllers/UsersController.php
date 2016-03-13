@@ -194,6 +194,19 @@ class UsersController extends Controller
         return back()->withNotification("Error! something not well")->withType('danger');
     }
 
+    public function verifyAccount(User $user,Request $request)
+    {
+        if(!$request->user()->isSuperAdmin())
+        {
+            return back()->withNotification("Sorry! You are not authorized")->withType("danger");
+        }
+
+        $user->approved = 1;
+        $user->save();
+
+        return back()->withNotification("Success! User is now verified")->withType("success");
+    }
+
     /**
      * @param User $id
      * @param Request $request

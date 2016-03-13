@@ -183,12 +183,14 @@
                             {{ Form::close() }}
                         </div>
 
-                        {{--<div class="col-md-3">
-                            {{ Form::open(['method' => 'delete', 'route' => ['users.delete',$user->id]]) }}
+                        @if($user->approved == 0)
+                        <div class="col-md-3">
+                            {{ Form::open(['method' => 'post', 'route' => ['users.verify',$user->id]]) }}
                             {{ Form::hidden('id',$user->id) }}
                             {{ Form::hidden('username',$user->username) }}
-                            {{ Form::submit('Delete '.$user->username,['class' => 'btn btn-danger btn-sm']) }}
-                        </div>--}}
+                            {{ Form::submit('Verify Account',['class' => 'confirm btn btn-info btn-sm']) }}
+                        </div>
+                        @endif
                     @endif
                     @unless(Auth::check() && $user->id == Auth::user()->id)
                     <div class="col-md-3">

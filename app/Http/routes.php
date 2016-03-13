@@ -95,6 +95,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/@{username}', ['as' => 'users.profile.show', 'uses' => 'UsersController@showProfile']);
     Route::get('/@{username}/edit',['as' => 'users.profile.edit', 'uses' => 'UsersController@editProfile']);
     Route::post('/@{username}/edit',['as' => 'users.profile.update', 'uses' => 'UsersController@updateProfile']);
+    Route::post('/user/{user}/verify',['as' => 'users.verify', 'uses' => 'UsersController@verifyAccount']);
     Route::patch('/toggleban/@{username}',['middleware' => 'admin:3', 'as' => 'users.toggleban', 'uses' => 'UsersController@toggleBanUser']);
     Route::get('/search/', ['as' => 'users.search', 'uses' => 'UsersController@searchForNav']);
 
