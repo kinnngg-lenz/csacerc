@@ -132,7 +132,7 @@
                     <div class="panel col-md-10">
 
                         <p class="padding10 visible-xs">
-                            <b>{{ link_to_route('users.profile.show',$answer->user->name,$question->user->username) }}</b>
+                            <b>{{ link_to_route('users.profile.show',$answer->user->name,$answer->user->username) }}</b>
                              - <span class="text-muted small">{{ $answer->created_at->diffForHumans() }}</span>
                         @if($question->best_answer_id == $answer->id && $question->ends_at <= \Carbon\Carbon::now())
                             <span class="padding10 visible-xs"><span class="label label-success">Winner</span></span>
