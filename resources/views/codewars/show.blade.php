@@ -122,7 +122,7 @@
                         <div class="col-md-2 hidden-xs hidden-sm">
                             <img class="img img-thumbnail" src="/images/{{ $answer->user->getProfilePicUrl() }}" style="width:200px;">
                             <div class="text-center">
-                                <h4>{{ link_to_route('users.profile.show',$answer->user->name,$question->user->username) }}</h4>
+                                <h4>{{ link_to_route('users.profile.show',$answer->user->name,$answer->user->username) }}</h4>
                                 <p class="text-muted">{{ $answer->created_at->diffForHumans() }}</p>
                                 @if($question->best_answer_id == $answer->id && $question->ends_at <= \Carbon\Carbon::now())
                                     <h3><span class="label label-success">Winner</span></h3>
