@@ -28,7 +28,7 @@ class UsersController extends Controller
      */
     public function showProfile($username)
     {
-        $user  = User::whereUsername($username)->firstOrFail();
+        $user = User::whereUsername($username)->firstOrFail();
         return view('users.profile')->withUser($user);
     }
 
@@ -41,8 +41,7 @@ class UsersController extends Controller
     public function editProfile($username)
     {
         $user = User::whereUsername($username)->firstOrFail();
-        if(Auth::user() != $user)
-        {
+        if (Auth::user() != $user) {
             return redirect('/');
         }
         return view('users.edit')->withUser($user);
@@ -52,8 +51,7 @@ class UsersController extends Controller
     {
         $user = User::whereUsername($username)->firstOrFail();
 
-        if(Auth::user() != $user)
-        {
+        if (Auth::user() != $user) {
             return redirect('/');
         }
 
@@ -64,7 +62,7 @@ class UsersController extends Controller
             'college_id' => 'required|exists:colleges,id',
             'department_id' => 'required|exists:departments,id',
             'photo' => 'image|max:500',
-        ],[
+        ], [
             'dob.required' => 'Please specify your Date of Birth.',
             'dob.date' => 'Invalid Date of Birth format',
             'dob.before' => 'You are not enough old :)',
@@ -83,10 +81,9 @@ class UsersController extends Controller
          * 2> Store Photo in storage and link in DB
          * 3> Pass new PhotoId
          */
-        if ($request->hasFile('photo') && $request->file('photo')->isValid())
-        {
+        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
             // Create name for new Image
-            $photoName = md5(Carbon::now()).".".$request->file('photo')->getClientOriginalExtension();
+            $photoName = md5(Carbon::now()) . "." . $request->file('photo')->getClientOriginalExtension();
 
             // Move image to storage
             $image = Image::make($request->file('photo'));
@@ -99,14 +96,11 @@ class UsersController extends Controller
              * Delete previous Profile pic if any
              * Delete only if this Photo is not referenced by any Alumini profile.
              */
-            if($prevPic = $request->user()->photo)
-            {
+            if ($prevPic = $request->user()->photo) {
                 // If any alumini references then ignore deletion else delete
-                if(Alumini::where('photo_id',$prevPic->id)->first() == null)
-                {
-                    $file = public_path('images/').$prevPic->url;
-                    if(File::exists($file))
-                    {
+                if (Alumini::where('photo_id', $prevPic->id)->first() == null) {
+                    $file = public_path('images/') . $prevPic->url;
+                    if (File::exists($file)) {
                         // Delete from Storage
                         File::delete($file);
                         // Delete link from DB
@@ -117,21 +111,16 @@ class UsersController extends Controller
                 }
             }
             $photoId = $photo->id;
-        }
-        /**
+        } /**
          * If No Upload Then
          * 1> Check if already has a profile Pic
          *  Yes? : Pass old profile pic Id.
          *  No?  : Pass null as Profile pic Id
          */
-        else
-        {
-            if($prevPic = $request->user()->photo)
-            {
+        else {
+            if ($prevPic = $request->user()->photo) {
                 $photoId = $prevPic->id;
-            }
-            else
-            {
+            } else {
                 $photoId = null;
             }
         }
@@ -160,14 +149,14 @@ class UsersController extends Controller
      */
     public function search($query)
     {
-        return (User::where('username','like','%'.$query.'%')->orWhere('name','like','%'.$query.'%')->orWhere('email','like','%'.$query.'%')->get(['id','name','username']));
+        return (User::where('username', 'like', '%' . $query . '%')->orWhere('name', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . '%')->get(['id', 'name', 'username']));
     }
 
     public function searchForNav(Request $request)
     {
         $query = $request->get('q');
-        $users = User::where('username','like','%'.$query.'%')->orWhere('name','like','%'.$query.'%')->orWhere('email','like','%'.$query.'%')->paginate(10);
-        $aluminis = Alumini::where('speaker','like','%'.$query.'%')->orWhere('batch','like','%'.$query.'%')->orWhere('profession','like','%'.$query.'%')->orWhere('email','like','%'.$query."%")->paginate(10);
+        $users = User::where('username', 'like', '%' . $query . '%')->orWhere('name', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . '%')->paginate(10);
+        $aluminis = Alumini::where('speaker', 'like', '%' . $query . '%')->orWhere('batch', 'like', '%' . $query . '%')->orWhere('profession', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . "%")->paginate(10);
         return view('users.search')->withUsers($users)->withAluminis($aluminis);
     }
 
@@ -178,36 +167,66 @@ class UsersController extends Controller
      */
     public function toggleBanUser(Request $request, $username)
     {
-        if($request->username != $username)
-        {
+        if ($request->username != $username) {
             return back()->withNotification("Aw! Please don't try to mess up the code ;)")->withType('danger');
         }
 
         $user = User::whereUsername($request->username)->first();
 
-        if(is_null($user))
-        {
+        if (is_null($user)) {
             return back()->withNotification("Sorry! User not found")->withType('warning');
         }
 
-        if($request->user()->role <= $user->role)
-        {
+        if ($request->user()->role <= $user->role) {
             return back()->withNotification("Sorry! You don't have rights to ban this user")->withType('danger');
         }
 
-        if($user->banned == 1)
-        {
+        if ($user->banned == 1) {
             $user->banned = 0;
             $user->save();
             return back()->withNotification("Success! You have unbanned this user")->withType('success');
-        }
-        elseif($user->banned == 0)
-        {
+        } elseif ($user->banned == 0) {
             $user->banned = 1;
             $user->save();
             return back()->withNotification("Success! You have banned this user")->withType('success');
         }
 
         return back()->withNotification("Error! something not well")->withType('danger');
+    }
+
+    /**
+     * @param User $id
+     * @param Request $request
+     * @return mixed
+     * @throws \Exception
+     */
+    public function destroy(User $id, Request $request)
+    {
+        if(!$request->user()->isSuperAdmin())
+        {
+            return back()->withNotification("Sorry! You are not authorized")->withType("danger");
+        }
+
+        $user = $id;
+        $user->aluminis()->delete();
+        $user->messages()->delete();
+        $user->allMessages()->delete();
+        $Pic = $user->photo;
+        $user->delete();
+        /*
+             * Delete Profile pic if any
+             * Delete only if this Photo is not referenced by any Alumini profile.
+             */
+        if ($Pic) {
+            // If any alumini references then ignore deletion else delete
+            $file = public_path('images/') . $Pic->url;
+            if (File::exists($file)) {
+                // Delete from Storage
+                File::delete($file);
+                // Delete link from DB
+                $Pic->delete();
+            }
+        }
+        return redirect('/')->withNotification("Success! User deleted");
     }
 }

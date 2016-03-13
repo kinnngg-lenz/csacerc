@@ -54,7 +54,20 @@
                         </div>
                         <div class="media-body">
                             <a href="{{ route('users.profile.show',$user->username) }}">
-                            <h4 class="media-heading">{{ $user->name }} <span class="tiny">{{ "@".$user->username }}</span> </h4>
+                                @if($user->banned)
+                                <del><h4 class="media-heading">{{ $user->name }}
+                                        @if($user->approved)
+                                            <i data-toggle="tooltip" title="Verified but banned" style="color: red" class="fa fa-check-circle"></i>
+                                        @endif
+                                        <span class="tiny">{{ "@".$user->username }}</span> </h4></del>
+                                @else
+                                    <h4 class="media-heading">{{ $user->name }}
+                                        @if($user->approved)
+                                            <i data-toggle="tooltip" title="Verified Account" style="color: greenyellow" class="fa fa-check-circle"></i>
+                                        @endif
+                                        <span class="tiny">{{ "@".$user->username }}</span>
+                                    </h4>
+                                @endif
                             </a>
                             <p class="text-danger small nomargin">
                                 {{ $user->gta() }}

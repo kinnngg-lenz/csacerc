@@ -344,8 +344,21 @@ class User extends Authenticatable
         return Message::where('sender_id',$this->id)->orWhere('receiver_id',$this->id);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function shouts()
     {
         return $this->hasMany('App\Shout');
     }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeActive($query)
+    {
+        return $query->whereBanned(0);
+    }
+
 }

@@ -345,6 +345,10 @@ $(document).ready(function(){
         var converted = emojione.toImage(original);
         $(this).html(converted);
     });
+
+    $('.confirm').click(function(){
+        return confirm("Are you sure?");
+    });
 });
 
 function convertEmoji(text) {

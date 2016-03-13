@@ -35,7 +35,7 @@ Route::group(['middleware' => ['web']], function () {
         $codewars = App\CodeWarQuestion::latest()->limit(3)->get();
         $questions = App\Question::wherePublic(1)->approved()->latest()->limit(3)->get();
         $aluminis = App\Alumini::where('speech','!=','null')->get()->random(2);
-        $users = App\User::latest()->limit(3)->get();
+        $users = App\User::whereBanned(0)->latest()->limit(3)->get();
         $picture = App\Photo::whereGallery(1)->get()->random();
         $technews = App\News::whereType(1)->latest()->first();
         $qotd = App\Quote::getQotd();
@@ -107,6 +107,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/alumini/{slug}', ['as' => 'alumini.show', 'uses' => 'AluminisController@show']);
     Route::get('/alumini/{id}/edit', ['as' => 'alumini.edit', 'uses' => 'AluminisController@edit']);
     Route::patch('/alumini/{id}/edit', ['as' => 'alumini.update', 'uses' => 'AluminisController@update']);
+    Route::delete('/alumini/{alumini}/delete', ['as' => 'alumini.destroy', 'uses' => 'AluminisController@destroy']);
 
     /**
      * Events Controller

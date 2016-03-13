@@ -53,7 +53,7 @@
                                     @if(Auth::check() && Auth::user()->isSuperAdmin())
                                         <div class="pull-right">
                                             {{ Form::open(['method' => 'delete', 'route' => ['org.delete',$org->id]]) }}
-                                            <button data-toggle="tooltip" title="Delete" class="btn btn-link btn-xs"><i class="fa fa-trash"></i></button>
+                                            <button data-toggle="tooltip" title="Delete" class="confirm btn btn-link btn-xs"><i class="fa fa-trash"></i></button>
                                             {{ Form::close() }}
                                         </div>
                                     @endif

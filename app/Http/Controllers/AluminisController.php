@@ -253,11 +253,32 @@ class AluminisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Alumini $alumini
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function destroy($id)
+    public function destroy(Alumini $alumini,Request $request)
     {
-        //
+        if(!$request->user()->isSuperAdmin())
+        {
+            return back()->withNotification("Sorry! You are not authorized")->withType("danger");
+        }
+
+        $Pic = $alumini->photo;
+        $alumini->delete();
+
+        if ($Pic) {
+            if(User::where('photo_id',$Pic->id)->first() == null) {
+                $file = public_path('images/') . $Pic->url;
+                if (File::exists($file)) {
+                    // Delete from Storage
+                    File::delete($file);
+                    $Pic->delete();
+                }
+            }
+        }
+        return back()->withNotification("Success! Alumini deleted");
     }
+
 }

@@ -25,7 +25,7 @@
         }
 
         .tiny {
-            font-size: 14px;
+            font-size: 14px !important;
         }
 
         .xp-btn {
@@ -105,6 +105,10 @@
             opacity: 1;
         }
         }
+        .text-verified
+        {
+            color: greenyellow;
+        }
     </style>
 @endsection
 
@@ -118,6 +122,12 @@
                              src="/images/{{ $user->getProfilePicUrl() }}" width="250"
                              height="250"/>
 
+                        @if($user->approved)
+                        <p class="col-md-10 text-verified padding10 text-center"><i class="fa fa-check-circle"></i>
+                             Verified account
+                        </p>
+                        @endif
+
                         {{--<img class="img-thumbnail" src="/images/static/{{ $user->gender }}.jpeg" alt="Female" style="height: 250px">--}}
                     </div>
                     <div class="col-md-9">
@@ -129,7 +139,12 @@
                         </button>--}}
 
 
-                        <h1 class="nomargin">{{ $user->name }}</h1><i class="text-muted">( {{ $user->rank() }} )</i>
+                        @if($user->banned)
+                        <del><h1 class="nomargin">{{ $user->name }}</h1></del>
+                        @else
+                            <h1 class="nomargin">{{ $user->name }}</h1>
+                        @endif
+                            <i class="text-muted">( {{ $user->rank() }} )</i>
                         <p class="text-warning"><a class="text-warning"
                                                    href="{{ route('users.profile.show',$user->username) }}">{{ "@".$user->username }}</a>
                         </p>
@@ -161,12 +176,19 @@
                             {{ Form::open(['method' => 'patch', 'route' => ['users.toggleban',$user->username]]) }}
                             {{ Form::hidden('username',$user->username) }}
                             @if($user->banned == 1)
-                                {{ Form::submit('Unban @'.$user->username,['class' => 'btn btn-success btn-sm']) }}
+                                {{ Form::submit('Unban @'.$user->username,['class' => 'btn confirm btn-success btn-sm']) }}
                             @else
-                                {{ Form::submit('Ban @'.$user->username,['class' => 'btn btn-danger btn-sm']) }}
+                                {{ Form::submit('Ban @'.$user->username,['class' => 'btn confirm btn-danger btn-sm']) }}
                             @endif
                             {{ Form::close() }}
                         </div>
+
+                        {{--<div class="col-md-3">
+                            {{ Form::open(['method' => 'delete', 'route' => ['users.delete',$user->id]]) }}
+                            {{ Form::hidden('id',$user->id) }}
+                            {{ Form::hidden('username',$user->username) }}
+                            {{ Form::submit('Delete '.$user->username,['class' => 'btn btn-danger btn-sm']) }}
+                        </div>--}}
                     @endif
                     @unless(Auth::check() && $user->id == Auth::user()->id)
                     <div class="col-md-3">

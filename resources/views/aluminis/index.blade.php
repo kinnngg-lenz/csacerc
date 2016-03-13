@@ -90,6 +90,16 @@
                         <div class="col-sm-6 grid-item col-md-4">
                             <div class="thumbnail">
                                 <img class="img" data-src="holder.js/100%x200" alt="100%x200" src="images/{{ $alumini->getPhoto() }}" data-holder-rendered="true" style="width: 100%">
+
+                                {{-- Delete Form --}}
+                                @if(Auth::check() && Auth::user()->isSuperAdmin())
+                                    <div class="pull-left">
+                                        {{ Form::open(['method' => 'delete', 'route' => ['alumini.destroy',$alumini->id]]) }}
+                                        <button data-toggle="tooltip" title="Delete" class="btn btn-link btn-xs confirm"><i class="fa fa-trash"></i></button>
+                                        {{ Form::close() }}
+                                    </div>
+                                @endif
+
                                 <div class="caption text-center alumini-body">
                                     <h4>{{ $alumini->speaker }}</h4>
                                     <p class="text-center">
