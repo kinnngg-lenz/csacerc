@@ -39,7 +39,7 @@ class AluminisController extends Controller
         }
         else
         {
-            $aluminis = $this->alumini->orderBy('photo_id','DESC')->latest()->paginate();
+            $aluminis = $this->alumini->orderByRaw('CASE WHEN photo_id IS NULL THEN 0 ELSE 1 END DESC')->latest()->paginate();
         }
 
         return view('aluminis.index')->withAluminis($aluminis);

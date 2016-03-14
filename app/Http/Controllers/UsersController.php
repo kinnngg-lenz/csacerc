@@ -155,8 +155,8 @@ class UsersController extends Controller
     public function searchForNav(Request $request)
     {
         $query = $request->get('q');
-        $users = User::where('username', 'like', '%' . $query . '%')->orWhere('name', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . '%')->oldest()->orderBy('photo_id','DESC')->paginate(10);
-        $aluminis = Alumini::where('speaker', 'like', '%' . $query . '%')->orWhere('batch', 'like', '%' . $query . '%')->orWhere('profession', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . "%")->oldest()->orderBy('photo_id','DESC')->paginate(10);
+        $users = User::where('username', 'like', '%' . $query . '%')->orWhere('name', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . '%')->orderByRaw('CASE WHEN photo_id IS NULL THEN 0 ELSE 1 END DESC')->oldest()->paginate(10);
+        $aluminis = Alumini::where('speaker', 'like', '%' . $query . '%')->orWhere('batch', 'like', '%' . $query . '%')->orWhere('profession', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . "%")->orderByRaw('CASE WHEN photo_id IS NULL THEN 0 ELSE 1 END DESC')->oldest()->orderBy('photo_id','DESC')->paginate(10);
         return view('users.search')->withUsers($users)->withAluminis($aluminis);
     }
 
