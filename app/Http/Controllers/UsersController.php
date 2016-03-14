@@ -155,8 +155,8 @@ class UsersController extends Controller
     public function searchForNav(Request $request)
     {
         $query = $request->get('q');
-        $users = User::where('username', 'like', '%' . $query . '%')->orWhere('name', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . '%')->paginate(10);
-        $aluminis = Alumini::where('speaker', 'like', '%' . $query . '%')->orWhere('batch', 'like', '%' . $query . '%')->orWhere('profession', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . "%")->paginate(10);
+        $users = User::where('username', 'like', '%' . $query . '%')->orWhere('name', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . '%')->orderBy('photo_id','DESC')->paginate(10);
+        $aluminis = Alumini::where('speaker', 'like', '%' . $query . '%')->orWhere('batch', 'like', '%' . $query . '%')->orWhere('profession', 'like', '%' . $query . '%')->orWhere('email', 'like', '%' . $query . "%")->orderBy('photo_id','DESC')->paginate(10);
         return view('users.search')->withUsers($users)->withAluminis($aluminis);
     }
 
