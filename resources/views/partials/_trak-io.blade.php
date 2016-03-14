@@ -12,8 +12,7 @@
         calq.user.profile(
                 { "$full_name": "{{ Auth::user()->name }}",
                   "$email": "{{  Auth::user()->email }}",
-                  "$gender": "{{ Auth::user()->gender }}",
-                  "$image_url": "{{ public_path('/images/').Auth::user()->getProfilePicUrl() }}",
+                  "$gender": "{{ Auth::user()->gender }}"
 
                 }
         );
@@ -36,8 +35,7 @@
         calq.user.profile(
                 { "$full_name": "{{ Auth::user()->name }}",
                     "$email": "{{  Auth::user()->email }}",
-                    "$gender": "{{ Auth::user()->gender }}",
-                    "$image_url": "{{ public_path('/images/').Auth::user()->getProfilePicUrl() }}"
+                    "$gender": "{{ Auth::user()->gender }}"
                 }
         );
 
@@ -57,8 +55,7 @@
         calq.user.profile(
                 { "$full_name": "{{ Auth::user()->name }}",
                     "$email": "{{  Auth::user()->email }}",
-                    "$gender": "{{ Auth::user()->gender }}",
-                    "$image_url": "{{ public_path('/images/').Auth::user()->getProfilePicUrl() }}"
+                    "$gender": "{{ Auth::user()->gender }}"
                 }
         );
     </script>
