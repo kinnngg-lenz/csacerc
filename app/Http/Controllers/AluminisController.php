@@ -39,7 +39,7 @@ class AluminisController extends Controller
         }
         else
         {
-            $aluminis = $this->alumini->orderByDesc('photo_id')->latest()->paginate();
+            $aluminis = $this->alumini->orderBy('photo_id','DESC')->latest()->paginate();
         }
 
         return view('aluminis.index')->withAluminis($aluminis);
