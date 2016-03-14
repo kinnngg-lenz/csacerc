@@ -198,4 +198,54 @@ class CodeWarsController extends Controller
 
         return back()->withNotification("Error! Something is not right)");
     }
+
+    /**
+     * Show Edit Answer Form
+     *
+     * @param CodeWarQuestion $codeWarQuestion
+     * @param CodeWarAnswer $codeWarAnswer
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function editAnswer(CodeWarQuestion $codeWarQuestion, CodeWarAnswer $codeWarAnswer, Request $request)
+    {
+        if($codeWarAnswer->question != $codeWarQuestion)
+        {
+            abort(404);
+        }
+
+        if($request->user()->can('edit',$codeWarAnswer))
+        {
+            return view('codewars.editanswer')->withAnswer($codeWarAnswer)->withQuestion($codeWarQuestion);
+        }
+        return back()->withNotification("Sorry Buddy! You are not authorized")->withType("danger");
+    }
+
+    /**
+     * @param CodeWarQuestion $codeWarQuestion
+     * @param CodeWarAnswer $codeWarAnswer
+     * @param Request $request
+     */
+    public function updateAnswer(CodeWarQuestion $codeWarQuestion, CodeWarAnswer $codeWarAnswer, Request $request)
+    {
+        if($codeWarAnswer->question != $codeWarQuestion)
+        {
+            abort(404);
+        }
+        if($request->user()->can('edit',$codeWarAnswer))
+        {
+            $this->validate($request, [
+                'answer' => 'required'
+                ],
+                [
+                    'answer.required' => "Answer can't be left blank"
+                ]);
+
+            $codeWarAnswer->answer = $request->answer;
+            $codeWarAnswer->save();
+
+            return redirect()->route('codewar.show',$codeWarQuestion->slug)->withNotification("Answer has been updated!")->withType("success");
+        }
+        return back()->withNotification("Sorry Buddy! You are not authorized")->withType("danger");
+    }
 }

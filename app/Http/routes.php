@@ -152,6 +152,8 @@ Route::group(['middleware' => ['web','fw-block-bl']], function () {
     Route::patch('/codewar/{id}/bestanswer', ['as' => 'codewar.bestanswer', 'uses' => 'CodeWarsController@bestanswer']);
     Route::get('/codewar/{slug}', ['as' => 'codewar.show', 'uses' => 'CodeWarsController@show']);
     Route::post('/codewar/{slug}', ['as' => 'codewar.answer', 'uses' => 'CodeWarsController@answer']);
+    Route::get('/codewar/{codeWarQuestion}/answer/{codeWarAnswer}/edit', ['as' => 'codewar.answer.edit', 'uses' => 'CodewarsController@editAnswer']);
+    Route::patch('/codewar/{codeWarQuestion}/answer/{codeWarAnswer}/edit', ['as' => 'codewar.answer.update', 'uses' => 'CodewarsController@updateAnswer']);
 
     /**
      * Gallery Controller

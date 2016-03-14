@@ -141,17 +141,22 @@
 
                         <div class="padding10">{!! render_markdown_for_view($answer->answer) !!}</div>
                         <p class="">
+
+                            @can('edit',$answer)
+                            <a class="btn btn-sm pull-right btn-info" href="{{ route('codewar.answer.edit',[$question->id,$answer->id]) }}"> <i class="fa fa-edit"></i> Edit</a>
+                            @endcan
+
                             @can('edit', $question)
                             @unless($question->best_answer_id == $answer->id)
                                 {{ Form::open(['route' => ['codewar.bestanswer', $question->id],'method' => 'patch']) }}
                                 {{ Form::hidden('best_answer_id', $answer->id) }}
                                 {{ Form::submit('Set as Winner', ['class' => 'btn btn-success btn-sm']) }}
                                 {{ Form::close() }}
-                                @else
+                            @else
                                     {{ Form::open() }}
                                     {{ Form::submit('Selected as Winner', ['class' => 'btn btn-warning btn-sm', 'disabled' => 'true']) }}
                                     {{ Form::close() }}
-                                    @endunless
+                            @endunless
                             @endcan
                         </p>
 
@@ -209,8 +214,6 @@
                                         Github flavored <a class="text-info" target="_blank" href="https://guides.github.com/features/mastering-markdown/"><b>Markdown</b></a> supported
                                     </div>
                                     <br>
-                                    <i class="text-danger"><b>Note:</b> Please review your answer before posting, it can
-                                        only be submitted once per war.</i>
                                     @if ($errors->has('answer'))
                                         <span class="help-block">
                                 <strong>{{ $errors->first('answer') }}</strong>

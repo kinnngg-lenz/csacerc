@@ -23,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Alumini' => 'App\Policies\AluminiPolicy',
         'App\Message' => 'App\Policies\MessagePolicy',
         'App\Shout' => 'App\Policies\ShoutPolicy',
+        'App\CodeWarAnswer' => 'App\Policies\CodeWarAnswerPolicy',
     ];
 
     /**
