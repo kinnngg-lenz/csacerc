@@ -402,7 +402,7 @@
                             <img src="/images/static/pooja_agarwal.jpg" alt="Author image">
                             <ul class="cd-author-info">
                                 <li>Dr. Puja Agarwal</li>
-                                <li>Director, ACERC</li>
+                                <li>Group Director, ARYA Group of Colleges</li>
                             </ul>
                         </div>
                     </li>
@@ -441,7 +441,7 @@
                             <img src="/images/static/himanshu_arora.jpg" alt="Author image">
                             <ul class="cd-author-info">
                                 <li>Dr. Himanshu Arora</li>
-                                <li>Registrar, ACERC</li>
+                                <li>Vice Principal, ACERC</li>
                             </ul>
                         </div>
                     </li>

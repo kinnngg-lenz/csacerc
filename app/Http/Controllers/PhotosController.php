@@ -32,7 +32,7 @@ class PhotosController extends Controller
      */
     public function index()
     {
-        $images = ($this->photo->getGallery()->latest()->paginate(20));
+        $images = ($this->photo->getGallery()->latest()->paginate(12));
 
         return view('gallery.index')->withImages($images);
     }
