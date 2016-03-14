@@ -222,4 +222,17 @@ class AuthController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        \Session::flash('user.has.loggedout', Auth::user()->email);
+        Auth::guard($this->getGuard())->logout();
+
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/login');
+    }
 }

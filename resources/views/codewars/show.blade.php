@@ -269,6 +269,7 @@
     });
 </script>
 
+
     @if($question->ends_at != null && $question->ends_at > Carbon\Carbon::now())
         <script type="text/javascript">
             $('.counter').countdown(count_down, function (event) {
